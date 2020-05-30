@@ -1,0 +1,1792 @@
+@charset "UTF-8";
+@keyframes opacity {
+  from {
+    opacity: 0; }
+  50% {
+    opacity: 1; } }
+.opacity {
+  animation: opacity 1s;
+  animation-direction: alternate; }
+
+@keyframes zoom {
+  from {
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3); }
+  100% {
+    transform: scale3d(1, 1, 1); } }
+.zoom {
+  animation: zoom .5s;
+  animation-direction: alternate;
+  transform-origin: 95% 30px; }
+
+.selfpay {
+  background: #f0f0f0;
+  min-height: 100vh; }
+  .selfpay .submitpop {
+    width: 17.4rem;
+    height: 17.6rem;
+    border-radius: 15px;
+    background-color: #ffffff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: url(/sui_assets/img/selfPay/Reward_background.png) center top no-repeat;
+    background-size: contain; }
+    .selfpay .submitpop .txt {
+      margin-left: 7.15rem;
+      margin-top: 2.15rem;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal; }
+      .selfpay .submitpop .txt .flowertit {
+        font-family: PingFangSC;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #e85514; }
+      .selfpay .submitpop .txt .flowercontent {
+        font-size: 0.6rem;
+        color: #e85514; }
+      .selfpay .submitpop .txt .coupon {
+        background: url(/sui_assets/img/selfPay/coupon-new.png) center top no-repeat;
+        background-size: 100% 100%;
+        width: 9rem;
+        height: 3rem;
+        margin-top: 2.05rem;
+        font-size: .9rem;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+        text-align: center;
+        vertical-align: middle;
+        color: #be792c;
+        line-height: 3rem; }
+        .selfpay .submitpop .txt .coupon div {
+          transform: translateX(-0.5rem); }
+      .selfpay .submitpop .txt .instraction {
+        color: #333333;
+        margin-top: 2.5rem;
+        font-size: 12px;
+        margin-left: -1rem;
+        transform: scale(0.8); }
+    .selfpay .submitpop .knowbtn {
+      width: 12.45rem;
+      height: 2.2rem;
+      line-height: 2.2rem;
+      object-fit: contain;
+      border-radius: 22px;
+      font-family: PingFangSC;
+      font-size: 0.8rem;
+      font-weight: 500;
+      font-style: normal;
+      color: #fff;
+      margin: 1rem auto;
+      background-image: linear-gradient(80deg, #fe563f, #f29c6e); }
+  .selfpay .second-pay {
+    background: white;
+    padding: 1rem .8rem; }
+    .selfpay .second-pay .other-pay {
+      border-top: 1px solid #d8d8d8;
+      color: #333333;
+      font-size: .9rem; }
+      .selfpay .second-pay .other-pay .state {
+        background: linear-gradient(to right, #ffa31c, #ff5060);
+        border-width: 0;
+        color: #ffffff;
+        text-align: left;
+        margin-top: 1rem;
+        padding: .2rem .5rem .2rem .2rem;
+        line-height: 2rem;
+        font-size: .7rem; }
+        .selfpay .second-pay .other-pay .state img {
+          height: 2rem;
+          vertical-align: middle; }
+      .selfpay .second-pay .other-pay .text {
+        padding: 1rem 0 .7rem;
+        text-align: center; }
+      .selfpay .second-pay .other-pay #mycode {
+        width: 160px;
+        margin: auto;
+        border: 1px solid #333333;
+        padding: 4px;
+        box-sizing: content-box; }
+    .selfpay .second-pay .avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 2px;
+      vertical-align: middle; }
+    .selfpay .second-pay .staff {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      display: inline-block;
+      margin: auto .5rem;
+      background-size: contain;
+      background-repeat: no-repeat;
+      vertical-align: middle; }
+    .selfpay .second-pay .staff:after {
+      content: "";
+      background: #FF392E;
+      border-radius: 50%;
+      display: block;
+      width: 10px;
+      height: 10px;
+      margin-left: 26px; }
+    .selfpay .second-pay .amount,
+    .selfpay .second-pay .nodiscount {
+      line-height: 38px;
+      position: relative; }
+    .selfpay .second-pay .label {
+      margin-top: 22px !important; }
+    .selfpay .second-pay .amount:before {
+      content: "Amount";
+      display: block;
+      color: #828282;
+      position: absolute;
+      left: 15px;
+      top: -8px;
+      font-family: PingFangSC;
+      font-size: 10px; }
+    .selfpay .second-pay .nodiscount:before {
+      content: "No discount part";
+      display: block;
+      color: #828282;
+      position: absolute;
+      left: 15px;
+      top: -8px;
+      font-family: PingFangSC;
+      font-size: 10px; }
+  .selfpay .btn-green {
+    color: #fff;
+    border-radius: 5px;
+    margin-top: 1rem;
+    border: 1px solid #FF392E;
+    background: #FF392E;
+    line-height: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.9rem;
+    text-align: center;
+    letter-spacing: 15px; }
+  .selfpay .table {
+    display: inline-block;
+    width: 7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    display: -webkit-inline-box;
+    vertical-align: top;
+    font-size: 18px;
+    line-height: 40px;
+    color: #8c8c8c;
+    padding-bottom: 1rem; }
+  .selfpay .already1 {
+    background: #ec524a;
+    height: 1.2rem;
+    display: inline-block;
+    line-height: 1.2rem;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 0.7rem;
+    padding: 0 3px; }
+  .selfpay .swiper-container-horizontal > .swiper-pagination-bullets {
+    bottom: -5px; }
+    .selfpay .swiper-container-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+      display: inline-block;
+      border-radius: 100%;
+      background: #fff;
+      /* opacity: 0.2; */ }
+  .selfpay .ad-show {
+    border: 1px solid #e8e8e8;
+    color: #8b8b8b;
+    overflow: auto;
+    line-height: 2;
+    background: white; }
+    .selfpay .ad-show .cbg {
+      height: 8rem;
+      background-size: cover;
+      background-size: 100% 100%; }
+    .selfpay .ad-show .pull-left:before {
+      content: "推荐";
+      display: inline-block;
+      width: 30px;
+      line-height: 15px;
+      border: 1px solid;
+      color: #FF9393;
+      font-size: 10px;
+      text-align: center;
+      font-weight: normal;
+      margin-right: .5rem;
+      vertical-align: text-bottom; }
+    .selfpay .ad-show .pull-left {
+      margin: .4rem;
+      color: #788486;
+      font-weight: bold;
+      float: left;
+      font-size: .7rem; }
+    .selfpay .ad-show .pull-right {
+      /*color: #5d6993;*/
+      color: #ffffff;
+      background: #EC1700;
+      margin: .5rem;
+      font-size: .6rem;
+      border-radius: 10px;
+      width: 63px;
+      text-align: center; }
+  .selfpay .e-black {
+    margin-bottom: 4rem;
+    position: relative; }
+  .selfpay .float {
+    position: absolute;
+    top: 21px;
+    right: 20px;
+    width: 77px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    font-size: 15px;
+    color: white;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    border: 1px solid #ffffff; }
+  .selfpay .over-bg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10352;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: .7rem .8rem .9rem .6rem;
+    box-sizing: border-box; }
+    .selfpay .over-bg .swiper-container {
+      height: 75%; }
+      .selfpay .over-bg .swiper-container .swiper-wrapper {
+        height: 93%; }
+    .selfpay .over-bg .coupons-item {
+      width: 79%;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      padding-bottom: 1rem;
+      height: 96%;
+      overflow: auto; }
+      .selfpay .over-bg .coupons-item .coupon-item {
+        object-fit: contain;
+        background: url("/sui_assets/img/selfPay/bg-modal.png") 0 -1px no-repeat;
+        background-size: 100% auto; }
+        .selfpay .over-bg .coupons-item .coupon-item .big-title {
+          font-size: 1rem;
+          line-height: 2.2;
+          padding: 2rem 0 .5rem;
+          color: #ffffff;
+          font-weight: bold; }
+        .selfpay .over-bg .coupons-item .coupon-item .blue-border {
+          width: 112px;
+          border-radius: 3px;
+          border: solid 1px #1b8ff3;
+          margin: auto;
+          padding: 5px;
+          background: #ffffff;
+          color: #000000; }
+          .selfpay .over-bg .coupons-item .coupon-item .blue-border img {
+            margin: auto; }
+        .selfpay .over-bg .coupons-item .coupon-item .coupons-detail {
+          font-size: .6rem;
+          padding: 1rem; }
+          .selfpay .over-bg .coupons-item .coupon-item .coupons-detail .a4001 + .item,
+          .selfpay .over-bg .coupons-item .coupon-item .coupons-detail .item:first-child {
+            flex-grow: 1;
+            -webkit-flex-grow: 1; }
+          .selfpay .over-bg .coupons-item .coupon-item .coupons-detail .item {
+            margin: .4rem;
+            clear: both;
+            text-align: left; }
+            .selfpay .over-bg .coupons-item .coupon-item .coupons-detail .item .left {
+              float: left;
+              width: 3rem;
+              text-align: right;
+              color: #aaa; }
+            .selfpay .over-bg .coupons-item .coupon-item .coupons-detail .item .right {
+              margin-left: 3.1rem;
+              color: #000; }
+    .selfpay .over-bg .md-close {
+      position: absolute;
+      left: 0;
+      right: 0; }
+    .selfpay .over-bg .md-close:before {
+      content: "";
+      background: url(/sui_assets/img/pay/close-white.svg) center no-repeat;
+      padding: 16px;
+      left: 0;
+      right: 0;
+      width: 1px;
+      margin: auto;
+      position: absolute;
+      top: 1rem;
+      border: 1px solid #fff;
+      border-radius: 50%; }
+  .selfpay img + .over-content {
+    height: 93%; }
+  .selfpay img + .over-content .overlay-detail {
+    height: 81%; }
+  .selfpay .over-content {
+    background: #ffffff;
+    border-radius: 5px;
+    height: 100%;
+    overflow: auto;
+    position: relative; }
+  .selfpay .m-bg {
+    background-image: url("/sui_assets/img/coupon/bg1.jpg");
+    background-size: 100% auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 7rem;
+    color: #ffffff;
+    position: relative; }
+  .selfpay .m-bg .m-title {
+    background: rgba(0, 0, 0, 0.8);
+    padding: 0 .5rem;
+    height: 1.4rem;
+    line-height: 1.4rem;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    bottom: 0; }
+  .selfpay .m-content {
+    font-size: .5rem;
+    padding: .5rem 0 .3rem; }
+  .selfpay .icon3 {
+    background: url("/sui_assets/img/selfPay/icons.svg") center no-repeat;
+    background-position: 0 -45px;
+    padding: 5px 10px;
+    margin-left: .2rem;
+    margin-right: .6rem; }
+  .selfpay .left-img {
+    width: 3.6rem;
+    height: 3rem;
+    margin: .4rem .5rem .6rem 0;
+    padding: 0;
+    float: left; }
+  .selfpay .left-img img {
+    width: 100%;
+    height: 100%; }
+  .selfpay .d-detail {
+    padding: .4rem 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap; }
+  .selfpay .reduce {
+    background: url("/sui_assets/img/plusicon.svg") center no-repeat;
+    background-position: 0 3px;
+    padding: 7px 12px;
+    background-size: 23px; }
+  .selfpay .plus {
+    background: url(/sui_assets/img/plusicon.svg) center no-repeat;
+    padding: 6px 12px;
+    background-position: 0 -32px;
+    display: inline;
+    background-size: 23px; }
+  .selfpay .current {
+    padding: 0 .5rem; }
+  .selfpay .choose {
+    background: #000000;
+    width: 4rem;
+    float: left;
+    height: 100%;
+    color: #ffffff;
+    border-radius: 5px;
+    line-height: 2.2rem;
+    text-align: center;
+    font-size: .8rem;
+    position: relative; }
+  .selfpay .choose .number {
+    position: absolute;
+    top: -.4rem;
+    right: -.5rem;
+    border-radius: 50%;
+    background: #e75040;
+    height: 1.2rem;
+    line-height: 1.2rem;
+    width: 1.2rem; }
+  .selfpay .number:empty {
+    display: none; }
+  .selfpay .check {
+    background: #ff4d63;
+    border-radius: 5px;
+    line-height: 2.2rem;
+    text-align: center;
+    margin-left: 4.8rem;
+    font-size: .8rem;
+    color: #ffffff;
+    height: 100%; }
+  .selfpay .dish-item {
+    clear: both; }
+  .selfpay .overlay-title {
+    font-size: .8rem;
+    padding: 1rem 0 .8rem; }
+  .selfpay .overlay-footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: .5rem .5rem;
+    background: #ffffff;
+    box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.11); }
+  .selfpay .overlay-detail {
+    height: 86%;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch; }
+  .selfpay .border-round {
+    color: #5b5b5b;
+    font-size: .6rem;
+    padding-bottom: .5rem; }
+  .selfpay .border-round:before {
+    content: "";
+    background: #5b5b5b;
+    width: 4rem;
+    height: 1px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 .5rem; }
+  .selfpay .border-round:after {
+    content: "";
+    background: #5b5b5b;
+    width: 4rem;
+    height: 1px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 .5rem; }
+  .selfpay .dish-item.active {
+    background: #e8f8ff; }
+  .selfpay .dish-item,
+  .selfpay .meal-item {
+    padding: 0.5rem 2.2rem 1rem;
+    text-align: left;
+    overflow: auto; }
+    .selfpay .dish-item .amount,
+    .selfpay .meal-item .amount {
+      font-size: .5rem;
+      text-decoration: line-through;
+      padding-left: 4px; }
+  .selfpay .overlay-title .close:before {
+    content: "";
+    float: right;
+    background: url(/sui_assets/img/selfPay/close.svg) center no-repeat;
+    padding: 17px;
+    position: absolute;
+    top: .1rem;
+    right: .5rem; }
+  .selfpay .modal-overlay-visible {
+    z-index: 10370; }
+  .selfpay .addon2 {
+    border-radius: 3px;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: .5rem;
+    line-height: 1.1rem;
+    width: 5rem;
+    text-align: center;
+    position: absolute;
+    right: 2.3rem;
+    top: .3rem; }
+  .selfpay .text-orange {
+    color: #e75040; }
+  .selfpay .meal-pic {
+    background: url(/sui_assets/img/selfPay/edit.svg) 93% center no-repeat;
+    text-align: left;
+    height: 49px;
+    position: relative;
+    padding: 2px 5px; }
+  .selfpay .meal-pic img {
+    width: 66px;
+    height: 45px;
+    vertical-align: middle; }
+  .selfpay .check-meal-border {
+    background: #E0F5FF;
+    color: #009EFF;
+    border: 1px solid #7BBDDE;
+    line-height: 26px;
+    font-size: .55rem;
+    text-align: center;
+    border-radius: 9px;
+    width: 13.5rem;
+    margin: 1rem auto; }
+  .selfpay .label1 {
+    left: 0;
+    right: 0;
+    bottom: 1.5rem;
+    border-radius: 2px;
+    font-size: 12px;
+    margin: auto;
+    display: inline-block;
+    height: 14px;
+    line-height: 14px;
+    color: #009EFF;
+    vertical-align: middle; }
+  .selfpay .qrcode {
+    width: 100px;
+    background: url(/sui_assets/img/selfPay/qrcode.png) center no-repeat/contain;
+    padding: 0 10px 31px 0px;
+    position: fixed;
+    right: .6rem;
+    bottom: 4.5rem; }
+    .selfpay .qrcode img {
+      width: 110%; }
+  .selfpay .flowericon {
+    display: inline-block;
+    background: url(/sui_assets/img/selfPay/flowicon.svg) center no-repeat;
+    background-position: 1px -123px;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle; }
+  .selfpay .bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 1; }
+    .selfpay .bottom .flower-bg {
+      height: 100vh;
+      animation: show-modal2 .5s;
+      animation-direction: alternate;
+      background: rgba(0, 0, 0, 0.7); }
+      .selfpay .bottom .flower-bg .header {
+        font-size: .9rem;
+        border-bottom: 1px solid #d9d9d9;
+        height: 3rem;
+        line-height: 3rem;
+        position: relative; }
+        .selfpay .bottom .flower-bg .header .pull-right {
+          background: url(/sui_assets/img/selfPay/sprite.png) center no-repeat;
+          background-position: 0 -153px;
+          position: absolute;
+          right: 1rem;
+          top: 1rem;
+          padding: 14px;
+          background-size: 57px; }
+        .selfpay .bottom .flower-bg .header .back {
+          background-position: 8px -303px; }
+        .selfpay .bottom .flower-bg .header .pull-left {
+          color: #6ba2ba;
+          font-size: 10px;
+          text-decoration: underline;
+          position: absolute;
+          left: .8rem;
+          top: 0; }
+      .selfpay .bottom .flower-bg .flower {
+        position: absolute;
+        left: 0;
+        right: 0;
+        border-radius: 20px;
+        width: 17.15rem;
+        height: 24.7rem;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        color: #333333; }
+        .selfpay .bottom .flower-bg .flower .content {
+          padding: 1rem 2.3rem;
+          text-align: left;
+          overflow: scroll;
+          -webkit-overflow-scrolling: touch;
+          height: 400px; }
+          .selfpay .bottom .flower-bg .flower .content .avatar {
+            width: 3.7rem;
+            height: 3.7rem;
+            border-radius: 50%;
+            vertical-align: middle;
+            display: inline-block;
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin: auto 5px;
+            background-position: center center; }
+          .selfpay .bottom .flower-bg .flower .content .nickname {
+            font-size: .8rem;
+            vertical-align: middle;
+            width: 36%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: inline-block;
+            color: black;
+            font-weight: 600; }
+          .selfpay .bottom .flower-bg .flower .content .thanks {
+            font-size: 1rem;
+            padding-top: .5rem; }
+          .selfpay .bottom .flower-bg .flower .content .staff {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 -1.5rem; }
+            .selfpay .bottom .flower-bg .flower .content .staff .item {
+              width: 49.8%;
+              border-radius: 5px;
+              border: 1px solid #fff;
+              color: #fff;
+              height: 4rem;
+              line-height: 4rem;
+              margin-bottom: 1rem; }
+            .selfpay .bottom .flower-bg .flower .content .staff .item:active {
+              background: #fff;
+              color: #f1713c; }
+          .selfpay .bottom .flower-bg .flower .content .labels {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 1.2rem 0; }
+            .selfpay .bottom .flower-bg .flower .content .labels .label {
+              width: 4.7rem;
+              height: 1.5rem;
+              line-height: 1.55rem;
+              border-radius: 20.8px;
+              box-shadow: 0 0 1px 1px #9c9c9c inset;
+              color: #9c9c9c;
+              flex: 1;
+              margin: 0 .7rem;
+              max-width: 42%; }
+              .selfpay .bottom .flower-bg .flower .content .labels .label .up {
+                background: url(/sui_assets/img/selfPay/sprite.png) center no-repeat;
+                background-size: 55px;
+                background-position: -2px -69px;
+                display: inline-block;
+                padding: 10px 9px;
+                vertical-align: middle;
+                margin-right: 5px; }
+              .selfpay .bottom .flower-bg .flower .content .labels .label .down {
+                background-position: -2px -21px; }
+            .selfpay .bottom .flower-bg .flower .content .labels .active {
+              background: #6ba2ba;
+              background: #fff;
+              box-shadow: none; }
+              .selfpay .bottom .flower-bg .flower .content .labels .active .up {
+                background-position: -2px -92px; }
+              .selfpay .bottom .flower-bg .flower .content .labels .active .down {
+                background-position: -2px -44px; }
+          .selfpay .bottom .flower-bg .flower .content .decs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between; }
+            .selfpay .bottom .flower-bg .flower .content .decs .dec {
+              margin: .25rem 3%;
+              width: 43%;
+              height: 1.4rem;
+              line-height: 1.45rem;
+              border-radius: 5px;
+              color: #9c9c9c;
+              box-shadow: 0 0 1px 1px #9c9c9c inset; }
+            .selfpay .bottom .flower-bg .flower .content .decs .active {
+              color: #f1713c;
+              background: #fff;
+              box-shadow: none; }
+        .selfpay .bottom .flower-bg .flower .already {
+          text-align: center;
+          position: absolute;
+          width: 17.15rem;
+          height: 24.7rem;
+          background: #fff;
+          border-radius: 20px;
+          overflow: hidden;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto; }
+          .selfpay .bottom .flower-bg .flower .already .alreadybg {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 13.75rem;
+            border-radius: 20px;
+            height: 20.55rem;
+            background: #fff; }
+            .selfpay .bottom .flower-bg .flower .already .alreadybg .alreadyimg {
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              width: 6.1rem;
+              height: 6.1rem;
+              margin: auto; }
+            .selfpay .bottom .flower-bg .flower .already .alreadybg .modalimg {
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              width: 13.75rem;
+              height: 20.55rem; }
+          .selfpay .bottom .flower-bg .flower .already .alreadyimg {
+            position: absolute;
+            left: 0;
+            right: 0;
+            width: 6rem;
+            height: 6rem;
+            margin: auto;
+            margin-top: 1rem; }
+          .selfpay .bottom .flower-bg .flower .already .already_title {
+            width: 17.15rem;
+            height: 4rem;
+            line-height: 4rem;
+            margin: auto;
+            background: url(/sui_assets/img/selfPay/flowerbg.png) center no-repeat/100% 100%; }
+            .selfpay .bottom .flower-bg .flower .already .already_title img {
+              object-fit: contain;
+              width: 16.25rem;
+              margin-top: 1.3rem; }
+          .selfpay .bottom .flower-bg .flower .already .avatar {
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 100px;
+            background-size: 102%;
+            margin: auto;
+            margin-top: 1rem;
+            background-position: center center; }
+          .selfpay .bottom .flower-bg .flower .already .nickname {
+            color: #e8524a;
+            font-family: PingFangSC;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 0.5rem; }
+          .selfpay .bottom .flower-bg .flower .already .already_text {
+            color: #000;
+            font-size: 14px;
+            width: 8.8rem;
+            margin: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 16.5rem; }
+          .selfpay .bottom .flower-bg .flower .already .already_content {
+            color: #909090;
+            margin: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            font-size: 0.7rem;
+            bottom: 4.5rem; }
+          .selfpay .bottom .flower-bg .flower .already .closebtn {
+            width: 7.05rem;
+            height: 1.8rem;
+            border-radius: 4.5px;
+            box-shadow: 0 3px 5px 0 rgba(231, 69, 60, 0.5);
+            background-image: linear-gradient(104deg, #e8524a, #ec7bb8);
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 2.25rem;
+            margin: auto; }
+            .selfpay .bottom .flower-bg .flower .already .closebtn img {
+              height: 1rem;
+              object-fit: contain;
+              margin-top: 0.45rem; }
+          .selfpay .bottom .flower-bg .flower .already .sorry {
+            color: #e8524a;
+            position: absolute;
+            width: 11.75rem;
+            height: 2rem;
+            top: 10rem;
+            left: 0;
+            right: 0;
+            margin: auto;
+            font-size: 0.7rem; }
+          .selfpay .bottom .flower-bg .flower .already .decs {
+            max-height: 6.5rem;
+            height: 6rem;
+            margin-left: 1.15rem;
+            margin-right: 1.15rem;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 13rem; }
+            .selfpay .bottom .flower-bg .flower .already .decs .dec {
+              margin: .25rem 0.45rem;
+              display: inline-block;
+              width: 4.7rem;
+              height: 1.6rem;
+              line-height: 1.6rem;
+              border-radius: 16px;
+              font-size: 0.7rem;
+              color: #fff;
+              border: solid 1px #686868;
+              background-color: #fff; }
+            .selfpay .bottom .flower-bg .flower .already .decs .active {
+              margin: .25rem 0.45rem;
+              color: #fff;
+              background-image: linear-gradient(109deg, #e8524a, #ec7bb8);
+              opacity: 1;
+              box-shadow: none;
+              border: solid 1px #fff; }
+        .selfpay .bottom .flower-bg .flower .content1 {
+          text-align: center;
+          position: absolute;
+          width: 17.15rem;
+          height: 24.7rem;
+          background: #fff;
+          border-radius: 20px;
+          overflow: hidden;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto; }
+          .selfpay .bottom .flower-bg .flower .content1 .title {
+            width: 17.15rem;
+            height: 4rem;
+            line-height: 4rem;
+            margin: auto;
+            background: url(/sui_assets/img/selfPay/flowerbg.png) center no-repeat/100% 100%; }
+            .selfpay .bottom .flower-bg .flower .content1 .title img {
+              object-fit: contain;
+              height: 2rem;
+              margin-top: 1rem; }
+          .selfpay .bottom .flower-bg .flower .content1 .leftback {
+            position: absolute;
+            left: 0.75rem;
+            top: 0.5rem;
+            width: 1.2rem;
+            height: 0.85rem;
+            object-fit: contain; }
+          .selfpay .bottom .flower-bg .flower .content1 .avatarbg {
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 100px;
+            position: relative;
+            margin: auto;
+            margin-top: 1rem; }
+            .selfpay .bottom .flower-bg .flower .content1 .avatarbg .avatar {
+              background-size: 102%;
+              background-repeat: no-repeat;
+              width: 2.2rem;
+              height: 2.2rem;
+              border-radius: 100px;
+              position: absolute;
+              margin: auto;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+              background-position: center center; }
+          .selfpay .bottom .flower-bg .flower .content1 .evaluate {
+            color: #e8524a;
+            display: inline-block;
+            height: 0.8rem;
+            line-height: 0.8rem;
+            font-family: PingFangSC;
+            font-size: 0.6rem;
+            border-bottom: 1px solid #e8524a;
+            margin: auto;
+            margin-top: 1rem; }
+          .selfpay .bottom .flower-bg .flower .content1 .nickname {
+            height: 1.25rem;
+            color: #e8524a;
+            font-family: PingFangSC;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: auto;
+            margin-top: 2px; }
+          .selfpay .bottom .flower-bg .flower .content1 .box {
+            margin: .75rem 0.4rem;
+            display: flex;
+            justify-content: space-around; }
+            .selfpay .bottom .flower-bg .flower .content1 .box .give {
+              width: 7.85rem;
+              height: 12.4rem;
+              border-radius: 5px;
+              box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.7);
+              background-color: #ffffff;
+              position: relative; }
+              .selfpay .bottom .flower-bg .flower .content1 .box .give div {
+                position: absolute;
+                width: 7.85rem;
+                height: 12.4rem; }
+                .selfpay .bottom .flower-bg .flower .content1 .box .give div .box_img {
+                  width: 6rem;
+                  height: 6rem;
+                  position: absolute;
+                  left: 0;
+                  right: 0;
+                  top: 0.85rem;
+                  margin: auto; }
+              .selfpay .bottom .flower-bg .flower .content1 .box .give .box_title {
+                width: 7.05rem;
+                height: 1.8rem;
+                line-height: 1.8rem;
+                margin: auto;
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0.75rem;
+                border-radius: 4.5px;
+                box-shadow: 0 3px 5px 0 rgba(231, 69, 60, 0.5);
+                background-image: linear-gradient(104deg, #e8524a, #ec7bb8); }
+                .selfpay .bottom .flower-bg .flower .content1 .box .give .box_title img {
+                  height: 1rem;
+                  margin: auto;
+                  object-fit: contain;
+                  margin-top: 0.45rem; }
+              .selfpay .bottom .flower-bg .flower .content1 .box .give .box_text {
+                font-size: .7rem;
+                position: absolute;
+                bottom: 3.3rem;
+                color: #000000;
+                left: 0;
+                right: 0;
+                margin: auto;
+                height: 2rem;
+                width: 6.65rem;
+                overflow: hidden;
+                display: flex;
+                align-items: left;
+                justify-content: space-around;
+                flex-direction: column;
+                text-align: center; }
+          .selfpay .bottom .flower-bg .flower .content1 .pull-right {
+            background: url(/sui_assets/img/selfPay/sprite.png) center no-repeat;
+            background-position: -4px -129px;
+            position: absolute;
+            right: 0.75rem;
+            top: 0.75rem;
+            width: 24px;
+            height: 24px;
+            background-size: 50px; }
+          .selfpay .bottom .flower-bg .flower .content1 .addon {
+            color: #f68861;
+            font-size: .6rem;
+            opacity: 0.9;
+            font-family: PingFangSC;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            margin-top: 5px; }
+          .selfpay .bottom .flower-bg .flower .content1 .thanks {
+            font-size: .7rem;
+            padding-top: .5rem; }
+          .selfpay .bottom .flower-bg .flower .content1 .staff {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 -1.5rem; }
+            .selfpay .bottom .flower-bg .flower .content1 .staff .item {
+              width: 46%;
+              border-radius: 5px;
+              border: 1px solid #9c9c9c;
+              height: 3.2rem;
+              line-height: 3.2rem;
+              margin-bottom: 1rem; }
+            .selfpay .bottom .flower-bg .flower .content1 .staff .item:active {
+              background: #6ba2ba;
+              color: white; }
+          .selfpay .bottom .flower-bg .flower .content1 .labels {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 1.25rem -0.4rem 1rem;
+            font-size: 0.7rem; }
+            .selfpay .bottom .flower-bg .flower .content1 .labels .label {
+              width: 7.2rem;
+              height: 1.6rem;
+              line-height: 1.5rem;
+              border-radius: 20.8px;
+              border: solid 0.5px #fd5b43;
+              background-color: #ffffff;
+              color: #fc6549;
+              opacity: 1;
+              flex: 1;
+              max-width: 45%; }
+              .selfpay .bottom .flower-bg .flower .content1 .labels .label .up {
+                background: url(/sui_assets/img/selfPay/flowicon.svg) center no-repeat;
+                display: inline-block;
+                vertical-align: middle;
+                background-position: 1px -62px;
+                width: 16px;
+                height: 16px; }
+              .selfpay .bottom .flower-bg .flower .content1 .labels .label .down {
+                background: url(/sui_assets/img/selfPay/flowicon.svg) center no-repeat;
+                display: inline-block;
+                vertical-align: middle;
+                background-position: 1px 1px;
+                width: 16px;
+                height: 16px; }
+            .selfpay .bottom .flower-bg .flower .content1 .labels .active {
+              color: #000000;
+              opacity: 1;
+              background-color: #ebc685;
+              box-shadow: none; }
+              .selfpay .bottom .flower-bg .flower .content1 .labels .active .up {
+                background: url(/sui_assets/img/selfPay/flowicon.svg) center no-repeat;
+                display: inline-block;
+                vertical-align: middle;
+                background-position: 1px -93px;
+                width: 16px;
+                height: 16px; }
+              .selfpay .bottom .flower-bg .flower .content1 .labels .active .down {
+                background: url(/sui_assets/img/selfPay/flowicon.svg) center no-repeat;
+                display: inline-block;
+                vertical-align: middle;
+                background-position: 1px -30px;
+                width: 16px;
+                height: 16px; }
+          .selfpay .bottom .flower-bg .flower .content1 .decs {
+            max-height: 6.5rem;
+            height: 6rem;
+            margin-left: 1.15rem;
+            margin-right: 1.15rem; }
+            .selfpay .bottom .flower-bg .flower .content1 .decs .dec {
+              margin: .25rem 0.45rem;
+              display: inline-block;
+              width: 4.7rem;
+              height: 1.6rem;
+              line-height: 1.6rem;
+              border-radius: 16px;
+              font-size: 0.7rem;
+              color: #999999;
+              border: solid 1px #686868;
+              background-color: #fff; }
+            .selfpay .bottom .flower-bg .flower .content1 .decs .active {
+              margin: .25rem 0.45rem;
+              color: #fff;
+              background-image: linear-gradient(109deg, #e8524a, #ec7bb8);
+              opacity: 1;
+              box-shadow: none;
+              border: solid 1px #fff; }
+        .selfpay .bottom .flower-bg .flower .content2 .content2_title {
+          background-image: linear-gradient(101deg, #e7bb74, #f5dfac 47%, #e7bb74);
+          font-family: PingFangSC;
+          font-size: 0.9rem;
+          font-weight: 500;
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent; }
+        .selfpay .bottom .flower-bg .flower .content2 .content2_text {
+          width: 11.75rem;
+          height: 2px;
+          font-family: PingFangSC;
+          font-size: 14px;
+          color: #e8524a;
+          margin: auto;
+          margin-top: 1.5rem; }
+        .selfpay .bottom .flower-bg .flower .content2 .submitbtn {
+          width: 7.05rem;
+          height: 1.8rem;
+          border-radius: 4.5px;
+          box-shadow: 0 3px 5px 0 rgba(231, 69, 60, 0.5);
+          background-image: linear-gradient(104deg, #e8524a, #ec7bb8);
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 2.25rem;
+          margin: auto; }
+          .selfpay .bottom .flower-bg .flower .content2 .submitbtn img {
+            height: 1rem;
+            object-fit: contain;
+            margin-top: 0.45rem; }
+        .selfpay .bottom .flower-bg .flower .closeflower {
+          width: 0.85rem;
+          height: 0.85rem;
+          position: absolute;
+          right: 0.5rem;
+          top: 0.5rem; }
+        .selfpay .bottom .flower-bg .flower .behind .newgift,
+        .selfpay .bottom .flower-bg .flower .behind .newgift1 {
+          width: 14.7rem;
+          height: 3.75rem;
+          border-radius: 5px;
+          margin: 0 auto 1rem;
+          padding-bottom: 0.75rem;
+          text-align: center; }
+          .selfpay .bottom .flower-bg .flower .behind .newgift .thanks,
+          .selfpay .bottom .flower-bg .flower .behind .newgift1 .thanks {
+            font-family: PingFangSC;
+            height: 2.8rem;
+            font-size: 12px;
+            letter-spacing: 0.2px;
+            text-align: center;
+            color: #fff8f8;
+            padding: 10px 0; }
+          .selfpay .bottom .flower-bg .flower .behind .newgift .coupon,
+          .selfpay .bottom .flower-bg .flower .behind .newgift1 .coupon {
+            background: url(/sui_assets/img/selfPay/coupon-new.png) center top no-repeat;
+            background-size: 100% 100%;
+            width: 10rem;
+            height: 3rem;
+            margin: 0 auto;
+            font-size: .9rem;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            text-align: center;
+            vertical-align: middle;
+            color: #be792c;
+            line-height: 3rem; }
+            .selfpay .bottom .flower-bg .flower .behind .newgift .coupon div,
+            .selfpay .bottom .flower-bg .flower .behind .newgift1 .coupon div {
+              transform: translateX(-0.5rem); }
+        .selfpay .bottom .flower-bg .flower .behind .newgift1 .thanks {
+          padding: 0.75rem 0;
+          font-size: 1rem;
+          letter-spacing: 0.4px;
+          font-family: PingFangSC;
+          font-weight: normal;
+          font-style: normal;
+          text-align: center;
+          color: #333333;
+          background: url(/sui_assets/img/selfPay/marks.png) center no-repeat;
+          background-position: 0 0px;
+          background-size: contain;
+          height: 4rem; }
+        .selfpay .bottom .flower-bg .flower .behind .gift {
+          padding: 2.1rem 1.5rem 0;
+          text-align: center;
+          background: url(/sui_assets/img/selfPay/gift.png) center no-repeat;
+          height: 5rem;
+          background-size: contain;
+          margin: -.5rem .5rem 0;
+          font-size: .7rem;
+          color: white; }
+          .selfpay .bottom .flower-bg .flower .behind .gift .transform {
+            transform: scaleY(1.5);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            display: -webkit-inline-box; }
+          .selfpay .bottom .flower-bg .flower .behind .gift .blue-text {
+            color: #fcf334;
+            font-weight: bold;
+            position: relative; }
+        .selfpay .bottom .flower-bg .flower .behind .submit {
+          color: #fff;
+          width: 14.5rem;
+          height: 2.2rem;
+          border-radius: 22px;
+          background-image: linear-gradient(82deg, #fe563f, #f29c6e);
+          font-weight: bold;
+          line-height: 2rem;
+          height: 2rem;
+          font-size: 0.8rem;
+          text-align: center;
+          margin: 5px auto 1.5rem; }
+          .selfpay .bottom .flower-bg .flower .behind .submit .bigflow {
+            display: inline-block;
+            background: url(/sui_assets/img/selfPay/flowicon.svg) center no-repeat;
+            background-position: 1px -123px;
+            width: 16px;
+            height: 16px;
+            vertical-align: middle;
+            background-position: 1px -150px;
+            width: 21px;
+            height: 27px;
+            margin-left: 0.25rem; }
+      .selfpay .bottom .flower-bg .praise {
+        width: 17.15rem;
+        height: 8rem;
+        border-radius: 20px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+        background: #fff;
+        overflow: hidden; }
+        .selfpay .bottom .flower-bg .praise .praise_title {
+          width: 17.15rem;
+          height: 4rem;
+          line-height: 4rem;
+          margin: auto;
+          background: url(/sui_assets/img/selfPay/flowerbg.png) center no-repeat/100% 100%; }
+          .selfpay .bottom .flower-bg .praise .praise_title img {
+            object-fit: contain;
+            height: 2rem;
+            margin-top: 1rem; }
+        .selfpay .bottom .flower-bg .praise .praise_text {
+          color: #e8524a;
+          font-size: 0.9rem;
+          position: absolute;
+          bottom: 1.5rem;
+          left: 0;
+          right: 0;
+          margin: auto; }
+    .selfpay .bottom .flower-close {
+      background: #6ba2ba;
+      height: 2rem;
+      line-height: 2rem;
+      border-radius: 5px 5px 0 0;
+      margin: 0 .8rem;
+      color: white;
+      font-size: .7rem;
+      text-align: left;
+      position: relative; }
+      .selfpay .bottom .flower-close .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        vertical-align: middle;
+        display: inline-block;
+        margin: auto .5rem;
+        background-size: 102%;
+        background-repeat: no-repeat;
+        background-position: center center; }
+    .selfpay .bottom .flower-close:after {
+      content: "现在去评价";
+      color: #6ba2ba;
+      font-size: .6rem;
+      border-radius: 10px;
+      width: 76px;
+      height: 1rem;
+      line-height: 1rem;
+      background: white;
+      display: inline-block;
+      text-align: center;
+      position: absolute;
+      right: .5rem;
+      top: .5rem; }
+    .selfpay .bottom .i-flex {
+      height: 55px;
+      background-color: rgba(250, 250, 250, 0.9);
+      box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.11);
+      font-size: 10px;
+      font-weight: bold;
+      line-height: 2;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      -webkit-justify-content: space-between;
+      align-items: center;
+      clear: both; }
+      .selfpay .bottom .i-flex .receivequan {
+        width: 3.95rem;
+        position: absolute;
+        left: 2.85rem;
+        bottom: 51px; }
+      .selfpay .bottom .i-flex .item {
+        flex-grow: 1;
+        -webkit-flex-grow: 1;
+        position: relative; }
+        .selfpay .bottom .i-flex .item .icon1 {
+          background: url("/sui_assets/img/selfPay/ico-coupon.svg") center no-repeat; }
+        .selfpay .bottom .i-flex .item .icon2 {
+          background: url("/sui_assets/img/selfPay/ico-sell.svg") center no-repeat; }
+        .selfpay .bottom .i-flex .item .avatar {
+          display: block;
+          margin: 0 auto;
+          border-radius: 50%;
+          width: 1.6rem;
+          height: 1.6rem; }
+        .selfpay .bottom .i-flex .item span {
+          display: block;
+          padding: 15px; }
+  .selfpay .info {
+    background-image: linear-gradient(to bottom, #ff5400, #fc4430);
+    border: solid 1px #e44f3f;
+    color: #ffffff;
+    text-align: center;
+    height: 1.8rem;
+    line-height: 1.8rem;
+    margin-bottom: 1.7rem; }
+  .selfpay .info:before {
+    content: "";
+    background: url("/sui_assets/img/selfPay/attention.svg") center no-repeat;
+    padding: 15px; }
+  .selfpay .indirect {
+    position: fixed;
+    left: 10%;
+    right: 10%;
+    top: 35%;
+    height: 134px;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 100000;
+    border-radius: 5px;
+    color: #ffffff; }
+  .selfpay .indirect div {
+    background: url("/sui_assets/img/selfPay/illus.svg") center no-repeat;
+    padding-top: 4rem; }
+  .selfpay .label3 {
+    background: red;
+    font-size: .5rem;
+    position: absolute;
+    top: -.3rem;
+    right: 1rem;
+    color: #fff;
+    height: .8rem;
+    line-height: .9rem;
+    padding: 0 8px;
+    border-radius: 5px;
+    display: inline-block; }
+  .selfpay .label2:empty {
+    display: none; }
+  .selfpay .label2 {
+    padding: 10px;
+    position: absolute;
+    top: -2.5rem;
+    right: 0;
+    left: 0;
+    margin: auto;
+    width: 110px;
+    height: 56px; }
+  .selfpay .new {
+    background: url(/sui_assets/img/selfPay/noticer.png) center bottom no-repeat;
+    background-size: 160px;
+    width: 160px;
+    margin-left: -17px; }
+  .selfpay .old {
+    background: url(/sui_assets/img/selfPay/old1.gif?v=1) center bottom no-repeat;
+    background-size: contain;
+    width: 125px; }
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+  width: 100vw;
+  height: 100vh; }
+  .modal .modal-inner {
+    width: 15.5rem;
+    position: absolute;
+    z-index: 11000;
+    left: 50%;
+    margin-left: -7.55rem;
+    margin-top: 0;
+    top: 6%;
+    text-align: center;
+    border-radius: .35rem;
+    animation: show-modal .5s;
+    -webkit-animation: show-modal .5s;
+    color: #3d4145; }
+    .modal .modal-inner .close {
+      position: absolute;
+      top: -.4rem;
+      right: -1rem;
+      z-index: 1; }
+    .modal .modal-inner .close:after {
+      content: "";
+      background: url(/sui_assets/img/vipModal/close.svg) center no-repeat;
+      padding: 1rem; }
+@keyframes show-modal {
+  from {
+    opacity: 0;
+    transform: translate(0, -150%);
+    -webkit-transform: translate(0, -150%); }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0); } }
+.addVip input::-webkit-input-placeholder {
+  color: #A9A9A9;
+  font-size: 13px; }
+.addVip .overflow {
+  overflow: auto;
+  overflow-x: hidden;
+  margin-top: 1.8rem;
+  box-sizing: content-box;
+  max-height: 11rem;
+  min-height: 8rem; }
+.addVip .modal-inner {
+  width: 15rem; }
+.addVip .modal-inner:before {
+  content: "新人好礼";
+  width: 4.5rem;
+  font-family: PingFangSC;
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0 auto;
+  color: #ea573d;
+  left: 0;
+  right: 0;
+  top: 1.8rem;
+  padding: .6rem 0 .5rem;
+  text-align: left;
+  display: block;
+  position: absolute;
+  background-size: 50%;
+  z-index: 1; }
+.addVip .modal-content {
+  background: url(/sui_assets/img/addVip/new_x.png) center no-repeat;
+  background-size: contain;
+  width: 15rem;
+  height: 18.5rem;
+  padding-top: 1rem;
+  position: relative;
+  margin-bottom: -1rem;
+  color: #ffffff;
+  border-radius: 5px 5px 0 0;
+  padding-bottom: 0.2rem; }
+  .addVip .modal-content .modal-button {
+    border-radius: 30px !important;
+    background: #ffdf30;
+    color: #640a00;
+    margin: auto 1rem; }
+  .addVip .modal-content .usable {
+    color: #ea573d;
+    font-size: 0.7rem;
+    line-height: 3;
+    height: 2.5rem;
+    position: relative;
+    top: 2.4rem; }
+  .addVip .modal-content .usable2 {
+    height: 1.5rem;
+    position: relative;
+    top: 2rem; }
+  .addVip .modal-content .modal-phone {
+    border-radius: 5px;
+    position: relative;
+    background: url(/sui_assets/img/addVip/new_w.png) center no-repeat;
+    background-size: contain;
+    width: 15.9rem;
+    height: 10.4rem;
+    padding: 1rem;
+    position: relative;
+    top: -2.2rem;
+    padding-top: 3rem;
+    margin: 0 -.45rem auto; }
+  .addVip .modal-content .modal-phone input {
+    height: 2.2rem;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    padding: .25rem .5rem;
+    font-size: .75rem;
+    color: #000000;
+    box-shadow: inset 0 1px 3px 0 #7CA1B5;
+    background-color: #ffffff;
+    box-sizing: border-box; }
+  .addVip .modal-content .modal-phone #validate {
+    width: 60%;
+    margin-right: 40%; }
+  .addVip .modal-content .modal-phone .input-text {
+    position: relative;
+    top: 1.7rem;
+    padding: .2rem .4rem;
+    font-size: .5rem;
+    margin: -.9rem -.2rem -.5rem;
+    border-radius: 3px;
+    float: right;
+    width: 5.4375rem;
+    height: 2.2rem;
+    line-height: 2rem;
+    border-radius: 5px;
+    font-family: PingFangSC;
+    font-size: .8rem;
+    text-align: center;
+    color: #000000;
+    background-color: #fadf4d; }
+  .addVip .modal-content .modal-phone .v-button {
+    padding: 0 .25rem;
+    height: 2.2rem;
+    font-size: 1rem;
+    color: #b06336;
+    line-height: 2.2rem;
+    text-align: center;
+    margin: 0 auto;
+    border-radius: 20px;
+    margin-top: 2rem;
+    letter-spacing: 3px;
+    width: 9rem;
+    border-radius: 1.4rem;
+    box-shadow: 0 3px 0 0 #bc8a47;
+    background-image: linear-gradient(to right, #f7dd86, #f4dc7e 21%, #fcefb8 53%, #efd576 85%, #f8e388); }
+  .addVip .modal-content .v-item {
+    background: url(/sui_assets/img/addVip/coupon.svg) center top no-repeat;
+    color: #000000;
+    width: 13rem;
+    /*width: 218px;*/
+    height: 74px;
+    font-size: .75rem;
+    display: flex;
+    -webkit-display: flex;
+    align-items: center;
+    margin: 0rem auto .7rem;
+    text-align: left;
+    font-weight: 600;
+    position: relative;
+    overflow: hidden; }
+    .addVip .modal-content .v-item .grey {
+      color: #b5b5b5;
+      font-size: 10px;
+      font-weight: 500; }
+    .addVip .modal-content .v-item .left {
+      color: #ff2c2c;
+      font-size: 28px;
+      width: 4.5rem;
+      text-align: center; }
+      .addVip .modal-content .v-item .left .dollar:before {
+        content: "￥";
+        font-size: 15px; }
+    .addVip .modal-content .v-item .coupon-icon {
+      background: url(/sui_assets/img/addVip/icon.png) 1rem center/contain no-repeat;
+      background-size: 42px;
+      height: 40px; }
+    .addVip .modal-content .v-item .right {
+      padding: 0 1.5rem 0 .6rem;
+      flex: 1;
+      -webkit-flex: 1; }
+    .addVip .modal-content .v-item .corn {
+      background: url(/sui_assets/img/addVip/new_jb.png) center no-repeat;
+      background-size: 100% 100%;
+      position: absolute;
+      font-size: .6rem;
+      right: 0rem;
+      top: 5px;
+      width: 2.2rem;
+      height: 1.6rem;
+      line-height: 1rem;
+      color: #fff;
+      text-align: center; }
+  .addVip .modal-content .close {
+    position: absolute;
+    top: 2.5rem;
+    right: .3rem;
+    z-index: 1; }
+  .addVip .modal-content .close::after {
+    content: "";
+    background: url(/sui_assets/img/addVip/system-close.svg) center no-repeat;
+    padding: 1rem; }
+  .addVip .modal-content .todayUsable:after {
+    content: "";
+    background: url(/sui_assets/img/addVip/new_jljy.png) center top no-repeat;
+    position: absolute;
+    padding: 1rem 1.8rem;
+    background-size: contain;
+    left: 1.4rem;
+    top: 0; }
+
+.addVip2 input::-webkit-input-placeholder {
+  color: #A9A9A9;
+  font-size: 13px; }
+.addVip2 .overflow {
+  overflow: auto;
+  overflow-x: hidden;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  box-sizing: content-box;
+  max-height: 11rem; }
+.addVip2 .modal-content {
+  background-color: #D74E4E;
+  position: relative;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 1px 0; }
+  .addVip2 .modal-content .top {
+    background: #D15353; }
+    .addVip2 .modal-content .top .card-box {
+      width: 9.2rem;
+      height: 5.5rem;
+      box-shadow: 0 1px 4px 4px rgba(0, 0, 0, 0.1);
+      background-size: cover;
+      margin: 1.5rem auto 1rem;
+      border-radius: 6px; }
+    .addVip2 .modal-content .top .card-text {
+      font-size: .7rem;
+      line-height: 2;
+      background: url(/sui_assets/img/addVip/oval.png) bottom center no-repeat/contain;
+      padding-bottom: 2rem; }
+  .addVip2 .modal-content .modal-phone {
+    padding: 1rem;
+    margin: auto .35rem; }
+    .addVip2 .modal-content .modal-phone input {
+      border-width: 0;
+      line-height: 2rem;
+      height: 2rem;
+      border-radius: 5px;
+      width: 100%;
+      padding: 0 .5rem;
+      font-size: .75rem;
+      color: #000000;
+      background-color: #ffffff;
+      margin: .25rem auto; }
+    .addVip2 .modal-content .modal-phone .input-text {
+      position: relative;
+      top: -2rem;
+      right: .3rem;
+      padding: .2rem .4rem;
+      color: #be4949;
+      background-color: #ffee7a;
+      border-radius: 3px;
+      float: right;
+      font-size: .7rem; }
+    .addVip2 .modal-content .modal-phone .v-button {
+      background-image: linear-gradient(to bottom, #FAD961, #F7BD1C);
+      height: 2rem;
+      font-size: .9rem;
+      line-height: 2rem;
+      text-align: center;
+      border-radius: 25px;
+      color: #be4949;
+      clear: both;
+      position: relative;
+      top: -.5rem;
+      letter-spacing: 3px; }
+
+.addVip1 .modal-inner {
+  transition: all 0.5s; }
+  .addVip1 .modal-inner .new {
+    background: url(/sui_assets/img/addVip/slogan.png) center no-repeat;
+    left: 0;
+    right: 0;
+    top: -1rem;
+    padding: 24px 0;
+    text-align: left;
+    display: block;
+    position: absolute;
+    background-size: 50%;
+    z-index: 1;
+    transition: all 0.5s; }
+.addVip1 .modal-content {
+  background-color: #D74E4E;
+  position: relative;
+  color: #ffffff;
+  border-radius: 5px;
+  padding: 1.5rem 0;
+  height: 23.5rem;
+  transition: all .5s; }
+  .addVip1 .modal-content .up {
+    background: url(/sui_assets/img/addVip/up.png) bottom center no-repeat/contain;
+    width: 15.5rem;
+    height: 15.9rem;
+    position: absolute;
+    display: none;
+    transition: all 1s;
+    top: -21%; }
+  .addVip1 .modal-content .down {
+    background: url(/sui_assets/img/addVip/down.png) bottom center no-repeat/contain;
+    width: 15.5rem;
+    height: 15rem;
+    position: absolute;
+    display: none;
+    transition: all 1s;
+    bottom: 0%;
+    z-index: 10000; }
+  .addVip1 .modal-content .information .info {
+    opacity: 0;
+    display: none;
+    overflow: hidden;
+    padding: 1rem 1rem 3.5rem 1rem;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 10px;
+    top: 37%;
+    list-style: none;
+    background-color: #c74949;
+    transition: all 1s; }
+    .addVip1 .modal-content .information .info .content {
+      max-height: 21rem;
+      overflow: auto; }
+      .addVip1 .modal-content .information .info .content .v-item {
+        background: url(/sui_assets/img/addVip/coupon.svg) center top no-repeat;
+        color: #000000;
+        width: 13rem;
+        /*width: 218px;*/
+        height: 74px;
+        font-size: .75rem;
+        display: flex;
+        -webkit-display: flex;
+        align-items: center;
+        margin: .7rem auto 0;
+        text-align: left;
+        font-weight: 600;
+        position: relative;
+        overflow: hidden; }
+        .addVip1 .modal-content .information .info .content .v-item .grey {
+          color: #b5b5b5;
+          font-size: 10px;
+          font-weight: 500; }
+        .addVip1 .modal-content .information .info .content .v-item .left {
+          color: #ff2c2c;
+          font-size: 28px;
+          width: 4.5rem;
+          text-align: center; }
+          .addVip1 .modal-content .information .info .content .v-item .left .dollar:before {
+            content: "￥";
+            font-size: 15px; }
+        .addVip1 .modal-content .information .info .content .v-item .coupon-icon {
+          background: url(/sui_assets/img/addVip/icon.png) 1rem center/contain no-repeat;
+          background-size: 42px;
+          height: 40px; }
+        .addVip1 .modal-content .information .info .content .v-item .right {
+          padding: 0 1.5rem 0 .6rem;
+          flex: 1;
+          -webkit-flex: 1; }
+        .addVip1 .modal-content .information .info .content .v-item .corn {
+          background-color: #f1465c;
+          position: absolute;
+          font-size: 14px;
+          right: -20px;
+          top: 5px;
+          width: 3.6rem;
+          height: 1rem;
+          line-height: 1rem;
+          color: #fff;
+          text-align: center;
+          transform: rotate(45deg); }
+    .addVip1 .modal-content .information .info .v-close {
+      height: 2rem;
+      font-size: .8rem;
+      line-height: 2rem;
+      text-align: center;
+      border-radius: 25px;
+      background: #ffdf30;
+      color: #640a00;
+      position: absolute;
+      bottom: 3%;
+      width: 80%;
+      left: 50%;
+      transform: translateX(-55%);
+      margin: 0rem 0.5rem; }
+  .addVip1 .modal-content .top {
+    background: #D15353;
+    transition: all 0.6s; }
+    .addVip1 .modal-content .top .card-box {
+      width: 9.2rem;
+      height: 5.5rem;
+      box-shadow: 0 1px 4px 4px rgba(0, 0, 0, 0.1);
+      background-size: cover;
+      margin: 1.5rem auto 1rem;
+      border-radius: 6px; }
+    .addVip1 .modal-content .top .card-line {
+      font-size: .7rem;
+      line-height: 2;
+      background: url(/sui_assets/img/addVip/oval.png) bottom center no-repeat/contain;
+      padding-bottom: 2rem; }
+    .addVip1 .modal-content .top .card-text {
+      font-size: .9rem;
+      line-height: 2;
+      padding: 1.9rem 0 3rem; }
+    .addVip1 .modal-content .top .card1 {
+      font-size: .9rem;
+      position: absolute;
+      top: 39%;
+      left: 0;
+      right: 0;
+      opacity: 1; }
+  .addVip1 .modal-content .v-button {
+    background-image: linear-gradient(to bottom, #FAD961, #F7BD1C);
+    height: 2rem;
+    font-size: .9rem;
+    line-height: 2rem;
+    text-align: center;
+    border-radius: 25px;
+    color: #be4949;
+    letter-spacing: 3px;
+    margin: auto 1rem; }
+
+/*# sourceMappingURL=selfPayOld.css.map */

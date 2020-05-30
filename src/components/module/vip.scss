@@ -1,0 +1,786 @@
+
+  .vipModule {
+    .card-wrapper {
+      background-color: #d9d9d9;
+      padding-bottom: 1rem;
+      position: relative;
+
+      .card {
+        perspective: 800px;
+        position: relative;
+        height: 10rem;
+
+        .card-bg {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          transform-style: preserve-3d;
+          transition: transform 1s;
+
+          .front {
+            backface-visibility: hidden;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+
+            background-size: cover;
+            box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.1), 0 2px 7px 0 rgba(0, 0, 0, 0.1);
+            border-radius: .6rem;
+            padding: .8rem;
+            color: white;
+            text-shadow: 0 1px 11px #000;
+
+            .flex {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              .avatar {
+                width: 2.3rem;
+                height: 2.3rem;
+                border-radius: 50%;
+              }
+
+              .logo {
+                width: 1.6rem;
+                height: 1.6rem;
+              }
+
+              .name {
+                flex: 1;
+                padding-left: .2rem;
+                font-size: .8rem;
+              }
+            }
+
+            .no {
+              font-size: .7rem;
+              padding-top: 5rem;
+            }
+
+          }
+
+          .back1 {
+            background: blue;
+            transform: rotateY(180deg);
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: .6rem;
+          }
+
+          .cover {
+            background: rgba(0, 0, 0, 0.6);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            border-radius: .6rem;
+            z-index: 2;
+
+            .btn {
+              display: inline-block;
+              margin: 4.1rem 0 0;
+              height: 1.6rem;
+              line-height: 1.6rem;
+              border-radius: 20px;
+              background-color: #dfc474;
+              box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+              padding: 0 1rem;
+            }
+          }
+        }
+
+        .card-bg:after {
+          content: "";
+          background: url(/sui_assets/img/newVip/corn.png) center left no-repeat;
+          background-size: contain;
+          padding: 20px;
+          position: absolute;
+          right: 0;
+          bottom: 0;
+        }
+
+        .flipped {
+          transform: rotateY(-180deg);
+        }
+      }
+    }
+
+    .card-wrapper:after {
+      content: "";
+      border: 8px solid transparent;
+      border-bottom-color: white;
+      display: block;
+      width: 0;
+      margin: auto;
+      margin-bottom: -1rem;
+    }
+
+    .benefit-wrapper {
+      display: flex;
+      justify-content: space-around;
+      height: 3.2rem;
+      font-size: .7rem;
+      text-align: center;
+      border-bottom: .5rem solid #f5f5f5;
+      padding-top: .4rem;
+
+      [class$='-item'] {
+        display: block;
+      }
+
+      [class$='-item']:before {
+        padding: 2px;
+        padding-left: 25px;
+        display: block;
+        font-size: .5rem;
+      }
+
+      .point-item:before {
+        content: "积分";
+        background: url(/sui_assets/img/newVip/benefit-sprite.svg) center left no-repeat;
+        background-position: 0 -1px;
+      }
+
+      .coupon-item:before {
+        content: "优惠券";
+        background: url(/sui_assets/img/newVip/benefit-sprite.svg) center left no-repeat;
+        background-position: 0 -33px;
+      }
+
+      .charge-item:before {
+        content: "余额";
+        background: url(/sui_assets/img/newVip/benefit-sprite.svg) center left no-repeat;
+        background-position: 0 -62px;
+      }
+
+      .reward-item:before {
+        content: "代用币";
+        background: url(/sui_assets/img/newVip/benefit-sprite.svg) center left no-repeat;
+        background-position: 0 -91px;
+      }
+    }
+
+    .box {
+      padding: .8rem;
+      border-bottom: .5rem solid #f5f5f5;
+    }
+
+    .current-grade {
+      color: #dfc474;
+      font-size: .9rem;
+      text-align: center;
+      display: flex;
+      margin-top: 1rem;
+    }
+
+    .current-grade:before,
+    .current-grade:after {
+      content: "";
+      background: url(/sui_assets/img/newVip/line.svg) center no-repeat;
+      padding: 5px 2rem;
+      background-size: contain;
+      display: inline-block;
+      margin: 5px;
+      flex: 1;
+    }
+
+    .current-grade:after {
+      content: "";
+      transform: rotate(180deg);
+    }
+
+    //zero box
+    .gift-title {
+      background: url(/sui_assets/img/newVip/title-sprite2.svg) 72% -116px no-repeat;
+      padding: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .gift-title1 {
+      background: url(/sui_assets/img/newVip/title-sprite.svg) 72% -141px no-repeat;
+      padding: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .label {
+      font-size: .7rem;
+      padding: 0 0 .4rem;
+
+      .icon2 {
+        background: url(/sui_assets/img/newVip/birth-sprite.svg) center no-repeat;
+        background-position: 0 -20px;
+        padding: 8px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 5px;
+      }
+
+      .icon3 {
+        background: url(/sui_assets/img/newVip/birth-sprite.svg) center no-repeat;
+        background-position: 0 0;
+        padding: 8px;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 5px;
+      }
+    }
+
+    .gift-wrapper1 {
+      width: 100%;
+      overflow-x: auto;
+
+      .gift-wrapper {
+        //height: 80px;
+        display: inline-flex;
+
+        .gift-item {
+          height: 3.8rem;
+          width: 7.3rem;
+          background-color: #f6efe9;
+          border: solid 0.5px #d2cbc3;
+          margin-right: .5rem;
+          overflow: hidden;
+
+          .title {
+            font-weight: bold;
+            color: #343235;
+            font-size: .7rem;
+            text-align: center;
+            line-height: 2rem;
+
+            .amount {
+              font-size: 1.8rem;
+              vertical-align: sub;
+            }
+          }
+
+          .content {
+            background-color: #b8a682;
+            color: white;
+            font-size: .5rem;
+            margin-top: -0.3rem;
+
+            ul {
+              margin: 0;
+              padding-left: 1.1rem;
+            }
+          }
+        }
+
+        .swiper-slide {
+          background: white;
+          width: 7rem;
+          height: 9.2rem;
+          padding: .5rem;
+          position: relative;
+          border-radius: 5px;
+          box-sizing: border-box;
+          border: 1px solid gold;
+          margin-right: 1rem;
+
+          .corn {
+            background: url(/sui_assets/img/upgrade/corn.png) center top no-repeat;
+            position: absolute;
+            right: -24px;
+            top: -6px;
+            width: 3.6rem;
+            height: 1.9rem;
+            line-height: 2rem;
+            text-align: center;
+            background-size: contain;
+            transform: rotate(45deg);
+          }
+
+          .coupon-bg {
+            height: 4rem;
+            background-size: cover;
+            background-position: center;
+          }
+
+          .today:before {
+            content: "";
+            background: url(/sui_assets/img/upgrade/today.svg) left top no-repeat/contain;
+            padding: .4rem 1.5rem;
+            margin-left: -7px;
+          }
+
+          .name {
+            color: #D3A47B;
+            font-size: .7rem;
+            font-weight: bold;
+            overflow: hidden;
+            text-align: center;
+            margin: .4rem 0;
+          }
+
+          .limit {
+            color: #5E5C5C;
+            font-size: .5rem;
+            position: absolute;
+            bottom: 1.5rem;
+            text-align: center;
+            left: 0;
+            right: 0;
+          }
+        }
+
+        .add:after {
+          content: "查看详情";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          line-height: 1.1rem;
+          color: #ACACAC;
+          background: #EFEFEF;
+          text-align: center;
+          border-radius: 0 0 5px 5px;
+        }
+      }
+    }
+
+    //first box
+    .coupon-title {
+      background: url(/sui_assets/img/newVip/title-sprite.svg) 70% -88px no-repeat;
+      padding: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .coupon-wrapper {
+      min-height: 4.5rem;
+      background: url(/sui_assets/img/newVip/coupon.png) 1rem center no-repeat;
+      background-size: 20%;
+      background-color: #dae2f7;
+      display: flex;
+      align-items: center;
+      padding: .5rem 0 .5rem 32%;
+      font-size: .6rem;
+
+      ul {
+        margin: 0;
+        color: #333;
+      }
+    }
+
+    .birth-wrapper {
+      margin-bottom: 1rem;
+
+      ul {
+        color: #8c8c8c;
+        margin: 0 0 .5rem .8rem;
+        font-size: .5rem;
+        line-height: 1.6;
+      }
+
+      .birth-inner {
+        background: url(/sui_assets/img/newVip/birth.png) center no-repeat/cover;
+        height: 4.3rem;
+        padding-top: .6rem;
+        text-align: right;
+        padding-right: 1rem;
+        padding-left: 1rem;
+
+        .number {
+          display: none;
+          width: 3.2rem;
+          border: solid 1px #d3c5a8;
+          border-radius: 5px;
+          margin: .2rem;
+        }
+
+        .btn {
+          border-radius: 11.5px;
+          background-color: #eee7d7;
+          border: solid 1px #d3c5a8;
+          height: 2rem;
+          line-height: 2rem;
+          color: #333;
+          font-size: .6rem;
+          padding: 0 1.2rem;
+          display: inline-block;
+          margin-top: .6rem;
+          margin-right: 1.5rem;
+        }
+
+        .bold {
+          padding: 0 10px;
+          font-size: 1rem;
+          vertical-align: middle;
+          font-weight: bold;
+        }
+
+      }
+    }
+
+    //  second box
+    .account-title {
+      background: url(/sui_assets/img/newVip/title-sprite.svg) 69% -28px no-repeat;
+      padding: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .account-wrapper {
+      display: flex;
+      justify-content: space-around;
+
+      .account-item {
+        height: 8rem;
+        width: 10px;
+        box-shadow: 0 6px 10px -6px rgba(0, 0, 0, 0.3);
+        background-position: center 10px;
+        background-repeat: no-repeat;
+        background-size: 90%;
+        border-radius: .5rem;
+        margin: 0 3px 0;
+        font-size: .6rem;
+        flex: 1;
+        padding-top: 4.9rem;
+        text-align: center;
+
+        .title {
+          font-size: .9rem;
+        }
+      }
+
+      .account-item1 {
+        background-image: url(/sui_assets/img/newVip/card-activity.svg);
+        background-color: #c2e7fa;
+        color: #3aa6e7;
+      }
+
+      .account-item2 {
+        background-image: url(/sui_assets/img/newVip/card-charge.svg);
+        background-color: #fadadb;
+        color: #e95357;
+      }
+
+      .account-item3 {
+        background-image: url(/sui_assets/img/newVip/card-mall.svg);
+        background-color: #f8efa4;
+        color: #e4a017;
+      }
+    }
+
+    //third box
+    .shop-title {
+      background: url(/sui_assets/img/newVip/title-sprite.svg) 69% -59px no-repeat;
+      padding: 10px;
+      margin-bottom: 1rem;
+    }
+
+    .shop-wrapper {
+      font-size: .7rem;
+
+      .shop-item {
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+        height: 3.2rem;
+        margin: .5rem 0;
+        padding: 0 .8rem;
+        font-size: .7rem;
+        color: #333;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        [class^='type'] {
+          background-image: url(/sui_assets/img/newVip/shop-sprite.svg);
+          background-repeat: no-repeat;
+          padding: 8px 17px;
+          margin-right: .3rem;
+          line-height: 3;
+        }
+
+        .type6002 {
+          background-position: 0 0;
+        }
+
+        .type6003 {
+          background-position: 0 -32px;
+        }
+
+        .type6004 {
+          background-position: 0 -68px;
+        }
+
+        .type6005 {
+          background-position: 0 -101px;
+        }
+
+        .type6006 {
+          background-position: 0 -134px;
+        }
+
+        .type6007 {
+          background-position: 0 -169px;
+        }
+
+        .type6008 {
+          background-position: 0 -201px;
+        }
+
+        .type6009 {
+          background-position: 0 -236px;
+        }
+
+        .type6012 {
+          background-position: 0 -269px;
+        }
+
+        .type6014 {
+          background-position: 0 -304px;
+        }
+
+        .type6015 {
+          background-position: 0 -336px;
+        }
+
+        .type6017 {
+          background-position: 0 -371px;
+        }
+
+        .title {
+          width: 6rem;
+        }
+
+        .text {
+          width: 20px;
+          flex: 1;
+          font-size: .6rem;
+        }
+
+        .period {
+          color: grey;
+          padding-top: .2rem;
+        }
+      }
+    }
+
+    //  four box
+    .service-title {
+      background: url(/sui_assets/img/newVip/title-sprite.svg) 68% 0 no-repeat;
+      padding: 10px;
+      margin-bottom: .5rem;
+    }
+
+    .service-wrapper {
+      font-size: .7rem;
+      // overflow: hidden;
+      height: 10.1rem;
+      text-align: center;
+
+      .service-item1 {
+        background: url(/sui_assets/img/newVip/line-card.png) center left no-repeat/contain;
+        height: 10.1rem;
+        width: 48%;
+        display: inline-block;
+      }
+
+      .service-item2 {
+        background: url(/sui_assets/img/newVip/reserve-card.png) center right no-repeat/contain;
+        float: right;
+        height: 10.1rem;
+        width: 48%;
+        display: inline-block;
+        margin-left: 4%;
+      }
+    }
+
+    //upgrade
+    .uploadBottom {
+      position: fixed;
+      width: 100%;
+      left: 0px;
+      right: 0px;
+      bottom: 0px;
+      background: #fff;
+      box-shadow: 0 -3px 10px 0 rgba(0, 0, 0, 0.1);
+      padding-bottom: 0.8rem;
+
+      .title {
+        padding-left: 16px;
+        padding-right: 16px;
+        font-family: PingFangSC;
+        font-size: 16px;
+        font-weight: normal;
+        font-stretch: normal;
+        font-style: normal;
+        line-height: normal;
+        letter-spacing: normal;
+        color: #000000;
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 1px solid #a3a3a3;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+
+        .right {
+          color: #a3a3a3;
+          font-size: 0.6rem;
+          display: flex;
+          align-items: center;
+
+          .van-icon {
+            margin-left: 5px;
+          }
+        }
+      }
+
+      .content {
+        padding: 0 16px;
+        margin-bottom: 0.8rem;
+
+        li {
+          display: flex;
+          align-items: center;
+          font-family: PingFangSC;
+          font-size: 14px;
+          font-weight: normal;
+          font-stretch: normal;
+          font-style: normal;
+          line-height: normal;
+          letter-spacing: normal;
+          color: #333333;
+          margin-bottom: 5px;
+        }
+
+        li::before {
+          content: '';
+          display: block;
+          border-radius: 50%;
+          width: 6px;
+          height: 6px;
+          background-color: #e1c676;
+          margin-right: 5px;
+        }
+      }
+    }
+
+    .uploadBtnBox {
+      display: flex;
+      justify-content: space-between;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
+    .upgrade-btn {
+      width: 45%;
+      border-radius: 5px;
+      background-color: #d5a000;
+      box-shadow: 0 10px 15px 0 rgba(213, 160, 0, 0.4);
+      color: #fff;
+      font-size: .8rem;
+      height: 2rem;
+      line-height: 2rem;
+      text-align: center;
+      flex-wrap: wrap;
+    }
+
+    //modal
+    .upgradeModal {
+      background: rgba(0, 0, 0, 0.5);
+      position: fixed;
+      bottom: 0;
+      z-index: 2;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+
+      .upgrade-wrapper {
+        width: 100%;
+        border-radius: 20px 20px 0 0;
+        overflow: hidden;
+        background: white;
+        position: relative;
+
+        .title {
+          background: url(/sui_assets/img/newVip/modal.png) bottom center no-repeat/contain;
+          background-color: #e1c676;
+          color: white;
+          overflow: hidden;
+          height: 5rem;
+          line-height: 4rem;
+          font-size: .9rem;
+          text-align: center;
+        }
+
+        .content {
+          padding: .4rem .8rem;
+
+          .item {
+            font-size: .7rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: .5rem 0;
+
+            .text {
+              padding-left: .7rem;
+              position: relative;
+              width: 2rem;
+              flex: 1;
+            }
+
+            .text:before {
+              content: "";
+              padding: 3px;
+              background-color: #e1c676;
+              border-radius: 50%;
+              display: inline-block;
+              position: absolute;
+              left: 0;
+              top: .3rem;
+              //bottom: 0;
+            }
+
+            .click {
+              border-radius: .7rem;
+              box-shadow: 0 2px 4px 0 rgba(225, 198, 118, 0.49);
+              background-color: #ffffff;
+              border: solid 1px #dfc474;
+              height: 1.2rem;
+              line-height: 1.2rem;
+              padding: 0 .5rem;
+              color: #dfc474;
+              font-size: .6rem;
+              margin-left: 1rem;
+            }
+
+            .unusable {
+              border: solid 1px #e5e5e5;
+              box-shadow: none;
+              color: #e5e5e5;
+              pointer-events: none;
+            }
+          }
+
+          .item+.item {
+            border-top: 1px solid #d8d8d8;
+          }
+        }
+
+        .close {
+          border-top: 1px solid #9c9c9c;
+          padding: .9rem 0;
+
+          .close-btn {
+            width: 150px;
+            height: 32px;
+            line-height: 32px;
+            border-radius: 22px;
+            border: solid 1px #d5a000;
+            color: #d5a000;
+            font-size: 16px;
+            margin: auto;
+            text-align: center;
+          }
+        }
+      }
+    }
+  }

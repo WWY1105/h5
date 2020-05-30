@@ -1,0 +1,90 @@
+.popup-coupon {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 10400;
+  background: #fff;
+  box-sizing: border-box;
+  font-size: 14px;
+  //overflow: auto;
+  //-webkit-overflow-scrolling: touch;
+  //-webkit-transition-property: -webkit-transform;
+  //transition-property: transform;
+  //-webkit-transform: translate3d(0, 100%, 0);
+  //transform: translate3d(0, 100%, 0);
+  top: 0;
+  bottom: 0;
+  //transition-duration: 10s;
+  //display: none;
+  .liner {
+    background: linear-gradient(to right, #f3505d, #b63603);
+    padding: .5rem 1rem;
+    color: #fff;
+    .md-close {
+      float: right;
+    }
+    .md-close:before {
+      content: "";
+      background: url(/sui_assets/img/pay/close-white.svg) center no-repeat;
+      padding: 16px;
+      position: inherit;
+      top: 0;
+      border-width: 0;
+      border-radius: 50%;
+      left: 0;
+      right: 0;
+      width: 1px;
+      margin: auto;
+    }
+  }
+  .overflow {
+    max-height: 94%;
+    overflow-y: auto;
+    .coupon-show-box {
+      border: 1px solid #e3e3e3;
+      margin: 1rem 1rem .5rem;
+      text-align: center;
+      .name_add {
+        .name {
+          background: #f0f0f0;
+          line-height: 1.8;
+          font-size: 1rem;
+          margin: .7rem;
+        }
+        .code {
+          margin: 0 .6rem;
+        }
+        #my-code {
+          margin: 8px auto;
+          img {
+            margin: auto;
+          }
+        }
+      }
+    }
+    .coupons-detail {
+      font-size: .6rem;
+      padding: 1rem;
+      h4 {
+        font-size: 1.5rem;
+        text-align: center;
+      }
+      .item {
+        margin: .4rem;
+        clear: both;
+        text-align: left;
+        .left {
+          float: left;
+          width: 3rem;
+          text-align: right;
+          color: #aaa;
+        }
+        .right {
+          margin-left: 3.1rem;
+          color: #000;
+        }
+      }
+    }
+  }
+}
+

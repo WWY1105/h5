@@ -1,0 +1,91 @@
+.setting {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  overflow: auto;
+  background-color: #f5f5f5;
+  color: #888;
+  font-size: .6rem; }
+  .setting .wheel-scroll {
+    padding-left: 0; }
+  .setting .bg {
+    height: 7.2rem;
+    background: url(/sui_assets/img/setting/bg.png) center no-repeat/cover;
+    background-color: #f2e5ae;
+    text-align: center; }
+    .setting .bg .avatar {
+      background-color: #ffffff;
+      box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.2);
+      width: 3rem;
+      height: 3rem;
+      margin-top: 1rem;
+      border-radius: 50%; }
+    .setting .bg .nickname {
+      font-size: .9rem;
+      padding-top: .5rem;
+      color: #333; }
+  .setting .wrapper {
+    padding: 0 .8rem; }
+    .setting .wrapper .item {
+      border-radius: 10px;
+      background-color: #ffffff;
+      box-shadow: 0 3px 7px 0 rgba(0, 0, 0, 0.2);
+      height: 2.5rem;
+      line-height: 2.5rem;
+      margin: .5rem 0;
+      padding: 0 .8rem;
+      display: flex;
+      justify-content: space-between; }
+      .setting .wrapper .item .icon1 {
+        background: url(/sui_assets/img/setting/sprite.svg) center no-repeat;
+        background-position: 0 -23px;
+        padding: 10px;
+        margin-right: .7rem;
+        display: inline-block;
+        vertical-align: middle; }
+      .setting .wrapper .item .icon2 {
+        background: url(/sui_assets/img/setting/sprite.svg) center no-repeat;
+        background-position: 0 0;
+        padding: 10px;
+        margin-right: .7rem;
+        display: inline-block;
+        vertical-align: middle; }
+      .setting .wrapper .item .icon3 {
+        background: url(/sui_assets/img/setting/sprite.svg) center no-repeat;
+        background-position: 0 -47px;
+        padding: 10px;
+        margin-right: .7rem;
+        display: inline-block;
+        vertical-align: middle; }
+      .setting .wrapper .item .F:before {
+        content: "";
+        background: url(/sui_assets/img/setting/sprite.svg) center no-repeat;
+        background-position: 0 -105px;
+        padding: 9px;
+        display: inline-block;
+        vertical-align: middle; }
+      .setting .wrapper .item .M:before {
+        content: "";
+        background: url(/sui_assets/img/setting/sprite.svg) center no-repeat;
+        background-position: 0 -88px;
+        padding: 9px;
+        display: inline-block;
+        vertical-align: middle; }
+    .setting .wrapper .arrow {
+      padding-right: 13px;
+      position: relative; }
+    .setting .wrapper .arrow:after {
+      content: " ";
+      display: inline-block;
+      height: 9px;
+      width: 9px;
+      border-width: 1px 1px 0 0;
+      border-color: #888888;
+      border-style: solid;
+      transform: matrix(0.71, 0.71, -0.71, 0.71, 0, 0);
+      position: absolute;
+      top: 50%;
+      margin-top: -4.5px;
+      right: 0; }
+
+/*# sourceMappingURL=setting.css.map */

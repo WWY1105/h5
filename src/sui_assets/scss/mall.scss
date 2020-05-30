@@ -1,0 +1,95 @@
+.mall {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #f5f5f5;
+  overflow: auto;
+  .bar {
+    display: flex;
+    justify-content: space-around;
+    font-size: .7rem;
+    color: #58b7ef;
+    background: white;
+    border-bottom: 2px solid white;
+    height: 2.2rem;
+    line-height: 2.2rem;
+    .item {
+      padding: 0 .2rem;
+    }
+    .active {
+      color: #3aa6e7;
+      font-size: .9rem;
+      border-bottom: 2px solid #3aa6e7;
+    }
+  }
+  .flex {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    .item {
+      width: 48%;
+      margin: 3px 0 3px 0;
+      background: white;
+      border-radius: 5px;
+      overflow: hidden;
+      position: relative;
+      .img {
+        width: 100%;
+        height: 40vw;
+        background-size: cover;
+        background-position: center;
+      }
+      .text {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 .6rem 0.2rem;
+        .time {
+          right: 0.5rem;
+          color: #757575;
+          font-size: .55rem;
+          top: 1px;
+        }
+        .amount {
+          font-size: .75rem;
+          color: #e51c23;
+        }
+      }
+      .title {
+        color: #333;
+        padding: 5px .6rem .3rem;
+        font-size: .65rem;
+        border-top: 1px solid #eeeeee;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2; //需要控制的文本行数
+        overflow: hidden;
+
+      }
+      .label{
+        position: absolute;
+        top:10px;
+        border-radius: 0 10px 10px 0;
+        background-image: linear-gradient(to bottom, #db1fab, #f81955);
+        padding: 3px 5px;
+        font-size: 10px;
+        color: #fff;
+      }
+    }
+    .item:nth-child(odd) {
+      margin: 3px 5px 3px 0px;
+    }
+  }
+  .record {
+    position: fixed;
+    bottom: 4rem;
+    right: .5rem;
+    background: url(/sui_assets/img/mall/record.svg) center no-repeat/cover;
+    width: 2.5rem;
+    height: 2.5rem;
+    color: white;
+    text-align: center;
+    border-radius: 50%;
+
+  }
+}

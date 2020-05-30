@@ -1,0 +1,505 @@
+@charset "UTF-8";
+.vipModule .card-wrapper {
+  background-color: #d9d9d9;
+  padding-bottom: 1rem;
+  position: relative; }
+  .vipModule .card-wrapper .card {
+    perspective: 800px;
+    position: relative;
+    height: 10rem; }
+    .vipModule .card-wrapper .card .card-bg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      transition: transform 1s; }
+      .vipModule .card-wrapper .card .card-bg .front {
+        backface-visibility: hidden;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        transform-style: preserve-3d;
+        transition: transform 1s;
+        background-size: cover;
+        box-shadow: 0 2px 7px 0 rgba(0, 0, 0, 0.1), 0 2px 7px 0 rgba(0, 0, 0, 0.1);
+        border-radius: .6rem;
+        padding: .8rem;
+        color: white;
+        text-shadow: 0 1px 11px #000; }
+        .vipModule .card-wrapper .card .card-bg .front .flex {
+          display: flex;
+          justify-content: space-between;
+          align-items: center; }
+          .vipModule .card-wrapper .card .card-bg .front .flex .avatar {
+            width: 2.3rem;
+            height: 2.3rem;
+            border-radius: 50%; }
+          .vipModule .card-wrapper .card .card-bg .front .flex .logo {
+            width: 1.6rem;
+            height: 1.6rem; }
+          .vipModule .card-wrapper .card .card-bg .front .flex .name {
+            flex: 1;
+            padding-left: .2rem;
+            font-size: .8rem; }
+        .vipModule .card-wrapper .card .card-bg .front .no {
+          font-size: .7rem;
+          padding-top: 5rem; }
+      .vipModule .card-wrapper .card .card-bg .back1 {
+        background: blue;
+        transform: rotateY(180deg);
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: .6rem; }
+      .vipModule .card-wrapper .card .card-bg .cover {
+        background: rgba(0, 0, 0, 0.6);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        border-radius: .6rem;
+        z-index: 2; }
+        .vipModule .card-wrapper .card .card-bg .cover .btn {
+          display: inline-block;
+          margin: 4.1rem 0 0;
+          height: 1.6rem;
+          line-height: 1.6rem;
+          border-radius: 20px;
+          background-color: #dfc474;
+          box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+          padding: 0 1rem; }
+    .vipModule .card-wrapper .card .card-bg:after {
+      content: "";
+      background: url(/sui_assets/img/newVip/corn.png) center left no-repeat;
+      background-size: contain;
+      padding: 20px;
+      position: absolute;
+      right: 0;
+      bottom: 0; }
+    .vipModule .card-wrapper .card .flipped {
+      transform: rotateY(-180deg); }
+.vipModule .card-wrapper:after {
+  content: "";
+  border: 8px solid transparent;
+  border-bottom-color: white;
+  display: block;
+  width: 0;
+  margin: auto;
+  margin-bottom: -1rem; }
+.vipModule .benefit-wrapper {
+  display: flex;
+  justify-content: space-around;
+  height: 3.2rem;
+  font-size: .7rem;
+  text-align: center;
+  border-bottom: .5rem solid #f5f5f5;
+  padding-top: .4rem; }
+  .vipModule .benefit-wrapper [class$='-item'] {
+    display: block; }
+  .vipModule .benefit-wrapper [class$='-item']:before {
+    padding: 2px;
+    padding-left: 25px;
+    display: block;
+    font-size: .5rem; }
+  .vipModule .benefit-wrapper .point-item:before {
+    content: "积分";
+    background: url(/sui_assets/img/newVip/benefit-sprite.svg) center left no-repeat;
+    background-position: 0 -1px; }
+  .vipModule .benefit-wrapper .coupon-item:before {
+    content: "优惠券";
+    background: url(/sui_assets/img/newVip/benefit-sprite.svg) center left no-repeat;
+    background-position: 0 -33px; }
+  .vipModule .benefit-wrapper .charge-item:before {
+    content: "余额";
+    background: url(/sui_assets/img/newVip/benefit-sprite.svg) center left no-repeat;
+    background-position: 0 -62px; }
+  .vipModule .benefit-wrapper .reward-item:before {
+    content: "代用币";
+    background: url(/sui_assets/img/newVip/benefit-sprite.svg) center left no-repeat;
+    background-position: 0 -91px; }
+.vipModule .box {
+  padding: .8rem;
+  border-bottom: .5rem solid #f5f5f5; }
+.vipModule .current-grade {
+  color: #dfc474;
+  font-size: .9rem;
+  text-align: center;
+  display: flex;
+  margin-top: 1rem; }
+.vipModule .current-grade:before, .vipModule .current-grade:after {
+  content: "";
+  background: url(/sui_assets/img/newVip/line.svg) center no-repeat;
+  padding: 5px 2rem;
+  background-size: contain;
+  display: inline-block;
+  margin: 5px;
+  flex: 1; }
+.vipModule .current-grade:after {
+  content: "";
+  transform: rotate(180deg); }
+.vipModule .gift-title {
+  background: url(/sui_assets/img/newVip/title-sprite2.svg) 72% -116px no-repeat;
+  padding: 10px;
+  margin-bottom: 1rem; }
+.vipModule .gift-title1 {
+  background: url(/sui_assets/img/newVip/title-sprite.svg) 72% -141px no-repeat;
+  padding: 10px;
+  margin-bottom: 1rem; }
+.vipModule .label {
+  font-size: .7rem;
+  padding: 0 0 .4rem; }
+  .vipModule .label .icon2 {
+    background: url(/sui_assets/img/newVip/birth-sprite.svg) center no-repeat;
+    background-position: 0 -20px;
+    padding: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px; }
+  .vipModule .label .icon3 {
+    background: url(/sui_assets/img/newVip/birth-sprite.svg) center no-repeat;
+    background-position: 0 0;
+    padding: 8px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px; }
+.vipModule .gift-wrapper1 {
+  width: 100%;
+  overflow-x: auto; }
+  .vipModule .gift-wrapper1 .gift-wrapper {
+    display: inline-flex; }
+    .vipModule .gift-wrapper1 .gift-wrapper .gift-item {
+      height: 3.8rem;
+      width: 7.3rem;
+      background-color: #f6efe9;
+      border: solid 0.5px #d2cbc3;
+      margin-right: .5rem;
+      overflow: hidden; }
+      .vipModule .gift-wrapper1 .gift-wrapper .gift-item .title {
+        font-weight: bold;
+        color: #343235;
+        font-size: .7rem;
+        text-align: center;
+        line-height: 2rem; }
+        .vipModule .gift-wrapper1 .gift-wrapper .gift-item .title .amount {
+          font-size: 1.8rem;
+          vertical-align: sub; }
+      .vipModule .gift-wrapper1 .gift-wrapper .gift-item .content {
+        background-color: #b8a682;
+        color: white;
+        font-size: .5rem;
+        margin-top: -0.3rem; }
+        .vipModule .gift-wrapper1 .gift-wrapper .gift-item .content ul {
+          margin: 0;
+          padding-left: 1.1rem; }
+    .vipModule .gift-wrapper1 .gift-wrapper .swiper-slide {
+      background: white;
+      width: 7rem;
+      height: 9.2rem;
+      padding: .5rem;
+      position: relative;
+      border-radius: 5px;
+      box-sizing: border-box;
+      border: 1px solid gold;
+      margin-right: 1rem; }
+      .vipModule .gift-wrapper1 .gift-wrapper .swiper-slide .corn {
+        background: url(/sui_assets/img/upgrade/corn.png) center top no-repeat;
+        position: absolute;
+        right: -24px;
+        top: -6px;
+        width: 3.6rem;
+        height: 1.9rem;
+        line-height: 2rem;
+        text-align: center;
+        background-size: contain;
+        transform: rotate(45deg); }
+      .vipModule .gift-wrapper1 .gift-wrapper .swiper-slide .coupon-bg {
+        height: 4rem;
+        background-size: cover;
+        background-position: center; }
+      .vipModule .gift-wrapper1 .gift-wrapper .swiper-slide .today:before {
+        content: "";
+        background: url(/sui_assets/img/upgrade/today.svg) left top no-repeat/contain;
+        padding: .4rem 1.5rem;
+        margin-left: -7px; }
+      .vipModule .gift-wrapper1 .gift-wrapper .swiper-slide .name {
+        color: #D3A47B;
+        font-size: .7rem;
+        font-weight: bold;
+        overflow: hidden;
+        text-align: center;
+        margin: .4rem 0; }
+      .vipModule .gift-wrapper1 .gift-wrapper .swiper-slide .limit {
+        color: #5E5C5C;
+        font-size: .5rem;
+        position: absolute;
+        bottom: 1.5rem;
+        text-align: center;
+        left: 0;
+        right: 0; }
+    .vipModule .gift-wrapper1 .gift-wrapper .add:after {
+      content: "查看详情";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      line-height: 1.1rem;
+      color: #ACACAC;
+      background: #EFEFEF;
+      text-align: center;
+      border-radius: 0 0 5px 5px; }
+.vipModule .coupon-title {
+  background: url(/sui_assets/img/newVip/title-sprite.svg) 70% -88px no-repeat;
+  padding: 10px;
+  margin-bottom: 1rem; }
+.vipModule .coupon-wrapper {
+  min-height: 4.5rem;
+  background: url(/sui_assets/img/newVip/coupon.png) 1rem center no-repeat;
+  background-size: 36%;
+  background-color: #dae2f7;
+  display: flex;
+  align-items: center;
+  padding: .5rem 0 .5rem 50%;
+  font-size: .6rem; }
+  .vipModule .coupon-wrapper ul {
+    margin: 0;
+    color: #333; }
+.vipModule .birth-wrapper {
+  margin-bottom: 1rem; }
+  .vipModule .birth-wrapper ul {
+    color: #8c8c8c;
+    margin: 0 0 .5rem .8rem;
+    font-size: .5rem;
+    line-height: 1.6; }
+  .vipModule .birth-wrapper .birth-inner {
+    background: url(/sui_assets/img/newVip/birth.png) center no-repeat/cover;
+    height: 4.3rem;
+    padding-top: .6rem;
+    text-align: right;
+    padding-right: 1rem;
+    padding-left: 1rem; }
+    .vipModule .birth-wrapper .birth-inner .number {
+      display: none;
+      width: 3.2rem;
+      border: solid 1px #d3c5a8;
+      border-radius: 5px;
+      margin: .2rem; }
+    .vipModule .birth-wrapper .birth-inner .btn {
+      border-radius: 11.5px;
+      background-color: #eee7d7;
+      border: solid 1px #d3c5a8;
+      height: 2rem;
+      line-height: 2rem;
+      color: #333;
+      font-size: .6rem;
+      padding: 0 1.2rem;
+      display: inline-block;
+      margin-top: .6rem;
+      margin-right: 1.5rem; }
+    .vipModule .birth-wrapper .birth-inner .bold {
+      padding: 0 10px;
+      font-size: 1rem;
+      vertical-align: middle;
+      font-weight: bold; }
+.vipModule .account-title {
+  background: url(/sui_assets/img/newVip/title-sprite.svg) 69% -28px no-repeat;
+  padding: 10px;
+  margin-bottom: 1rem; }
+.vipModule .account-wrapper {
+  display: flex;
+  justify-content: space-around; }
+  .vipModule .account-wrapper .account-item {
+    height: 8rem;
+    width: 10px;
+    box-shadow: 0 6px 10px -6px rgba(0, 0, 0, 0.3);
+    background-position: center 10px;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    border-radius: .5rem;
+    margin: 0 3px 0;
+    font-size: .6rem;
+    flex: 1;
+    padding-top: 4.9rem;
+    text-align: center; }
+    .vipModule .account-wrapper .account-item .title {
+      font-size: .9rem; }
+  .vipModule .account-wrapper .account-item1 {
+    background-image: url(/sui_assets/img/newVip/card-activity.svg);
+    background-color: #c2e7fa;
+    color: #3aa6e7; }
+  .vipModule .account-wrapper .account-item2 {
+    background-image: url(/sui_assets/img/newVip/card-charge.svg);
+    background-color: #fadadb;
+    color: #e95357; }
+  .vipModule .account-wrapper .account-item3 {
+    background-image: url(/sui_assets/img/newVip/card-mall.svg);
+    background-color: #f8efa4;
+    color: #e4a017; }
+.vipModule .shop-title {
+  background: url(/sui_assets/img/newVip/title-sprite.svg) 69% -59px no-repeat;
+  padding: 10px;
+  margin-bottom: 1rem; }
+.vipModule .shop-wrapper {
+  font-size: .7rem; }
+  .vipModule .shop-wrapper .shop-item {
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+    height: 3.2rem;
+    margin: .5rem 0;
+    padding: 0 .8rem;
+    font-size: .7rem;
+    color: #333;
+    display: flex;
+    justify-content: space-around;
+    align-items: center; }
+    .vipModule .shop-wrapper .shop-item [class^='type'] {
+      background-image: url(/sui_assets/img/newVip/shop-sprite.svg);
+      background-repeat: no-repeat;
+      padding: 8px 17px;
+      margin-right: .3rem;
+      line-height: 3; }
+    .vipModule .shop-wrapper .shop-item .type6002 {
+      background-position: 0 0; }
+    .vipModule .shop-wrapper .shop-item .type6003 {
+      background-position: 0 -32px; }
+    .vipModule .shop-wrapper .shop-item .type6004 {
+      background-position: 0 -68px; }
+    .vipModule .shop-wrapper .shop-item .type6005 {
+      background-position: 0 -101px; }
+    .vipModule .shop-wrapper .shop-item .type6006 {
+      background-position: 0 -134px; }
+    .vipModule .shop-wrapper .shop-item .type6007 {
+      background-position: 0 -169px; }
+    .vipModule .shop-wrapper .shop-item .type6008 {
+      background-position: 0 -201px; }
+    .vipModule .shop-wrapper .shop-item .type6009 {
+      background-position: 0 -236px; }
+    .vipModule .shop-wrapper .shop-item .type6012 {
+      background-position: 0 -269px; }
+    .vipModule .shop-wrapper .shop-item .type6014 {
+      background-position: 0 -304px; }
+    .vipModule .shop-wrapper .shop-item .type6015 {
+      background-position: 0 -336px; }
+    .vipModule .shop-wrapper .shop-item .type6017 {
+      background-position: 0 -371px; }
+    .vipModule .shop-wrapper .shop-item .title {
+      width: 6rem; }
+    .vipModule .shop-wrapper .shop-item .text {
+      width: 20px;
+      flex: 1;
+      font-size: .6rem; }
+    .vipModule .shop-wrapper .shop-item .period {
+      color: grey;
+      padding-top: .2rem; }
+.vipModule .service-title {
+  background: url(/sui_assets/img/newVip/title-sprite.svg) 68% 0 no-repeat;
+  padding: 10px;
+  margin-bottom: .5rem; }
+.vipModule .service-wrapper {
+  font-size: .7rem;
+  height: 10.1rem;
+  text-align: center; }
+  .vipModule .service-wrapper .service-item1 {
+    background: url(/sui_assets/img/newVip/line-card.png) center left no-repeat/contain;
+    height: 10.1rem;
+    width: 48%;
+    display: inline-block; }
+  .vipModule .service-wrapper .service-item2 {
+    background: url(/sui_assets/img/newVip/reserve-card.png) center right no-repeat/contain;
+    float: right;
+    height: 10.1rem;
+    width: 48%;
+    display: inline-block;
+    margin-left: 4%; }
+.vipModule .upgrade-btn {
+  position: fixed;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border-radius: 5px;
+  background-color: #d5a000;
+  box-shadow: 0 10px 15px 0 rgba(213, 160, 0, 0.4);
+  color: #fff;
+  font-size: .8rem;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center; }
+.vipModule .upgradeModal {
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  bottom: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end; }
+  .vipModule .upgradeModal .upgrade-wrapper {
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    overflow: hidden;
+    background: white;
+    position: relative; }
+    .vipModule .upgradeModal .upgrade-wrapper .title {
+      background: url(/sui_assets/img/newVip/modal.png) bottom center no-repeat/contain;
+      background-color: #e1c676;
+      color: white;
+      overflow: hidden;
+      height: 5rem;
+      line-height: 4rem;
+      font-size: .9rem;
+      text-align: center; }
+    .vipModule .upgradeModal .upgrade-wrapper .content {
+      padding: .4rem .8rem; }
+      .vipModule .upgradeModal .upgrade-wrapper .content .item {
+        font-size: .7rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: .5rem 0; }
+        .vipModule .upgradeModal .upgrade-wrapper .content .item .text {
+          padding-left: .7rem;
+          position: relative;
+          width: 2rem;
+          flex: 1; }
+        .vipModule .upgradeModal .upgrade-wrapper .content .item .text:before {
+          content: "";
+          padding: 3px;
+          background-color: #e1c676;
+          border-radius: 50%;
+          display: inline-block;
+          position: absolute;
+          left: 0;
+          top: .3rem; }
+        .vipModule .upgradeModal .upgrade-wrapper .content .item .click {
+          border-radius: .7rem;
+          box-shadow: 0 2px 4px 0 rgba(225, 198, 118, 0.49);
+          background-color: #ffffff;
+          border: solid 1px #dfc474;
+          height: 1.2rem;
+          line-height: 1.2rem;
+          padding: 0 .5rem;
+          color: #dfc474;
+          font-size: .6rem;
+          margin-left: 1rem; }
+        .vipModule .upgradeModal .upgrade-wrapper .content .item .unusable {
+          border: solid 1px #e5e5e5;
+          box-shadow: none;
+          color: #e5e5e5;
+          pointer-events: none; }
+      .vipModule .upgradeModal .upgrade-wrapper .content .item + .item {
+        border-top: 1px solid #d8d8d8; }
+    .vipModule .upgradeModal .upgrade-wrapper .close {
+      border-top: 1px solid #9c9c9c;
+      padding: .9rem 0; }
+      .vipModule .upgradeModal .upgrade-wrapper .close .close-btn {
+        width: 150px;
+        height: 32px;
+        line-height: 32px;
+        border-radius: 22px;
+        border: solid 1px #d5a000;
+        color: #d5a000;
+        font-size: 16px;
+        margin: auto;
+        text-align: center; }
+
+/*# sourceMappingURL=vip.css.map */

@@ -1,0 +1,66 @@
+.popup-coupon {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  z-index: 10400;
+  background: #fff;
+  box-sizing: border-box;
+  font-size: 14px;
+  top: 0;
+  bottom: 0; }
+  .popup-coupon .liner {
+    background: linear-gradient(to right, #f3505d, #b63603);
+    padding: .5rem 1rem;
+    color: #fff; }
+    .popup-coupon .liner .md-close {
+      float: right; }
+    .popup-coupon .liner .md-close:before {
+      content: "";
+      background: url(/sui_assets/img/pay/close-white.svg) center no-repeat;
+      padding: 16px;
+      position: inherit;
+      top: 0;
+      border-width: 0;
+      border-radius: 50%;
+      left: 0;
+      right: 0;
+      width: 1px;
+      margin: auto; }
+  .popup-coupon .overflow {
+    max-height: 94%;
+    overflow-y: auto; }
+    .popup-coupon .overflow .coupon-show-box {
+      border: 1px solid #e3e3e3;
+      margin: 1rem 1rem .5rem;
+      text-align: center; }
+      .popup-coupon .overflow .coupon-show-box .name_add .name {
+        background: #f0f0f0;
+        line-height: 1.8;
+        font-size: 1rem;
+        margin: .7rem; }
+      .popup-coupon .overflow .coupon-show-box .name_add .code {
+        margin: 0 .6rem; }
+      .popup-coupon .overflow .coupon-show-box .name_add #my-code {
+        margin: 8px auto; }
+        .popup-coupon .overflow .coupon-show-box .name_add #my-code img {
+          margin: auto; }
+    .popup-coupon .overflow .coupons-detail {
+      font-size: .6rem;
+      padding: 1rem; }
+      .popup-coupon .overflow .coupons-detail h4 {
+        font-size: 1.5rem;
+        text-align: center; }
+      .popup-coupon .overflow .coupons-detail .item {
+        margin: .4rem;
+        clear: both;
+        text-align: left; }
+        .popup-coupon .overflow .coupons-detail .item .left {
+          float: left;
+          width: 3rem;
+          text-align: right;
+          color: #aaa; }
+        .popup-coupon .overflow .coupons-detail .item .right {
+          margin-left: 3.1rem;
+          color: #000; }
+
+/*# sourceMappingURL=coupon.css.map */

@@ -1,0 +1,2654 @@
+$grey-blue: rgb(107, 162, 186);
+$warm-grey: rgb(156, 156, 156);
+
+@keyframes opacity {
+  from {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+.opacity {
+  animation: opacity 1s;
+  animation-direction: alternate; //反向播放
+}
+
+@keyframes zoom {
+  from {
+    -webkit-transform: scale3d(0.3, 0.3, 0.3);
+    transform: scale3d(0.3, 0.3, 0.3);
+  }
+
+  100% {
+    transform: scale3d(1, 1, 1);
+  }
+}
+
+@keyframes closezoom {
+  from {
+    transform: scale3d(1, 1, 1);
+  }
+
+  100% {
+    -webkit-transform: scale3d(0.1, 0.1, 0.1);
+    transform: scale3d(0.1, 0.1, 0.1);    
+  }
+}
+
+.zoom {
+  animation: zoom .5s;
+  animation-direction: alternate;
+  transform-origin: 95% 25rem;
+}
+
+.closezoom {
+  animation: closezoom .5s;
+  animation-direction: alternate;
+  transform-origin: 95% 25rem;
+}
+.toastPop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 12rem;
+  height: 5rem;
+  font-size: 0.9rem;
+  line-height: 5rem;
+  text-align: center;
+  color: #fff;
+  z-index: 9999;
+  border-radius: 10px;
+  background: rgba($color: #000000, $alpha: 0.6);
+}
+
+.selfpay {
+  // background: rgb(240, 240, 240);
+  min-height: 100vh;
+
+  .tips {
+    padding: 2.2rem 1rem 1rem;
+    text-align: center;
+
+    // position: fixed;
+    // bottom: 2%;
+    // left: 0;
+    // right: 0;
+    img {
+      height: 1.2rem;
+    }
+  }
+
+  .top {
+    width: 100%;
+    height: 7.5rem
+      /* 667/16 */
+    ;
+    background-image: linear-gradient(to bottom, #f29b75, #d75b3b);
+    padding: 1rem .8rem;
+
+    .avatar {
+      border-radius: 50%;
+      border: 1px solid #fff;
+      display: inline-block;
+      vertical-align: middle;
+      height: 60px;
+      width: 60px;
+      background-image: url(/sui_assets/img/selfPay/erweihuo.svg);
+      // background-size: contain;
+      background-position: 0 0;
+    }
+
+    .right {
+      float: left;
+      vertical-align: middle;
+      padding-left: .5rem;
+      padding-top: 5px;
+
+      .level {
+        font-size: .7rem;
+        letter-spacing: 1.8px;
+        color: #ffffff;
+
+        span {
+          display: inline-block;
+          height: 21px;
+          vertical-align: middle;
+        }
+
+        .touser {
+          display: inline-block;
+          // border-bottom: 1px solid #fff;
+          border: 1px solid #fff365;
+          background-color: #000;
+          padding: 0 15px 0 8px;
+          border-radius: 20px;
+          position: relative;
+
+          img {
+            vertical-align: middle;
+            height: 16px;
+            display: inline-block;
+          }
+        }
+
+        .touser::after {
+          content: '';
+          display: block;
+          width: 0;
+          height: 0;
+          border-width: 5px 0 5px 5px;
+          border-style: solid;
+          border-color: transparent transparent transparent #fff;
+          /*透明 透明 透明 灰*/
+          position: absolute;
+          right: 5px;
+          top: 50%;
+          // top: 5px;
+          transform: translateY(-50%);
+          bottom: 0;
+        }
+
+        .touser2 {
+          display: inline-block;
+
+          img {
+            vertical-align: middle;
+            height: 16px;
+            display: inline-block;
+          }
+        }
+      }
+
+      .hascoupon {
+        width: 10rem;
+        color: #e17250;
+        height: 2.5rem;
+        line-height: 2.4rem;
+        background: url("/sui_assets/img/selfPay/border.png") center no-repeat;
+        font-weight: bold;
+        background-size: contain;
+
+        span {
+          padding-left: 1.6rem;
+          font-size: .8rem;
+          // margin-left: 1.1rem;
+        }
+      }
+    }
+
+    .right2 {
+      float: left;
+      vertical-align: middle;
+      height: 60px;
+      line-height: 60px;
+      padding: 0px;
+      padding-left: 15px;
+
+      .level {
+        font-size: .7rem;
+        letter-spacing: 1.8px;
+        color: #ffffff;
+
+        .touser {
+          display: inline;
+
+          // border-bottom: 1px solid #fff;
+          img {
+            vertical-align: middle;
+            height: 19px;
+          }
+        }
+      }
+
+      .hascoupon {
+        width: 10rem;
+        color: #e17250;
+        height: 2.5rem;
+        line-height: 2.4rem;
+        background: url("/sui_assets/img/selfPay/border.png") center no-repeat;
+        font-weight: bold;
+        background-size: contain;
+
+        span {
+          padding-left: 1.6rem;
+          font-size: .8rem;
+          // margin-left: 1.1rem;
+        }
+      }
+    }
+
+    // div {
+    //   display: inline-block;
+    //   vertical-align: middle;
+    // }
+  }
+
+  .second-pay {
+    background: white;
+
+    // padding: 1rem .8rem;
+    .amounts {
+      // height: 143px ;
+      width: 100%;
+      padding: 0 .8rem;
+
+      // background-color: pink;
+      .num1 {
+        // height: 187px;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px 0 rgba(209, 78, 45, 0.2);
+        background-color: #ffffff;
+        position: relative;
+        top: -42px;
+        padding: 15px 20px 25px;
+        text-align: center;
+        font-size: .7rem;
+        color: #333;
+
+        .part,
+        .nopart {
+          display: inline-block;
+          padding-top: .5rem;
+        }
+
+        .part {
+          font-weight: bold;
+          text-align: right;
+          color: #d14e2d;
+          font-size: 1.2rem;
+
+          span {
+            font-size: 1.8rem;
+          }
+
+          .dollar {
+            font-size: 1.2rem;
+
+          }
+        }
+
+        .nopart {
+          font-size: .7rem;
+          color: #999999;
+        }
+
+      }
+
+      .num2 {
+        // height: 187px;
+        // line-height: 187px;
+        padding: 75px 0;
+        border-radius: 10px;
+        box-shadow: 0 5px 10px 0 rgba(209, 78, 45, 0.2);
+        background-color: #ffffff;
+        position: relative;
+        top: -42px;
+        text-align: center;
+        align-items: center;
+        font-size: 1.2rem;
+        color: #333;
+
+        span {
+          vertical-align: middle;
+        }
+      }
+    }
+
+    .tips {
+      padding: 1.2rem .8rem 1rem;
+      text-align: center;
+
+      img {
+        height: 1.2rem;
+      }
+    }
+
+    .avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 2px;
+      vertical-align: middle;
+    }
+
+    .fixed {
+      width: 6.25rem;
+      height: 2.2rem;
+      line-height: 2.2rem;
+      right: 0;
+      background-color: #fff;
+      position: fixed;
+      z-index: 1;
+      bottom: 3.65rem;
+      border-radius: 50px 0 0 50px;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
+
+      .coupontxt {
+        display: inline-block;
+        position: absolute;
+        left: 1.9rem;
+        width: 4.7rem;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        height: 3rem;
+        font-size:0.7rem;
+        -webkit-transform: scale(0.8);
+
+        span {
+          display: block;
+          font-weight: normal;
+          font-style: normal;
+          font-stretch: normal;
+          letter-spacing: normal;
+          color: #db5642;
+          font-family: PingFangSC;
+          height: 0.85rem;
+          margin-top: 0.05rem;
+        }
+      }
+    }
+
+    .staff {
+      width: 2.3rem;
+      height: 2.3rem;
+      border-radius: 50%;
+      border: 0.15rem solid #fff;
+      vertical-align: middle;
+      display: inline-block;
+      background-size: contain;
+      background-repeat: no-repeat;
+      margin-top: -0.1rem;
+    }
+
+    // .staff:after {
+    //   content: "";
+    //   background: #FF392E;
+    //   border-radius: 50%;
+    //   display: block;
+    //   width: 10px;
+    //   height: 10px;
+    //   margin-left: 26px;
+
+    // }
+    .amount,
+    .nodiscount {
+      line-height: 38px;
+      position: relative;
+
+    }
+
+    .label {
+      margin-top: 22px !important;
+    }
+
+    .amount:before {
+      content: "Amount";
+      display: block;
+      color: #828282;
+      position: absolute;
+      left: 15px;
+      top: -8px;
+      font-family: PingFangSC;
+      font-size: 10px;
+    }
+
+    .nodiscount:before {
+      content: "No discount part";
+      display: block;
+      color: #828282;
+      position: absolute;
+      left: 15px;
+      top: -8px;
+      font-family: PingFangSC;
+      font-size: 10px;
+    }
+  }
+  .submitpop {
+    width: 17.4rem;
+    height: 17.6rem;
+    border-radius: 15px;
+    background-color: #ffffff;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    background: url(/sui_assets/img/selfPay/Reward_background.png) center top no-repeat;
+    background-size: contain;
+
+    .txt {
+      margin-left: 7.15rem;
+      margin-top: 2.15rem;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+
+      .flowertit {
+        font-family: PingFangSC;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #e85514;
+      }
+
+      .flowercontent {
+        font-size: 0.6rem;
+        color: #e85514;
+      }
+
+      .coupon {
+        background: url(/sui_assets/img/selfPay/coupon-new.png) center top no-repeat;
+        background-size: 100% 100%;
+        // width: 13rem;
+        width: 9rem;
+        height: 3rem;
+        margin-top: 2.05rem;
+        font-size: .9rem;
+        font-weight: 500;
+        letter-spacing: 0.2px;
+        text-align: center;
+        vertical-align: middle;
+        color: #be792c;
+        line-height: 3rem;
+
+        div {
+          transform: translateX(-.5rem);
+
+        }
+      }
+
+      .instraction {
+        color: #333333;
+        margin-top: 2.5rem;
+        font-size: 12px;
+        margin-left: -1rem;
+        transform: scale(0.8);
+      }
+    }
+
+    .knowbtn {
+      width: 12.45rem;
+      height: 2.2rem;
+      line-height: 2.2rem;
+      object-fit: contain;
+      border-radius: 22px;
+      font-family: PingFangSC;
+      font-size: 0.8rem;
+      font-weight: 500;
+      font-style: normal;
+      color: #fff;
+      margin: 1rem auto;
+      background-image: linear-gradient(80deg, #fe563f, #f29c6e);
+    }
+  }
+  .btn-green {
+    color: #fff;
+    margin-top: 1rem;
+    padding-left: 2.3px;
+    line-height: 2.2rem;
+    height: 2.2rem;
+    font-size: 0.9rem;
+    text-align: center;
+    letter-spacing: 2.3px;
+    border-radius: 20.5px;
+    box-shadow: 0 5px 10px 0 rgba(222, 95, 64, 0.5);
+    background-image: linear-gradient(to bottom, #ef605d, #c91413);
+  }
+
+  //old
+  .table {
+    //color: #828282;
+    display: inline-block;
+    width: 10rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    display: -webkit-inline-box;
+    vertical-align: middle;
+    font-size: 18px;
+    line-height: 40px;
+    color: rgb(140, 140, 140);
+    padding-bottom: 1rem;
+  }
+
+  .swiper-container-horizontal>.swiper-pagination-bullets {
+    bottom: -5px;
+
+    .swiper-pagination-bullet {
+      width: 8px;
+      height: 8px;
+      display: inline-block;
+      border-radius: 100%;
+      background: #fff;
+      /* opacity: 0.2; */
+    }
+  }
+
+  // 广告
+  .ad-show {
+    // border: 1px solid #e8e8e8;
+    // margin: 2rem 0  0;
+    padding: 0 .8rem;
+    color: #8b8b8b;
+    overflow: auto;
+    line-height: 2;
+    background: white;
+    height: 9.6rem;
+
+    .cbg {
+      height: 9.6rem;
+      background-size: cover;
+      background-size: 100% 100%;
+    }
+
+    .pull-left:before {
+      content: "推荐";
+      display: inline-block;
+      width: 30px;
+      line-height: 15px;
+      border: 1px solid;
+      color: #FF9393;
+      font-size: 10px;
+      text-align: center;
+      font-weight: normal;
+      margin-right: .5rem;
+      vertical-align: text-bottom;
+    }
+
+    .pull-left {
+      margin: .4rem;
+      color: #788486;
+      font-weight: bold;
+      float: left;
+      font-size: .7rem;
+    }
+
+    .pull-right {
+      /*color: #5d6993;*/
+      color: #ffffff;
+      background: #EC1700;
+      margin: .5rem;
+      font-size: .6rem;
+      border-radius: 10px;
+      width: 63px;
+      text-align: center;
+    }
+
+  }
+
+  // .e-black {
+  //   margin-bottom: 4rem;
+  //   position: relative;
+  // }
+
+  // .float {
+  //   position: absolute;
+  //   top: 21px;
+  //   right: 20px;
+  //   width: 77px;
+  //   height: 30px;
+  //   line-height: 30px;
+  //   text-align: center;
+  //   font-size: 15px;
+  //   color: white;
+  //   background: rgba(0, 0, 0, 0.5);
+  //   border-radius: 15px;
+  //   border: 1px solid #ffffff;
+  // }
+
+  .over-bg {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10352;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: .7rem .8rem .9rem .6rem;
+    box-sizing: border-box;
+
+    .swiper-container {
+      height: 75%;
+
+      .swiper-wrapper {
+        height: 93%;
+      }
+    }
+
+    .coupons-item {
+      width: 79%;
+      margin: auto;
+      background: white;
+      border-radius: 10px;
+      padding-bottom: 1rem;
+      height: 96%;
+      overflow: auto;
+
+      .coupon-item {
+        object-fit: contain;
+        background: url("/sui_assets/img/selfPay/bg-modal.png") 0 -1px no-repeat;
+        background-size: 100% auto;
+
+        .big-title {
+          font-size: 1rem;
+          line-height: 2.2;
+          padding: 2rem 0 .5rem;
+          color: #ffffff;
+          font-weight: bold;
+        }
+
+        .blue-border {
+          width: 112px;
+          border-radius: 3px;
+          border: solid 1px #1b8ff3;
+          margin: auto;
+          padding: 5px;
+          background: #ffffff;
+          color: #000000;
+
+          img {
+            margin: auto;
+          }
+        }
+
+        .coupons-detail {
+          font-size: .6rem;
+          padding: 1rem;
+
+          .a4001+.item,
+          .item:first-child {
+            flex-grow: 1;
+            -webkit-flex-grow: 1;
+          }
+
+          .item {
+            margin: .4rem;
+            clear: both;
+            text-align: left;
+
+            .left {
+              float: left;
+              width: 3rem;
+              text-align: right;
+              color: #aaa;
+            }
+
+            .right {
+              margin-left: 3.1rem;
+              color: #000;
+            }
+          }
+        }
+      }
+    }
+
+    .md-close {
+      position: absolute;
+      left: 0;
+      right: 0;
+    }
+
+    .md-close:before {
+      content: "";
+      background: url(/sui_assets/img/pay/close-white.svg) center no-repeat;
+      padding: 16px;
+      left: 0;
+      right: 0;
+      width: 1px;
+      margin: auto;
+      position: absolute;
+      top: 1rem;
+      border: 1px solid #fff;
+      border-radius: 50%;
+    }
+  }
+
+  img+.over-content {
+    height: 93%;
+  }
+
+  img+.over-content .overlay-detail {
+    height: 81%;
+  }
+
+  .over-content {
+    background: #ffffff;
+    border-radius: 5px;
+    height: 100%;
+    overflow: auto;
+    position: relative;
+
+  }
+
+  // .m-bg {
+  //   background-image: url('/sui_assets/img/coupon/bg1.jpg');
+  //   background-size: 100% auto;
+  //   background-position: center;
+  //   background-repeat: no-repeat;
+  //   height: 7rem;
+  //   color: #ffffff;
+  //   position: relative;
+  // }
+
+  // .m-bg .m-title {
+  //   background: rgba(0, 0, 0, 0.8);
+  //   padding: 0 .5rem;
+  //   height: 1.4rem;
+  //   line-height: 1.4rem;
+  //   text-overflow: ellipsis;
+  //   overflow: hidden;
+  //   white-space: nowrap;
+  //   text-align: center;
+  //   width: 100%;
+  //   position: absolute;
+  //   bottom: 0;
+  // }
+
+  // .m-content {
+  //   font-size: .5rem;
+  //   padding: .5rem 0 .3rem;
+  // }
+  // .icon3 {
+  //   background: url("/sui_assets/img/selfPay/icons.svg") center no-repeat;
+  //   background-position: 0 -45px;
+  //   padding: 5px 10px;
+  //   margin-left: .2rem;
+  //   margin-right: .6rem;
+  // }
+
+  // .left-img {
+  //   width: 3.6rem;
+  //   height: 3rem;
+  //   margin: .4rem .5rem .6rem 0;
+  //   padding: 0;
+  //   float: left;
+  // }
+
+  // .left-img img {
+  //   width: 100%;
+  //   height: 100%;
+  // }
+
+  // .d-detail {
+  //   padding: .4rem 0;
+  //   text-overflow: ellipsis;
+  //   overflow: hidden;
+  //   white-space: nowrap;
+  // }
+
+  // .reduce {
+  //   background: url("/sui_assets/img/plusicon.svg") center no-repeat;
+  //   background-position: 0 3px;
+  //   padding: 7px 12px;
+  //   background-size: 23px;
+  // }
+
+  // .plus {
+  //   background: url(/sui_assets/img/plusicon.svg) center no-repeat;
+  //   padding: 6px 12px;
+  //   background-position: 0 -32px;
+  //   display: inline;
+  //   background-size: 23px;
+  // }
+
+  // .current {
+  //   padding: 0 .5rem;
+  // }
+
+  // .choose {
+  //   background: #000000;
+  //   width: 4rem;
+  //   float: left;
+  //   height: 100%;
+  //   color: #ffffff;
+  //   border-radius: 5px;
+  //   line-height: 2.2rem;
+  //   text-align: center;
+  //   font-size: .8rem;
+  //   position: relative;
+  // }
+
+  // .choose .number {
+  //   position: absolute;
+  //   top: -.4rem;
+  //   right: -.5rem;
+  //   border-radius: 50%;
+  //   background: #e75040;
+  //   height: 1.2rem;
+  //   line-height: 1.2rem;
+  //   width: 1.2rem;
+  // }
+
+  // .number:empty {
+  //   display: none;
+  // }
+
+  // .check {
+  //   background: #ff4d63;
+  //   border-radius: 5px;
+  //   line-height: 2.2rem;
+  //   text-align: center;
+  //   margin-left: 4.8rem;
+  //   font-size: .8rem;
+  //   color: #ffffff;
+  //   height: 100%;
+  // }
+
+  // .dish-item {
+  //   clear: both;
+  // }
+
+  // .overlay-title {
+  //   font-size: .8rem;
+  //   padding: 1rem 0 .8rem;
+  // }
+
+  // .overlay-footer {
+  //   position: absolute;
+  //   bottom: 0;
+  //   left: 0;
+  //   right: 0;
+  //   padding: .5rem .5rem;
+  //   background: #ffffff;
+  //   box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.11);
+  // }
+
+  // .overlay-detail {
+  //   height: 86%;
+  //   overflow: auto;
+  //   -webkit-overflow-scrolling: touch
+  // }
+
+  // .border-round {
+  //   color: #5b5b5b;
+  //   font-size: .6rem;
+  //   padding-bottom: .5rem;
+  // }
+
+  // .border-round:before {
+  //   content: "";
+  //   background: #5b5b5b;
+  //   width: 4rem;
+  //   height: 1px;
+  //   display: inline-block;
+  //   vertical-align: middle;
+  //   margin: 0 .5rem;
+  // }
+
+  // .border-round:after {
+  //   content: "";
+  //   background: #5b5b5b;
+  //   width: 4rem;
+  //   height: 1px;
+  //   display: inline-block;
+  //   vertical-align: middle;
+  //   margin: 0 .5rem;
+  // }
+
+  // .dish-item.active {
+  //   background: #e8f8ff;
+  // }
+
+  // .dish-item, .meal-item {
+  //   padding: 0.5rem 2.2rem 1rem;
+  //   text-align: left;
+  //   overflow: auto;
+  //   .amount {
+  //     font-size: .5rem;
+  //     text-decoration: line-through;
+  //     padding-left: 4px;
+  //   }
+  // }
+
+  // .overlay-title .close:before {
+  //   content: "";
+  //   float: right;
+  //   background: url(/sui_assets/img/selfPay/close.svg) center no-repeat;
+  //   padding: 17px;
+  //   position: absolute;
+  //   top: .1rem;
+  //   right: .5rem;
+  // }
+
+  // .modal-overlay-visible {
+  //   z-index: 10370;
+  // }
+
+  .addon2 {
+    border-radius: 3px;
+    background: rgba(255, 255, 255, .2);
+    color: white;
+    font-size: .5rem;
+    line-height: 1.1rem;
+    width: 5rem;
+    text-align: center;
+    position: absolute;
+    right: 2.3rem;
+    top: .3rem;
+  }
+
+  // .text-orange {
+  //   color: #e75040;
+  // }
+
+  // .meal-pic {
+  //   background: url(/sui_assets/img/selfPay/edit.svg) 93% center no-repeat;
+  //   text-align: left;
+  //   height: 49px;
+  //   position: relative;
+  //   padding: 2px 5px;
+
+  // }
+
+  // .meal-pic img {
+  //   width: 66px;
+  //   height: 45px;
+  //   vertical-align: middle;
+  // }
+
+  // .check-meal-border {
+  //   background: #E0F5FF;
+  //   color: #009EFF;
+  //   border: 1px solid #7BBDDE;
+  //   line-height: 26px;
+  //   font-size: .55rem;
+  //   text-align: center;
+  //   border-radius: 9px;
+  //   width: 13.5rem;
+  //   margin: 1rem auto;
+  // }
+
+  // .label1 {
+  //   left: 0;
+  //   right: 0;
+  //   bottom: 1.5rem;
+  //   border-radius: 2px;
+  //   font-size: 12px;
+  //   margin: auto;
+  //   display: inline-block;
+  //   height: 14px;
+  //   line-height: 14px;
+  //   color: #009EFF;
+  //   vertical-align: middle;
+  // }
+  // .qrcode{
+  //   width: 100px;
+  //   background: url(/sui_assets/img/selfPay/qrcode.png) center no-repeat/contain;
+  //   padding: 0 10px 31px 0px;
+  //   position: fixed;
+  //   right: .6rem;
+  //   bottom: 4.5rem;
+  //   img{
+  //     width: 110%;
+  //   }
+  // }
+  .flowericon {
+    display: inline-block;
+    background: url(/sui_assets/img/selfPay/flowicon.svg) center no-repeat;
+    background-position: 1px -123px;
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+  }
+
+  .bottom {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 9;
+
+    .flower-bg {
+      height: 100vh;
+      animation: show-modal2 .5s;
+      animation-direction: alternate;
+      //height: calc(100vh - 55px);
+      background: rgba(0, 0, 0, .7);
+
+      //.close {
+      //  background: url(/sui_assets/img/selfPay/sprite.png) center no-repeat;
+      //  background-position: -6px -150px;
+      //  padding: 14px;
+      //  background-size: 58px;
+      //  margin-top: .5rem;
+      //  margin-right: .5rem;
+      //  position: absolute;
+      //  right: 0;
+      //}
+      .header {
+        font-size: .9rem;
+        border-bottom: 1px solid rgb(217, 217, 217);
+        height: 3rem;
+        line-height: 3rem;
+        position: relative;
+
+        .pull-right {
+          background: url(/sui_assets/img/selfPay/sprite.png) center no-repeat;
+          background-position: 0 -153px;
+          position: absolute;
+          right: 1rem;
+          top: 1rem;
+          padding: 14px;
+          background-size: 57px;
+        }
+
+        .back {
+          background-position: 8px -303px;
+          ;
+        }
+
+        .pull-left {
+          color: #6ba2ba;
+          font-size: 10px;
+          text-decoration: underline;
+          position: absolute;
+          left: .8rem;
+          top: 0;
+        }
+      }
+
+      .flower {
+        //height: 84%;
+        // background: #ffffff;
+        position: absolute;
+        // bottom: 30px;
+        left: 0;
+        right: 0;
+        border-radius: 20px;
+        width: 17.15rem;
+        height: 24.7rem;
+        // width: 16.05rem;
+        // background-color: #ffffff;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        color: rgb(51, 51, 51);
+
+        .content {
+          padding: 1rem 2.3rem;
+          text-align: left;
+          height: 400px;
+          .avatar {
+            width: 3.7rem;
+            height: 3.7rem;
+            border-radius: 50%;
+            vertical-align: middle;
+            display: inline-block;
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin: auto 5px;
+          }
+
+          .nickname {
+            font-size: .8rem;
+            vertical-align: middle;
+            width: 36%;
+            //max-width: 4.5rem;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            display: inline-block;
+            color: black;
+            font-weight: 600;
+          }
+
+          .thanks {
+            font-size: 1rem;
+            padding-top: .5rem;
+          }
+
+          .staff {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 -1.5rem;
+
+            .item {
+              width: 49.8%;
+              border-radius: 5px;
+              // border: 1px solid $warm-grey;
+              border: 1px solid #fff;
+              color: #fff;
+              height: 4rem;
+              line-height: 4rem;
+              margin-bottom: 1rem;
+            }
+
+            .item:active {
+              // background: $grey-blue;
+              background: #fff;
+              color: #f1713c;
+            }
+          }
+
+          .labels {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 1.2rem 0;
+
+            .label {
+              width: 4.7rem;
+              height: 1.5rem;
+              line-height: 1.55rem;
+              border-radius: 20.8px;
+              box-shadow: 0 0 1px 1px #9c9c9c inset;
+              color: rgb(156, 156, 156);
+              flex: 1;
+              margin: 0 .7rem;
+              max-width: 42%;
+
+              .up {
+                background: url(/sui_assets/img/selfPay/sprite.png) center no-repeat;
+                background-size: 55px;
+                background-position: -2px -69px;
+                display: inline-block;
+                padding: 10px 9px;
+                vertical-align: middle;
+                margin-right: 5px;
+              }
+
+              .down {
+                background-position: -2px -21px;
+              }
+            }
+
+            .active {
+              // color: #f1713c;
+              background: $grey-blue;
+              background: #fff;
+              box-shadow: none;
+
+              .up {
+                background-position: -2px -92px;
+              }
+
+              .down {
+                background-position: -2px -44px;
+              }
+            }
+
+            .decs {
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-between;
+  
+              .dec {
+                margin: .25rem 3%;
+                width: 43%;
+                height: 1.4rem;
+                line-height: 1.45rem;
+                border-radius: 5px;
+                color: rgb(156, 156, 156);
+                // color: #fff;
+                // opacity: 0.6;
+                box-shadow: 0 0 1px 1px #9c9c9c inset;
+              }
+  
+              .active {
+                color: #f1713c;
+                // background: $grey-blue;
+                background: #fff;
+                box-shadow: none;
+              }
+            }
+          }
+
+        }
+
+        .already {
+          text-align: center;
+          position: absolute;
+          width: 17.15rem;
+          height: 24.7rem;
+          background: #fff;
+          border-radius: 20px;
+          overflow: hidden;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+          .alreadybg {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            width: 13.75rem;
+            border-radius: 20px;
+            height: 20.55rem;
+            background: #fff;
+            .alreadyimg{
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              width: 6.1rem;
+              height: 6.1rem;
+              margin: auto;
+            }
+            .modalimg {
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 0;
+              right: 0;
+              width: 13.75rem;
+              height: 20.55rem;
+            }
+          }
+          .alreadyimg{
+            position: absolute;
+            // top: 0;
+            // bottom: 0;
+            left: 0;
+            right: 0;
+            width: 6rem;
+            height: 6rem;
+            margin: auto;
+            margin-top: 1rem;
+          }
+          .already_title {
+            width: 17.15rem;
+            height: 4rem;
+            line-height: 4rem;
+            margin: auto;
+            background: url(/sui_assets/img/selfPay/flowerbg.png) center no-repeat/100% 100%;
+            img {
+              object-fit: contain;
+              width: 16.25rem;
+              margin-top: 1.3rem;
+            }
+          }
+          .avatar {
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 100px;
+            background-size: contain;
+            margin: auto;
+            margin-top: 1rem;
+          }
+          .nickname {
+            color: #e8524a;
+            font-family: PingFangSC;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-top: 0.5rem;
+          }
+          .already_text {
+            color: #000;
+            font-size: 14px;
+            width: 8.8rem;
+            margin: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 16.5rem;
+          }
+          .already_content {
+            color: #909090;
+            margin: auto;
+            position: absolute;
+            left: 0;
+            right: 0;
+            font-size: 0.7rem;
+            bottom: 4.5rem;
+          }
+          .closebtn {
+            width: 7.05rem;
+            height: 1.8rem;
+            border-radius: 4.5px;
+            box-shadow: 0 3px 5px 0 rgba(231, 69, 60, 0.5);
+            background-image: linear-gradient(104deg, #e8524a, #ec7bb8);
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 2.25rem;
+            margin: auto;
+            img {
+              height: 1rem;
+              object-fit: contain;
+              margin-top: 0.45rem;
+            }
+          }
+          .sorry{
+            color: #e8524a;
+            position: absolute;
+            width: 11.75rem;
+            height: 2rem;
+            top: 10rem;
+            left: 0;
+            right: 0;
+            margin: auto;
+            font-size: 0.7rem;
+          }
+          .decs {
+            max-height: 6.5rem;
+            height: 6rem;
+            margin-left: 1.15rem;
+            margin-right: 1.15rem;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 13rem;
+            .dec {
+              margin: .25rem 0.45rem;
+              display: inline-block;
+              width: 4.7rem;
+              height: 1.6rem;
+              line-height: 1.6rem;
+              border-radius: 16px;
+              font-size: 0.7rem;
+              color: #fff;
+              border: solid 1px #686868;
+              background-color: #fff;
+            }
+
+            .active {
+              // color: white;
+              margin: .25rem 0.45rem;
+              color: #fff;
+              // background: $grey-blue;
+              // background-image: linear-gradient(77deg, #fe563f, #f29c6e);
+              background-image: linear-gradient(109deg, #e8524a, #ec7bb8);
+              opacity: 1;
+              box-shadow: none;
+              border: solid 1px #fff;
+            }
+          }
+        }
+
+        .content1 {
+          text-align: center;
+          position: absolute;
+          width: 17.15rem;
+          height: 24.7rem;
+          background: #fff;
+          border-radius: 20px;
+          overflow: hidden;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+          .title {
+            width: 17.15rem;
+            height: 4rem;
+            line-height: 4rem;
+            margin: auto;
+            background: url(/sui_assets/img/selfPay/flowerbg.png) center no-repeat/100% 100%;
+            img {
+              object-fit: contain;
+              height: 2rem;
+              margin-top: 1rem;
+            }
+          }
+          .leftback {
+            position: absolute;
+            left: 0.75rem;
+            top: 0.5rem;
+            width: 1.2rem;
+            height: 0.85rem;
+            object-fit: contain;
+          }
+          .avatarbg {
+            width: 2.2rem;
+            height: 2.2rem;
+            border-radius: 100px;
+            position: relative;
+            margin: auto;
+            margin-top: 1rem;
+            .avatar {
+              background-size: 100%;
+              background-repeat: no-repeat;
+              width: 2.2rem;
+              height: 2.2rem;
+              border-radius: 100px;
+              position: absolute;
+              margin: auto;
+              top: 0;
+              left: 0;
+              right: 0;
+              bottom: 0;
+            }
+          }
+          .evaluate {
+            color: #e8524a;
+            font-family: PingFangSC;
+            font-size: 0.6rem;
+            border-bottom: 1px solid #e8524a;
+            margin: auto;
+            margin-top: 0.5rem;
+          }
+          .nickname {
+            height: 1.25rem;
+            color: #e8524a;
+            font-family: PingFangSC;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin: auto;
+            margin-top: 2px;
+          }
+          .box {
+            margin: .75rem 0.4rem;
+            display: flex;
+            justify-content: space-around;
+            .give {
+              width: 7.85rem;
+              height: 12.4rem;
+              border-radius: 5px;
+              box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.7);
+              background-color: #ffffff;
+              position: relative;
+              div{
+                position: absolute;
+                width: 7.85rem;
+                height: 12.4rem;
+                .box_img {
+                  width: 6rem;
+                  height: 6rem;
+                  position: absolute;
+                  left: 0;
+                  right: 0;
+                  top: 0.85rem;
+                  margin: auto;
+                }
+              }
+              .box_title {
+                width: 7.05rem;
+                height: 1.8rem;
+                line-height: 1.8rem;
+                margin: auto;
+                position: absolute;
+                left: 0;
+                right: 0;
+                bottom: 0.75rem;
+                border-radius: 4.5px;
+                box-shadow: 0 3px 5px 0 rgba(231, 69, 60, 0.5);
+                background-image: linear-gradient(104deg, #e8524a, #ec7bb8);
+                img {
+                  height: 1rem;
+                  margin: auto;
+                  object-fit: contain; 
+                  margin-top: 0.45rem;
+                }
+              }
+              .box_text {
+                font-size: .7rem;
+                position: absolute;
+                bottom: 3.3rem;
+                color: #000000;
+                left: 0;
+                right: 0;
+                margin: auto;
+                height: 2rem;
+                width: 6.65rem;
+                overflow: hidden;
+                display: flex;
+                align-items: left;
+                justify-content: space-around;
+                flex-direction: column;
+                text-align: center;
+              }
+            }
+          }
+         
+
+          .pull-right {
+            background: url(/sui_assets/img/selfPay/sprite.png) center no-repeat;
+            background-position: -4px -129px;
+            position: absolute;
+            right: 0.75rem;
+            top: 0.75rem;
+            width: 24px;
+            height: 24px;
+            background-size: 50px;
+          }
+
+         
+
+          
+
+          .addon {
+            color: #f68861;
+            font-size: .6rem;
+            opacity: 0.9;
+            font-family: PingFangSC;
+            font-weight: normal;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: normal;
+            margin-top: 5px;
+          }
+
+          .thanks {
+            font-size: .7rem;
+            padding-top: .5rem;
+          }
+
+          // 服务员
+          .staff {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin: 0 -1.5rem;
+
+            .item {
+              width: 46%;
+              border-radius: 5px;
+              border: 1px solid $warm-grey;
+              height: 3.2rem;
+              line-height: 3.2rem;
+              margin-bottom: 1rem;
+            }
+
+            .item:active {
+              background: $grey-blue;
+              color: white;
+            }
+          }
+
+          .labels {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 1.25rem -0.4rem 1rem;
+            font-size: 0.7rem;
+
+            .label {
+              width: 7.2rem;
+              height: 1.6rem;
+              line-height: 1.5rem;
+              border-radius: 20.8px;
+              // box-shadow: 0 0 1px 1px #9c9c9c inset;
+              border: solid 0.5px #fd5b43;
+              background-color: #ffffff;
+              // color: rgb(156, 156, 156);
+              color: #fc6549;
+              opacity: 1;
+              flex: 1;
+              // margin: 0 .7rem;
+              max-width: 45%;
+
+              .up {
+                // background: url(/sui_assets/img/selfPay/sprite.png) center no-repeat;
+                background: url(/sui_assets/img/selfPay/flowicon.svg) center no-repeat;
+                display: inline-block;
+                vertical-align: middle;
+                background-position: 1px -62px;
+                width: 16px;
+                height: 16px;
+              }
+
+              .down {
+                // background-position: -2px -21px;
+                background: url(/sui_assets/img/selfPay/flowicon.svg) center no-repeat;
+                display: inline-block;
+                vertical-align: middle;
+                background-position: 1px 1px;
+                width: 16px;
+                height: 16px;
+              }
+            }
+
+            .active {
+              color: #000000;
+              opacity: 1;
+              // background: $grey-blue;
+              background-color: #ebc685;
+              box-shadow: none;
+              // background-image: linear-gradient(77deg, #fe563f, #f29c6e);
+
+              .up {
+
+                background: url(/sui_assets/img/selfPay/flowicon.svg) center no-repeat;
+                display: inline-block;
+                vertical-align: middle;
+                background-position: 1px -93px;
+                width: 16px;
+                height: 16px;
+              }
+
+              .down {
+                background: url(/sui_assets/img/selfPay/flowicon.svg) center no-repeat;
+                display: inline-block;
+                vertical-align: middle;
+                background-position: 1px -30px;
+                width: 16px;
+                height: 16px;
+              }
+            }
+          }
+
+          .decs {
+            max-height: 6.5rem;
+            height: 6rem;
+            margin-left: 1.15rem;
+            margin-right: 1.15rem;
+            .dec {
+              margin: .25rem 0.45rem;
+              display: inline-block;
+              width: 4.7rem;
+              height: 1.6rem;
+              line-height: 1.6rem;
+              border-radius: 16px;
+              font-size: 0.7rem;
+              color: #999999;
+              border: solid 1px #686868;
+              background-color: #fff;
+            }
+
+            .active {
+              // color: white;
+              margin: .25rem 0.45rem;
+              color: #fff;
+              // background: $grey-blue;
+              background-image: linear-gradient(109deg, #e8524a, #ec7bb8);
+              opacity: 1;
+              box-shadow: none;
+              border: solid 1px #fff;
+            }
+          }
+        }
+        .content2 {
+          // width: 13.75rem;
+          // height: 17.75rem;
+          // border-radius: 20px;
+          // box-shadow: 0 0 10px 0 #dfbf8d;
+          // background-image: linear-gradient(142deg, #252525, #3d3d3c);
+          // margin: auto;
+          // position: absolute;
+          // top: 0;
+          // bottom: 0;
+          // left: 0;
+          // right: 0;
+          .content2_title {
+            background-image: linear-gradient(101deg, #e7bb74, #f5dfac 47%, #e7bb74);
+            font-family: PingFangSC;
+            font-size: 0.9rem;
+            font-weight: 500;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+          }
+          .content2_text {
+            width: 11.75rem;
+            height: 2px;
+            font-family: PingFangSC;
+            font-size: 14px;
+            color: #e8524a;
+            margin: auto;
+            margin-top: 1.5rem;
+          }
+          .submitbtn {
+            width: 7.05rem;
+            height: 1.8rem;
+            border-radius: 4.5px;
+            box-shadow: 0 3px 5px 0 rgba(231, 69, 60, 0.5);
+            background-image: linear-gradient(104deg, #e8524a, #ec7bb8);
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 2.25rem;
+            margin: auto;
+            img {
+              height: 1rem;
+              object-fit: contain;
+              margin-top: 0.45rem;
+            }
+          }
+        }
+       
+        .closeflower {
+          width: 0.85rem;
+          height: 0.85rem;
+          position: absolute;
+          right: 0.5rem;
+          top: 0.5rem;
+        }
+
+        .behind {
+
+          // position: absolute;
+          // right: 0;
+          // left: 0;
+          // bottom: 0;
+          // background: white;
+          // border-radius: 0 0 15px 15px;
+          .newgift,
+          .newgift1 {
+            width: 14.7rem;
+            height: 3.75rem;
+            border-radius: 5px;
+            margin: 0 auto 1rem;
+            padding-bottom: 0.75rem;
+            text-align: center;
+
+            .thanks {
+              font-family: PingFangSC;
+              height: 2.8rem;
+              font-size: 12px;
+              letter-spacing: 0.2px;
+              text-align: center;
+              color: #fff8f8;
+              padding: 10px 0;
+            }
+
+            .coupon {
+              background: url(/sui_assets/img/selfPay/coupon-new.png) center top no-repeat;
+              background-size: 100% 100%;
+              // width: 13rem;
+              width: 10rem;
+              height: 3rem;
+              margin: 0 auto;
+              font-size: .9rem;
+              font-weight: 500;
+              letter-spacing: 0.2px;
+              text-align: center;
+              vertical-align: middle;
+              color: #be792c;
+              line-height: 3rem;
+
+              div {
+                transform: translateX(-.5rem);
+
+              }
+
+              // background-color: #f6d7b4;
+            }
+          }
+
+          .newgift1 {
+
+            // height: 5rem;
+            .thanks {
+              padding: 0.75rem 0;
+              font-size: 1rem;
+              letter-spacing: 0.4px;
+              font-family: PingFangSC;
+              font-weight: normal;
+              font-style: normal;
+              text-align: center;
+              color: #333333;
+              background: url(/sui_assets/img/selfPay/marks.png) center no-repeat;
+              background-position: 0 0px;
+              background-size: contain;
+              height: 4rem;
+            }
+          }
+
+          .gift {
+            padding: 2.1rem 1.5rem 0;
+            text-align: center;
+            background: url(/sui_assets/img/selfPay/gift.png) center no-repeat;
+            height: 5rem;
+            background-size: contain;
+            margin: -.5rem .5rem 0;
+            font-size: .7rem;
+            color: white;
+
+            .transform {
+              transform: scaleY(1.5);
+              overflow: hidden;
+              text-overflow: ellipsis;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 1;
+              display: -webkit-inline-box;
+            }
+
+            .blue-text {
+              color: #fcf334;
+              //font-size: .6rem;
+              font-weight: bold;
+              position: relative;
+            }
+          }
+
+          .submit {
+            color: #fff;
+            width: 14.5rem;
+            height: 2.2rem;
+            border-radius: 22px;
+            background-image: linear-gradient(82deg, #fe563f, #f29c6e);
+            font-weight: bold;
+            line-height: 2rem;
+            height: 2rem;
+            font-size: 0.8rem;
+            text-align: center;
+            margin: 5px auto 1.5rem;
+            .bigflow {
+              display: inline-block;
+              background: url(/sui_assets/img/selfPay/flowicon.svg) center no-repeat;
+              background-position: 1px -123px;
+              width: 16px;
+              height: 16px;
+              vertical-align: middle;
+              background-position: 1px -150px;
+              width: 21px;
+              height: 27px;
+              margin-left: 0.25rem;
+            }
+          }
+        }
+      }
+
+      .praise {
+        width: 17.15rem;
+        height: 8rem;
+        border-radius: 20px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        margin: auto;
+        background: #fff;
+        overflow: hidden;
+        .praise_title {
+          width: 17.15rem;
+          height: 4rem;
+          line-height: 4rem;
+          margin: auto;
+          background: url(/sui_assets/img/selfPay/flowerbg.png) center no-repeat/100% 100%;
+          img {
+            object-fit: contain;
+            height: 2rem;
+            margin-top: 1rem;
+          }
+        }
+        .praise_text {
+          color: #e8524a;
+          font-size: 0.9rem;
+          position: absolute;
+          bottom: 1.5rem;
+          left: 0;
+          right: 0;
+          margin: auto;
+        }
+      }
+    }
+
+    .flower-close {
+      background: $grey-blue;
+      height: 2rem;
+      line-height: 2rem;
+      border-radius: 5px 5px 0 0;
+      margin: 0 .8rem;
+      color: white;
+      font-size: .7rem;
+      text-align: left;
+      position: relative;
+
+      .avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        vertical-align: middle;
+        display: inline-block;
+        margin: auto .5rem;
+        background-size: contain;
+        background-repeat: no-repeat;
+      }
+    }
+
+    .flower-close:after {
+      content: "现在去评价";
+      color: $grey-blue;
+      font-size: .6rem;
+      border-radius: 10px;
+      width: 76px;
+      height: 1rem;
+      line-height: 1rem;
+      background: white;
+      display: inline-block;
+      text-align: center;
+      position: absolute;
+      right: .5rem;
+      top: .5rem;
+
+    }
+
+    // .i-flex {
+    //   height: 55px;
+    //   background-color: rgba(250, 250, 250, 0.9);
+    //   box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.11);
+    //   font-size: 10px;
+    //   font-weight: bold;
+    //   line-height: 2;
+    //   display: flex;
+    //   flex-direction: row;
+    //   justify-content: space-between;
+    //   -webkit-justify-content: space-between;
+    //   align-items: center;
+    //   clear: both;
+
+    //   .item {
+    //     flex-grow: 1;
+    //     -webkit-flex-grow: 1;
+    //     position: relative;
+    //     .icon1 {
+    //       background: url("/sui_assets/img/selfPay/ico-coupon.svg") center no-repeat;
+    //     }
+
+    //     .icon2 {
+    //       background: url("/sui_assets/img/selfPay/ico-sell.svg") center no-repeat;
+    //     }
+    //     .avatar {
+    //       display: block;
+    //       margin: 0 auto;
+    //       border-radius: 50%;
+    //       width: 1.6rem;
+    //       height: 1.6rem;
+    //     }
+    //     span {
+    //       display: block;
+    //       padding: 15px;
+    //     }
+    //   }
+    // }
+  }
+
+  .info {
+    background-image: linear-gradient(to bottom, #ff5400, #fc4430);
+    border: solid 1px #e44f3f;
+    color: #ffffff;
+    text-align: center;
+    height: 1.8rem;
+    line-height: 1.8rem;
+    margin-bottom: 1.7rem;
+
+  }
+
+  .info:before {
+    content: "";
+    background: url("/sui_assets/img/selfPay/attention.svg") center no-repeat;
+    padding: 15px;
+  }
+
+  .indirect {
+    position: fixed;
+    left: 10%;
+    right: 10%;
+    top: 35%;
+    height: 134px;
+    background: rgba(0, 0, 0, .8);
+    z-index: 100000;
+    border-radius: 5px;
+    color: #ffffff;
+  }
+
+  .indirect div {
+    background: url('/sui_assets/img/selfPay/illus.svg') center no-repeat;
+    padding-top: 4rem;
+  }
+
+  // .label3 {
+  //   background: red;
+  //   font-size: .5rem;
+  //   position: absolute;
+  //   top: -.3rem;
+  //   right: 1rem;
+  //   color: #fff;
+  //   height: .8rem;
+  //   line-height: .9rem;
+  //   padding: 0 8px;
+  //   border-radius: 5px;
+  //   display: inline-block;
+  // }
+
+  // .label2:empty {
+  //   display: none;
+  // }
+  // .label2 {
+  //   padding: 10px;
+  //   position: absolute;
+  //   top: -2.5rem;
+  //   right: 0;
+  //   left: 0;
+  //   margin: auto;
+  //   width: 110px;
+  //   height: 56px;
+  // }
+
+  .new {
+    background: url(/sui_assets/img/selfPay/noticer.png) center bottom no-repeat;
+    background-size: 160px;
+    width: 160px;
+    margin-left: -17px;
+  }
+
+  // .old {
+  //   background: url(/sui_assets/img/selfPay/old1.gif?v=1) center bottom no-repeat;
+  //   background-size: contain;
+  //   width: 125px;
+  // }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, .7);
+  z-index: 1;
+
+  .modal-inner {
+    width: 15.5rem;
+    position: absolute;
+    z-index: 11000;
+    left: 50%;
+    // transform: translateX(-50%);
+    margin-left: -7.55rem;
+    margin-top: 0;
+    top: 6%;
+    text-align: center;
+    border-radius: .35rem;
+    animation: show-modal .5s;
+    -webkit-animation: show-modal .5s;
+    color: #3d4145;
+
+    .close {
+      position: absolute;
+      top: -.4rem;
+      right: -1rem;
+      z-index: 1;
+    }
+
+    .close:after {
+      content: "";
+      background: url(/sui_assets/img/vipModal/close.svg) center no-repeat;
+      padding: 1rem;
+    }
+  }
+
+  @keyframes show-modal {
+    from {
+      opacity: 0;
+      transform: translate(0, -150%);
+      -webkit-transform: translate(0, -150%);
+    }
+
+    to {
+      opacity: 1;
+      transform: translate(0, 0);
+      -webkit-transform: translate(0, 0);
+    }
+  }
+}
+
+.addVip {
+  input::-webkit-input-placeholder {
+    color: #A9A9A9;
+    font-size: 13px;
+  }
+
+  .overflow {
+    overflow: auto;
+    overflow-x: hidden;
+    margin-top: 1.8rem;
+    // padding-bottom: 1rem;
+    box-sizing: content-box;
+    max-height: 11rem;
+    min-height: 8rem;
+  }
+
+  .modal-inner {
+    width: 15rem;
+  }
+
+  .modal-inner:before {
+    content: "新人好礼";
+    width: 4.5rem
+      /* 88/16 */
+    ;
+    // height: 3rem;
+    font-family: PingFangSC;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0 auto;
+    color: #ea573d;
+    // background: url(/sui_assets/img/addVip/slogan.png) center no-repeat;
+    left: 0;
+    right: 0;
+    top: 1.8rem;
+    padding: .6rem 0 .5rem;
+    text-align: left;
+    display: block;
+    position: absolute;
+    background-size: 50%;
+    z-index: 1;
+  }
+
+  .modal-content {
+    // background: url(/sui_assets/img/addVip/bg.jpg) center no-repeat;
+    background: url(/sui_assets/img/addVip/new_x.png) center no-repeat;
+    background-size: contain;
+    width: 15rem;
+    height: 18.5rem;
+    padding-top: 1rem;
+    position: relative;
+    margin-bottom: -1rem;
+    color: #ffffff;
+    border-radius: 5px 5px 0 0;
+    padding-bottom: 0.2rem;
+
+    .modal-button {
+      border-radius: 30px !important;
+      background: #ffdf30;
+      color: #640a00;
+      margin: auto 1rem;
+    }
+
+    .usable {
+      // background-image: linear-gradient(to left, rgba(244, 40, 54, 0), #b91823 53%, rgba(244, 40, 54, 0));
+      color: #ea573d;
+      font-size: 0.7rem;
+      line-height: 3;
+      height: 2.5rem;
+      position: relative;
+      top: 2.4rem;
+    }
+
+    .usable2 {
+      height: 1.5rem;
+      position: relative;
+      top: 2rem;
+    }
+
+    .modal-phone {
+      border-radius: 5px;
+      position: relative;
+      ;
+      // background-color: #ACE2FF;
+      background: url(/sui_assets/img/addVip/new_w.png) center no-repeat;
+      // background-size: 100% 100%;
+      background-size: contain;
+      width: 15.9rem;
+      height: 10.4rem;
+      padding: 1rem;
+      position: relative;
+      top: -2.2rem;
+      padding-top: 3rem;
+      // margin: auto .35rem;
+      margin: 0 -.45rem auto;
+      // box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.5);
+    }
+
+    .modal-phone input {
+      // line-height: 2rem;
+      height: 2.2rem;
+      // border: 1px solid #359BD1;
+      border: none;
+      border-radius: 5px;
+      width: 100%;
+      padding: .25rem .5rem;
+      font-size: .75rem;
+      color: #000000;
+      box-shadow: inset 0 1px 3px 0 #7CA1B5;
+      background-color: #ffffff;
+      box-sizing: border-box;
+    }
+
+    .modal-phone #validate {
+      width: 60%;
+      margin-right: 40%;
+    }
+
+    .modal-phone .input-text {
+      position: relative;
+      top: 1.7rem;
+      padding: .2rem .4rem;
+      font-size: .5rem;
+      margin: -.9rem -.2rem -.5rem;
+      // box-shadow: 0 2px 0 0 #af0812;
+      // background-color: #ff4955;
+      // border: 1px solid #b41214;
+      border-radius: 3px;
+      //width: 80px;
+      float: right;
+      width: 5.4375rem
+        /* 87/16 */
+      ;
+      height: 2.2rem;
+      line-height: 2rem;
+      border-radius: 5px;
+      font-family: PingFangSC;
+      font-size: .8rem;
+      text-align: center;
+      color: #000000;
+      background-color: #fadf4d;
+    }
+
+    .modal-phone .v-button {
+      padding: 0 .25rem;
+      height: 2.2rem;
+      font-size: 1rem;
+      // background-image: linear-gradient(to bottom, #FAD961, #F7BD1C);
+      color: #b06336;
+      line-height: 2.2rem;
+      text-align: center;
+      margin: 0 auto;
+      border-radius: 20px;
+      margin-top: 2rem;
+      letter-spacing: 3px;
+      width: 9rem
+        /* 200/16 */
+      ;
+      border-radius: 1.4rem;
+      box-shadow: 0 3px 0 0 #bc8a47;
+      background-image: linear-gradient(to right, #f7dd86, #f4dc7e 21%, #fcefb8 53%, #efd576 85%, #f8e388);
+
+    }
+
+    .v-item {
+      background: url(/sui_assets/img/addVip/coupon.svg) center top no-repeat;
+      color: #000000;
+      width: 13rem;
+      /*width: 218px;*/
+      height: 74px;
+      font-size: .75rem;
+      display: flex;
+      -webkit-display: flex;
+      align-items: center;
+      // margin: .7rem auto 0;
+      margin: 0rem auto .7rem;
+      text-align: left;
+      font-weight: 600;
+      position: relative;
+      overflow: hidden;
+
+      .grey {
+        color: #b5b5b5;
+        font-size: 10px;
+        font-weight: 500;
+      }
+
+      .left {
+        color: #ff2c2c;
+        font-size: 28px;
+        width: 4.5rem;
+        text-align: center;
+
+        .dollar:before {
+          content: "￥";
+          font-size: 15px;
+        }
+      }
+
+      .coupon-icon {
+        background: url(/sui_assets/img/addVip/icon.png) 1rem center/contain no-repeat;
+        background-size: 42px;
+        height: 40px;
+      }
+
+      .right {
+        padding: 0 1.5rem 0 .6rem;
+        flex: 1;
+        -webkit-flex: 1;
+      }
+
+      .corn {
+        // background-color: #f1465c;
+        background: url(/sui_assets/img/addVip/new_jb.png) center no-repeat;
+        background-size: 100% 100%;
+        position: absolute;
+        font-size: .6rem;
+        right: 0rem;
+        top: 5px;
+        width: 2.2rem;
+        height: 1.6rem;
+        line-height: 1rem;
+        color: #fff;
+        text-align: center;
+        // background-size: contain;
+        // transform: rotate(45deg);
+      }
+    }
+
+    .close {
+      position: absolute;
+      top: 2.5rem;
+      right: .3rem;
+      z-index: 1;
+    }
+
+    .close::after {
+      content: "";
+      background: url(/sui_assets/img/addVip/system-close.svg) center no-repeat;
+      padding: 1rem;
+    }
+
+    .todayUsable:after {
+      content: "";
+      background: url(/sui_assets/img/addVip/new_jljy.png) center top no-repeat;
+      position: absolute;
+      padding: 1rem 1.8rem;
+      background-size: contain;
+      left: 1.4rem;
+      top: 0;
+    }
+  }
+}
+
+.addVip2 {
+  input::-webkit-input-placeholder {
+    color: #A9A9A9;
+    font-size: 13px;
+  }
+
+  .overflow {
+    overflow: auto;
+    overflow-x: hidden;
+    margin-top: 1rem;
+    padding-bottom: 1rem;
+    box-sizing: content-box;
+    max-height: 11rem;
+
+  }
+
+  .modal-content {
+    background-color: #D74E4E;
+    position: relative;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 1px 0;
+
+    .top {
+      background: #D15353;
+
+      .card-box {
+        width: 9.2rem;
+        height: 5.5rem;
+        box-shadow: 0 1px 4px 4px rgba(0, 0, 0, .1);
+        background-size: cover;
+        margin: 1.5rem auto 1rem;
+        border-radius: 6px;
+      }
+
+      .card-text {
+        font-size: .7rem;
+        line-height: 2;
+        background: url(/sui_assets/img/addVip/oval.png) bottom center no-repeat/contain;
+        padding-bottom: 2rem;
+      }
+    }
+
+    .modal-phone {
+      padding: 1rem;
+      margin: auto .35rem;
+
+      input {
+        border-width: 0;
+        line-height: 2rem;
+        height: 2rem;
+        border-radius: 5px;
+        width: 100%;
+        padding: 0 .5rem;
+        font-size: .75rem;
+        color: #000000;
+        background-color: #ffffff;
+        margin: .25rem auto;
+      }
+
+      .input-text {
+        position: relative;
+        top: -2rem;
+        right: .3rem;
+        padding: .2rem .4rem;
+        color: rgb(190, 73, 73);
+        background-color: rgb(255, 238, 122);
+        border-radius: 3px;
+        float: right;
+        font-size: .7rem;
+      }
+
+      .v-button {
+        background-image: linear-gradient(to bottom, #FAD961, #F7BD1C);
+        height: 2rem;
+        font-size: .9rem;
+        line-height: 2rem;
+        text-align: center;
+        border-radius: 25px;
+        color: rgb(190, 73, 73);
+        clear: both;
+        position: relative;
+        top: -.5rem;
+        letter-spacing: 3px;
+      }
+    }
+  }
+}
+
+.addVip1 {
+  .modal-inner {
+    transition: all 0.5s;
+
+    .new {
+      background: url(/sui_assets/img/addVip/slogan.png) center no-repeat;
+      left: 0;
+      right: 0;
+      top: -1rem;
+      padding: 24px 0;
+      text-align: left;
+      display: block;
+      position: absolute;
+      background-size: 50%;
+      z-index: 1;
+      transition: all 0.5s;
+    }
+  }
+
+  .modal-content {
+    background-color: #D74E4E;
+    position: relative;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 1.5rem 0;
+    height: 23.5rem
+      /* 430/16 */
+    ;
+    transition: all .5s;
+
+    .up {
+      background: url(/sui_assets/img/addVip/up.png) bottom center no-repeat/contain;
+      width: 15.5rem;
+      height: 15.9rem;
+      position: absolute;
+      display: none;
+      transition: all 1s;
+      top: -21%;
+    }
+
+    .down {
+      background: url(/sui_assets/img/addVip/down.png) bottom center no-repeat/contain;
+      width: 15.5rem;
+      height: 15rem;
+      position: absolute;
+      display: none;
+      transition: all 1s;
+      bottom: 0%;
+      z-index: 10000;
+    }
+
+    .information {
+
+      // position: relative;
+      // width: 100%;
+      .info {
+        opacity: 0;
+        display: none;
+        overflow: hidden;
+        padding: 1rem 1rem 3.5rem 1rem;
+        // min-width: 240px;
+        width: 100%;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: 10px;
+        top: 37%;
+        list-style: none;
+        background-color: #c74949;
+        transition: all 1s;
+
+        .content {
+          max-height: 21rem;
+          overflow: auto;
+
+          // div {
+          //   font-size: .75rem;
+          //   line-height: 1.4rem;
+          //   border: 1px solid #F7BD1C;
+          //   border-radius: 20px;
+          //   margin: 0.5rem 0 ;
+          //   padding-left: 20px;
+          //   padding-right: 20px;
+          //   color: #000;
+          // }
+          .v-item {
+            background: url(/sui_assets/img/addVip/coupon.svg) center top no-repeat;
+            color: #000000;
+            width: 13rem;
+            /*width: 218px;*/
+            height: 74px;
+            font-size: .75rem;
+            display: flex;
+            -webkit-display: flex;
+            align-items: center;
+            margin: .7rem auto 0;
+            text-align: left;
+            font-weight: 600;
+            position: relative;
+            overflow: hidden;
+
+            .grey {
+              color: #b5b5b5;
+              font-size: 10px;
+              font-weight: 500;
+            }
+
+            .left {
+              color: #ff2c2c;
+              font-size: 28px;
+              width: 4.5rem;
+              text-align: center;
+
+              .dollar:before {
+                content: "￥";
+                font-size: 15px;
+              }
+            }
+
+            .coupon-icon {
+              background: url(/sui_assets/img/addVip/icon.png) 1rem center/contain no-repeat;
+              background-size: 42px;
+              height: 40px;
+            }
+
+            .right {
+              padding: 0 1.5rem 0 .6rem;
+              flex: 1;
+              -webkit-flex: 1;
+            }
+
+            .corn {
+              background-color: #f1465c;
+              position: absolute;
+              font-size: 14px;
+              right: -20px;
+              top: 5px;
+              width: 3.6rem;
+              height: 1rem;
+              line-height: 1rem;
+              color: #fff;
+              text-align: center;
+              // background-size: contain;
+              transform: rotate(45deg);
+            }
+          }
+        }
+
+        .v-close {
+          height: 2rem;
+          font-size: .8rem;
+          // font-size: .9rem;
+          line-height: 2rem;
+          text-align: center;
+          border-radius: 25px;
+          // background: rgb(190, 73, 73);
+          // color: #fff;
+          background: #ffdf30;
+          color: #640a00;
+          position: absolute;
+          bottom: 3%;
+          width: 80%;
+          left: 50%;
+          transform: translateX(-55%);
+          margin: 0rem 0.5rem;
+        }
+      }
+    }
+
+    .top {
+      background: #D15353;
+      transition: all 0.6s;
+
+      .card-box {
+        width: 9.2rem;
+        height: 5.5rem;
+        box-shadow: 0 1px 4px 4px rgba(0, 0, 0, .1);
+        background-size: cover;
+        margin: 1.5rem auto 1rem;
+        border-radius: 6px;
+      }
+
+      .card-line {
+        font-size: .7rem;
+        line-height: 2;
+        background: url(/sui_assets/img/addVip/oval.png) bottom center no-repeat/contain;
+        padding-bottom: 2rem;
+      }
+
+      .card-text {
+        font-size: .9rem;
+        line-height: 2;
+        padding: 1.9rem 0 3rem;
+      }
+
+      .card1 {
+        font-size: .9rem;
+        position: absolute;
+        top: 39%;
+        left: 0;
+        right: 0;
+        opacity: 1;
+      }
+    }
+
+    .v-button {
+      background-image: linear-gradient(to bottom, #FAD961, #F7BD1C);
+      height: 2rem;
+      font-size: .9rem;
+      line-height: 2rem;
+      text-align: center;
+      border-radius: 25px;
+      color: rgb(190, 73, 73);
+      letter-spacing: 3px;
+      margin: auto 1rem;
+    }
+
+  }
+}

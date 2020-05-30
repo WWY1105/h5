@@ -1,0 +1,28 @@
+.mallRecord .g-tips1 {
+  font-size: .5rem;
+  height: 52px;
+  line-height: 52px;
+  background: url(/sui_assets/img/grounpon/tips.svg) left center no-repeat;
+  background-color: #c8d2e5;
+  padding-left: 2.4rem;
+  text-align: center; }
+.mallRecord .buy-box {
+  border-bottom: .4rem solid #f7f5f6;
+  padding: .8rem 1rem;
+  font-size: .6rem;
+  background: #ffffff; }
+  .mallRecord .buy-box .left {
+    float: left;
+    width: 65%; }
+  .mallRecord .buy-box .right {
+    text-align: right;
+    border-bottom: 1px solid #e2e2e2;
+    padding-bottom: .5rem; }
+.mallRecord .list-empty {
+  padding: 2.5rem 0;
+  text-align: center;
+  font-size: .8rem;
+  color: #c4c3c8;
+  line-height: 3; }
+
+/*# sourceMappingURL=mallRecord.css.map */

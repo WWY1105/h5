@@ -1,0 +1,508 @@
+.gift{
+    // padding-top: 20px;
+    position: relative;
+    width: 100%;
+    // height: 100%;
+    min-height :100vh;;
+    padding-bottom: 171px;
+    background: #3B3B5F  !important;
+}
+// .gift:before{
+//   content: '';
+//   width: 100%;
+//   height: 1.2rem;
+//   background-color: #f1465c;
+//   position: absolute;
+//   top: 0;
+//   display: block;
+// }
+
+.content {
+    margin: 0 auto;
+    padding-bottom: 1.2rem;
+    background-color: #3B3B5F;
+    text-align: center;
+    // border-bottom: 2px solid #fff;
+    .validate {
+        background: url(/sui_assets/img/gift/first_bgc.png) center no-repeat ;
+        background-size: 100%;
+        width: 100%;
+        height: 10rem;
+
+      }
+    .logo {
+      margin-top: 5px;
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+      }
+      span {
+        display: block;
+        margin-top: 0.3rem;
+        font-family: PingFangSC;
+        font-size: 16px;
+        color: #ffffff;
+      }
+    }
+    .benifit {
+
+      .v-item {
+            overflow: hidden;
+            // background-color: #fff;
+            color: #000000;
+            width: 16rem;
+            font-size: .75rem;
+            align-items: center;
+            margin: .7rem auto 0;
+            text-align: left;
+            font-weight: 600;
+            position: relative;
+            padding-left: 0.2rem;
+            .grey {
+              font-family: PingFangSC;
+              font-size: 10px;
+              font-weight: 300;
+              font-style: normal;
+              font-stretch: normal;
+              line-height: normal;
+              letter-spacing: normal;
+              color: #ffffff;
+            }
+            .left {
+              font-family: DINbek;
+              font-size: 36px;
+              letter-spacing: normal;
+              color: #343235;
+              padding-top: 5px;
+              text-align: center;
+              background-color: #f6efe9;
+              .dollar:before {
+                content: "￥";
+                font-size: 15px;
+              }
+              .cate{
+                font-family: DINbek;
+                font-size: 14px;
+                font-weight: 900;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: normal;
+                letter-spacing: normal;
+                color: #343235;
+              }
+            }
+            
+            .left1{
+              font-size: 20px;
+              line-height: 3.4rem;
+              color: #343235;
+              text-align: center;
+              background-color: #f6efe9;
+            }
+
+            .coupon::after{
+              content: '';
+              width: 46px;
+              height: 46px;
+              display: block;
+              position: absolute;
+              top: 0;
+              right: 0;;
+              background: url(/sui_assets/img/gift/first_title.svg) top no-repeat ;
+              background-position: 0 -56px ;
+            }
+            // 礼品
+            .coupon1::after{
+              content: '';
+              width: 46px;
+              height: 46px;
+              display: block;
+              position: absolute;
+              top: 0;
+              right: 0;;
+              background: url(/sui_assets/img/gift/first_title.svg) top no-repeat ;
+              background-position: 0 -396px ;
+            }
+            // 折扣
+            .coupon2::after{
+              content: '';
+              width: 46px;
+              height: 46px;
+              display: block;
+              position: absolute;
+              top: 0;
+              right: 0;;
+              background: url(/sui_assets/img/gift/first_title.svg) top no-repeat ;
+              background-position: 0 -0px ;
+            }
+            // 实物
+            .coupon3::after{
+              content: '';
+              width: 46px;
+              height: 46px;
+              display: block;
+              position: absolute;
+              top: 0;
+              right: 0;;
+              background: url(/sui_assets/img/gift/first_title.svg) top no-repeat ;
+              background-position: 0 -170px ;
+            }
+            // 抵用
+            .coupon4::after{
+              content: '';
+              width: 46px;
+              height: 46px;
+              display: block;
+              position: absolute;
+              top: 0;
+              right: 0;;
+              background: url(/sui_assets/img/gift/first_title.svg) top no-repeat ;
+              background-position: 0 -113px ;
+            }
+            .point::after{
+              content: '';
+              width: 46px;
+              height: 46px;
+              display: block;
+              position: absolute;
+              top: 0;
+              right: 0;;
+              background: url(/sui_assets/img/gift/first_title.svg) top no-repeat ;
+              background-position: 0 -451px ;
+            }
+            .reward::after{
+              content: '';
+              width: 46px;
+              height: 46px;
+              display: block;
+              position: absolute;
+              top: 0;
+              right: 0;;
+              background: url(/sui_assets/img/gift/first_title.svg) top no-repeat ;
+              background-position: 0 -282px ;
+            }
+            .right {
+              background-color: #b8a682;
+              padding: .2rem 1.5rem 1.7rem .6rem;
+              height: 38px;
+              position: relative;
+              .userule{
+                background-color: #b8a682;
+                font-family: PingFangSC;
+                font-size: 12px;
+                font-weight: 500;
+                font-style: normal;
+                font-stretch: normal;
+                line-height: 22px;
+                letter-spacing: normal;
+                color: #b8a682;
+                width: 78px;
+                height: 22px;
+                border-radius: 11px;
+                background-color: #ffffff;
+                text-align: center;
+                position: absolute;
+                bottom: 6px;
+                right: 10px;
+              }
+            }
+            .corn {
+              background-color: #f1465c;
+              position: absolute;
+              font-size: 14px;
+              right: -20px;
+              top: 5px;
+              width: 3.6rem;
+              height: 1.2rem;
+              line-height: 1.3rem;
+              color: #fff;
+              text-align: center;
+              // background-size: contain;
+              transform: rotate(45deg);
+            }
+
+      }
+        .today:before {
+          content: "";
+          background: url(/sui_assets/img/upgrade/today.svg) left top no-repeat/contain;
+          background-size: 100%;
+          padding: 1.4rem 1.5rem;
+          position: absolute;
+          top: 0;
+          left: -3px;
+        }
+
+    }
+
+    .additional {
+      // padding: 0.2rem 1.4rem 0.2rem 1.4rem;
+      margin: 0 auto;
+      margin-top: 1.2rem;
+      color: #fff;
+      max-width: 16rem;
+      border-top: 1px solid #fff;
+      text-align: left;
+      font-family: PingFangSC;
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      margin-bottom: 2rem;
+      overflow: hidden;
+      h4 {
+        text-align: center;
+        font-family: PingFangSC;
+        font-size: 16px;
+        font-weight: 500;
+        font-style: normal;
+        font-stretch: normal;
+        line-height: normal;
+        letter-spacing: normal;
+      }
+    }
+  }
+
+.modal-phone {
+  padding: 1rem 1rem .5rem 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(to bottom, #fa3b4b, #fd5f46);
+  input {
+    border-width: 0;
+    line-height: 2rem;
+    height: 2rem;
+    border-radius: 5px;
+    width: 100%;
+    padding: 0 .5rem;
+    font-size: .75rem;
+    color: #000000;
+    background-color: #ffffff;
+    margin: .25rem auto;
+    -webkit-user-modify: read-write-plaintext-only;
+  }
+  span{
+    font-family: PingFangSC;
+    font-size: 16px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: #000000;
+    line-height: 2rem;
+    height: 2rem;
+    background-color: #ffffff;
+    // display: block;
+    position: absolute;
+    left: 20px;
+    top: 1.25rem;
+    padding-left: .2rem;
+
+  }
+  .num {
+    padding-left: 2.5rem;
+  }
+  .input-text {
+    position: relative;
+    top: -4.5rem;
+    right: .3rem;
+    padding: .2rem .4rem;
+    color: #fff;
+    box-shadow: 0 2px 0 0 #af0812;
+    background-color: #ff4955;
+    border: 1px solid #b41214;
+    border-radius: 3px;
+    float: right;
+    font-size: .7rem;
+  }
+  .v-button {
+    background-image: linear-gradient(to bottom, #FAD961, #F7BD1C);
+    height: 2.2rem;
+    font-size: 1rem;
+    line-height: 2.2rem;
+    text-align: center;
+    border-radius: 25px;
+    color: rgb(190, 73, 73);
+    clear: both;
+    position: relative;
+    top: -.5rem;
+    letter-spacing: 3px;
+  }
+}
+.button , .cannot{
+  padding: 1rem 1rem .5rem 1rem;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 20px;
+  .v-button {
+    background-image: linear-gradient(to bottom, #FAD961, #F7BD1C);
+    height: 2.2rem;
+    font-size: 1rem;
+    line-height: 2.2rem;
+    text-align: center;
+    border-radius: 25px;
+    color: rgb(190, 73, 73);
+    clear: both;
+    position: relative;
+    width: 100%;
+    top: -.5rem;
+    letter-spacing: 3px;
+  }
+}
+.cannot {
+  .v-button{
+    background-image: none;
+    background-color: #ddd;
+    border-radius: 5px;
+    color: #fff;
+    font-family: PingFangSC;
+  }
+}
+
+#limits {
+  // /*background: url('/sui_assets/img/earnBenefit/border.png') no-repeat;*/
+  /*background-size: 100% 100%;*/
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  font-size: .6rem;
+  line-height: 1.5;
+  .m-out {
+    position: absolute;
+    top: 6%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding-bottom: 10px;
+    border-radius: 10px;
+    .m-content {
+      // position: absolute;
+      // top: -0%;
+      background-color: #ffffff;
+      overflow: hidden;
+      border-radius: 10px 10px 0 0 ;
+      width: 15rem /* 256/16 */;
+      height: 14.5rem /* 292/16 */;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 600;
+      line-height: 1.28;
+      letter-spacing: 0.5px;
+      color: #472c00;
+      .modal-title {
+        width: 100%;
+        background: url("/sui_assets/img/gift/succeed_bg.svg") top center no-repeat;
+        background-size: 100%;
+        height: 3.8rem;
+        line-height: 2.6rem;
+        font-size: .9rem;
+        font-weight: bold;
+        position: relative;
+        
+      }
+      .m-title {
+        font-size: 1rem;
+        font-weight: bold;
+      }
+      img {
+        width: 55%;
+        height: 55%;
+        object-fit: contain;
+      }
+      .grey {
+        font-family: NotoSansHans;
+        font-size: 12px;
+        font-weight: normal;
+        line-height: normal;
+        color: #868686;
+
+      }
+      
+    }
+    .closed {
+      height: 30px;
+      width:30px;
+      background: url(/sui_assets/img/gift/X1.png) center no-repeat;
+      background-size: 100% 100%;
+      display: block;
+      position: absolute;
+      bottom:-50px ;
+      left: 50%;
+      transform:translateX(-50%);
+    }
+
+    .addon {
+      // background: url("/sui_assets/img/gift/qr_bg.svg") center no-repeat;
+      background-color: #fff;
+      // border-radius: 10px;
+      height: 6rem;
+      background-size: cover;
+      width: 13rem /* 256/16 */;
+      padding-top: 1.2rem;
+      color: #ffffff;
+      padding-right: 1rem;
+    }
+
+    .addon > div {
+      display: inline-block;
+      width: 49%;
+      text-align: left;
+      padding-left: 1rem;
+      vertical-align: top;
+      font-family: NotoSansHans;
+      font-size: .8rem /* 16/16 */;
+      line-height: 1.6;
+      font-weight: 300;
+      color: #000;
+    }
+    .addon div:nth-child(2){
+      margin-top: 0.5rem;
+
+    }
+    .addon img {
+      width: 3.5rem;
+      float: right;
+    }
+
+    .close {
+      position: relative;
+      left: 9%;
+      // margin: 0 auto;
+      width: 80%;
+      // margin-top: 1.2rem;
+      border-radius: 25px;
+      background-color: #ffd200;
+      padding: 10px 10px 10px 10px;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 500;
+      line-height: normal;
+      letter-spacing: 5px;
+      color: #472c00;
+    }
+
+    .close:before {
+      content: "";
+      background: url(/sui_assets/img/pay/close-white.svg) center no-repeat;
+      position: absolute;
+      top: 1rem;
+      border: 1px solid white;
+      border-radius: 50%;
+      left: 0;
+      right: 0;
+      width: 1px;
+      margin: auto;
+    }
+  }
+  
+}

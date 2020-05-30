@@ -1,0 +1,209 @@
+.page {
+  background-color: #f0975f;
+  padding-bottom: 5rem; }
+  .page .page_top {
+    height: 13rem;
+    width: 100%;
+    overflow: hidden;
+    background: url(/sui_assets/img/guide/topbg.png) center center no-repeat/contain; }
+    .page .page_top .Invitation {
+      font-size: 0.8rem;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 1rem;
+      margin: auto;
+      border: 1px solid #fff;
+      padding: 0 0.5rem;
+      border-radius: 50px;
+      width: 5rem;
+      text-align: center;
+      color: #fff; }
+    .page .page_top .title {
+      font-size: 2.5rem;
+      color: #fff;
+      margin-top: 3rem;
+      margin: auto;
+      margin-top: 3rem;
+      width: 17rem;
+      display: flex;
+      justify-content: space-around; }
+      .page .page_top .title span {
+        vertical-align: middle;
+        height: 2.5rem;
+        line-height: 2.5rem;
+        margin-right: -1rem; }
+      .page .page_top .title img {
+        vertical-align: middle;
+        height: 2.5rem; }
+  .page .method1 {
+    width: 17rem;
+    margin: auto;
+    margin-top: -3rem; }
+    .page .method1 .title {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #fff;
+      height: 1.8rem;
+      line-height: 1.8rem;
+      background-image: linear-gradient(to bottom, #f0ce6b, #f4c259);
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px; }
+    .page .method1 .content {
+      margin-top: -1px;
+      height: 8rem;
+      background: #fff;
+      display: flex;
+      justify-content: space-between; }
+      .page .method1 .content .qrcodebox {
+        width: 50%;
+        height: 100%;
+        position: relative; }
+        .page .method1 .content .qrcodebox .qrcodeimg {
+          width: 5rem;
+          height: 5rem;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto; }
+      .page .method1 .content .rightbox {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around; }
+        .page .method1 .content .rightbox .savetitle {
+          color: #e39548;
+          font-size: 0.8rem;
+          margin-top: 0.5rem; }
+        .page .method1 .content .rightbox .savecontent {
+          color: #999999;
+          font-size: 0.6rem;
+          width: 7.5rem; }
+        .page .method1 .content .rightbox .savebtn {
+          width: 6rem;
+          height: 2.3rem;
+          margin-bottom: 0.5rem; }
+  .page .linebox {
+    position: relative; }
+    .page .linebox .line {
+      width: 17rem;
+      height: 0.6rem;
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto; }
+  .page .method2 {
+    width: 17rem;
+    margin: auto;
+    margin-top: 0.6rem; }
+    .page .method2 .title {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #fff;
+      height: 1.8rem;
+      line-height: 1.8rem;
+      background-image: linear-gradient(to bottom, #f0ce6b, #f4c259); }
+    .page .method2 .content {
+      background: #fff;
+      overflow: hidden;
+      border-bottom-left-radius: 20px;
+      border-bottom-right-radius: 20px;
+      padding-bottom: 1rem; }
+      .page .method2 .content .topic {
+        font-size: 0.8rem;
+        font-weight: 600;
+        color: #e39548;
+        text-align: center;
+        margin: 1rem 0 0.25rem; }
+      .page .method2 .content .describe {
+        font-size: 0.6rem;
+        text-align: center;
+        color: #999; }
+      .page .method2 .content img {
+        width: 13.5rem;
+        margin: auto;
+        margin-top: 0.5rem;
+        box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2); }
+  .page .rule .title {
+    width: 6.2rem;
+    height: 2rem;
+    line-height: 2rem;
+    text-align: center;
+    margin: auto;
+    border-radius: 10px;
+    background-color: #ffffff;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #e39548;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem; }
+  .page .rule .content {
+    width: 14.85rem;
+    height: 10.1rem;
+    margin: auto;
+    box-shadow: 0 0 10px 0 #dc5500;
+    border: solid 6px #f0a894;
+    background-color: #ec6b41;
+    padding: 0.85rem; }
+    .page .rule .content .number {
+      display: inline-block;
+      width: 0.9rem;
+      height: 0.9rem;
+      background-color: #fff;
+      line-height: 0.9rem;
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: #ec6b41;
+      border-radius: 100px;
+      vertical-align: top; }
+    .page .rule .content span {
+      font-size: 0.8rem;
+      color: #fff;
+      margin-left: 5px;
+      width: 10.9rem; }
+  .page .canvasmodle {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background-color: rgba(0, 0, 1, 0.5); }
+    .page .canvasmodle .canvasimg {
+      position: absolute;
+      top: -3rem;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      width: 15rem;
+      height: 25rem;
+      background-image: url("/sui_assets/img/guide/canvas.png");
+      background-repeat: no-repeat;
+      background-size: contain; }
+      .page .canvasmodle .canvasimg img {
+        margin-left: 3.8rem;
+        margin-top: 2rem;
+        width: 7.5rem;
+        height: 7.5rem; }
+      .page .canvasmodle .canvasimg p {
+        font-size: 22px;
+        text-align: center;
+        color: #ee7d4e;
+        margin-top: 6rem; }
+    .page .canvasmodle .canvasclose {
+      position: absolute;
+      right: 0;
+      left: 0;
+      margin: auto;
+      bottom: 3rem;
+      width: 1.5rem; }
+  .page #canvas {
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    z-index: -99; }
+
+/*# sourceMappingURL=guide.css.map */

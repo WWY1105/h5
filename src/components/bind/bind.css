@@ -1,0 +1,78 @@
+.lx-bg {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  z-index: 10400;
+  background: rgba(0, 0, 0, 0.8);
+  box-sizing: border-box; }
+  .lx-bg .content {
+    padding: 1rem;
+    background: #fff;
+    width: 14.5rem;
+    text-align: center;
+    border-radius: 5px;
+    color: #000;
+    box-sizing: border-box;
+    position: relative;
+    margin: 34% auto; }
+    .lx-bg .content .title {
+      font-size: .9rem;
+      font-weight: 700; }
+    .lx-bg .content .text {
+      font-size: .5rem;
+      padding: .5rem 0 2rem;
+      position: relative; }
+    .lx-bg .content .text:after {
+      content: "";
+      position: absolute;
+      bottom: 1.5rem;
+      height: 2px;
+      background: #e1e1e1;
+      width: 2.5rem;
+      margin: auto;
+      left: 0;
+      right: 0; }
+    .lx-bg .content input {
+      line-height: 2rem;
+      height: 2.2rem;
+      border: 1px solid #ED1E37;
+      border-radius: 5px;
+      width: 100%;
+      padding: 0 .5rem;
+      font-size: .75rem;
+      box-sizing: border-box; }
+    .lx-bg .content .input-text {
+      position: relative;
+      top: -1.6rem;
+      padding: .3rem .4rem;
+      font-size: .5rem;
+      margin: -.3rem 0;
+      background: #ed1e37;
+      border: 1px solid #ed1e37;
+      color: white;
+      float: right;
+      right: .2rem; }
+    .lx-bg .content .submit {
+      color: #fff;
+      border-radius: 5px;
+      height: 2.2rem;
+      line-height: 2.2rem;
+      margin-top: 1rem;
+      border: 1px solid #FF392E;
+      background: #FF392E;
+      font-size: .8rem; }
+    .lx-bg .content .close {
+      position: absolute;
+      top: -0.5rem;
+      right: -1.5rem; }
+    .lx-bg .content .close:after {
+      content: "";
+      background: url(/sui_assets/img/vipModal/close.svg) center no-repeat;
+      border: none;
+      padding: 1.3rem;
+      left: -.7rem;
+      top: .7rem; }
+
+/*# sourceMappingURL=bind.css.map */

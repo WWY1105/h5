@@ -1,0 +1,70 @@
+.rewardlist {
+  background: #ebebeb;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: auto; }
+  .rewardlist .rewardlist_box {
+    overflow: hidden;
+    height: 8.75rem;
+    width: 17.15rem;
+    position: relative;
+    margin: 0.8rem;
+    border-radius: 15px;
+    background: #fff; }
+    .rewardlist .rewardlist_box .position {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto; }
+    .rewardlist .rewardlist_box .rewardlist_empty {
+      padding-bottom: 5px;
+      background: #fff;
+      display: flex; }
+      .rewardlist .rewardlist_box .rewardlist_empty .leftbox {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 5rem;
+        margin: 0.5rem 0;
+        padding-left: 1rem; }
+        .rewardlist .rewardlist_box .rewardlist_empty .leftbox .left-green {
+          font-size: 1.5rem;
+          font-weight: 700; }
+        .rewardlist .rewardlist_box .rewardlist_empty .leftbox .starttime {
+          font-size: 0.7rem;
+          color: #828282; }
+        .rewardlist .rewardlist_box .rewardlist_empty .leftbox .text-grey {
+          font-size: 0.7rem; }
+      .rewardlist .rewardlist_box .rewardlist_empty .rightbox {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 5rem;
+        margin: 0.5rem 0;
+        padding-left: 1rem;
+        border-left: 2px solid #f3f3f3; }
+        .rewardlist .rewardlist_box .rewardlist_empty .rightbox .starttime {
+          font-size: 0.7rem;
+          color: #828282; }
+        .rewardlist .rewardlist_box .rewardlist_empty .rightbox .text-lg {
+          font-size: 2rem;
+          font-weight: 700;
+          height: 2rem;
+          line-height: 2rem; }
+    .rewardlist .rewardlist_box .rewardlist_info {
+      width: 15.6rem;
+      height: 2rem;
+      margin: auto;
+      text-align: center;
+      font-size: 0.8rem;
+      line-height: 2rem;
+      font-weight: 700;
+      background: #faef53;
+      border-radius: 50px; }
+
+/*# sourceMappingURL=rewardlist.css.map */

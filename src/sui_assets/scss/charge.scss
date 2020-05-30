@@ -1,0 +1,217 @@
+.charge {
+  overflow-y: auto;
+  position: absolute;
+  background: #f5f5f5;
+  width: 100%;
+  height: 100%;
+  .top {
+    background: white;
+    padding: 0.5rem .8rem;
+    .header {
+      font-weight: 700;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      position: relative;
+      .amount {
+        color: #333333;
+        font-size: 1.4rem;
+        padding-top: .2rem;
+        font-weight: bold;
+      }
+      
+      .btn-record {
+        // height: 1.6rem;
+        position: relative;
+        top: .5rem;
+        vertical-align: middle;
+        line-height: 1.8rem;
+        color: #5e5e5e;
+        border: 1px solid #ccc;
+        width: 5rem;
+        text-align: center;
+        // margin-top: 2rem;
+        border-radius: 5px;
+        font-weight: normal;
+        font-size: .7rem;
+      }
+    }
+    .chargeSub:after  , .limitHeight:after{
+      content: '';
+      display: block;
+      position: absolute;
+      left: 20px;
+      top: -9px;
+      border-left: 10px solid transparent;
+      border-bottom: 10px solid white;
+      border-right: 10px solid transparent;
+    
+    }
+    .chargeSub:before , .limitHeight:before{
+      content: '';
+      display: block;
+      position: absolute;
+      left: 20px;
+      top: -10.5px;
+      border-left: 10px solid transparent;
+      border-bottom: 10px solid #d1d1d1;
+      border-right: 10px solid transparent;
+    }
+    .chargeSub {
+      width: 100%;
+      margin-top: 15px;
+      border: 1px solid #d1d1d1;
+      padding: 0 10px;
+      border-radius: 5px;
+      position: relative;
+      font-size: 0.7rem;
+      color: #acacac;
+      font-family: PingFangSC;
+      ul {
+        list-style: none;
+        margin: 5px 0 10px 0;
+        li {
+          // display: inline-block;
+          width: 100%;
+          font-family: PingFangSC;
+          padding: 0.1rem 0;
+          font-size: 0.7rem;
+          color: #acacac;
+          .chargeName {
+            display: inline-block;
+            text-align: right;
+            // min-width: 70px;
+            width: 105px;
+            white-space: nowrap;   
+            overflow: hidden;   
+            text-overflow: ellipsis; 
+            margin-right: 1.5rem;
+            vertical-align: top;
+          }
+        }
+        .usable {
+          color: #1b8ff3;
+        }
+      }
+      .showmore {
+        position: absolute;
+        font-family: PingFangSC;
+        right: 1.2rem /* 20/16 */;
+        bottom: .2rem /* 8/16 */;
+        font-size: .7rem;
+      }
+      .showmore:before {
+        content: "";
+        background: url(/sui_assets/img/strategy/sprite_1.svg) 10px center no-repeat;
+        background-position: 0px -71px;
+        padding: 8px 8px 8px 3px;
+        display: block;
+        position: absolute;
+        right: -.8rem /* 16/16 */;
+        top: 0.1rem;
+    
+      }
+    }
+
+    .limitHeight {
+      max-height: 80px /* 86/16 */;
+      overflow: hidden;
+    }
+    .limit {
+      color: #acacac;
+      font-size: .7rem;
+      padding-top: .4rem;
+    }
+  }
+  .detail {
+    padding: .5rem 1.2rem 3rem;
+    font-size: .8rem;
+    .box {
+      background: white;
+      border-radius: 5px;
+      box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.2);
+      padding: .7rem .5rem;
+      margin: .6rem 0;
+      .left {
+        width: .8rem;
+        height: .8rem;
+        float: left;
+        border: solid 1px #979797;
+        border-radius: 50%;
+        margin-top: .1rem;
+        padding: 8px;
+      }
+      .active {
+        background: url(/sui_assets/img/check/select.svg) center no-repeat;
+        border-width: 0;
+        padding: 9px;
+      }
+
+      .right {
+        margin-left: 1.5rem;
+        .grey {
+          // margin-top: 0.2rem;
+          position: relative;
+          top: 0.2rem;
+          font-size: .6rem;
+          color: grey;
+        }
+        .label {
+          border-radius: 7.5px;
+          background-color: #1b8ff3;
+          font-size: .45rem;
+          color: #ffffff;
+          height: .6rem;
+          line-height: .6rem;
+          padding: 0 5px;
+          vertical-align: middle;
+          margin-right: 2px;
+        }
+        .text-red {
+          font-size: .9rem;
+          color: #e75040;
+          vertical-align: middle;
+        }
+      }
+    }
+    .rule {
+      color: #5e5e5e;
+      .title {
+        font-size: .8rem;
+        color: #5e5e5e;
+        margin-top: 2.5rem;
+      }
+      ul {
+        color: #8c8c8c;
+        font-size: .6rem;
+        padding: 0 .8rem;
+      }
+    }
+
+  }
+
+  .submit {
+    position: fixed;
+    bottom: 0;
+    padding: .5rem 1.2rem;
+    left: 0;
+    right: 0;
+    background: #2c2c31;
+    color: #ffffff;
+    .left {
+      font-size: .9rem;
+      display: inline-block;
+      line-height: 2.2;
+    }
+    .right {
+      font-size: .8rem;
+      height: 2rem;
+      line-height: 2rem;
+      padding: 0 1rem;
+      display: inline-block;
+      float: right;
+      border-radius: 3px;
+      background-color: #e75040;
+    }
+  }
+}

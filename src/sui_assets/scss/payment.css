@@ -1,0 +1,491 @@
+.payment {
+  height: 100%;
+  background-color: #f4f3f8; }
+  .payment .order {
+    color: #333333; }
+    .payment .order .header {
+      width: 100%;
+      min-height: 7rem;
+      position: relative;
+      background-color: #fff;
+      padding: 1rem 1.7rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid #ccc; }
+      .payment .order .header .header_title {
+        font-size: 1rem;
+        font-weight: 500;
+        color: #7ed321;
+        display: inline-block;
+        vertical-align: middle; }
+      .payment .order .header .header_logo {
+        widows: 2rem;
+        height: 2rem; }
+      .payment .order .header .header_content {
+        margin-top: 0.5rem;
+        padding: 0.25rem 0;
+        border-top: 1px solid #e4e4e4;
+        font-size: 0.7rem;
+        color: #000000; }
+      .payment .order .header .reward {
+        margin-top: 0.25rem;
+        padding: 0.5rem 0;
+        border-top: 1px solid #e4e4e4; }
+      .payment .order .header .header_list {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.7rem; }
+        .payment .order .header .header_list .header_list_label {
+          font-size: 0.7rem;
+          color: #000000; }
+        .payment .order .header .header_list .header_list_text {
+          color: #000000;
+          text-align: right; }
+        .payment .order .header .header_list .button {
+          border-radius: 3px;
+          background-color: #ed6951;
+          font-size: 0.7rem;
+          text-align: center;
+          color: #ffffff;
+          display: inline-table;
+          padding: 0.35rem 0.5rem; }
+    .payment .order .box {
+      width: 13.75rem;
+      height: 18.1rem;
+      border-radius: 5px;
+      background-color: #ffffff;
+      position: relative;
+      margin: -1rem auto;
+      text-align: center;
+      overflow: hidden;
+      box-shadow: 0 1px 10px 0 rgba(0, 0, 0, 0.2);
+      background: url("/sui_assets/img/payment/salerbg.png") center no-repeat/cover; }
+      .payment .order .box .money {
+        font-size: 2rem;
+        background-image: linear-gradient(to bottom, #f19d70, #ec5f59);
+        font-family: PingFangSC;
+        font-weight: 600;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent; }
+      .payment .order .box .lingqu {
+        width: 9.5rem;
+        height: 2rem;
+        border-radius: 5px;
+        background-image: linear-gradient(to bottom, #ed7672, #e94c45);
+        line-height: 2rem;
+        font-size: 0.9rem;
+        font-weight: 500;
+        color: #ffffff;
+        margin: auto;
+        position: absolute;
+        left: 0;
+        right: 0; }
+      .payment .order .box .lingquLine {
+        width: 9.5rem;
+        height: 2rem;
+        margin: auto;
+        border-radius: 5px;
+        background: #cd2c1f;
+        margin-top: 3px; }
+      .payment .order .box .box_info {
+        height: 20px;
+        font-family: PingFangSC;
+        font-size: 14px;
+        text-align: center;
+        color: #3e48dc;
+        margin: auto;
+        margin-top: 0.5rem; }
+      .payment .order .box .box_profitEstimation {
+        margin: auto;
+        margin-top: 1rem;
+        width: 11rem;
+        height: 2rem;
+        border-radius: 25px;
+        background-color: #333;
+        line-height: 2rem;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #ffffff; }
+      .payment .order .box .salertiltle {
+        height: 3rem;
+        width: 15rem;
+        margin-top: 30px; }
+      .payment .order .box .box_yuan_border {
+        width: 7.8rem;
+        height: 2rem;
+        line-height: 2rem;
+        margin: .5rem auto;
+        background: #a02033;
+        position: relative; }
+      .payment .order .box .box_yuan {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        font-size: 1rem;
+        font-weight: 500;
+        color: #fff;
+        margin: auto;
+        background: #A02033;
+        width: 7.6rem;
+        height: 1.8rem;
+        border: 1px solid #fff;
+        line-height: 1.8rem; }
+      .payment .order .box .time {
+        font-size: 0.8rem; }
+      .payment .order .box .redbox {
+        margin: auto;
+        width: 11.75rem;
+        height: 8rem;
+        margin-top: 1rem;
+        position: relative; }
+        .payment .order .box .redbox .qrcodeimg {
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+          width: 9rem;
+          height: 9rem; }
+        .payment .order .box .redbox p {
+          font-size: 0.6rem;
+          font-weight: 300;
+          position: absolute;
+          bottom: -2.5rem;
+          width: 100%;
+          color: #333; }
+    .payment .order .logo {
+      width: 0.9rem;
+      height: 0.9rem;
+      display: inline-block;
+      vertical-align: middle; }
+    .payment .order .text-lg {
+      font-size: .9rem;
+      vertical-align: middle;
+      margin-left: .5rem; }
+    .payment .order .text-md {
+      font-size: .8rem;
+      padding: 1rem 0; }
+    .payment .order .text-xl {
+      font-weight: 700;
+      font-size: .9rem; }
+    .payment .order .text-bold {
+      font-weight: bold; }
+    .payment .order .border {
+      border-top: 1px solid #d8d8d8;
+      padding: .5rem 0;
+      font-size: .7rem; }
+    .payment .order .award {
+      overflow: hidden; }
+      .payment .order .award .left {
+        vertical-align: top;
+        float: left;
+        width: 4rem;
+        padding-top: .1rem;
+        text-align: left; }
+      .payment .order .award .left + .left {
+        width: auto; }
+      .payment .order .award .right {
+        margin-left: calc(100% - 3.6rem);
+        text-align: right; }
+        .payment .order .award .right .button {
+          border: 1px solid;
+          border-radius: 3px;
+          font-size: .7rem;
+          line-height: 1.2rem;
+          height: 1.2rem;
+          text-align: center;
+          color: #ff5238;
+          margin: 0 auto;
+          width: 3.6rem; }
+  .payment .benefit.i-flex {
+    justify-content: space-around;
+    -webkit-justify-content: space-around; }
+  .payment .benefit {
+    background: whitesmoke;
+    text-align: center; }
+    .payment .benefit .title {
+      color: #8c8c8c;
+      font-size: .6rem;
+      padding: .5rem;
+      position: relative; }
+    .payment .benefit .title:before, .payment .benefit .title:after {
+      content: "";
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 .8rem;
+      width: 2rem;
+      height: 1px;
+      background: #dedede; }
+    .payment .benefit .activity:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      z-index: -1; }
+    .payment .benefit .activity {
+      height: 6rem;
+      color: white;
+      margin-bottom: .5rem;
+      position: relative;
+      z-index: 0;
+      background-size: cover;
+      background-position: center; }
+      .payment .benefit .activity .text-red {
+        padding: 1.1rem 0 .5rem;
+        color: white;
+        font-size: 18px; }
+      .payment .benefit .activity .addon {
+        text-align: center;
+        position: absolute;
+        bottom: .5rem;
+        left: 0;
+        right: 0;
+        font-size: .5rem; }
+      .payment .benefit .activity .button {
+        background: #ff5238;
+        width: 6.6rem;
+        line-height: 1.2rem;
+        height: 1.2rem;
+        text-align: center;
+        margin: auto;
+        position: absolute;
+        bottom: 1.5rem;
+        left: 0;
+        right: 0; }
+  .payment .modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1; }
+    .payment .modal .modal-inner {
+      width: 15.5rem;
+      position: fixed;
+      z-index: 11000;
+      left: 50%;
+      margin-left: -7.75rem;
+      margin-top: 0;
+      top: 9%;
+      text-align: center;
+      border-radius: .35rem;
+      animation: show-modal .5s;
+      -webkit-animation: show-modal .5s;
+      color: #3d4145; }
+      .payment .modal .modal-inner .close {
+        position: absolute;
+        top: -.4rem;
+        right: -1rem;
+        z-index: 1; }
+      .payment .modal .modal-inner .close:after {
+        content: "";
+        background: url(/sui_assets/img/vipModal/close.svg) center no-repeat;
+        padding: 1rem; }
+      .payment .modal .modal-inner .modal-content {
+        background-color: #D74E4E;
+        position: relative;
+        color: #ffffff;
+        border-radius: 5px;
+        padding: 1px 0; }
+        .payment .modal .modal-inner .modal-content input::-webkit-input-placeholder {
+          color: #A9A9A9;
+          font-size: 13px; }
+        .payment .modal .modal-inner .modal-content .top {
+          background: url(/sui_assets/img/addVip/oval.png) bottom center no-repeat/contain;
+          background-color: #D15353;
+          padding: .75rem 0 2rem; }
+          .payment .modal .modal-inner .modal-content .top .card-text {
+            background: url(/sui_assets/img/payment/notice.png) top center no-repeat;
+            background-size: 3rem;
+            padding-top: 3.5rem;
+            line-height: 2;
+            font-size: .9rem; }
+          .payment .modal .modal-inner .modal-content .top .overflow {
+            max-height: 6rem;
+            overflow: auto; }
+            .payment .modal .modal-inner .modal-content .top .overflow .coupon {
+              background: url(/sui_assets/img/payment/border.png) center no-repeat;
+              height: 2.2rem;
+              line-height: 2.2rem;
+              width: 7rem;
+              color: #f76260;
+              font-size: .75rem;
+              background-size: contain;
+              margin: .5rem auto; }
+        .payment .modal .modal-inner .modal-content .modal-phone {
+          padding: 1rem;
+          margin: auto .35rem; }
+          .payment .modal .modal-inner .modal-content .modal-phone input {
+            border-width: 0;
+            line-height: 2rem;
+            height: 2rem;
+            border-radius: 5px;
+            width: 100%;
+            padding: 0 .5rem;
+            font-size: .75rem;
+            color: #000000;
+            background-color: #ffffff;
+            margin: .25rem auto; }
+          .payment .modal .modal-inner .modal-content .modal-phone .input-text {
+            position: relative;
+            top: -2rem;
+            right: .3rem;
+            padding: .2rem .4rem;
+            color: #be4949;
+            background-color: #ffee7a;
+            border-radius: 3px;
+            float: right;
+            font-size: .7rem; }
+          .payment .modal .modal-inner .modal-content .modal-phone .v-button {
+            background-image: linear-gradient(to bottom, #FAD961, #F7BD1C);
+            height: 2rem;
+            font-size: .9rem;
+            line-height: 2rem;
+            text-align: center;
+            border-radius: 25px;
+            color: #be4949;
+            clear: both;
+            position: relative;
+            top: -.5rem;
+            letter-spacing: 3px; }
+      .payment .modal .modal-inner .modal-content2 {
+        background: url(/sui_assets/img/payment/popbg.png) center no-repeat;
+        background-size: contain;
+        position: relative;
+        color: #ffffff;
+        border-radius: 5px;
+        padding: 1px 0;
+        width: 15.55rem;
+        height: 24.35rem; }
+        .payment .modal .modal-inner .modal-content2 .modal-title {
+          position: absolute;
+          top: 2.2rem;
+          left: 0;
+          right: 0;
+          margin: auto;
+          font-size: 2rem;
+          min-width: 14rem; }
+          .payment .modal .modal-inner .modal-content2 .modal-title span {
+            vertical-align: middle; }
+          .payment .modal .modal-inner .modal-content2 .modal-title img {
+            height: 2rem;
+            vertical-align: middle; }
+        .payment .modal .modal-inner .modal-content2 .whitebg {
+          width: 14.4rem;
+          height: 18rem;
+          border-radius: 2px;
+          background-color: #ffffff;
+          padding: 1rem 0.8rem;
+          position: absolute;
+          top: 5.85rem;
+          left: 0.55rem; }
+          .payment .modal .modal-inner .modal-content2 .whitebg .top {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: column;
+            height: 6.75rem;
+            text-align: left; }
+            .payment .modal .modal-inner .modal-content2 .whitebg .top .share {
+              background: url(/sui_assets/img/payment/qianbao1.png) left top no-repeat;
+              background-size: 0.7rem 0.7rem;
+              padding-left: 1rem;
+              font-size: 0.7rem;
+              color: #000; }
+            .payment .modal .modal-inner .modal-content2 .whitebg .top .share2 {
+              background: url(/sui_assets/img/payment/qianbao2.png) left top no-repeat;
+              background-size: 0.7rem 0.7rem;
+              padding-left: 1rem;
+              font-size: 0.7rem;
+              color: #e95738; }
+            .payment .modal .modal-inner .modal-content2 .whitebg .top .share3 {
+              background: url(/sui_assets/img/payment/qianbao3.png) left top no-repeat;
+              background-size: 0.7rem 0.7rem;
+              padding-left: 1rem;
+              font-size: 0.7rem;
+              color: #000; }
+            .payment .modal .modal-inner .modal-content2 .whitebg .top .share4 {
+              padding-left: 1rem;
+              font-size: 0.7rem;
+              color: #000; }
+          .payment .modal .modal-inner .modal-content2 .whitebg .modal-phone {
+            margin-top: 1rem; }
+            .payment .modal .modal-inner .modal-content2 .whitebg .modal-phone .phone {
+              width: 11.85rem;
+              height: 2.2rem;
+              line-height: 2.2rem;
+              border-radius: 21px;
+              background: url(/sui_assets/img/payment/pone.png) 1.3rem no-repeat;
+              background-size: 0.7rem 0.8rem;
+              padding-left: 2rem;
+              margin: .25rem auto;
+              background-color: #f2f2f2;
+              background-position: 1.3rem center;
+              position: relative; }
+            .payment .modal .modal-inner .modal-content2 .whitebg .modal-phone .validateCode {
+              width: 11.85rem;
+              height: 2.2rem;
+              line-height: 2.2rem;
+              border-radius: 21px;
+              background: url(/sui_assets/img/payment/yanzheng.png) 1.3rem no-repeat;
+              background-size: 0.7rem 0.8rem;
+              padding-left: 2rem;
+              margin: .25rem auto;
+              background-color: #f2f2f2;
+              background-position: 1.3rem center;
+              position: relative; }
+            .payment .modal .modal-inner .modal-content2 .whitebg .modal-phone input {
+              border-width: 0;
+              font-size: .75rem;
+              color: #000000;
+              background-color: #f2f2f2;
+              border: 0;
+              width: 8rem;
+              outline: none;
+              border-radius: 21px;
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              left: 3rem;
+              margin: auto; }
+            .payment .modal .modal-inner .modal-content2 .whitebg .modal-phone .input-text {
+              position: relative;
+              top: -2rem;
+              right: .8rem;
+              padding: .2rem .4rem;
+              color: #999999;
+              float: right;
+              font-size: .7rem;
+              background-color: #f2f2f2;
+              text-decoration: underline; }
+            .payment .modal .modal-inner .modal-content2 .whitebg .modal-phone .v-button2 {
+              background: #e95738;
+              width: 8.1rem;
+              height: 2.2rem;
+              font-size: .8rem;
+              line-height: 2.2rem;
+              text-align: center;
+              border-radius: 5px;
+              color: #ffffff;
+              clear: both;
+              position: relative;
+              top: -.5rem;
+              letter-spacing: 3px;
+              margin: auto; }
+@keyframes show-modal {
+  from {
+    opacity: 0;
+    transform: translate(0, -150%);
+    -webkit-transform: translate(0, -150%); }
+  to {
+    opacity: 1;
+    transform: translate(0, 0);
+    -webkit-transform: translate(0, 0); } }
+
+/*# sourceMappingURL=payment.css.map */
