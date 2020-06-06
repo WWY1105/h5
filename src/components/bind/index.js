@@ -14,6 +14,8 @@ Phone.install = function (Vue, options) {
   let ids={};
   Vue.prototype.$bind = function ({title = "补全手机 领取权益", text = "绑定手机号后，您的权益将立即到账", submit = ""} = {}) {
     ids = this.$parent.$route.query;
+  
+    
     let toastTpl = Vue.extend({
       data: function () {
         let defaultPhone = {validateCode: '', phone: ""};
@@ -27,7 +29,7 @@ Phone.install = function (Vue, options) {
           bind: defaultPhone,
           helpBlock: {text: "获取验证码", usable: true},
           init: "",
-          after:submit
+          after:submit,
         }
       },
       watch: {
@@ -80,7 +82,12 @@ Phone.install = function (Vue, options) {
           let _self = this;
           if (this.bind.phone.length == 11 && this.bind.validateCode.length == 6) {
             let state = this.$loading("加载中...");
+         
             if (!state) {
+                // 推广码
+              if(ids.pid){
+                this.bind.promoteId=ids.pid
+              }
               this.$http.post("/phone/bindup", this.bind).then(response => {
                 let data = response.body;
                 this.$loading.close();

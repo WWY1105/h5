@@ -618,15 +618,13 @@ export default {
                             });
 
                             // 判断是否是会员并且有账单,都满足,直接跳到策略页面
-                            console.log(data.result)
-                            console.log(_self.init)
-                            console.log(_self.$route.query)
+                          
                             // 设置一个cookie,一段时间内需要直接跳转策略
-                            if (!sessionStorage.getItem('jumpFlag')) {
-                                if ((data.result.memberGradeName && data.result.preCheckData && data.result.preCheckData.menus) || (data.result.memberGradeName && data.result.preCheckData && data.result.preCheckData.amount)) {
-                                    _self.toStrategy()
-                                }
-                            }
+                            // if (!sessionStorage.getItem('jumpFlag')) {
+                            //     if ((data.result.memberGradeName && data.result.preCheckData && data.result.preCheckData.menus) || (data.result.memberGradeName && data.result.preCheckData && data.result.preCheckData.amount)) {
+                            //         _self.toStrategy()
+                            //     }
+                            // }
 
                         }
 
@@ -738,14 +736,14 @@ export default {
             document.body.removeAttribute("class", "activebody");
 
             // 不是会员+有账单======点击关闭弹窗,直接跳策略
-            if (!sessionStorage.getItem('jumpFlag')) {
-                if (that.post.menus || (that.init.preCheckData && that.init.preCheckData.amount)) {
-                    that.$toast("即将跳转", 'center');
-                    setTimeout(function () {
-                        that.toStrategy()
-                    }, 500)
-                }
-            }
+            // if (!sessionStorage.getItem('jumpFlag')) {
+            //     if (that.post.menus || (that.init.preCheckData && that.init.preCheckData.amount)) {
+            //         that.$toast("即将跳转", 'center');
+            //         setTimeout(function () {
+            //             that.toStrategy()
+            //         }, 200)
+            //     }
+            // }
 
         },
 
@@ -885,11 +883,11 @@ export default {
                             _self.vip = null;
                             _self.initFn();
                             // 绑定会员,已经是会员,如果有账单,直接跳策略页面
-                            if (!sessionStorage.getItem('jumpFlag')) {
-                                if (_self.post.menus || (_self.init.preCheckData && _self.init.preCheckData.amount)) {
-                                    _self.toStrategy()
-                                }
-                            }
+                            // if (!sessionStorage.getItem('jumpFlag')) {
+                            //     if (_self.post.menus || (_self.init.preCheckData && _self.init.preCheckData.amount)) {
+                            //         _self.toStrategy()
+                            //     }
+                            // }
                         }, 1000)
                     } else {
                         this.$toast(data.message, 'center');
