@@ -332,7 +332,7 @@ export default {
             let _self = this;
             if (this.phone1.phone && this.phone1.validateCode && this.phone1.phone.length == 11 && this.phone1.validateCode.length == 6) {
                 let jsonA = {
-                    activityId: this.gift.aid
+                    activityId: this.gift.activityId
                 };
                 jsonA.phone = this.phone1.phone;
                 jsonA.validateCode = this.phone1.validateCode;
@@ -356,7 +356,7 @@ export default {
         bindPhone() {
             let _self = this;
              let jsonB=this.$route.query;
-            jsonB.activityId=this.gift.aid;
+            jsonB.activityId=this.gift.activityId;
             if (_self.$route.query.pid) {
                 jsonB.pid = _self.$route.query.pid;
             }
@@ -370,7 +370,6 @@ export default {
                     this.$toast(data.message);
                 }
             });
-
         },
         closed() {
             this.refresh();
