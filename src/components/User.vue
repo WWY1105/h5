@@ -371,7 +371,14 @@
               //   document.getElementsByTagName("body")[0].className="activebody"
               // }
             } else {
-              this.$http.post("/membership", {id: this.$route.query.id || this.$route.query.guestid}).then(response => {
+               let jsonA = {
+                 id: this.$route.query.id || this.$route.query.guestid
+               };
+                // 推广码
+                if (_self.$route.query.pid) {
+                    jsonA.promoteId = _self.$route.query.pid;
+                }
+              this.$http.post("/membership",jsonA).then(response => {
                 let data = response.body;
                 if (data.code == 200 ) {
                   this.$http.get("/remind/guest/" + (this.$route.query.id || this.$route.query.guestid) + '/result').then(response => {

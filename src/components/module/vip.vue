@@ -453,6 +453,10 @@ export default {
                     para.channel = "401"
                 }
                 console.log('执行了1111')
+                  // 推广码
+                if (_self.$route.query.pid) {
+                    para.promoteId = _self.$route.query.pid;
+                }
                 _self.$http.post("/membership", para).then(response => {
                     let data = response.body;
                     _self.$loading.close();
