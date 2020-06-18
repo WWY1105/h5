@@ -477,7 +477,10 @@ export default {
             }
             let payment = _self.payment;
             console.log(payment);
-
+            if(!payment){
+                this.getModeFn();
+                return;
+            }
             let para = {
                 activityId: this.activeArr[index].activityId,
                 payCategory: payment,
