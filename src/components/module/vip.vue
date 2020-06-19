@@ -486,7 +486,11 @@ export default {
                 return;
             }
             let payment = _self.payment || sessionStorage.getItem('payMode');
-            console.log(payment);
+
+            if (!payment) {
+                _self.$message("提示", "品牌暂未开通支付，详情请咨询服务员。", function () {});
+                return;
+            }
 
             let para = {
                 activityId: this.activeArr[index].activityId,

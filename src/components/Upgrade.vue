@@ -5,7 +5,7 @@
         <span class="shop">{{data.brandName}}</span>
     </div>
     <div class="separate"></div>
-    <vip-module v-bind:data="data" :payment="payment"  v-bind:upgrade="true"></vip-module>
+    <vip-module v-bind:data="data" :payment="payment" v-bind:upgrade="true"></vip-module>
 </div>
 </template>
 
@@ -119,7 +119,7 @@ export default {
                     console.log(this.data.strategies)
                     if (data.code == 200) {
                         this.$set(this.data, "needPhone", false);
-                        
+
                         if (data.result && data.result.token) {
                             this.$cookie.set("token", data.result.token, {
                                 "expires": '30d'
@@ -152,7 +152,7 @@ export default {
                 query: json
             });
         },
-          getModeFn() {
+        getModeFn() {
             let _self = this;
             _self.$http.get("/shop/" + (_self.$route.query.id || _self.$route.query.guestid) + "/paymode", {
                 key: {
@@ -166,9 +166,8 @@ export default {
                         return;
                     }
                     _self.payment = data1.result.payMode;
-                }else{
-                     _self.$message("提示", "品牌暂未开通支付，详情请咨询服务员。", function () {
-                      });
+                } else {
+
                 }
             });
         },
@@ -208,6 +207,10 @@ export default {
                 return;
             }
             let payment = this.payment;
+            if (!payment) {
+                _self.$message("提示", "品牌暂未开通支付，详情请咨询服务员。", function () {});
+                return;
+            }
             let para = {
                 activityId: this.data.strategies[index].activityId,
                 payCategory: payment,
