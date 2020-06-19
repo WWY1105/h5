@@ -166,8 +166,9 @@ export default {
                         return;
                     }
                     _self.payment = data1.result.payMode;
-            
-                 
+                }else{
+                     _self.$message("提示", "品牌暂未开通支付，详情请咨询服务员。", function () {
+                      });
                 }
             });
         },
