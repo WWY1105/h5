@@ -201,7 +201,7 @@ Vue.use(Icon);
 Vue.use(AwesomePicker);
 export default {
     name: "VipModule",
-    props: ['data', 'upgrade', 'canUpgrade','payment'],
+    props: ['data', 'upgrade', 'canUpgrade', 'payment'],
     data() {
         return {
             // data: "",
@@ -263,7 +263,7 @@ export default {
     },
     created() {
         let that = this;
-      
+
         // 对传入的策略进行筛选
         console.log('传入的数据' + that.upgrade + "--" + that.canUpgrade)
         // console.log(this.data.strategies)
@@ -291,11 +291,11 @@ export default {
                     // _self.submitFn(_self.activeIndex)
                     // _self.getData()
                     window.location.reload()
-                   
+
                 }
             })
         },
-      
+
         showFn() {
             this.$set(this, "show", !this.show);
         },
@@ -358,7 +358,7 @@ export default {
                     break;
                     //入会及升级
                 case "6001":
-                      this.$route.query.tid = item.activityId
+                    this.$route.query.tid = item.activityId
                     this.$router.push({
                         path: '/upgrade',
                         query: this.$route.query
@@ -414,7 +414,7 @@ export default {
             }
 
         },
-          getData() {
+        getData() {
             let _self = this;
             let json = {};
             if (this.$route.query.tid) {
@@ -440,15 +440,14 @@ export default {
             });
         },
         submitFn: function (index) {
-           
-            this.$loading();
-            let _self = this;console.log()
-           
-                _self.activeIndex = index;
-            
-            
 
-            if (_self.activeIndex!=0&&!_self.activeIndex) {
+            this.$loading();
+            let _self = this;
+            console.log()
+
+            _self.activeIndex = index;
+
+            if (_self.activeIndex != 0 && !_self.activeIndex) {
                 for (var i in this.activeArr) {
                     if (this.activeArr[i].type == 'FREE') {
                         index = i;
@@ -464,7 +463,7 @@ export default {
                     para.channel = "401"
                 }
                 console.log('执行了1111')
-                  // 推广码
+                // 推广码
                 if (_self.$route.query.pid) {
                     para.promoteId = _self.$route.query.pid;
                 }
@@ -486,9 +485,9 @@ export default {
                 });
                 return;
             }
-            let payment = _self.payment||sessionStorage.getItem('payMode');
+            let payment = _self.payment || sessionStorage.getItem('payMode');
             console.log(payment);
-         
+
             let para = {
                 activityId: this.activeArr[index].activityId,
                 payCategory: payment,
