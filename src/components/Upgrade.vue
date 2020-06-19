@@ -5,7 +5,7 @@
         <span class="shop">{{data.brandName}}</span>
     </div>
     <div class="separate"></div>
-    <vip-module v-bind:data="data" v-bind:upgrade="true"></vip-module>
+    <vip-module v-bind:data="data" :payment="payment"  v-bind:upgrade="true"></vip-module>
 </div>
 </template>
 
@@ -40,32 +40,37 @@ export default {
     components: {
         vipModule
     },
-    beforeCreate: function () {
-        let _self = this;
-        let json = {};
-        if (this.$route.query.tid) {
-            json.gradeId = this.$route.query.tid;
-        }
-        this.$http.get("/membership/guest/" + (this.$route.query.id || this.$route.query.guestid) + "/upgrade", {
-            key: json
-        }).then(response => {
-            let data = response.body;
-            if (data.code == 200) {
-                _self.data = data.result;
-            } else {
-                if (data.code == 4050450) {
-                    alert("您已经是最高等级会员");
-                    _self.$router.push({
-                        path: 'vip',
-                        query: _self.$route.query
-                    });
-                } else {
-                    // location.href = "error.html#3"
-                }
-            }
-        });
+
+    created: function () {
+        this.getData();
+        this.getModeFn();
     },
     methods: {
+        getData() {
+            let _self = this;
+            let json = {};
+            if (this.$route.query.tid) {
+                json.gradeId = this.$route.query.tid;
+            }
+            this.$http.get("/membership/guest/" + (this.$route.query.id || this.$route.query.guestid) + "/upgrade", {
+                key: json
+            }).then(response => {
+                let data = response.body;
+                if (data.code == 200) {
+                    _self.data = data.result;
+                } else {
+                    if (data.code == 4050450) {
+                        alert("您已经是最高等级会员");
+                        _self.$router.push({
+                            path: 'vip',
+                            query: _self.$route.query
+                        });
+                    } else {
+                        // location.href = "error.html#3"
+                    }
+                }
+            });
+        },
         validateFn() {
             if (!this.phone.able) return;
             if (!this.phone.phone || this.phone.phone.length != 11) {
@@ -114,6 +119,7 @@ export default {
                     console.log(this.data.strategies)
                     if (data.code == 200) {
                         this.$set(this.data, "needPhone", false);
+                        
                         if (data.result && data.result.token) {
                             this.$cookie.set("token", data.result.token, {
                                 "expires": '30d'
@@ -144,6 +150,25 @@ export default {
             _self.$router.push({
                 path: '/user',
                 query: json
+            });
+        },
+          getModeFn() {
+            let _self = this;
+            _self.$http.get("/shop/" + (_self.$route.query.id || _self.$route.query.guestid) + "/paymode", {
+                key: {
+                    "type": this.getVersion()
+                }
+            }).then(response => {
+                let data1 = response.body;
+                if (data1.code == 200) {
+                    if (response.body.result.oasis) {
+                        _self.authorFuiou();
+                        return;
+                    }
+                    _self.payment = data1.result.payMode;
+            
+                 
+                }
             });
         },
         submitFn: function (index) {

@@ -201,7 +201,7 @@ Vue.use(Icon);
 Vue.use(AwesomePicker);
 export default {
     name: "VipModule",
-    props: ['data', 'upgrade', 'canUpgrade'],
+    props: ['data', 'upgrade', 'canUpgrade','payment'],
     data() {
         return {
             // data: "",
@@ -263,7 +263,7 @@ export default {
     },
     created() {
         let that = this;
-        this.getModeFn();
+      
         // 对传入的策略进行筛选
         console.log('传入的数据' + that.upgrade + "--" + that.canUpgrade)
         // console.log(this.data.strategies)
@@ -288,28 +288,14 @@ export default {
                     // _self.submitFn(_self.activeIndex);
                     // _self.$emit('bindFn');
                     console.log('提交售价好')
-                    _self.submitFn(_self.activeIndex)
+                    // _self.submitFn(_self.activeIndex)
+                    // _self.getData()
+                    window.location.reload()
                    
                 }
             })
         },
-        getModeFn() {
-            let _self = this;
-            _self.$http.get("/shop/" + (_self.$route.query.id || _self.$route.query.guestid) + "/paymode", {
-                key: {
-                    "type": this.getVersion()
-                }
-            }).then(response => {
-                let data1 = response.body;
-                if (data1.code == 200) {
-                    if (response.body.result.oasis) {
-                        _self.authorFuiou();
-                        return;
-                    }
-                    _self.payment = data1.result.payMode;
-                }
-            });
-        },
+      
         showFn() {
             this.$set(this, "show", !this.show);
         },
@@ -428,6 +414,31 @@ export default {
             }
 
         },
+          getData() {
+            let _self = this;
+            let json = {};
+            if (this.$route.query.tid) {
+                json.gradeId = this.$route.query.tid;
+            }
+            this.$http.get("/membership/guest/" + (this.$route.query.id || this.$route.query.guestid) + "/upgrade", {
+                key: json
+            }).then(response => {
+                let data = response.body;
+                if (data.code == 200) {
+                    _self.data = data.result;
+                } else {
+                    if (data.code == 4050450) {
+                        alert("您已经是最高等级会员");
+                        _self.$router.push({
+                            path: 'vip',
+                            query: _self.$route.query
+                        });
+                    } else {
+                        // location.href = "error.html#3"
+                    }
+                }
+            });
+        },
         submitFn: function (index) {
            
             this.$loading();
@@ -475,12 +486,9 @@ export default {
                 });
                 return;
             }
-            let payment = _self.payment;
+            let payment = _self.payment||sessionStorage.getItem('payMode');
             console.log(payment);
-            if(!payment){
-                this.getModeFn();
-                return;
-            }
+         
             let para = {
                 activityId: this.activeArr[index].activityId,
                 payCategory: payment,
