@@ -814,10 +814,10 @@ export default {
             _self.$http.get("/check/" + id).then(response => {
                 let data = response.body;
                 if (data.code == 200) {
-                    if (data.result.amount) {
-                        // _self.name ="本次消费￥" + data.result.amount;
-                        // _self.name = "优惠买单"
-                        _self.setTitle("消费金额 " + data.result.amount + " 元") //设置页面的头
+                     if (data.result.amount&&data.result.tableNo) {
+                        _self.setTitle(data.result.tableNo+"号桌消费" + data.result.amount + "元") //设置页面的头
+                    }else if (data.result.amount) {
+                        _self.setTitle("消费 " + data.result.amount + " 元") //设置页面的头
                     }
                     if (data.result.comment) {
                         // 有评价立减活动
