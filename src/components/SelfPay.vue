@@ -492,7 +492,7 @@ export default {
         goBack() {
             let _self = this;
             let json = _self.$route.query;
-            _self.$router.replace({
+            _self.$router.push({
                 path: "/selfpay",
                 query: json
             });

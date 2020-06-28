@@ -7,13 +7,6 @@
         </div>
         <div class="praise_text">获赠礼品买单后自动到账</div>
     </div>
-    <!-- 原单 -->
-    <!-- <div class="x-header origin-header" v-if="!has_reward_activity&&(data.comment?!data.comment.hasCommented:true)">
-        <div class="content">
-            <p class="strategiesLength"> {{data.strategies.length}}</p>
-        </div>
-
-    </div> -->
 
     <!-- 选择员工的弹窗 -->
     <van-popup get-container="#app" v-model="menberPopupShow" position="bottom" style="height:auto" closeable close-icon-position="top-left">
@@ -110,13 +103,22 @@
             <!-- <swiper-slide class="card cards" v-for="(item,keys) in data.strategies" :class="[keys == key+2 ? 'cards' : '', data.strategies.length == 1 ? 'swiper-no-swiping' : '' ]"  -->
             <swiper-slide class="card x-card" v-for="(item,keys) in data.strategies" :class="[keys != 0 ? 'cards' : '']" :key="keys" v-on:click="key = keys">
                 <div class="card-bg x-card-bg">
-                    <div class="flex" style="padding:30px 40px;position: relative;overflow: hidden;background-color:#fff;border-radius: .3rem;">
+                    <div class="flex" style="position: relative;overflow: hidden;">
                         <div class="x-title">
                             <!-- 方案1 "-->
                             <span class="min">{{keys+1}}</span>
-                            <p class="sjPrice">实际支付￥{{(data.comment&&data.comment.hasCommented&&giveRewordFlag&&data.comment.gratuityAmount)?(parseFloat(data.strategies[key].finalAmount)
-                  +
-                  parseFloat(data.comment.gratuityAmount)).toFixed(2):data.strategies[key].finalAmount}}</p>
+                            <div class="flexSpace">
+                                <p class="sjPrice">实际支付￥
+                                    {{(data.comment&&data.comment.hasCommented&&giveRewordFlag&&data.comment.gratuityAmount)
+                                ?(parseFloat(data.strategies[key].finalAmount)+
+                                parseFloat(data.comment.gratuityAmount)).toFixed(2)
+                                :data.strategies[key].finalAmount}}
+                                </p>
+                                <span :class="menuData&&menuData.menus.length==0?'hui button':'button'" @click="menuShow=true">
+                                    查看账单
+                                </span>
+                            </div>
+
                         </div>
                         <div :class="data.strategies[0].charges?'xtitle':'xtitle hidden'">
                             <div class="xcontent" v-show="keys == 0">
@@ -134,8 +136,7 @@
                                 <div class="left">
                                     <!-- 获得奖励start- -->
                                     <div>
-                                        <p class="contentTitle"><span>赠送权益</span>
-                                        </p>
+                                        <p class="contentTitle">赠送权益</p>
                                         <div class="contentDetail">
                                             <!-- 有内容 -->
                                             <div v-if="data.strategies[key].charges||data.strategies[key].upgrades||data.strategies[key].got">
@@ -190,22 +191,33 @@
                                         <p><span>储值卡余额 ￥{{item.remindCharge}}</span></p>
                                     </div> -->
                                 </div>
-                                <div class="right">
-                                    <!-- 优惠抵扣 -->
-                                    <div>
-                                        <div>
-                                            <p class="text-right contentTitle " style="text-align:right">优惠抵扣</p>
-                                            <p class="contentDetail" v-if="data.strategies[keys].nonPart|| data.strategies[keys].useAll.length ||data.strategies[keys].segmentAll.length"><span> -￥{{data.strategies[keys].usedAmount}}</span></p>
-                                            <p class="contentDetail text-right" v-else>-￥0</p>
+                            </div>
+                            <!-- 优惠抵扣 -->
+                            <div @click="toastFlag=true">
+                                <p class="text-right contentTitle " style="text-align:left">
+                                    <span>优惠抵扣</span>
+                                    <span class="text-right price" v-if="data.strategies[keys].nonPart|| data.strategies[keys].useAll.length ||data.strategies[keys].segmentAll.length"><span> -￥{{data.strategies[keys].usedAmount}}</span>
+                                        <span class="van-icon van-icon-arrow"></span><span class="van-icon van-icon-arrow"></span>
+                                    </span>
+                                    <span class="text-right price" v-else>-￥0</span>
+                                </p>
+                            </div>
+                            <div class="use" v-if="data.strategies[key].nonPart|| data.strategies[key].useAll.length ||data.strategies[key].segmentAll.length">
+                                <div class="all" v-if="data.strategies[key].useAll.length">
+                                    <div class="benefit" v-for="use,ii in data.strategies[key].useAll" >
+                                        <div class="contentDetail" v-if="ii<2">{{use.content}} -￥{{use.amount + ((use.count&&use.type !== "SETMEAL") ? "(" + use.count + "张)":"")}}</div>
+                                    </div>
+                                </div>
+                                <div class="segment" v-if="data.strategies[key].segmentAll.length&&data.strategies[key].useAll.length<2">
+                                    <div class="benefit" :class="use.type=='6011'?'text-blue':''" v-for="use in data.strategies[key].segmentAll">
+                                        <div class="contentDetail">
+                                            <span class="items" v-if="use.type=='6011'">使用充值卡</span>
+                                            <span class="items" v-else>{{use.content}}</span>
+                                            <span>-￥{{use.amount + ((use.count&&use.type !== "SETMEAL") ? "(" + use.count + "张)":"")}}</span>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="btns">
-                                <span :class="menuData&&menuData.menus.length==0?'hui button':'button'" @click="menuShow=true">
-                                    查看账单
-                                </span>
-                                <span :class="!(key==data.strategies.length-1)?'x-right':'hui'" @click="toastFlag = true">优惠详情</span>
+                                <div v-if="data.strategies[key].segmentAll.length+data.strategies[key].useAll.length>2">......</div>
                             </div>
                         </div>
                     </div>
@@ -224,7 +236,6 @@
             </swiper-slide>
             <swiper-slide class="" style="width: 5vw;transform: scale(1);text-align : center">
             </swiper-slide>
-            <!-- <img @click.prevent="" src="/sui_assets/img/strategy/no more2.png" style="height:9rem;width: 9rem;margin: 30% 0%;" alt="" > -->
         </swiper>
 
     </div>
@@ -315,7 +326,6 @@
                     </div>
 
                 </div>
-
                 <div class="got" v-if="data.strategies[key].got||data.strategies[key].charges">
                     <div class="label">
                         <img @click.prevent="" class="xtimg" src="/sui_assets/img/strategy/getRewards.png" alt="">
@@ -616,8 +626,8 @@ export default {
         }
     },
     methods: {
-        checkout(){
-            this.giveRewordFlag=!this.giveRewordFlag
+        checkout() {
+            this.giveRewordFlag = !this.giveRewordFlag
             console.log(this.giveRewordFlag)
         },
         // 获取账单
@@ -814,9 +824,9 @@ export default {
             _self.$http.get("/check/" + id).then(response => {
                 let data = response.body;
                 if (data.code == 200) {
-                     if (data.result.amount&&data.result.tableNo) {
-                        _self.setTitle(data.result.tableNo+"号桌消费" + data.result.amount + "元") //设置页面的头
-                    }else if (data.result.amount) {
+                    if (data.result.amount && data.result.tableNo) {
+                        _self.setTitle(data.result.tableNo + "号桌消费" + data.result.amount + "元") //设置页面的头
+                    } else if (data.result.amount) {
                         _self.setTitle("消费 " + data.result.amount + " 元") //设置页面的头
                     }
                     if (data.result.comment) {
@@ -917,7 +927,7 @@ export default {
 
                 } else {
                     if (data.code == 404014) {
-                       
+
                         _self.$router.replace({
                             path: '/selfPay',
                             query: _self.$route.query
@@ -1045,7 +1055,7 @@ export default {
                     if (_self.$route.query.id || _self.$route.query.guestid) {
                         _self.bind.shopId = _self.$route.query.id || _self.$route.query.guestid;
                     }
-                     // 推广码
+                    // 推广码
                     if (_self.$route.query.pid) {
                         _self.bind.promoteId = _self.$route.query.pid;
                     }
@@ -1380,6 +1390,19 @@ export default {
 
 <style lang="scss" scoped>
 @import "../sui_assets/scss/strategy.scss";
+
+.text-right.price {
+    color: #c33b35;
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 600;
+    margin-left: 10px;
+}
+
+.text-right.price .van-icon {
+    width: 3px;
+}
 
 .origin-header.x-header {
     background: unset;
@@ -1739,12 +1762,12 @@ export default {
         margin: auto;
     }
 }
-</style>
-<style>
+</style><style>
 .strategy P {
     line-height: 1.2rem;
     padding: 0;
     margin: 0 !important;
+
     /* font-size: 0.8rem; */
 }
 
@@ -1769,6 +1792,9 @@ export default {
     color: #919191;
     text-align: left;
     line-height: 22px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .strategy .contentDetail {
@@ -1856,7 +1882,8 @@ export default {
     align-items: flex-end;
     padding: .5rem .8rem;
 }
-.x-dixed{
+
+.x-dixed {
     padding: 0;
 }
 
@@ -2014,7 +2041,7 @@ body {
 .x-title-n::before {
     content: '';
     position: absolute;
-    left: -3.2rem;
+    left: -2.9rem;
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;
     height: 28px;
@@ -2026,7 +2053,7 @@ body {
 .x-card-bg::after {
     position: absolute;
     display: inline-block;
-    bottom: -15px;
+    bottom: -14px;
     left: 24px;
     width: 0;
     height: 0px;
@@ -2096,13 +2123,10 @@ body {
 .x-flex-detail .flexBox {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 10px;
 }
 
-.x-flex-detail>div {
-    padding-top: 0.4rem;
-}
-
-.x-flex-detail>div.btns {
+.btns {
     font-size: 13px;
     font-weight: 600;
     font-stretch: normal;
@@ -2119,7 +2143,7 @@ body {
     padding-top: 0;
 }
 
-.x-flex-detail>div.btns .hui {
+.hui {
     color: #d7d7d7;
     pointer-events: none;
 }

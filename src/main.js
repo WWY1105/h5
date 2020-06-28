@@ -16,7 +16,8 @@ import './components/bind/bind.css';
 import Bind from './components/bind/index'
 import './components/couponShow/coupon.css';
 import Coupon from './components/couponShow/index'
-
+import vueWechatTitle from 'vue-wechat-title'
+Vue.use(vueWechatTitle)
 // Tell Vue to use the plugin
 Vue.use(VueResource)
 Vue.use(VueCookie)

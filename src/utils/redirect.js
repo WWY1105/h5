@@ -62,22 +62,16 @@ export default {
     Vue.prototype.authorGuest = function () {
       location.href = origin + "/author/guest/" + (this.$route.query.id || this.$route.query.guestid) + "?url=" + encodeURIComponent(location.href);
     }
-    Vue.prototype.setTitle = function (title) {
-      // var body = document.getElementsByTagName('body')[0];
-      document.title = title;
-      var iframe = document.createElement("iframe");
-      iframe.style.display="none";
-      var d = function() {
-          setTimeout(function() {
-              iframe.removeEventListener('load', d);
-              document.body.removeChild(iframe);
-          }, 0);
-      
+    Vue.prototype.setTitle = function (name) {
+      document.title = name;
+      let i = document.createElement('iframe');
+      i.style.display = 'none';
+      i.onload = function () {
+        setTimeout(function () {
+          i.remove();
+        }, 9)
       };
-      
-      iframe.addEventListener('load', d);
-      document.body.appendChild(iframe);
-      // window.location.reload()
+      document.body.appendChild(i);
     }
   }
 }
