@@ -110,9 +110,9 @@
                             <div class="flexSpace">
                                 <p class="sjPrice">实际支付￥
                                     {{(data.comment&&data.comment.hasCommented&&giveRewordFlag&&data.comment.gratuityAmount)
-                                ?(parseFloat(data.strategies[key].finalAmount)+
+                                ?(parseFloat(item.finalAmount)+
                                 parseFloat(data.comment.gratuityAmount)).toFixed(2)
-                                :data.strategies[key].finalAmount}}
+                                :item.finalAmount}}
                                 </p>
                                 <span :class="menuData&&menuData.menus.length==0?'hui button':'button'" @click="menuShow=true">
                                     查看账单
@@ -139,8 +139,8 @@
                                         <p class="contentTitle">赠送权益</p>
                                         <div class="contentDetail">
                                             <!-- 有内容 -->
-                                            <div v-if="data.strategies[key].charges||data.strategies[key].upgrades||data.strategies[key].got">
-                                                <div class="use" v-if="data.strategies[key].charges&&!get.celling" v-for="get in data.strategies[0].charges">
+                                            <div v-if="item.charges||item.upgrades||item.got">
+                                                <div class="use" v-if="item.charges&&!get.celling" v-for="get in data.strategies[0].charges">
                                                     <div v-if="get.category == '1016'">
                                                         <div class="ellipsis">{{get.name}} </div>
                                                     </div>
@@ -163,7 +163,7 @@
                                                         <div> 积分<span class="">{{get.point}}</span></div>
                                                     </div>
                                                 </div>
-                                                <div class="use" v-for="upgrade in data.strategies[key].upgrades">
+                                                <div class="use" v-for="upgrade in item.upgrades">
                                                     <div>
                                                         <span v-if="upgrade.category == '1013'">会员等级升为</span>
                                                         <span v-else class="ellipsis">{{upgrade.name}}</span>
@@ -173,7 +173,7 @@
                                                         <!-- <span class="text-blue" v-else-if="upgrade.count">{{upgrade.count}}张</span> -->
                                                     </div>
                                                 </div>
-                                                <div class="use" v-for="get,getIndex in data.strategies[key].got">
+                                                <div class="use" v-for="get,getIndex in item.got">
                                                     <div v-if="get.category == '1016'&&getIndex<3">
                                                         <div class="ellipsis"> {{get.name}}</div>
                                                     </div>
@@ -196,20 +196,20 @@
                             <div @click="toastFlag=true">
                                 <p class="text-right contentTitle " style="text-align:left">
                                     <span>优惠抵扣</span>
-                                    <span class="text-right price" v-if="data.strategies[keys].nonPart|| data.strategies[keys].useAll.length ||data.strategies[keys].segmentAll.length"><span> -￥{{data.strategies[keys].usedAmount}}</span>
+                                    <span class="text-right price" v-if="item.nonPart|| item.useAll.length ||item.segmentAll.length"><span> -￥{{data.strategies[keys].usedAmount}}</span>
                                         <span class="van-icon van-icon-arrow"></span><span class="van-icon van-icon-arrow"></span>
                                     </span>
                                     <span class="text-right price" v-else>-￥0</span>
                                 </p>
                             </div>
-                            <div class="use" v-if="data.strategies[key].nonPart|| data.strategies[key].useAll.length ||data.strategies[key].segmentAll.length">
-                                <div class="all" v-if="data.strategies[key].useAll.length">
-                                    <div class="benefit" v-for="use,ii in data.strategies[key].useAll" >
+                            <div class="use" v-if="item.nonPart|| item.useAll.length ||item.segmentAll.length">
+                                <div class="all" v-if="item.useAll.length">
+                                    <div class="benefit" v-for="use,ii in item.useAll" >
                                         <div class="contentDetail" v-if="ii<2">{{use.content}} -￥{{use.amount + ((use.count&&use.type !== "SETMEAL") ? "(" + use.count + "张)":"")}}</div>
                                     </div>
                                 </div>
-                                <div class="segment" v-if="data.strategies[key].segmentAll.length&&data.strategies[key].useAll.length<2">
-                                    <div class="benefit" :class="use.type=='6011'?'text-blue':''" v-for="use in data.strategies[key].segmentAll">
+                                <div class="segment" v-if="item.segmentAll.length&&item.useAll.length<2">
+                                    <div class="benefit" :class="use.type=='6011'?'text-blue':''" v-for="use in item.segmentAll">
                                         <div class="contentDetail">
                                             <span class="items" v-if="use.type=='6011'">使用充值卡</span>
                                             <span class="items" v-else>{{use.content}}</span>
@@ -217,7 +217,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div v-if="data.strategies[key].segmentAll.length+data.strategies[key].useAll.length>2">......</div>
+                                <div v-if="data.strategies[key].segmentAll.length+data.strategies[key].useAll.length>2" style="line-height: 0.5;">......</div>
                             </div>
                         </div>
                     </div>
@@ -559,7 +559,7 @@ export default {
                 },
                 on: {
                     slideChange() {
-                        console.log()
+                        console.log('改变饿了')
                         console.log(this.activeIndex)
 
                         _self.toggleFn(this.activeIndex);
