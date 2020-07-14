@@ -186,7 +186,10 @@ export default new Router({
     {
       path: '/mallDetail',
       name: 'MallDetail',
-      component: MallDetail
+      component: MallDetail,
+      meta:{
+        title:"商品详情"
+      }
     },
     {
       path: '/mallRecord',

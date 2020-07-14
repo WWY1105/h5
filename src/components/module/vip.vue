@@ -489,6 +489,7 @@ export default {
 
             if (!payment) {
                 _self.$message("提示", "品牌暂未开通支付，详情请咨询服务员。", function () {});
+                 _self.$loading.close();
                 return;
             }
 

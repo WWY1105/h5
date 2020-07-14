@@ -130,15 +130,7 @@ export default {
             // if (!this.grades || !index) return;
             this.index = index;
             console.log('index' + this.index)
-            // let json = {
-            //   gradeId: this.grades.strategies[index].toId
-            // };
-            // this.$http.get("/membership/guest/" + (this.$route.query.id || this.$route.query.guestid) + "/upgrade", {key: json}).then(response => {
-            //   let data = response.body;
-            //   if (data.code == 200) {
-            //     this.data = data.result;
-            //   }
-            // });
+          
 
         }
     }

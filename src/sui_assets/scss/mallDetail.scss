@@ -1,35 +1,222 @@
 .mall {
+  .flexCenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+  .flexStart{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .flexSpace{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+  .numBox{
+    width: auto;
+    .jian,.jia{
+      width: 20px;
+      height: 20px;
+      border: solid 0.5px #979797;
+      border-radius: 50%;
+      line-height: 15px;
+      text-align: center;
+      font-size: 20px;
+    }
+     
+    .jia{
+      background-color: #4f8aff;
+    color: #fff;
+    // line-height: 14px;
+    // font-size: 20px;
+    text-align: center;
+    border-color: #4f8aff;
+
+    }
+    .num{
+      font-size: 16px;
+      color: #000;
+      font-weight: bold;
+      margin: 0 15px;
+    }
+  }
+  .couponBox{
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    padding-bottom: 10px;
+    .eachCoupon{
+      margin-bottom: 20px;
+      position: relative;
+      box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1), 0 0 2px 0 rgba(0, 0, 0, 0.1);
+      border: 1px solid #ecc686;
+      border-radius: 5px;
+      .tag{
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 63px;
+        height: 22px;
+        border-radius:0 5px 0 5px ;
+        background-color: #ecc686;
+        margin: 0;
+        text-align: center;
+        line-height: 22px;
+        font-size: 16px;
+      }
+      .top{
+        background-size: 100% 100%;
+        padding: .5rem .8rem;
+        border-radius: 5px 5px 0 0;
+        .todayUsable{
+          color: #fff;
+          border-radius: 3px;
+          background-color: #e34732;
+          padding: 0 2px;
+          font-size: 12px;
+          line-height: 17px;
+          margin-left: 6px;
+          min-width: 52px;
+          text-align: center;
+        }
+        .couponLogo{
+          border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            margin-right: 10px;
+        }
+        .name{
+          font-size: 20px;
+          font-weight: bold;
+          color: #f08d10;
+        }
+      }
+      .bottom{
+        background-size: 100% 100%;
+        align-items: center;
+        background-color: #ffffff;
+        padding: .5rem .8rem;
+        border-top: 1px dashed #d8d8d8;
+        border-radius: 0 0 5px 5px;
+        .use{
+          padding: 4px 7px;
+          height: 26px;
+          border: 1px solid #f08d10;;
+          background: #fff;
+          border-radius: 50px;
+          text-align: center;
+        }
+        .desc{
+          margin: 0;
+          font-size: 12px;
+          color: #000;
+          padding: 0;
+        }
+      }
+    }
+  }
+  .borderBottom{
+    border-bottom: 10px solid #f4f4f4;
+    width: 100%;
+  }
+  .detailTitle{
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin: 0;
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
   .record {
-    background: #1e1d22;
-    color: #999;
+    color: #1e1d22;
     height: 35px;
     line-height: 35px;
     font-size: 14px;
     text-align: right;
-    //display: flex;
-    //align-content: space-between;
     padding: 0 .5rem;
   }
-  .pic {
-    width: 100%;
+  .imgBox{
+    width: 90%;
+    height: 238px;
+    background-color: #ffffff;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1), 0 0 2px 0 rgba(0, 0, 0, 0.1);
+    .content{
+      height: 30px;
+      -o-object-fit: contain;
+      object-fit: contain;
+      border-radius: 10px;
+      background-image: -webkit-gradient(linear, left top, left bottom, from(#db1fab), to(#f81955));
+      background-image: linear-gradient(to bottom, #db1fab, #f81955);
+      color: #fff;
+      position: absolute;
+      z-index: 999;
+      font-size: 16px;
+      padding-left: 20px;
+      font-weight: bold;
+      padding-right: 10px;
+      line-height: 30px;
+      top: 20px;
+      left: -10px;
+    }
+    .pic {
+      width:100%;
+      height: 100%;
+      border-radius: 5px;
+      -webkit-box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1), 0 0 2px 0 rgba(0, 0, 0, 0.1);
+      box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.1), 0 0 2px 0 rgba(0, 0, 0, 0.1);
+      position: absolute;
+      top: 0;
+      left:0;
+    }
   }
+ 
   .title {
-    font-weight: normal;
+    font-weight: 500;
     margin: 0;
-    padding: 12px 10px;
-    font-size: 16px;
+    margin-top:15px;
+    font-size: 18px;
     line-height: 20px;
     text-align: left;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    p{
+      width: 100%;
+      margin: 0;
+      line-height: 25px;
+      font-weight: bold;
+    }
+   
   }
   .content {
-    font-size: 12px;
-    color: #999;
-    padding: 6px 10px;
+    font-size: 14px;
+    color: #9c9c9c;
+    padding-left: 20px;
+    padding-right: 20px;
+    box-sizing: border-box;
+    &.time{
+      line-height: 20px;
+    }
+    &.priceBox{
+      margin-bottom: 10px;
+      .price{
+        font-size: 20px;
+        font-weight: bold;
+        color:  #e42020;
+        
+        line-height: 28px;
+      }
+    }
+   
   }
   .desc {
     font-size: 14px;
@@ -44,16 +231,23 @@
     bottom: 0;
     display: flex;
     line-height: 50px;
-    background: #f2f2f2;
+    background: #fcfcfc;
+    padding-left:23px;
+    border-top: 1px solid #d9d9d9;
     .left {
       color: #000;
       font-size: 16px;
       width: 50%;
-      padding-left: .5rem;
+      flex: 1;
+      font-weight: bold;
+      .num{
+        color:#e42020;
+        font-size: 18px;
+      }
     }
     .right {
-      flex: 1;
-      background: #ff547b;
+      width: 136px;
+      background-color: #41a1f7;
       height: 50px;
       text-align: center;
       color: white;

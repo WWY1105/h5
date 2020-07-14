@@ -506,12 +506,33 @@ export default {
                 document.querySelector('#inputId').scrollIntoView();
             }, 400)
         },
+        getPayMode() {
+            let _self = this;
+            if (_self.$route.query.id || _self.$route.query.guestid) {
+                _self.$http.get("/shop/" + (_self.$route.query.id || _self.$route.query.guestid) + "/paymode", {
+                    key: {
+                        "type": _self.getVersion()
+                    }
+                }).then(response => {
+                    if (response.body.code == 200) {
+                        if (response.body.result.oasis) {
+                            _self.authorFuiou();
+                            return;
+                        }
+                        _self.payment = response.body.result;
+
+                    } else {
+
+                    }
+                });
+            }
+
+        },
         initFn() {
             let _self = this;
             let para = {};
-            // para.type = this.getVersion() == "WXPAY" ? "wx" : "ali";
             let ua = window.navigator.userAgent.toLowerCase();
-            // alert(this.getVersion())
+
             if (_self.getVersion() == "WXPAY") {
                 para.type = "WXPAY";
             }
@@ -553,6 +574,7 @@ export default {
                             if (_self.init.existRemindBenefit) {
                                 _self.addVip();
                             }
+                             _self.getPayMode()
                         }
 
                         localStorage.setItem("userId", _self.init.user.id);
@@ -618,7 +640,7 @@ export default {
                             });
 
                             // 判断是否是会员并且有账单,都满足,直接跳到策略页面
-                          
+
                             // 设置一个cookie,一段时间内需要直接跳转策略
                             // if (!sessionStorage.getItem('jumpFlag')) {
                             //     if ((data.result.memberGradeName && data.result.preCheckData && data.result.preCheckData.menus) || (data.result.memberGradeName && data.result.preCheckData && data.result.preCheckData.amount)) {
@@ -704,7 +726,7 @@ export default {
                             j_son.promoteId = _self.$route.query.pid;
                         }
                         this.$http
-                            .post("/membership",j_son)
+                            .post("/membership", j_son)
                             .then(response => {
                                 let data = response.body;
                                 if (data.code == 200) {
