@@ -80,12 +80,20 @@ export default {
             data: "",
             payment: "",
             count: 1,
-            picUrl_Flag: false
+            picUrl_Flag: false,
+            shareUrl:''
         }
     },
-
+    beforeRouteEnter(to, from, next) {
+        //   console.log(from)
+        if (from.name == 'Mall') {
+            sessionStorage.setItem('canShare', false)
+        } else {
+            sessionStorage.setItem('canShare', true)
+        }
+        next()
+    },
     beforeCreate() {
-
         this.$http.get("/shop/" + (this.$route.query.id || this.$route.query.guestid) + "/paymode", {
             key: {
                 "type": this.getVersion()
@@ -103,9 +111,19 @@ export default {
     },
     created() {
         this.initFn();
+        if(location.href.indexOf('canNotshare')>0){
+            this.shareUrl=location.href.split('&canNotshare')[0]
+            console.log(location.href.split('&canNotshare'))
+        }else{
+            this.shareUrl=location.href
+        }
+      
 
     },
     methods: {
+        close() {
+            alert('gua')
+        },
         jia() {
             this.count += 1;
         },
@@ -117,7 +135,6 @@ export default {
             }
         },
         picUrl_Load() {
-            console.log('picUrl_Load')
             this.picUrl_Flag = true;
         },
         // 券使用方法
@@ -168,20 +185,43 @@ export default {
                     result1.jsApiList = [
                         'hideMenuItems',
                         'onMenuShareAppMessage',
-                        'onMenuShareTimeline'
                     ];
+
                     wx.config(result1);
+                    let menuList = [];
+                    // alert(_self.$route.query.canNotshare)
+                    if (_self.$route.query.canNotshare==undefined||_self.$route.query.canNotshare=='undefined') {
+                    //    可以分享
+                       menuList = ["menuItem:copyUrl"]
+                    } else {
+                        // 不能分享
+                         menuList = [
+                            "menuItem:copyUrl",
+                            "menuItem:share:timeline", // 分享到朋友圈
+                            "menuItem:share:appMessage",
+                            "menuItem:share:qq",
+                            'menuItem:share:QZone'
+                        ] // 复制链接"] // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
+                       wx.hideAllNonBaseMenuItem()
+                    }
                     wx.ready(function () {
+
                         wx.hideMenuItems({
-                            menuList: ["menuItem:copyUrl"] // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
+                            menuList:menuList,
+                            success:()=>{
+                            },
+                            fail:(res)=>{
+                            }
                         });
+
                         console.log('分享')
                         console.log(_self.data)
+
                         // 分享朋友
                         wx.onMenuShareAppMessage({
                             title: _self.data.title + "；仅剩" + _self.data.stock + '份', // 分享标题
                             desc: _self.data.brandName ? _self.data.brandName + "秒杀专场" : "秒杀专场", // 分享描述
-                            link: location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                            link: _self.shareUrl+'&canNotshare=false', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: _self.data.picUrl, // 分享图标
                             type: '', // 分享类型,music、video或link，不填默认为link
                             dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
@@ -196,7 +236,7 @@ export default {
                         // 分享到朋友圈
                         wx.onMenuShareTimeline({
                             title: _self.data.title + "；仅剩" + _self.data.stock + '份', // 分享标题
-                            link: location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+                            link: _self.shareUrl+'&canNotshare=false', // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
                             imgUrl: _self.data.picUrl, // 分享图标
                             success: function () {
                                 // 用户确认分享后执行的回调函数

@@ -124,10 +124,7 @@ Vue.http.interceptors.push(function (request) {
         } else if (response.body.code == 400000) {
           location.href = "error.html#7";
         } else if (response.body.code == 403060) {
-          console.log('00000')
-          // alert(location.hash.split("?")[0]!='#/mallDetail')
-          
-          if(location.hash.split("?")[0]!='#/vip'&&location.hash.split("?")[0]!='#/upgrade'&&location.hash.split("?")[0]!='#/mallDetail'){
+         if(location.hash.split("?")[0]!='#/vip'&&location.hash.split("?")[0]!='#/upgrade'&&location.hash.split("?")[0]!='#/mallDetail'){
             location.href = "bind.html?" + location.hash.split("?")[1];
             return false;
           } 

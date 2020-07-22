@@ -43,6 +43,7 @@
       },
       redirectFn(id) {
         this.$route.query.aid = id;
+        this.$route.query.canNotshare=false;
         this.$router.push({path: '/mallDetail', query: this.$route.query});
       }
     }
