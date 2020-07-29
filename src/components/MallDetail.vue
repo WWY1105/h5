@@ -122,7 +122,7 @@ export default {
     },
     methods: {
         close() {
-            alert('gua')
+            // alert('gua')
         },
         jia() {
             this.count += 1;
