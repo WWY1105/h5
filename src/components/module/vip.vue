@@ -280,22 +280,19 @@ export default {
     },
     methods: {
         bindFn() {
+            console.log('hfuiafhdasiofhdosfhsdo')
             let _self = this;
             this.$bind({
                 title: "绑定手机号",
                 text: "绑定手机号后，获得更多权益",
                 submit: function () {
-                    // _self.submitFn(_self.activeIndex);
-                    // _self.$emit('bindFn');
-                    console.log('提交售价好')
-                    // _self.submitFn(_self.activeIndex)
-                    // _self.getData()
-                    window.location.reload()
+                    // window.location.reload()
+                    _self.redirectUser()
 
                 }
             })
         },
-
+       
         showFn() {
             this.$set(this, "show", !this.show);
         },
@@ -489,7 +486,7 @@ export default {
 
             if (!payment) {
                 _self.$message("提示", "品牌暂未开通支付，详情请咨询服务员。", function () {});
-                 _self.$loading.close();
+                _self.$loading.close();
                 return;
             }
 

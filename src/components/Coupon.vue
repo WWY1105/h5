@@ -216,9 +216,9 @@
             if (response.body.code == 200) {
               this.data[this.type[index]] = response.body.result;
             } else {
-              // this.$el.querySelector('.load-more').style.display = 'none';
+             
               this.data[this.type[index]] = {total: 0, page: 0, count: 20};
-              //console.log(response.body.message);
+            
             }
           });
         }

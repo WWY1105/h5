@@ -3,6 +3,7 @@
     <div class="selfpay" id='selfpay'>
         <div class="second-pay">
             <div>
+                <!-- 顶部用户信息start -->
                 <div class="userHeader" v-if="!init.memberGradeName">
                     <div class="header_left">
                         <img :src="init.user.avatarUrl" v-if="init.user.avatarUrl" style="width:1.6rem;height:1.6rem;border-radius:5rem ;" alt />
@@ -126,6 +127,7 @@
                         </div>
                     </div>
                 </div>
+                <!-- 顶部用户信息end -->
             </div>
             <div class="other-pay" v-if="init.checkType !='102'">
                 <div class="state" v-if="init.order" v-on:click="stateFn()">
@@ -172,18 +174,12 @@
                         </div>
                         <div class="modal-phone" style="margin:0">
                             <div v-if="qrcode">
-                                <!-- <div v-if="ccode">不强制领卡 -->
                                 <div>
                                     <input type="tel" v-model="phone1.phone" placeholder="输入您的手机号码" maxlength="11" @blur="temporaryRepair()" />
                                     <input type="tel" placeholder="输入收到的验证码" v-model="phone1.validateCode" maxlength="6" @blur="temporaryRepair()" />
                                     <div class="input-text" v-on:click.stop="validate1Fn">{{phone1.text}}</div>
                                     <div v-on:click.stop="bindPhone1" class="v-button">加入会员</div>
                                 </div>
-
-                                <!--不强制领卡 <div class="qrcode" v-if="qrcode" style="display: flex;flex-direction: column;align-items: center;">
-                                    <img v-if="!ccode" style="width:6.4rem" :src="qrcode.url" />
-                                    <img src="/sui_assets/img/addVip/casblk.png" style="margin-top: 0.55rem ;width:6rem ;height:1.15rem ;" alt="">
-                                </div> -->
                             </div>
                             <div v-else>
                                 <input type="tel" v-model="phone1.phone" placeholder="输入您的手机号码" maxlength="11" @blur="temporaryRepair()" />
@@ -574,7 +570,7 @@ export default {
                             if (_self.init.existRemindBenefit) {
                                 _self.addVip();
                             }
-                             _self.getPayMode()
+                            _self.getPayMode()
                         }
 
                         localStorage.setItem("userId", _self.init.user.id);

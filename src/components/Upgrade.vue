@@ -129,6 +129,7 @@ export default {
                             if (this.data.strategies[i].type == 'FREE') {
                                 this.$message("操作成功！", "请在“会员中心”查看权益，使用自助买单可自动抵用优惠。", function () {
                                     _self.redirectUser();
+                                    return;
                                 })
                             }
                         }

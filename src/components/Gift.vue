@@ -205,7 +205,6 @@ export default {
                     text: '获取验证码',
                     able: true
                 };
-
                 // 微信扫的 显示公众号二维码
                 let ua = window.navigator.userAgent.toLowerCase();
                 if (ua.match(/MicroMessenger/i) == 'micromessenger') {
