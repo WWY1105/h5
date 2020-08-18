@@ -2247,7 +2247,7 @@ function activityDetail() {
                 case 405017:
                     alert(data.message);
                     if (key_json.guestid) {
-                        ajaxUrl("more.html")
+                        // ajaxUrl("more.html")
                     } else {
                         ajaxUrl("entrance.html");
                     }
@@ -2400,7 +2400,7 @@ function couponActivity() {
                 case 405017:
                     alert(data.message);
                     if (key_json.guestid) {
-                        ajaxUrl("more.html")
+                        // ajaxUrl("more.html")
                     } else {
                         ajaxUrl("entrance.html");
                     }

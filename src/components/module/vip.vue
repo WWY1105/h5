@@ -388,14 +388,9 @@ export default {
         },
         redirectUser() {
             let _self = this;
-            let json = {};
-            if (_self.$route.query.id) {
-                json.id = _self.$route.query.id;
-            } else {
-                json.guestid = _self.$route.query.guestid;
-            }
+            let json =_self.$route.query;
             _self.$router.push({
-                path: 'user',
+                path: '/user',
                 query: json
             });
         },

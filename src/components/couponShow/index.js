@@ -9,7 +9,10 @@ Coupon.install = function (Vue) {
   * type 'earned'表示已领取的券，其他为未领取
   *
   * */
-  Vue.prototype.$couponShow = function (e, item, type) {
+  Vue.prototype.$couponShow = function (e, item, type,showFlag) {
+    if(!showFlag){
+
+    }
     if ("deletefont" == e.target.classList[0]) return;
     if (type != 'earned') {
       let path = "/couponDetail.html?cid=" + item.id + "&";
@@ -22,10 +25,6 @@ Coupon.install = function (Vue) {
         path += '&type=reward';
       }
       location.href = path;
-
-
-      // this.$route.query.cid = id;
-      // this.$router.push({path: "/couponDetail", query: this.$route.query});
       return;
     }
     if (e.target.getElementsByClassName("a4002").length || e.target.getElementsByClassName("a4003").length) {
@@ -68,6 +67,7 @@ Coupon.install = function (Vue) {
           }
         });
       },
+      
       template: " <transition  name=\"bounceUp\"> <div @touchmove.prevent class=\"popup popup-coupon\" v-if='data'>\n" +
       "    <div class=\"liner\"><span class=\"text2\">{{category[data.category]}}</span><span class=\"md-close\" v-on:click.stop='data=false'></span></div>\n" +
       "    <div class='overflow'>" +

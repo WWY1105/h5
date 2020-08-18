@@ -2055,9 +2055,9 @@ function couponActivity() {
           break;
         case 405017:
           alert(data.message);
-          alert('111')
+          // alert('111')
           if (key_json.guestid) {
-            ajaxUrl("more.html")
+            // ajaxUrl("more.html")
           } else {
             chooseIndex();
           }

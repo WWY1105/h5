@@ -1,95 +1,263 @@
 <template>
-  <div class="mallRecord">
+<div class="mallRecord">
     <div class="" v-if="data">
-      <div class="g-tips1">
-        欲使用已购买的券，请点击券面上的“使用方法”查看
-      </div>
-      <div class="buy-box" v-for="item in data.items" v-on:click="couponFn($event,item.coupons[0])">
-        <div class="left">购买时间：{{item.time}}</div>
-        <div class="right"> 花费金额：<span style="color: #e4020f">{{item.amount}}</span>元</div>
-        <div class="coupon_show" v-for="coupon in item.coupons" :id="coupon.id">
-          <div class="i-flex i-coupon">
-            <div class="a4001"  v-bind:class="'a'+coupon.state"  style="padding: 22px;position: absolute;top: -.1rem;left: 0"></div>
-            <div class="item">
-              <div class="i-flex">
-
-                <div v-if="coupon.category=='901'" style="padding-left: 10px">
-                  <div class="name" style="padding-top: 0.4rem">{{coupon.name}}</div>
-                  <!--<div><span class="amount0">{{coupon.amount - coupon.currentAmount}}</span></div>-->
-                </div>
-                <div v-if="coupon.category=='902'" style="padding-left: 10px">
-                  <div class="name" style="padding-top: 0.4rem">{{coupon.name}}</div>
-                  <div><span class="amount0">现价￥{{coupon.currentAmount}}</span><span
-                    class="through">{{coupon.amount}}</span></div>
-                </div>
-                <div v-if="coupon.category=='908'" style="padding-left: 10px">
-                  <div class="name" style="padding-top: 0.4rem">{{coupon.name}}</div>
-                </div>
-
-                <div v-if="coupon.category=='904'" style="padding-left: 10px">
-                  <div class="name" style="padding-top: 0.4rem">{{coupon.value}}</div>
-                  <div v-if="coupon.amount"><span class="amount0">价值{{coupon.amount}}元</span></div>
-                </div>
-                <div v-if="coupon.category == '909'" style="padding-left: 10px">
-                  <div class="name" style="padding-top: 0.4rem;">{{coupon.value}}</div>
-                  <div class="amount0">
-                    {{ coupon.amount}} <span style="font-size: .6rem">折</span>
-                  </div>
-                </div>
-                <div v-if="coupon.category=='903'" style="padding-left: 10px">
-                  <div class="name" style="padding-top: 0.4rem">全场{{coupon.name}}</div>
-                </div>
-              </div>
-            </div>
-            <div class="item" style="border-left: 1px dashed #ffdede;padding:1.1rem .5rem;">
-              <span class="i-btn grey">使用方法</span>
-            </div>
-          </div>
-
-          <div class="addon">
-            <span>{{coupon.times}}</span><span>{{coupon.useStrategy}}</span></div>
+        <div class="g-tips1">
+            欲使用已购买的券，请点击券面上的“使用方法”查看
         </div>
-      </div>
-      <div v-if="data.page<data.pageSize" class="text-center"
-           style="color: #ff555f;padding-top: .8rem " v-on:click="pageFn">查看更多
-      </div>
+        <div class="buy-box" v-for="item in data.items">
+            <div class="left">购买时间：{{item.time}}</div>
+            <div class="right"> 花费金额：<span style="color: #e4020f">{{item.amount}}</span>元</div>
+            <div class="coupon_show" v-for="coupon in item.coupons" :id="coupon.id" v-on:click="couponFn($event,coupon.id)">
+                <div class="i-flex i-coupon">
+                    <div class="a4001" v-bind:class="'a'+coupon.state" style="padding: 22px;position: absolute;top: -.1rem;left: 0"></div>
+                    <div class="item">
+                        <div class="i-flex">
+
+                            <div v-if="coupon.category=='901'" style="padding-left: 10px">
+                                <div class="name" style="padding-top: 0.4rem">{{coupon.name}}</div>
+                                <!--<div><span class="amount0">{{coupon.amount - coupon.currentAmount}}</span></div>-->
+                            </div>
+                            <div v-if="coupon.category=='902'" style="padding-left: 10px">
+                                <div class="name" style="padding-top: 0.4rem">{{coupon.name}}</div>
+                                <div><span class="amount0">现价￥{{coupon.currentAmount}}</span><span class="through">{{coupon.amount}}</span></div>
+                            </div>
+                            <div v-if="coupon.category=='908'" style="padding-left: 10px">
+                                <div class="name" style="padding-top: 0.4rem">{{coupon.name}}</div>
+                            </div>
+
+                            <div v-if="coupon.category=='904'" style="padding-left: 10px">
+                                <div class="name" style="padding-top: 0.4rem">{{coupon.value}}</div>
+                                <div v-if="coupon.amount"><span class="amount0">价值{{coupon.amount}}元</span></div>
+                            </div>
+                            <div v-if="coupon.category == '909'" style="padding-left: 10px">
+                                <div class="name" style="padding-top: 0.4rem;">{{coupon.value}}</div>
+                                <div class="amount0">
+                                    {{ coupon.amount}} <span style="font-size: .6rem">折</span>
+                                </div>
+                            </div>
+                            <div v-if="coupon.category=='903'" style="padding-left: 10px">
+                                <div class="name" style="padding-top: 0.4rem">全场{{coupon.name}}</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item" style="border-left: 1px dashed #ffdede;padding:1.1rem .5rem;">
+                        <span class="i-btn grey">使用方法</span>
+                    </div>
+                </div>
+
+                <div class="addon">
+                    <span>{{coupon.times}}</span><span>{{coupon.useStrategy}}</span></div>
+            </div>
+        </div>
+        <div v-if="data.page<data.pageSize" class="text-center" style="color: #ff555f;padding-top: .8rem " v-on:click="pageFn">查看更多
+        </div>
     </div>
     <div class="list-empty" v-else>
         <img src="/sui_assets/img/grounpon/sad.svg">
 
         <div>还没有购买任何东西哦~</div>
     </div>
+    <!-- ------------------------------ -->
+    <transition name="bounceUp">
+        <div class="popup popup-coupon modal-in" v-if='use'>
+            <div class="liner"><span class="text2">{{category[use.category]}}</span><span class="md-close" v-on:click.stop='use=false'></span></div>
+            <div class="overflow">
+                <div class="coupon-show-box">
+                    <div class="name_add">
+                        <div class="name">{{use.name}}</div>
+                        <div class="code">{{use.code}}</div>
+                        <div id="my-code">
+                        </div>
+                    </div>
+                </div>
+                <div class="coupons-detail">
+                    <h4>使用说明</h4>
+                    <div class="item" v-if="use.amount">
+                        <div class="left" v-if="use.category == '902' || use.category == '9021'">价值：</div>
+                        <div class="right" v-if="use.category == '902' || use.category == '9021'">
+                            原价:{{use.currentAmount}}元，现价:{{use.amount}}元1
+                        </div>
+                        <div class="right" v-else-if="use.category == '902' || use.category == '9021'">{{use.amount}}元</div>
+                    </div>
+                    <div class="item">
+                        <div class="left">使用条件：</div>
+                        <div class="right">{{use.useStrategy}}
+                            <div>{{((use.category != "904" && use.countLimit) ? '每次消费最多可使用' + use.countLimit + "张" : "")}}</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="left">有效期：</div>
+                        <div class="right">{{use.times}}</div>
+                    </div>
+                    <div class="item">
+                        <div class="left">详情：</div>
+                        <div class="right">
+                            <div v-for="item in use.content">{{item}}</div>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="left">备注：</div>
+                        <div class="right">
+                            <div>本券不找零，不兑现，不做外卖使用</div>
+                            <div>本活动在法律允许范围内商家拥有最终解释权</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </transition>
 
-  </div>
-
+</div>
 </template>
 
 <script>
-  export default {
+export default {
     name: "",
     data() {
-      return {
-        data: "",
-      }
+        return {
+            data: "",
+            use: null,
+            category: {
+                "901": "本券买单时自动抵用",
+                "902": "本券在买单时出示使用",
+                "9021": "本券在买单时出示使用",
+                "9011": "本券买单时自动抵用",
+                "904": "到店出示给服务员即可使用",
+                "9031": "到店出示给服务员即可使用",
+                "903": "本券买单时自动抵用"
+            }
+        }
     },
     created() {
-      // this.$couponShow("04427e38cd4549d6879de79d39eff928","earned");
-      this.$http.get("/mall/guest/" + (this.$route.query.id || this.$route.query.guestid) + "/record").then(response => {
-        if (response.body.code == 200) {
-          this.data = response.body.result;
-        }
-      });
+        // this.$couponShow("04427e38cd4549d6879de79d39eff928","earned");
+        this.$http.get("/mall/guest/" + (this.$route.query.id || this.$route.query.guestid) + "/record").then(response => {
+            if (response.body.code == 200) {
+                this.data = response.body.result;
+            }
+        });
     },
     methods: {
-      couponFn(event,id){
-        this.$couponShow(event,id,'earned')
-      }
-    }
-
-  }
+        couponFn(event, id) {
+            // this.$couponShow(event, id, 'earned')
+            this.$http.get("/benefit/userCoupon/" + id).then(response => {
+                let data = response.body;
+                if (data.code == 200) {
+                    this.use = data.result;
+                    this.$nextTick(function () {
+                        // this.$loading.close();
+                        if (data.result.code) {
+                            let qrcode = new QRCode(document.getElementById("my-code"), {
+                                width: 100,
+                                height: 100
+                            });
+                            //当面付
+                            qrcode.makeCode(data.result.id);
+                        }
+                    })
+                }
+            });
+        }
+    },
+   
+}
 </script>
 
 <style lang="scss">
-  @import "../sui_assets/scss/mallRecord.scss";
+@import "../sui_assets/scss/mallRecord.scss";
 
+.popup-coupon {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    z-index: 10400;
+    background: #fff;
+    box-sizing: border-box;
+    font-size: 14px;
+    top: 10%;
+    bottom: 0;
+}
+
+.popup-coupon .liner {
+    background: linear-gradient(to right, #f3505d, #b63603);
+    padding: .5rem 1rem;
+    color: #fff;
+}
+
+.popup-coupon .liner .md-close {
+    float: right;
+}
+
+.popup-coupon .liner .md-close:before {
+    content: "";
+    background: url(/sui_assets/img/pay/close-white.svg) center no-repeat;
+    padding: 16px;
+    position: inherit;
+    top: 0;
+    border-width: 0;
+    border-radius: 50%;
+    left: 0;
+    right: 0;
+    width: 1px;
+    margin: auto;
+}
+
+.popup-coupon .overflow {
+    max-height: 94%;
+    overflow-y: auto;
+}
+
+.popup-coupon .overflow .coupon-show-box {
+    border: 1px solid #e3e3e3;
+    margin: 1rem 1rem .5rem;
+    text-align: center;
+}
+
+.popup-coupon .overflow .coupon-show-box .name_add .name {
+    background: #f0f0f0;
+    line-height: 1.8;
+    font-size: 1rem;
+    margin: .7rem;
+}
+
+.popup-coupon .overflow .coupon-show-box .name_add .code {
+    margin: 0 .6rem;
+}
+
+.popup-coupon .overflow .coupon-show-box .name_add #my-code {
+    margin: 8px auto;
+}
+
+.popup-coupon .overflow .coupon-show-box .name_add #my-code img {
+    margin: auto;
+}
+
+.popup-coupon .overflow .coupons-detail {
+    font-size: .6rem;
+    padding: 1rem;
+}
+
+.popup-coupon .overflow .coupons-detail h4 {
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.popup-coupon .overflow .coupons-detail .item {
+    margin: .4rem;
+    clear: both;
+    text-align: left;
+}
+
+.popup-coupon .overflow .coupons-detail .item .left {
+    float: left;
+    width: 3rem;
+    text-align: right;
+    color: #aaa;
+}
+
+.popup-coupon .overflow .coupons-detail .item .right {
+    margin-left: 3.1rem;
+    color: #000;
+}
+
+/*# sourceMappingURL=coupon.css.map */
 </style>
