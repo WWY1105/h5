@@ -241,7 +241,6 @@
     beforeCreate: function () {
       var _self = this;
       if (!key_json.aid) {
-        alert(location.href);
         ajaxUrl("groupee.html?gid=" + key_json.id);
         return;
       }

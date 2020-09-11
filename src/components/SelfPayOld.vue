@@ -1129,7 +1129,12 @@
         switch (item.activityCategory) {
           //送券
           case '6004':
-            this.ajaxUrl('couponActivity.html?aid=' + item.activityId);
+             let json=this.$route.query;
+                    json.aid = item.activityId;
+                    that.$router.push({
+                        path: '/couponActivity',
+                        query: json
+                    })
             break;
           //套餐
           case "6015":
@@ -1335,7 +1340,7 @@
                 alert("服务员未响应");
                 _self.initFn();
                 break;
-              //coupon state
+              
               case "500100":
               case "500101":
                 _self.getCouponData();

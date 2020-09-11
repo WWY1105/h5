@@ -69,20 +69,30 @@
         <div class="right" :class="payment&&data.usable?'':'disabled'" v-on:click="submitFn"><span v-if="data.stock===0">已售完</span><span v-else>立即购买</span>
         </div>
     </div>
+
+          <!-- 二维码 -->
+
+    <linkPicUrl :show="codeShow" />
 </div>
 </template>
 
 <script>
+import linkPicUrl from './module/linkPicUrl/linkPicUrl'
 export default {
     name: "",
     data() {
         return {
+            codeShow:false,
+            linkPicUrl:'',
             data: "",
             payment: "",
             count: 1,
             picUrl_Flag: false,
             shareUrl:''
         }
+    },
+      components: {
+        linkPicUrl
     },
     beforeRouteEnter(to, from, next) {
         //   console.log(from)
@@ -94,6 +104,10 @@ export default {
         next()
     },
     beforeCreate() {
+           // 判断是否有pid
+        if (this.$route.query.pid) {
+            this.linkPicUrl = this.$cookie.get(this.$route.query.pid)
+        }
         this.$http.get("/shop/" + (this.$route.query.id || this.$route.query.guestid) + "/paymode", {
             key: {
                 "type": this.getVersion()
@@ -110,6 +124,10 @@ export default {
 
     },
     created() {
+          // 判断是否有pid
+        if (this.$route.query.pid) {
+            this.linkPicUrl = this.$cookie.get(this.$route.query.pid)
+        }
         this.initFn();
         if(location.href.indexOf('canNotshare')>0){
             this.shareUrl=location.href.split('&canNotshare')[0]
@@ -162,12 +180,10 @@ export default {
                     this.$message("提示", "商品已下架", function () {
                         let json = that.$route.query;
                         that.$router.push({
-                            path: '/mall',
+                            path: 'mall',
                             query: json
                         })
                     });
-                } else {
-
                 }
             });
         },
@@ -301,7 +317,10 @@ export default {
                     location.href = response.body.result.url;
                     return;
                 }
-                switch (_self.payment.payMode) {
+                if(_self.linkPicUrl){
+                    _self.codeShow=true
+                }else{
+                      switch (_self.payment.payMode) {
                     case "1005":
                         let js = response.body.result.js;
                         let pay = response.body.result.pay;
@@ -354,6 +373,8 @@ export default {
                         });
                         break;
                 }
+                }
+              
             });
         },
         cancel(orderId) {

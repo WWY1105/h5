@@ -164,22 +164,27 @@
                 <div><img v-bind:src='_self.imgUrl' alt="" ref="img"></div>
                 <div>长按识别<br>查看获赠权益</div>
             </div>
-            <router-link class="item" :to="{ path: 'user', query:  $route.query }">
+            <div @click="goto('user')" class="item" >
                 <div class='close'>立即查看</div>
-            </router-link>
+            </div>
             <div class="closed" v-on:click="closed"></div>
         </div>
     </div>
+     <!-- 二维码 -->
+
+    <linkPicUrl :show="codeShow" />
 </div>
 </template>
 
 <script>
 import Vue from 'vue'
-
+import linkPicUrl from './module/linkPicUrl/linkPicUrl'
 export default {
     name: "Gift",
     data() {
         return {
+            linkPicUrl:'',
+            codeShow:false,
             gift: '',
             phone1: "",
             show: false,
@@ -190,8 +195,18 @@ export default {
 
         }
     },
+       components: {
+        linkPicUrl
+    },
     beforeCreate() {
         var _self = this;
+
+   // 判断是否有pid
+        if (this.$route.query.pid) {
+            this.linkPicUrl = this.$cookie.get(this.$route.query.pid)
+        }
+
+
         let url;
         if (this.$route.query.aid) {
             url = "/activities/gift/" + this.$route.query.aid + "/guest/" + (this.$route.query.id || this.$route.query.guestid)
@@ -277,6 +292,9 @@ export default {
 
     },
     methods: {
+        goto(path){
+         this.$router.push({path,query:this.$route.query})
+      },
         // 券详情页
         couponDetailFn: function (index) {
             let item = this.gift.benefits[index];
@@ -342,8 +360,14 @@ export default {
                     let data1 = response.data;
                     if (data1.code == 200) {
                         console.log(data1);
-                        // 隐藏手机框 显示领取成功弹框
-                        this.show = true
+                        if(this.linkPicUrl){
+                            this.codeShow=true;
+                        }else{
+                              // 隐藏手机框 显示领取成功弹框
+                        this.show = true;
+                        }
+                      
+                        
                     } else {
                         this.$toast(data1.message);
                         // alert(data)

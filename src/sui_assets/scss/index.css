@@ -211,7 +211,7 @@ th {
 
 html body {
   background: #ffffff;
-  font-size: .6rem !important;
+  /* font-size: .6rem !important; */
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -webkit-user-select: none;

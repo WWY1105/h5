@@ -400,12 +400,14 @@
   height: 10.1rem;
   text-align: center; }
   .vipModule .service-wrapper .service-item1 {
-    background: url(/sui_assets/img/newVip/line-card.png) center left no-repeat/contain;
+    background: url(/sui_assets/img/newVip/line-card.png) center left no-repeat;
+    background-size: contain;
     height: 10.1rem;
     width: 48%;
     display: inline-block; }
   .vipModule .service-wrapper .service-item2 {
-    background: url(/sui_assets/img/newVip/reserve-card.png) center right no-repeat/contain;
+    background: url(/sui_assets/img/newVip/reserve-card.png) center right no-repeat;
+    background-size: contain;
     float: right;
     height: 10.1rem;
     width: 48%;

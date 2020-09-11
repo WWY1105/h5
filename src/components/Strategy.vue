@@ -444,7 +444,8 @@
             </div>
         </div>
     </div>
-
+       <!-- 二维码 -->
+    <!-- <linkPicUrl :linkPicUrl="linkPicUrl" /> -->
 </div>
 </template>
 
@@ -452,6 +453,7 @@
 import Vue from 'vue'
 import 'swiper/dist/css/swiper.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+// import linkPicUrl from './module/linkPicUrl/linkPicUrl'
 import {
     Popup,
     Collapse,
@@ -473,11 +475,13 @@ import 'vant/lib/toast/style';
 export default {
     name: "Strategy",
     components: {
-        Popup
+        Popup,
+        // linkPicUrl
     },
     data() {
         const _self = this;
         return {
+            linkPicUrl:'',
             // 本单账单
             menuData: {
                 menus: []
@@ -598,6 +602,10 @@ export default {
 
     },
     created() {
+           // 判断是否有pid
+        if (this.$route.query.pid) {
+            this.linkPicUrl = this.$cookie.get(this.$route.query.pid)
+        }
         this.initFn();
         this.getMenu()
     },
@@ -1285,6 +1293,7 @@ export default {
                         return;
                     }
                 }
+           
                 switch (mode.payMode) {
                     case "1005":
                         let js = data.result.js;
@@ -1335,7 +1344,8 @@ export default {
                         break;
                 }
 
-            }).catch(() => {
+            }).catch((res) => {
+                console.log(res)
                 var lockTimer = setTimeout(() => {
                     _self.lock = false
                     console.log("catch: " + _self.lock)

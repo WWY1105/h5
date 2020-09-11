@@ -6,17 +6,23 @@
     </div>
     <div class="separate"></div>
     <vip-module v-bind:data="data" :payment="payment" v-bind:upgrade="true"></vip-module>
+
+      <!-- 二维码 -->
+    <linkPicUrl :show="codeShow" />
 </div>
 </template>
 
 <script>
 import vipModule from "./module/vip"
 
+import linkPicUrl from './module/linkPicUrl/linkPicUrl'
 export default {
     name: 'upgrade',
     data() {
         const self = this;
         return {
+            codeShow:false,
+            linkPicUrl:'',
             data: "",
             payment: "",
             checked: true,
@@ -38,10 +44,16 @@ export default {
         }
     },
     components: {
-        vipModule
+        vipModule,
+        linkPicUrl
     },
 
     created: function () {
+         // 判断是否有pid
+        if (this.$route.query.pid) {
+            this.linkPicUrl = this.$cookie.get(this.$route.query.pid);
+          
+        }
         this.getData();
         this.getModeFn();
     },
@@ -193,9 +205,14 @@ export default {
                     let data = response.body;
                     _self.$loading.close();
                     if (data.code == 200) {
-                        _self.$message("操作成功！", "请在“会员中心”查看权益，使用自助买单可自动抵用优惠。", function () {
+                        if(_self.linkPicUrl){
+                            _self.codeShow=true
+                        }else{
+                             _self.$message("操作成功！", "请在“会员中心”查看权益，使用自助买单可自动抵用优惠。", function () {
                             _self.redirectUser();
                         });
+                        }
+                       
                     } else {
                         alert(data.message);
                     }
@@ -292,7 +309,11 @@ export default {
             switch (item.category) {
                 //送券
                 case '6004':
-                    this.ajaxUrl('couponActivity.html?aid=' + item.activityId);
+                    json.aid = item.activityId;
+                    that.$router.push({
+                        path: '/couponActivity',
+                        query: json
+                    })
                     break;
                     //套餐
                 case "6015":

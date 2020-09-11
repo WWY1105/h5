@@ -94,20 +94,19 @@
     <div class="box">
         <div class="account-title"></div>
         <div class="account-wrapper">
-            <router-link :to="{ path: 'activity', query:  $route.query}" class="account-item account-item1">
+            <div  @click="goto('activity')"   class="account-item account-item1">
                 <div class="title">热门活动</div>
                 <div>海量活动等你来</div>
-            </router-link>
-            <router-link :to="{ path: 'charge', query:  $route.query}" class="account-item account-item2">
+            </div>
+            <div  @click="goto('charge')"  class="account-item account-item2">
                 <div class="title">充值回馈</div>
                 <div>充的多送的多</div>
-            </router-link>
-            <router-link :to="{ path: 'exchange', query:  $route.query}" class="account-item account-item3">
+            </div>
+            <div  @click="goto('exchange')"   class="account-item account-item3">
                 <div class="title">会员商城</div>
                 <div>积分兑换特价秒杀</div>
-            </router-link>
+            </div>
         </div>
-
     </div>
     <!-- 门店特权 -->
     <div class="box" v-if="data.shopActivities">
@@ -126,10 +125,10 @@
     <div class="box" v-if="data.serviceActivities">
         <div class="service-title"></div>
         <div class="service-wrapper">
-            <router-link :to="{ path: 'userLine', query:  $route.query}" class="service-item1" v-if="data.serviceActivities.includes('6060')">
-            </router-link>
-            <router-link :to="{ path: 'userReserve', query:  $route.query}" class="service-item2" v-if="data.serviceActivities.includes('6054')">
-            </router-link>
+            <div @click="goto('userLine')"  class="service-item1" v-if="data.serviceActivities.includes('6060')">
+            </div>
+            <div @click="goto('userReserve')"  class="service-item2" v-if="data.serviceActivities.includes('6054')">
+            </div >
         </div>
     </div>
     <!-- 会员级别 -->
@@ -161,9 +160,9 @@
             </div>
         </div>
         <div class="uploadBtnBox" v-if="!upgrade&&canUpgrade">
-            <router-link :to="{ path: 'vip', query:  $route.query}" class="upgrade-btn" style="width:100%!important">
+            <div @click="goto('vip')"  class="upgrade-btn" style="width:100%!important">
                 <span v-if="data.currentGradeName">您当前是{{data.currentGradeName}}</span><span v-else>您还不是本店会员</span>，升级为更高级别会员
-            </router-link>
+            </div>
         </div>
     </div>
 
@@ -230,7 +229,7 @@ export default {
                 "6017": "充值免单",
                 '6013': '评价立减'
             },
-            payment: "",
+            // payment: "",
             picker3: {
                 anchor: [],
                 textTitle: '日期选择',
@@ -255,7 +254,7 @@ export default {
                     }
                 })
             }
-            console.log('变')
+            
             console.log(that.activeArr)
             console.log(that.notActiveArr)
         }
@@ -279,6 +278,9 @@ export default {
 
     },
     methods: {
+        goto(path){
+            this.$router.push({path,query:this.$route.query})
+        },
         bindFn() {
             console.log('hfuiafhdasiofhdosfhsdo')
             let _self = this;
@@ -292,7 +294,7 @@ export default {
                 }
             })
         },
-       
+
         showFn() {
             this.$set(this, "show", !this.show);
         },
@@ -339,7 +341,12 @@ export default {
             switch (item.category) {
                 //送券
                 case '6004':
-                    this.ajaxUrl('couponActivity.html?aid=' + item.activityId);
+
+                    json.aid = item.activityId;
+                    that.$router.push({
+                        path: '/couponActivity',
+                        query: json
+                    })
                     break;
                     //套餐
                 case "6015":
@@ -388,7 +395,7 @@ export default {
         },
         redirectUser() {
             let _self = this;
-            let json =_self.$route.query;
+            let json = _self.$route.query;
             _self.$router.push({
                 path: '/user',
                 query: json

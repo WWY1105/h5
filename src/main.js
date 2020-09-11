@@ -16,8 +16,12 @@ import './components/bind/bind.css';
 import Bind from './components/bind/index'
 import './components/couponShow/coupon.css';
 import Coupon from './components/couponShow/index'
-import vueWechatTitle from 'vue-wechat-title'
-Vue.use(vueWechatTitle)
+
+
+
+
+
+
 // Tell Vue to use the plugin
 Vue.use(VueResource)
 Vue.use(VueCookie)
@@ -42,7 +46,7 @@ router.beforeEach((to, from, next) => {
   var ua = window.navigator.userAgent.toLowerCase();
   var _id = to.query.id || to.query.guestid;
   
-  if (document.cookie.indexOf('token') < 0) {
+  if (document.cookie.indexOf('token') < 0&&location.hash.split("?")[0]!='#/dynamic') {
     auth();
   } else if (!vm.$cookie.get(_id)&&ua.match(/MicroMessenger/i) == 'micromessenger') {
     Vue.http.get("/author/guest/" + _id + "/check").then(response => {
@@ -62,10 +66,11 @@ router.beforeEach((to, from, next) => {
 
 function auth() {
   let ua = window.navigator.userAgent.toLowerCase();
+
   if (ua.match(/MicroMessenger/i) == 'micromessenger') {
     //微信授权比较复杂，跳转到专门的授权页面处理 
-      vm.$cookie.set('url', location.href);
-      location.href = '/auth.html';
+      // vm.$cookie.set('url', location.href);
+      location.href = '/auth.html?callback='+ encodeURIComponent(location.href);
   } else {
     //支付宝没有检测登陆的接口，直接授权
     window.location.href = "auth/alipay?url=" + encodeURIComponent(location.href);
@@ -124,10 +129,13 @@ Vue.http.interceptors.push(function (request) {
         } else if (response.body.code == 400000) {
           location.href = "error.html#7";
         } else if (response.body.code == 403060) {
-         if(location.hash.split("?")[0]!='#/vip'&&location.hash.split("?")[0]!='#/upgrade'&&location.hash.split("?")[0]!='#/mallDetail'){
-            location.href = "bind.html?" + location.hash.split("?")[1];
-            return false;
-          } 
+          if(location.hash){
+            if(location.hash.split("?")[0]!='#/vip'&&location.hash.split("?")[0]!='#/upgrade'&&location.hash.split("?")[0]!='#/mallDetail'&&location.hash.split("?")[0]!='#/couponActivity'){
+              location.href = "bind.html?" + location.hash.split("?")[1];
+              return false;
+            } 
+          }
+       
         }
         break;
       default:

@@ -6,7 +6,7 @@
             <img class="avatar" v-if="init.user.avatarUrl" :src="init.user.avatarUrl">
             <div class="avatar" v-else></div>
             <div class="right" v-if="init.needShowCoupons > 0" style="float:left;vertical-align: middle;">
-                <div class="level" v-if="init.memberGradeName">您是本店{{init.memberGradeName}},<router-link class="touser" :to="{ path: 'user', query: { id: $route.query.id }}">查看会员中心</router-link>
+                <div class="level" v-if="init.memberGradeName">您是本店{{init.memberGradeName}},<div @click="touser" class="touser">查看会员中心</div>
                 </div>
                 <div class="level" v-else>
                     <div class="touser2" v-on:click="addVip()"><img src="/sui_assets/img/selfPay/join.png" alt=""></div>
@@ -14,8 +14,7 @@
                 <div class="hascoupon" v-on:click="getCoupons()"><span>{{init.needShowCoupons}}</span></div>
             </div>
             <div class="right right2" v-else>
-                <!-- <div class="level" v-if="init.memberGradeName"><span>您是{{init.memberGradeName}}，</span> <router-link class="touser" :to="{ path: 'user', query: { id: $route.query.id }}"><img src="/sui_assets/img/selfPay/my.png" alt=""></router-link> </div> -->
-                <div class="level" v-if="init.memberGradeName">您是本店{{init.memberGradeName}},<router-link class="touser" :to="{ path: 'user', query: { id: $route.query.id }}">查看会员中心</router-link>
+                <div class="level" v-if="init.memberGradeName">您是本店{{init.memberGradeName}},<div @click="touser" class="touser">查看会员中心</div>
                 </div>
                 <div class="level" v-else>
                     <div class="touser2" v-on:click="addVip()"><img src="/sui_assets/img/selfPay/join.png" alt=""></div>
@@ -24,9 +23,7 @@
         </div>
         <div class="second-pay">
             <div class="fixed" v-if="init.existGratuity">
-                <!--<img class="avatar" :src="init.logo" width="30">-->
-                <!-- <span class="table"><span v-if="init.tableNo">【{{init.tableNo+ "桌"}}】</span><span
-            v-else>【前台】</span></span> -->
+
                 <span class="staff" v-if="flower.staffs" v-on:click="flowerStateFn()" :style="{'backgroundImage':'url('+ (flower.staffs[posts.index].avatarUrl||'/sui_assets/img/avatar.png')+')'}"></span>
 
                 <div class="coupontxt" v-on:click="flowerStateFn()" v-for="item in flower.benefits">
@@ -36,7 +33,7 @@
             </div>
 
             <div class="amounts">
-                <div class="num1" v-if="init.preCheckData.state == 1">
+                <div class="num1" v-if="init.preCheckData&&init.preCheckData.state == 1">
                     消费金额</br>
                     <div class="part"><span class="dollar">￥</span><span>{{init.preCheckData.amount}}</span></div>
                     <div class="nopart" v-if="init.preCheckData.nonParticationAmount > 0">(不计优惠项¥{{init.preCheckData.nonParticationAmount}})</div>
@@ -44,7 +41,7 @@
                         完成优惠买单
                     </div>
                 </div>
-                <div class="num1 num2" v-else-if="init.preCheckData.state == -1">
+                <div class="num1 num2" v-else-if="init.preCheckData&&init.preCheckData.state == -1">
                     订单已支付完成
                 </div>
                 <div class="num1 num2" style="font-size : 1rem" v-else>
@@ -568,6 +565,14 @@ export default {
         this.initFn();
     },
     methods: {
+        touser() {
+            this.$router.push({
+                path: 'user',
+                query: {
+                    id: this.$route.query.id
+                }
+            })
+        },
         initFn() {
             let _self = this;
             let para = {};
@@ -624,7 +629,7 @@ export default {
                                             let json = _self.$route.query;
                                             json.oid = _self.init.order.orderId;
                                             _self.$router.push({
-                                                path: '/strategy',
+                                                path: 'strategy',
                                                 query: json
                                             });
                                         }, 200)
@@ -640,7 +645,7 @@ export default {
                             let json = _self.$route.query;
                             json.oid = _self.init.order.orderId;
                             _self.$router.push({
-                                path: '/strategy',
+                                path: 'strategy',
                                 query: json
                             });
                         }, "确定放弃", "继续买单");
@@ -714,7 +719,7 @@ export default {
         },
         opneToast() {
             var that = this
-            if (that.init.preCheckData.state != 1) {
+            if (that.init.preCheckData && init.preCheckData.state != 1) {
                 return false;
             }
             that.submitFn();
@@ -952,7 +957,12 @@ export default {
             switch (item.activityCategory) {
                 //送券
                 case '6004':
-                    this.ajaxUrl('couponActivity.html?aid=' + item.activityId);
+                    let json = this.$route.query;
+                    json.aid = item.activityId;
+                    that.$router.push({
+                        path: 'couponActivity',
+                        query: json
+                    })
                     break;
                     //套餐
                 case "6015":
@@ -961,7 +971,7 @@ export default {
                     //充值
                 case "6002":
                     this.$router.push({
-                        path: '/charge',
+                        path: 'charge',
                         query: this.$route.query
                     });
                     break;
@@ -969,7 +979,7 @@ export default {
                 case "6001":
                     this.$route.query.tid = item.activityId
                     this.$router.push({
-                        path: '/upgrade',
+                        path: 'upgrade',
                         query: this.$route.query
                     });
                     // this.ajaxUrl('upgrade.html?tid=' + item.activityId);
@@ -977,7 +987,7 @@ export default {
                     //积分兑换
                 case "6003":
                     this.$router.push({
-                        path: '/exchange',
+                        path: 'exchange',
                         query: this.$route.query
                     });
                     // this.ajaxUrl('exchange.html');
@@ -1139,7 +1149,7 @@ export default {
                         case "500042":
                             _self.$toast("支付完成");
                             _self.$router.push({
-                                path: '/payment',
+                                path: 'payment',
                                 query: json
                             });
                             break;
@@ -1157,19 +1167,19 @@ export default {
                             break;
                         case "500054":
                             _self.$router.push({
-                                path: '/strategy',
+                                path: 'strategy',
                                 query: json
                             });
                             break;
                         case "500005":
                             _self.$router.push({
-                                path: '/payment',
+                                path: 'payment',
                                 query: json
                             });
                             break;
                         case "500055":
                             _self.$router.push({
-                                path: '/strategy',
+                                path: 'strategy',
                                 query: json
                             });
                             break;
@@ -1177,7 +1187,6 @@ export default {
                             alert("服务员未响应");
                             _self.initFn();
                             break;
-                            //coupon state
                         case "500100":
                         case "500101":
                             _self.getCouponData();
@@ -1312,7 +1321,7 @@ export default {
                         json = _self.$route.query;
                         json.oid = data.result.orderId;
                         _self.$router.push({
-                            path: '/strategy',
+                            path: 'strategy',
                             query: json
                         })
                     } else if (data.code == 405004) {

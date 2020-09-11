@@ -42,7 +42,7 @@ export default {
                     switch (response.body.result.business) {
                         case '1000':
                             that.$router.push({
-                                path: '/selfPay',
+                                path: 'selfPay',
                                 query: that.key_json
                             })
                             break;
@@ -52,25 +52,25 @@ export default {
                                 that.key_json.tid = this.data.activityId
                             }
                             that.$router.push({
-                                path: '/upgrade',
+                                path: 'upgrade',
                                 query: that.key_json
                             })
                             break;
                         case '1003':
                             that.$router.push({
-                                path: '/charge',
+                                path: 'charge',
                                 query: that.key_json
                             })
                             break;
                         case '1004':
                             that.$router.push({
-                                path: '/mall',
+                                path: 'mall',
                                 query: that.key_json
                             })
                             break;
                         case '1005':
                             that.$router.push({
-                                path: '/gift',
+                                path: 'gift',
                                 query: that.key_json
                             })
                             break;

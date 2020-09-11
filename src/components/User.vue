@@ -12,7 +12,7 @@
                     验证手机号
                 </div>
             </div>
-            <router-link class="i-card" :to="{ path: 'vip', query:  $route.query}" v-else :style="{backgroundImage: 'url('+ (data.cardUrl||'') +')'}">
+            <div class="i-card" @click="goto('vip')"  v-else :style="{backgroundImage: 'url('+ (data.cardUrl||'') +')'}">
                 <div>
                     <img class="avatar" :src="data.logoUrl">
                     <span class="shop">{{data.brandName}}</span>
@@ -27,25 +27,25 @@
                 <div class="i-footer1" v-else>
                     立即激活
                 </div>
-            </router-link>
+            </div>
         </div>
 
         <div class="benefit-wrapper">
-            <router-link class="point-item" :to="{ path: 'exchange', query:  $route.query}">
+            <div class="point-item" @click="goto('exchange')" >
                 {{data.point||0}}
-            </router-link>
+            </div>
             <div class="separate"></div>
-            <router-link class="coupon-item" :to="{ path: 'coupon', query:  $route.query}">
+            <div class="coupon-item" @click="goto('coupon')" >
                 {{data.couponCount||0}}
-            </router-link>
+            </div>
             <div class="separate"></div>
-            <router-link class="charge-item" :to="{ path: 'charge', query:  $route.query}">
+            <div class="charge-item" @click="goto('charge')" >
                 {{data.charge||0}}
-            </router-link>
+            </div>
             <div class="separate"></div>
-            <router-link class="reward-item" :to="{ path: 'reward', query:  $route.query}">
+            <div class="reward-item" @click="goto('reward')" >
                 {{data.reward||0}}
-            </router-link>
+            </div>
         </div>
 
         <div class="redbox" v-if="data.existSalary">
@@ -240,7 +240,8 @@
                         <div class="card-text" style="padding:2.9rem 0 1.5rem">
                             使用自助买单可自动抵用优惠
                         </div>
-                        <div v-if="!vip.benefits" class="v-button" v-on:click="refresh()">我 知 道 了</div>
+                        <!--  v-if="!vip.benefits" -->
+                        <div class="v-button" v-on:click="refresh()">我 知 道 了</div>
                         <!-- <div v-else v-on:click="open()" class="v-button">打开红包</div> -->
                     </div>
                 </div>
@@ -256,20 +257,24 @@
         </router-link>
     </div>
     <div style="height: 3rem"></div>
+
+
+    
+       <!-- 二维码 -->
+    <!-- <linkPicUrl :linkPicUrl="linkPicUrl" /> -->
 </div>
 </template>
 
 <script>
 import vipModule from "./module/vip"
 import wcKeyboard from './wcKeyboard/KeyboardInput.vue'
-
+// import linkPicUrl from './module/linkPicUrl/linkPicUrl'
 export default {
     name: "User",
-    components: {
-        wcKeyboard
-    },
+
     data() {
         return {
+            linkPicUrl:'',
             data: "",
             upgrade: "",
             close: false,
@@ -287,14 +292,23 @@ export default {
         }
     },
     components: {
-        vipModule
+        vipModule,
+        wcKeyboard,
+        // linkPicUrl
     },
     created() {
+        
+           // 判断是否有pid
+        if (this.$route.query.pid) {
+            this.linkPicUrl = this.$cookie.get(this.$route.query.pid)
+        }
         this.initFn();
         this.getModeFn();
     },
     methods: {
-
+      goto(path){
+            this.$router.push({path,query:this.$route.query})
+        },
         initFn() {
             let _self = this;
             let para = {};

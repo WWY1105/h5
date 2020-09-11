@@ -28,7 +28,7 @@
                             <div class="header_text_right" v-if="init.needShowCoupons>0">您有{{init.needShowCoupons}}项权益需出示使用</div>
                         </div>
                     </div>
-                    <router-link class="item" :to="{ path: 'user', query: { id: $route.query.id }}">
+                    <router-link class="item"  @click="goto('user')" >
                         <div class="header_right">会员中心</div>
                     </router-link>
                 </div>
@@ -336,6 +336,8 @@
             </div>
         </div>
     </div>
+      <!-- 二维码 -->
+    <!-- <linkPicUrl :linkPicUrl="linkPicUrl" /> -->
 </div>
 </template>
 
@@ -349,14 +351,16 @@ import VueCookies from "vue-cookies";
 Vue.use(VueCookies);
 
 Vue.use(VueAwesomeSwiper);
-
+// import linkPicUrl from './module/linkPicUrl/linkPicUrl'
 export default {
     name: "SelfPay",
     components: {
-        wcKeyboard
+        wcKeyboard,
+        // linkPicUrl
     },
     data() {
         return {
+            linkPicUrl:'',
             data: "",
             submitpop: false,
             view: {},
@@ -410,6 +414,10 @@ export default {
     },
 
     beforeCreate() {
+           // 判断是否有pid
+        if (this.$route.query.pid) {
+            this.linkPicUrl = this.$cookie.get(this.$route.query.pid)
+        }
         // alert('beforeCreate')
         // let that = this;
         // let ua = window.navigator.userAgent.toLowerCase();
@@ -485,6 +493,10 @@ export default {
     },
 
     methods: {
+          goto(path){
+         this.$router.push({path,query:this.$route.query})
+      },
+
         goBack() {
             let _self = this;
             let json = _self.$route.query;
@@ -620,8 +632,6 @@ export default {
                             );
                         } else {
                             _self.$nextTick(function () {
-                                //_self.socket();
-                                /*-----------买单类型-----------*/
                                 if (!_self.init.order && _self.init.checkType == "101") {
                                     //扫码买单
                                     let qrcode = new QRCode(document.getElementById("mycode"), {
@@ -635,19 +645,13 @@ export default {
 
                             });
 
-                            // 判断是否是会员并且有账单,都满足,直接跳到策略页面
-
-                            // 设置一个cookie,一段时间内需要直接跳转策略
-                            // if (!sessionStorage.getItem('jumpFlag')) {
-                            //     if ((data.result.memberGradeName && data.result.preCheckData && data.result.preCheckData.menus) || (data.result.memberGradeName && data.result.preCheckData && data.result.preCheckData.amount)) {
-                            //         _self.toStrategy()
-                            //     }
-                            // }
-
                         }
 
-                    } else if (data.code != 403000) {
-                        alert(data.message);
+                    } else if (data.code == 403013) {
+                        // alert(data.message);
+                        location.href = "error.html#12";
+                    }else if (data.code != 403000) {
+                        // alert(data.message);
                         location.href = "error.html#10";
                     }
                 });
@@ -776,7 +780,12 @@ export default {
             switch (item.activityCategory) {
                 //送券
                 case "6004":
-                    this.ajaxUrl("couponActivity.html?aid=" + item.activityId);
+                  let json=this.$route.query;
+                    json.aid = item.activityId;
+                    that.$router.push({
+                        path: 'couponActivity',
+                        query: json
+                    })
                     break;
                     //套餐
                 case "6015":
@@ -1001,17 +1010,17 @@ export default {
                             break;
                         case "500051":
                             alert("买单被取消");
-                            // _self.$router.push({path: '/selfPay', query: json});
+                            
                             _self.initFn();
                             break;
                         case "500052":
                             alert("pad下线");
-                            // _self.$router.push({path: '/selfPay', query: json});
+                            
                             _self.initFn();
                             break;
                         case "500053":
                             alert("买单请求超时未处理被取消");
-                            // _self.$router.push({path: '/selfPay', query: json});
+                            
                             _self.initFn();
                             break;
                         case "500054":
@@ -1036,7 +1045,7 @@ export default {
                             alert("服务员未响应");
                             _self.initFn();
                             break;
-                            //coupon state
+                
                         case "500100":
                         case "500101":
                             //_self.getCouponData();

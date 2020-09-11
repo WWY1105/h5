@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="70"
+   height="91.071068"
+   viewBox="0 0 18.520833 24.095886"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="绘图-2.svg">
+  <defs
+     id="defs2">
+    <path
+       inkscape:connector-curvature="0"
+       d="m 23.564776,28.304776 h 0.65 c 0.53,1.19 1.44,2.23 2.74,3.13 l -0.39,0.6 c -1.2,-0.82 -2.1,-1.82 -2.68,-3.01 -0.49,0.98 -1.07,1.8 -1.75,2.46 h 3.58 v 2.48 c -0.01,0.55 -0.29,0.84 -0.83,0.87 -0.38,0 -0.74,-0.02 -1.08,-0.04 l -0.18,-0.66 c 0.36,0.03 0.7,0.05 1.01,0.05 0.25,0 0.38,-0.15 0.38,-0.43 v -1.63 h -2.24 v 3.91 c 0,0.34 0.16,0.51 0.48,0.51 h 1.9 c 0.43,0 0.7,-0.09 0.81,-0.27 0.1,-0.21 0.19,-0.62 0.25,-1.22 l 0.67,0.22 c -0.09,0.91 -0.24,1.47 -0.44,1.68 -0.19,0.17 -0.56,0.26 -1.1,0.26 h -2.36 c -0.62,0 -0.93,-0.32 -0.93,-0.94 v -4.71 c -0.27,0.24 -0.54,0.46 -0.8,0.65 l -0.38,-0.6 c 1.16,-0.85 2.05,-1.95 2.69,-3.31 z m -2.53,3.87 v 0.72 c -0.36,0.19 -0.71,0.36 -1.07,0.52 v 2.96 c 0,0.6 -0.3,0.9 -0.89,0.9 h -0.88 l -0.15,-0.69 c 0.27,0.02 0.53,0.04 0.78,0.04 0.27,0 0.41,-0.15 0.41,-0.44 v -2.46 c -0.44,0.17 -0.88,0.33 -1.32,0.47 l -0.18,-0.68 c 0.52,-0.13 1.02,-0.29 1.5,-0.48 v -2.21 h -1.3 v -0.69 h 1.3 v -1.89 h 0.73 v 1.89 h 0.97 v 0.69 h -0.97 v 1.9 c 0.36,-0.17 0.72,-0.35 1.07,-0.55 z m 10.98,-3.95 h 0.74 v 3.71 h 4 v 0.71 h -2.87 v 3.35 c 0,0.3 0.14,0.45 0.42,0.45 h 1.21 c 0.22,0 0.38,-0.07 0.48,-0.21 0.12,-0.18 0.2,-0.69 0.24,-1.55 l 0.69,0.22 c -0.07,1.06 -0.21,1.7 -0.41,1.92 -0.18,0.2 -0.47,0.3 -0.87,0.3 h -1.56 c -0.62,0 -0.92,-0.33 -0.92,-0.98 v -3.5 h -1.69 v 0.07 c -0.03,1.25 -0.3,2.25 -0.81,3.01 -0.5,0.7 -1.32,1.24 -2.45,1.63 l -0.41,-0.64 c 1.1,-0.38 1.86,-0.87 2.3,-1.49 0.4,-0.64 0.62,-1.48 0.64,-2.51 v -0.07 h -2.72 v -0.71 h 3.99 z m 3.32,0.48 0.67,0.32 c -0.34,0.82 -0.79,1.62 -1.34,2.39 l -0.65,-0.33 c 0.55,-0.8 0.99,-1.6 1.32,-2.38 z m -5.87,0.09 c 0.49,0.7 0.95,1.46 1.39,2.29 l -0.67,0.33 c -0.44,-0.86 -0.91,-1.62 -1.4,-2.3 z m 13.76,1.05 v 0.67 h 3.59 v -0.67 h -1.88 l 0.5,-0.34 c -0.2,-0.37 -0.49,-0.8 -0.87,-1.28 l -0.53,0.33 c 0.35,0.46 0.63,0.89 0.84,1.29 z m -0.37,6.44 h 2.01 c 0.41,-1.36 0.77,-3.05 1.07,-5.07 l 0.64,0.17 c -0.28,1.84 -0.64,3.47 -1.06,4.9 h 1.43 v 0.69 h -4.09 z m 1.19,-4.95 c 0.22,1.18 0.41,2.53 0.57,4.03 l -0.62,0.08 c -0.18,-1.52 -0.37,-2.86 -0.58,-4.03 z m -2.65,5.9 h -0.65 l -0.15,-0.63 c 0.2,0.02 0.39,0.04 0.57,0.04 0.28,0 0.42,-0.14 0.42,-0.4 v -2.49 c -0.28,0.09 -0.55,0.18 -0.82,0.26 l -0.17,-0.67 c 0.34,-0.08 0.67,-0.17 0.99,-0.28 v -2.32 h -0.88 v -0.66 h 0.88 v -1.78 h 0.66 v 1.78 h 0.78 v 0.66 h -0.78 v 2.07 c 0.28,-0.12 0.55,-0.25 0.82,-0.39 v 0.69 c -0.27,0.13 -0.54,0.26 -0.82,0.38 v 2.91 c 0,0.55 -0.29,0.83 -0.85,0.83 z m -1.04,-8.21 v 7.39 h -0.65 v -0.63 h -0.88 v 0.87 h -0.65 v -7.63 z m -1.53,6.13 h 0.88 v -5.49 h -0.88 z"
+       id="path-1" />
+    <filter
+       x="-0.5"
+       y="-0.5"
+       width="2"
+       height="2"
+       filterUnits="objectBoundingBox"
+       id="filter-2">
+      <feOffset
+         dx="0"
+         dy="0"
+         in="SourceAlpha"
+         result="shadowOffsetOuter1"
+         id="feOffset159" />
+      <feGaussianBlur
+         stdDeviation="1"
+         in="shadowOffsetOuter1"
+         result="shadowBlurOuter1"
+         id="feGaussianBlur161" />
+      <feColorMatrix
+         values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.24145154 0"
+         type="matrix"
+         in="shadowBlurOuter1"
+         id="feColorMatrix163" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="127.48451"
+     inkscape:cy="14.106972"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     units="px"
+     inkscape:window-width="1366"
+     inkscape:window-height="746"
+     inkscape:window-x="1912"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(57.542777,-128.46991)">
+    <g
+       transform="translate(-143.89194,15.69531)"
+       id="layer1-3"
+       inkscape:label="Layer 1">
+      <g
+         style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1"
+         transform="matrix(0.26458333,0,0,0.26458333,89.009863,123.88252)"
+         id="上宾图标库">
+        <g
+           style="fill:#e75040"
+           id="Group-8"
+           transform="translate(-1,-62)">
+          <polygon
+             id="Rectangle-6"
+             transform="matrix(0,1,1,0,-5.7807383,-2.8532421)"
+             points="40.306883,-3.275449 40.55179,65.97925 22.870564,48.53612 22.870564,14.501773 " />
+        </g>
+        <g
+           id="g177"
+           transform="translate(-1,-13)">
+          <polygon
+             style="fill:#cccccc"
+             id="polygon170"
+             transform="matrix(-0.70710678,0.70710678,0.70710678,0.70710678,31.965223,-13.240429)"
+             points="40.55179,65.97925 22.870564,48.53612 22.870564,14.501773 40.306883,-3.275449 " />
+          <g
+             id="抢光啦"
+             transform="rotate(45,32.339776,32.789776)">
+            <use
+               height="100%"
+               width="100%"
+               y="0"
+               x="0"
+               style="fill:#000000;fill-opacity:1;filter:url(#filter-2)"
+               xlink:href="#path-1"
+               id="use172" />
+            <use
+               height="100%"
+               width="100%"
+               y="0"
+               x="0"
+               style="fill:#ffffff;fill-rule:evenodd"
+               xlink:href="#path-1"
+               id="use174" />
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

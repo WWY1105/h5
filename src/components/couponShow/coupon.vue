@@ -15,7 +15,7 @@
             <div class="item" v-if="data.amount">
                 <div class="left" v-if="data.category == '902' || data.category == '9021'">价值：</div>
                 <div class="right" v-if="data.category == '902' || data.category == '9021'">
-                    原价:{{data.currentAmount}}元，现价:{{data.amount}}元1
+                    原价:{{data.currentAmount}}元，现价:{{data.amount}}元
                 </div>
                 <div class="right" v-else-if="data.category == '902' || data.category == '9021'">{{data.amount}}元</div>
             </div>

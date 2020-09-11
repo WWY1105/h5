@@ -2,7 +2,7 @@
   <div class="exchange" v-if="data">
     <div class="bar">
       <div class="item active">积分兑换</div>
-      <router-link class="item" :to="{ path: 'mall', query:  $route.query}">会员商城</router-link>
+      <div class="item" @click="goto('mall')" >会员商城</div>
     </div>
     <div class="header">
       <div class="">
@@ -49,6 +49,9 @@
       this.initFn();
     },
     methods: {
+      goto(path){
+         this.$router.push({path,query:this.$route.query})
+      },
       initFn() {
         this.$http.get("/activities/exchange/guest/" + (this.$route.query.id || this.$route.query.guestid)).then(response => {
           if (response.body.code == 200) {

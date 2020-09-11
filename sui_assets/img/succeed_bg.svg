@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256px" height="57px" viewBox="0 0 256 57" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>succeed bg</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="2.37568352e-14 0.953125 256 0.953125 256 56.953125 0 56.953125"></polygon>
+        <ellipse id="path-3" cx="287" cy="237.482422" rx="287" ry="237.451172"></ellipse>
+        <filter x="-0.3%" y="-0.4%" width="100.7%" height="100.8%" filterUnits="objectBoundingBox" id="filter-5">
+            <feGaussianBlur stdDeviation="1.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="-1" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.136322464 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="15.6360014%" y1="78.2095362%" x2="93.2791017%" y2="50.1922764%" id="linearGradient-6">
+            <stop stop-color="#FFFFFF" stop-opacity="0.375651042" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="3.03853753%" y1="47.7461167%" x2="87.2540274%" y2="58.0366479%" id="linearGradient-7">
+            <stop stop-color="#FFFFFF" stop-opacity="0.0361752717" offset="0%"></stop>
+            <stop stop-color="#FFFFFF" stop-opacity="0.163594682" offset="12.7451371%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="纸质券分领取页面-V1.1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="succeed-bg">
+            <mask id="mask-2" fill="white">
+                <use xlink:href="#path-1"></use>
+            </mask>
+            <use id="Rectangle-4" fill="#FFFFFF" xlink:href="#path-1"></use>
+            <g id="Group" mask="url(#mask-2)">
+                <g transform="translate(-157.000000, -422.000000)" id="Group-6">
+                    <g>
+                        <mask id="mask-4" fill="white">
+                            <use xlink:href="#path-3"></use>
+                        </mask>
+                        <g id="Oval-3">
+                            <use fill="#FFE745" fill-rule="evenodd" xlink:href="#path-3"></use>
+                            <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-3"></use>
+                        </g>
+                        <path d="M119.970542,489.753094 C144.145048,486.521781 172.832124,484.839568 206.031771,484.706454 C298.748862,484.334706 369.327383,453.107874 417.767333,391.025958 C446.319062,475.984562 418.125498,515.38985 333.186639,509.241822 C279.259351,505.338468 201.490526,490.840296 119.970542,489.753094 Z" id="Path-2" fill="url(#linearGradient-6)" opacity="0.296240942" mask="url(#mask-4)"></path>
+                        <path d="M154,448 C154.666667,442 181,446.666667 233,462 C285,477.333333 347.333333,472.666667 420,448 C410.361457,479.080037 377.361457,491.413371 321,485 C216.063473,473.112282 160.396806,460.778948 154,448 Z" id="Path-2" fill="url(#linearGradient-7)" mask="url(#mask-4)"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

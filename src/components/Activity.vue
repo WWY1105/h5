@@ -32,7 +32,8 @@
         });
       },
       redirectFn(item) {
-        let json = {};
+        let that=this;
+        let json = this.$route.query;
         if (this.$route.query.id) {
           json.id = this.$route.query.id;
         } else {
@@ -41,7 +42,12 @@
         switch (item.activityCategory) {
           //送券
           case '6004':
-            this.ajaxUrl('couponActivity.html?aid=' + item.activityId);
+            
+            json.aid=item.activityId;
+            that.$router.push({
+              path:'/couponActivity',
+              query:json
+            })
             break;
           //砍价
           case "6041":

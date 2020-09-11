@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="256px" height="117px" viewBox="0 0 256 117" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
+    <title>qr bg</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="100%" x2="50%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#EC7E59" offset="0%"></stop>
+            <stop stop-color="#ED393A" offset="100%"></stop>
+        </linearGradient>
+        <polygon id="path-2" points="3.71390569e-14 0.146484375 256 0.146484375 256 116.5 6.90560205e-16 116.5"></polygon>
+        <linearGradient x1="50%" y1="-41.3439499%" x2="50%" y2="97.1759407%" id="linearGradient-4">
+            <stop stop-color="#FF971D" offset="0%"></stop>
+            <stop stop-color="#F77432" stop-opacity="0" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#FF971D" offset="0%"></stop>
+            <stop stop-color="#F77432" stop-opacity="0" offset="97.1759407%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="纸质券分领取页面-V1.1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="qr-bg">
+            <g id="Group-9">
+                <mask id="mask-3" fill="white">
+                    <use xlink:href="#path-2"></use>
+                </mask>
+                <use id="Rectangle-4" fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                <g id="Group-25" opacity="0.8" mask="url(#mask-3)">
+                    <g transform="translate(132.953961, 14.995689) rotate(45.000000) translate(-132.953961, -14.995689) translate(106.453961, -55.004311)" id="Rectangle-4">
+                        <polygon fill="url(#linearGradient-4)" points="41.6985538 19.7659122 52.6985538 19.7659122 52.5924225 139.226563 41.5924225 139.226563"></polygon>
+                        <rect fill="url(#linearGradient-5)" x="0.963958747" y="0.942291253" width="17.4863281" height="110"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

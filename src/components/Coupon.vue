@@ -62,8 +62,7 @@
             </div>
             
             <div class="set-coupon empty" v-else>
-              <!-- <router-link class="empty" :to="{ path: 'user', query:  $route.query}"></router-link> -->
-            </div>
+             </div>
           </swiper-slide>
           <!-- 已使用 -->
           <swiper-slide>
@@ -93,7 +92,7 @@
               </div>
             </div>
             <div class="set-coupon" v-else>
-              <router-link class="empty" :to="{ path: 'user', query:  $route.query}"></router-link>
+              <div class="empty" @click="goto('user')"></div>
             </div>
           </swiper-slide>
           <!-- 已过期 -->
@@ -124,7 +123,7 @@
               </div>
             </div>
             <div class="set-coupon" v-else>
-              <router-link class="empty" :to="{ path: 'user', query:  $route.query}"></router-link>
+              <div class="empty"  @click="goto('user')"></div>
             </div>
           </swiper-slide>
           <div class="swiper-pagination" slot="pagination" id="swiper-pagination"></div>
@@ -209,6 +208,10 @@
       });
     },
     methods: {
+        goto(path){
+         this.$router.push({path,query:this.$route.query})
+      },
+
       toggleMenu(index) {
         this.active = index;
         if (index && !this.data[this.type[index]].total) {

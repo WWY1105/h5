@@ -1,43 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-// const Charge = r => require.ensure([], () => r(require('@/components/Charge')))
-// const User = r => require.ensure([], () => r(require('@/components/User')))
-// const SelfPay = r => require.ensure([], () => r(require('@/components/SelfPay')))
-// const Cashier = r => require.ensure([], () => r(require('@/components/Cashier')))
-// const RewardList = r => require.ensure([], () => r(require('@/components/RewardList')))
 
-// const Exchange = r => require.ensure([], () => r(require('@/components/Exchange')))
-// const Mall = r => require.ensure([], () => r(require('@/components/Mall')))
-// const MallDetail = r => require.ensure([], () => r(require('@/components/MallDetail')))
-// const MallRecord = r => require.ensure([], () => r(require('@/components/MallRecord')))
-// const Coupon = r => require.ensure([], () => r(require('@/components/Coupon')))
-// const Payment = r => require.ensure([], () => r(require('@/components/Payment')))
-// const Guide = r => require.ensure([], () => r(require('@/components/guide')))
-// const Strategy = r => require.ensure([], () => r(require('@/components/Strategy')))
-// const Setting = r => require.ensure([], () => r(require('@/components/Setting')))
-// const Reward = r => require.ensure([], () => r(require('@/components/Reward')))
-// const Vip = r => require.ensure([], () => r(require('@/components/Vip')))
-// const Activity = r => require.ensure([], () => r(require('@/components/Activity')))
-// const UserLine = r => require.ensure([], () => r(require('@/components/UserLine')))
-// const UserReserve = r => require.ensure([], () => r(require('@/components/UserReserve')))
-// const Saler = r => require.ensure([], () => r(require('@/components/Saler')))
-
-// //无入口
-// const CouponUse = r => require.ensure([], () => r(require('@/components/CouponUse')))
-// const Error = r => require.ensure([], () => r(require('@/components/Error')))
-// const More = r => require.ensure([], () => r(require('@/components/More')))
-// const Upgrade = r => require.ensure([], () => r(require('@/components/Upgrade')))
-// const GrouponInfo = r => require.ensure([], () => r(require('@/components/GrouponInfo')))
-// const Groupon = r => require.ensure([], () => r(require('@/components/Groupon')))
-// const Gift = r => require.ensure([], () => r(require('@/components/Gift')))
-// const Paymentee = r => require.ensure([], () => r(require('@/components/Paymentee')))
-
-// //test
-// const Login = r => require.ensure([], () => r(require('@/components/Login')))
-// const Test = r => require.ensure([], () => r(require('@/components/Test')))
-// const Index = r => require.ensure([], () => r(require('@/components/Index')))
-// const Promote = r => require.ensure([], () => r(require('@/components/Promote')))
 const Charge = () =>import('@/components/Charge');
 const User = () =>import('@/components/User');
 const SelfPay = () =>import('@/components/SelfPay');
@@ -49,6 +13,8 @@ const Mall = () =>import('@/components/Mall');
 const MallDetail = () =>import('@/components/MallDetail');
 const MallRecord = () =>import('@/components/MallRecord');
 const Coupon = () =>import('@/components/Coupon');
+const CouponActivity = () =>import('@/components/CouponActivity');
+const CouponDetail = () =>import('@/components/CouponDetail');
 const Payment = () =>import('@/components/Payment');
 const Guide = () =>import('@/components/guide');
 const Strategy = () =>import('@/components/Strategy');
@@ -59,7 +25,7 @@ const Activity = () =>import('@/components/Activity');
 const UserLine = () =>import('@/components/UserLine');
 const UserReserve = () =>import('@/components/UserReserve');
 const Saler = () =>import('@/components/Saler');
-
+const Dynamic= () =>import('@/components/Dynamic');
 //无入口
 const CouponUse = () =>import('@/components/CouponUse');
 const Error = () =>import('@/components/Error');
@@ -69,6 +35,7 @@ const GrouponInfo = () =>import('@/components/GrouponInfo');
 const Groupon = () =>import('@/components/Groupon');
 const Gift = () =>import('@/components/Gift');
 const Paymentee = () =>import('@/components/Paymentee');
+const QuickPay = () =>import('@/components/QuickPay');
 
 //test
 const Login = () =>import('@/components/Login');
@@ -83,8 +50,19 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Index',
-      component: Index,
+      name: 'Error',
+      component: Error,
+    },{
+      path: '/dynamic',
+      name: 'Dynamic',
+      component: Dynamic,
+      meta:{
+        title:'您的专属客服'
+      }
+    }, {
+      path: '/error',
+      name: 'Error',
+      component: Error,
     },{
       path: '/promote',
       name: 'Promote',
@@ -202,6 +180,16 @@ export default new Router({
       component: Coupon,
     },
     {
+      path: '/couponActivity',
+      name: 'CouponActivity',
+      component: CouponActivity,
+    },
+    {
+      path: '/couponDetail',
+      name: 'CouponDetail',
+      component: CouponDetail,
+    },
+    {
       path: '/groupon',
       name: 'Groupon',
       component: Groupon
@@ -240,6 +228,11 @@ export default new Router({
       path: '/saler',
       name: 'saler',
       component: Saler
+    },
+    {
+      path: '/quickPay',
+      name: 'quickPay',
+      component: QuickPay
     }
   ]
 })
