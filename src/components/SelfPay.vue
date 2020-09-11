@@ -650,9 +650,11 @@ export default {
                     } else if (data.code == 403013) {
                         // alert(data.message);
                         location.href = "error.html#12";
-                    }else if (data.code != 403000) {
+                    }else if (data.code == 403010) {
                         // alert(data.message);
                         location.href = "error.html#10";
+                    }else{
+                        alert(data.message);
                     }
                 });
         },
