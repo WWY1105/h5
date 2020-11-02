@@ -232,57 +232,6 @@ export default {
                             this.url = true;
                         }
                     })
-
-                    //分享
-                    let wxJson = {};
-                    wxJson.url = location.href;
-                    _self.id = this.$route.query.id ? this.$route.query.id : '';
-                    _self.guestid = this.$route.query.guestid ? this.$route.query.guestid : '';
-                    // console.log(_self.id);
-                    // console.log(_self.guestid);
-
-                    this.$http.post("/auth/sign", wxJson).then(response => {
-                        if (response.body.code == 200) {
-                            let result1 = response.body.result;
-                            result1.jsApiList = [
-                                'hideMenuItems',
-                                'onMenuShareAppMessage',
-                                'onMenuShareTimeline'
-                            ];
-                            wx.config(result1);
-                            wx.ready(function () {
-                                wx.hideMenuItems({
-                                    menuList: ["menuItem:copyUrl"] // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
-                                });
-                                // 分享朋友
-                                wx.onMenuShareAppMessage({
-                                    title: _self.gift.brandName + '邀您领取新人大礼包', // 分享标题
-                                    desc: '礼轻情意重！猛戳领取新人大礼包！', // 分享描述
-                                    link: location.origin + "/gift.html?aid=" + _self.gift.activityId + (_self.guestid ? "&guestid=" + _self.guestid : "&id=" + _self.id), // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                                    imgUrl: _self.gift.logo, // 分享图标
-                                    type: '', // 分享类型,music、video或link，不填默认为link
-                                    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-                                    success: function () {
-                                        // 用户确认分享后执行的回调函数--分享事件
-                                    },
-                                    cancel: function () {
-                                        // 用户取消分享后执行的回调函数
-                                    }
-                                });
-                                // 分享到朋友圈
-                                wx.onMenuShareTimeline({
-                                    title: _self.gift.brandName + '邀您领取新人大礼包', // 分享标题
-                                    link: location.origin + "/gift.html?aid=" + _self.gift.activityId + (_self.guestid ? "&guestid=" + _self.guestid : "&id=" + _self.id), // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
-                                    imgUrl: _self.gift.logo, // 分享图标
-                                    success: function () {
-                                        // 用户确认分享后执行的回调函数
-                                    }
-                                });
-                            })
-
-                        }
-                    })
-
                 }
 
             } else if (response.body.code == 40400) {
@@ -312,8 +261,6 @@ export default {
         },
         //获取验证码
         validate1Fn() {
-            console.log(1111);
-
             if (!this.phone1.able) return;
             if (!this.phone1.phone || this.phone1.phone.length != 11) {
                 this.$toast("手机格式不正确");

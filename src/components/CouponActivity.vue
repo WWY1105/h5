@@ -1,6 +1,6 @@
 <template>
-<div class="page page-current">
-    <div class="content"> -->
+<div class="page page-current" style="height: 100vh;">
+    <div class="content">
         <div class="coupon-name">{{coupon.name}}</div>
         <div v-for="item in coupon.cells">
             <div class="coupon_show">
@@ -13,7 +13,7 @@
                             <div class="i-flex flexStart">
                                 <img class="avatar shrink" src="sui_assets/img/logo.png">
                                 <div style="padding-left: .7rem">
-                                    <div class="text-lg">{{i.name}}</div>
+                                    <div class="text-lg eachName">{{i.name}}</div>
                                 </div>
                             </div>
                         </div>
@@ -44,7 +44,7 @@
         </div>
     </div>
 
-    <div>
+    <div v-if="phoneShow">
         <div v-if="!coupon.existPhone" class="text-center fix-b " id="bind" style="box-shadow: 1px 1px 17px;height: 12rem;background: white;padding: 0 1.5rem">
             <p class="xs">绑定手机领取优惠</p>
             <input type="tel" id="tel" placeholder="您的常用手机号码" v-model="phone1.phone" />
@@ -78,6 +78,7 @@ export default {
     data() {
         return {
             coupon: {},
+            phoneShow:false,
             linkPicUrl: '',
             codeShow:false,
             phone1: {
@@ -126,6 +127,7 @@ export default {
             this.$http.get("/activities/activity/" + (this.$route.query.aid) + '/coupon').then(response => {
                 if (response.body.code == 200) {
                     that.coupon = response.body.result;
+                    that.phoneShow=true;
                     console.log(that.coupon.cells.length)
                 }
             });
@@ -238,6 +240,9 @@ export default {
 </script>
 
 <style scoped>
+.eachName{
+    max-width: 190px;
+}
 .flexCenter {
     display: flex;
     align-items: center;
@@ -285,6 +290,7 @@ export default {
     width: 100%;
     padding: 0 .5rem;
     font-size: .75rem;
+    z-index: 99999;
 }
 
 .input-text {
@@ -318,7 +324,9 @@ export default {
     box-shadow: 1px 1px 17px;
     height: 4rem;
     background: white;
-    padding: 0 1rem
+    padding: 0 1rem;
+    z-index: 99999;
+
 }
 
 .btn-green {
@@ -354,10 +362,6 @@ export default {
     font-size: 1.2rem;
 }
 
-.content {
-    padding-bottom: 100px;
-}
-
 .coupon_show {
     padding: 0 .6rem;
     padding-top: 10px;
@@ -365,7 +369,7 @@ export default {
 
 .bottomBtn {
     position: fixed;
-    bottom: 4rem;
+    bottom: 5rem;
     right: .5rem;
     width: 2.5rem;
     height: 2.5rem;

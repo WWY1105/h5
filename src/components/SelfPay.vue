@@ -28,9 +28,9 @@
                             <div class="header_text_right" v-if="init.needShowCoupons>0">您有{{init.needShowCoupons}}项权益需出示使用</div>
                         </div>
                     </div>
-                    <router-link class="item"  @click="goto('user')" >
+                    <div class="item" @click="goto('user')">
                         <div class="header_right">会员中心</div>
-                    </router-link>
+                    </div>
                 </div>
                 <div class="checknr">
                     <div class="zhuo zhuo-flex">
@@ -336,7 +336,7 @@
             </div>
         </div>
     </div>
-      <!-- 二维码 -->
+    <!-- 二维码 -->
     <!-- <linkPicUrl :linkPicUrl="linkPicUrl" /> -->
 </div>
 </template>
@@ -360,7 +360,7 @@ export default {
     },
     data() {
         return {
-            linkPicUrl:'',
+            linkPicUrl: '',
             data: "",
             submitpop: false,
             view: {},
@@ -414,7 +414,7 @@ export default {
     },
 
     beforeCreate() {
-           // 判断是否有pid
+        // 判断是否有pid
         if (this.$route.query.pid) {
             this.linkPicUrl = this.$cookie.get(this.$route.query.pid)
         }
@@ -493,9 +493,12 @@ export default {
     },
 
     methods: {
-          goto(path){
-         this.$router.push({path,query:this.$route.query})
-      },
+        goto(path) {
+            this.$router.push({
+                path,
+                query: this.$route.query
+            })
+        },
 
         goBack() {
             let _self = this;
@@ -648,13 +651,11 @@ export default {
                         }
 
                     } else if (data.code == 403013) {
-                        // alert(data.message);
                         location.href = "error.html#12";
-                    }else if (data.code == 403010) {
-                        // alert(data.message);
+                    } else if (data.code == 403010) {
                         location.href = "error.html#10";
-                    }else{
-                        alert(data.message);
+                    } else {
+                        // alert(data.message);
                     }
                 });
         },
@@ -782,7 +783,7 @@ export default {
             switch (item.activityCategory) {
                 //送券
                 case "6004":
-                  let json=this.$route.query;
+                    let json = this.$route.query;
                     json.aid = item.activityId;
                     that.$router.push({
                         path: 'couponActivity',
@@ -1012,17 +1013,17 @@ export default {
                             break;
                         case "500051":
                             alert("买单被取消");
-                            
+
                             _self.initFn();
                             break;
                         case "500052":
                             alert("pad下线");
-                            
+
                             _self.initFn();
                             break;
                         case "500053":
                             alert("买单请求超时未处理被取消");
-                            
+
                             _self.initFn();
                             break;
                         case "500054":
@@ -1047,7 +1048,7 @@ export default {
                             alert("服务员未响应");
                             _self.initFn();
                             break;
-                
+
                         case "500100":
                         case "500101":
                             //_self.getCouponData();

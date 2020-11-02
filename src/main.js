@@ -16,11 +16,8 @@ import './components/bind/bind.css';
 import Bind from './components/bind/index'
 import './components/couponShow/coupon.css';
 import Coupon from './components/couponShow/index'
-
-
-
-
-
+import "babel-polyfill"
+import 'es6-promise/auto'
 
 // Tell Vue to use the plugin
 Vue.use(VueResource)
@@ -66,14 +63,13 @@ router.beforeEach((to, from, next) => {
 
 function auth() {
   let ua = window.navigator.userAgent.toLowerCase();
-
+  let origin = window.location.origin;
   if (ua.match(/MicroMessenger/i) == 'micromessenger') {
     //微信授权比较复杂，跳转到专门的授权页面处理 
-      // vm.$cookie.set('url', location.href);
-      location.href = '/auth.html?callback='+ encodeURIComponent(location.href);
+     location.replace( origin + '/auth.html?callback='+ encodeURIComponent(location.href))
   } else {
     //支付宝没有检测登陆的接口，直接授权
-    window.location.href = "auth/alipay?url=" + encodeURIComponent(location.href);
+     window.location.href = "auth/alipay?url=" + encodeURIComponent(location.href);
   }
 }
 

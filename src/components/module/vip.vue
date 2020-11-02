@@ -1,5 +1,7 @@
 <template>
-<div class="vipModule" v-if="data">
+<div class="vipModule" v-show="data">
+    <awesome-picker ref="picker3" :type="picker3.type" :anchor="picker3.anchor" @confirm="handlePicker3Confirm">
+    </awesome-picker>
     <div class="current-grade" v-if="data.currentGradeName||data.toName">{{data.toName||data.currentGradeName}}</div>
     <!-- 新人赠礼 -->
     <div class="box" v-if="data.firstBenefit">
@@ -66,19 +68,17 @@
                 <li>不与其他优惠叠加</li>
             </ul>
             <div class="birth-inner" v-if="data.activity.birthday" style="padding-top: 1.5rem;">
-                <!-- <span class="bold">{{data.activity.birthday.split("-")[0]}}</span>
-          <span>年</span> -->
                 <span class="bold">{{data.activity.birthday?data.activity.birthday.split("-")[1]:''}}</span>
                 <span>月</span>
                 <span class="bold">{{data.activity.birthday?data.activity.birthday.split("-")[2]:''}}</span>
                 <span>日</span>
             </div>
-            <div class="birth-inner" @click="tapBirthFn" v-else>
-                <!--<div class="number">-->
-                <!--<div type="number" class="number" v-model="post.month">月</div>-->
-                <!--<div type="number" class="number" v-model="post.day">日</div>-->
-                <!--</div>-->
-                <div class="btn">完善生日信息</div>
+            <div class="birth-inner" v-if="!data.activity.birthday">
+                <div class="number">
+                    <div type="number" class="number" v-model="post.month">月</div>
+                    <div type="number" class="number" v-model="post.day">日</div>
+                </div>
+                <div class="btn" @click="tapBirthFn">完善生日信息</div>
             </div>
         </div>
         <div class="label" v-if="data.activity.irregular"><span class="icon2"></span>不定期礼券，随时给你小惊喜</div>
@@ -94,15 +94,15 @@
     <div class="box">
         <div class="account-title"></div>
         <div class="account-wrapper">
-            <div  @click="goto('activity')"   class="account-item account-item1">
+            <div  @click="goto('activity')"   class="account-item account-item1">
                 <div class="title">热门活动</div>
                 <div>海量活动等你来</div>
             </div>
-            <div  @click="goto('charge')"  class="account-item account-item2">
+            <div  @click="goto('charge')"   class="account-item account-item2">
                 <div class="title">充值回馈</div>
                 <div>充的多送的多</div>
             </div>
-            <div  @click="goto('exchange')"   class="account-item account-item3">
+            <div  @click="goto('exchange')"   class="account-item account-item3">
                 <div class="title">会员商城</div>
                 <div>积分兑换特价秒杀</div>
             </div>
@@ -125,19 +125,14 @@
     <div class="box" v-if="data.serviceActivities">
         <div class="service-title"></div>
         <div class="service-wrapper">
-            <div @click="goto('userLine')"  class="service-item1" v-if="data.serviceActivities.includes('6060')">
+            <div @click="goto('userLine')" class="service-item1" v-if="data.serviceActivities.includes('6060')">
             </div>
-            <div @click="goto('userReserve')"  class="service-item2" v-if="data.serviceActivities.includes('6054')">
-            </div >
+            <div @click="goto('userReserve')" class="service-item2" v-if="data.serviceActivities.includes('6054')">
+            </div>
         </div>
     </div>
     <!-- 会员级别 -->
     <div class="uploadBottom">
-        <!-- <div style="height: 3rem"></div> -->
-        <!-- <div class="upgrade-btn" v-on:click="showFn" v-if="data.strategies||!data.currentGradeName">升级为{{data.toName}}</div>
-        <div class="upgrade-btn disabled" style="box-shadow: none" v-on:click="showFn" v-else>
-            您已是{{data.currentGradeName}}
-        </div> -->
         <div class="otherRules" v-if="notActiveArr.length>0" v-on:click="showFn">
             <p class="title">
                 <span class="left">其他升级方式</span>
@@ -160,7 +155,7 @@
             </div>
         </div>
         <div class="uploadBtnBox" v-if="!upgrade&&canUpgrade">
-            <div @click="goto('vip')"  class="upgrade-btn" style="width:100%!important">
+            <div @click="goto('vip')" class="upgrade-btn" style="width:100%!important">
                 <span v-if="data.currentGradeName">您当前是{{data.currentGradeName}}</span><span v-else>您还不是本店会员</span>，升级为更高级别会员
             </div>
         </div>
@@ -183,24 +178,30 @@
             </div>
         </div>
     </div> -->
-    <awesome-picker ref="picker3" :textTitle="picker3.textTitle" :type="picker3.type" :anchor="picker3.anchor" @confirm="handlePicker3Confirm">
-    </awesome-picker>
+    <!-- <awesome-picker 
+    ref="picker3" 
+    :textTitle="picker3.textTitle" 
+    :type="picker3.type" 
+    :anchor="picker3.anchor" 
+    @confirm="handlePicker3Confirm">
+    </awesome-picker> -->
+
 </div>
 </template>
 
 <script>
-import Vue from 'vue';
+import Vue from 'vue'
+import AwesomePicker from 'vue-awesome-picker';
+Vue.use(AwesomePicker);
 import {
     Icon
 } from 'vant';
-
-import AwesomePicker from 'vue-awesome-picker';
 import 'vant/lib/icon/style';
 Vue.use(Icon);
-Vue.use(AwesomePicker);
+
 export default {
     name: "VipModule",
-    props: ['data', 'upgrade', 'canUpgrade', 'payment'],
+    props: ['data', 'upgrade', 'canUpgrade', 'payment','AwesomePicker'],
     data() {
         return {
             // data: "",
@@ -229,7 +230,6 @@ export default {
                 "6017": "充值免单",
                 '6013': '评价立减'
             },
-            // payment: "",
             picker3: {
                 anchor: [],
                 textTitle: '日期选择',
@@ -254,9 +254,6 @@ export default {
                     }
                 })
             }
-            
-            console.log(that.activeArr)
-            console.log(that.notActiveArr)
         }
 
     },
@@ -264,8 +261,6 @@ export default {
         let that = this;
 
         // 对传入的策略进行筛选
-        console.log('传入的数据' + that.upgrade + "--" + that.canUpgrade)
-        // console.log(this.data.strategies)
         if (this.data.strategies && this.data.strategies.length > 0) {
             this.data.strategies.forEach(function (item) {
                 if (that.rule[item.type] && item.usable) {
@@ -278,17 +273,18 @@ export default {
 
     },
     methods: {
-        goto(path){
-            this.$router.push({path,query:this.$route.query})
+        goto(path) {
+            this.$router.push({
+                path,
+                query: this.$route.query
+            })
         },
         bindFn() {
-            console.log('hfuiafhdasiofhdosfhsdo')
             let _self = this;
             this.$bind({
                 title: "绑定手机号",
                 text: "绑定手机号后，获得更多权益",
                 submit: function () {
-                    // window.location.reload()
                     _self.redirectUser()
 
                 }
@@ -317,6 +313,7 @@ export default {
             }
             // this.post.birthday = (1900 + v[0].index) + '-' + (v[1].index + 1) + "-" + (v[2].index + 1);
             this.post.birthday = (1900 + v[0].index) + '-' + m + "-" + d;
+            console.log( this.post)
             let json = {
                 birthday: this.post.birthday
             };

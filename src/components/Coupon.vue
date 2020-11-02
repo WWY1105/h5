@@ -6,34 +6,12 @@
           <!-- 未使用 -->
           <swiper-slide>
             <div class="set-coupon" v-if="data.usable.items">
-              <!-- <div class="coupon_show" v-for="item in data.usable.items"
-                   v-on:click.stop="couponFn($event,item)">
-                <div class="i-flex i-coupon">
-                  <div class="a4001" :class="'a'+ item.state"></div>
-                  <div class="item">
-                    <div class="name" style="padding-top: 0.4rem">{{item.name}}</div>
-                    <div class="amount0" v-if="item.category =='9031'">
-                      <span style="font-size: .6rem">{{item.value}}</span>{{item.amount}}
-                      <span style="font-size: .6rem">折</span>
-                    </div>
-                    <div class="amount0" v-else-if="item.category =='902'||item.category =='9021'">
-                      <span style="font-size: .6rem">可抵 ￥</span>{{item.amount - item.currentAmount}}
-                      <div class="through">{{item.amount}}</div>
-                    </div>
-                    <div class="amount0" v-else-if="item.category =='904' && item.amount">
-                      <span style="font-size: .6rem">价值 ￥</span>{{item.amount}}
-                    </div>
-                  </div>
-                  <div class="item">
-                    <span class="i-btn grey">使用方法</span>
-                  </div>
-                </div>
-                <div class="addon">
-                  <span class="list" v-text="item.times"></span>
-                  <span class="list" v-text="item.useStrategy"></span>
-                </div>
-              </div> -->
-              <router-link class="coupon_show" v-for="item in data.usable.items" :key="item.id" :to="{ path: 'CouponUse', query: { id: item.id }}">
+              <div class="coupon_show" 
+              v-for="item in data.usable.items" 
+              :key="item.id" 
+            
+              @click="use(item.id)"
+              >
                  <div class="i-flex i-coupon" @touchstart="showDeleteButton(item.id)" @touchend="clearLoop">
                   <div class="a4001" :class="'a'+ item.state"></div>
                   <div class="item" style="width : 68%">
@@ -58,7 +36,7 @@
                   <span class="list" v-text="item.times"></span>
                   <span class="list" v-text="item.useStrategy"></span>
                 </div>
-              </router-link>
+              </div>
             </div>
             
             <div class="set-coupon empty" v-else>
@@ -208,6 +186,9 @@
       });
     },
     methods: {
+      use(id){
+         this.$router.push({path:'CouponUse',query:{id:id}})
+      },
         goto(path){
          this.$router.push({path,query:this.$route.query})
       },

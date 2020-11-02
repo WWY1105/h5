@@ -12,7 +12,7 @@
                     验证手机号
                 </div>
             </div>
-            <div class="i-card" @click="goto('vip')"  v-else :style="{backgroundImage: 'url('+ (data.cardUrl||'') +')'}">
+            <div class="i-card" @click="goto('vip')" v-else :style="{backgroundImage: 'url('+ (data.cardUrl||'') +')'}">
                 <div>
                     <img class="avatar" :src="data.logoUrl">
                     <span class="shop">{{data.brandName}}</span>
@@ -31,19 +31,19 @@
         </div>
 
         <div class="benefit-wrapper">
-            <div class="point-item" @click="goto('exchange')" >
+            <div class="point-item" @click="goto('exchange')">
                 {{data.point||0}}
             </div>
             <div class="separate"></div>
-            <div class="coupon-item" @click="goto('coupon')" >
+            <div class="coupon-item" @click="goto('coupon')">
                 {{data.couponCount||0}}
             </div>
             <div class="separate"></div>
-            <div class="charge-item" @click="goto('charge')" >
+            <div class="charge-item" @click="goto('charge')">
                 {{data.charge||0}}
             </div>
             <div class="separate"></div>
-            <div class="reward-item" @click="goto('reward')" >
+            <div class="reward-item" @click="goto('reward')">
                 {{data.reward||0}}
             </div>
         </div>
@@ -54,9 +54,9 @@
                 <div>您有现金待领取</div>
                 <div class="text">邀请好友即可领取</div>
             </div>
-            <router-link :to="{ path: 'rewardlist', query: { id: $route.query.id }}">
+            <div @click="goto('rewardlist')">
                 <div class="redboxbtn">去赚赏金</div>
-            </router-link>
+            </div>
         </div>
     </div>
     <!--  弹框 -->
@@ -250,17 +250,19 @@
     </div>
     <!-- 会员特权 -->
     <vip-module v-bind:data="upgrade" :payment="payment" v-bind:upgrade="false" v-bind:canUpgrade="data.canUpgrade"></vip-module>
+   
+   
+   
+   
     <div class="bar">
         <div v-on:click="ajaxUrl('record.html')"><span class="icon1"></span>订单记录</div>
-        <router-link class="i-list" :to="{ path: 'setting', query:  $route.query}">
+        <div @click="goto('setting')" class="i-list">
             <span class="icon2"></span>账户设置
-        </router-link>
+        </div>
     </div>
     <div style="height: 3rem"></div>
 
-
-    
-       <!-- 二维码 -->
+    <!-- 二维码 -->
     <!-- <linkPicUrl :linkPicUrl="linkPicUrl" /> -->
 </div>
 </template>
@@ -269,12 +271,17 @@
 import vipModule from "./module/vip"
 import wcKeyboard from './wcKeyboard/KeyboardInput.vue'
 // import linkPicUrl from './module/linkPicUrl/linkPicUrl'
+
+import Vue from 'vue'
+import AwesomePicker from 'vue-awesome-picker';
+
+Vue.use(AwesomePicker);
 export default {
     name: "User",
 
     data() {
         return {
-            linkPicUrl:'',
+            linkPicUrl: '',
             data: "",
             upgrade: "",
             close: false,
@@ -297,8 +304,8 @@ export default {
         // linkPicUrl
     },
     created() {
-        
-           // 判断是否有pid
+
+        // 判断是否有pid
         if (this.$route.query.pid) {
             this.linkPicUrl = this.$cookie.get(this.$route.query.pid)
         }
@@ -306,8 +313,11 @@ export default {
         this.getModeFn();
     },
     methods: {
-      goto(path){
-            this.$router.push({path,query:this.$route.query})
+        goto(path) {
+            this.$router.push({
+                path,
+                query: this.$route.query
+            })
         },
         initFn() {
             let _self = this;
@@ -359,7 +369,7 @@ export default {
                     }
                     _self.payment = data1.result.payMode;
 
-                }else{
+                } else {
                     //  _self.$message("提示", "品牌暂未开通支付，详情请咨询服务员。", function () {
                     //   });
                 }
