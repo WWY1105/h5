@@ -336,8 +336,16 @@
             </div>
         </div>
     </div>
-    <!-- 二维码 -->
-    <!-- <linkPicUrl :linkPicUrl="linkPicUrl" /> -->
+   
+
+
+     <!-- 分享卡 -->
+         <div class="modal addVip2" >
+                <div class="modal-inner">
+                    <div class="modal-content"></div>
+                </div>
+         </div>
+
 </div>
 </template>
 
@@ -493,6 +501,21 @@ export default {
     },
 
     methods: {
+        getShareCard(){
+              let _self = this;
+            if (_self.$route.query.id || _self.$route.query.guestid) {
+                _self.$http.get("/benefit/cards/guest/" + (_self.$route.query.id || _self.$route.query.guestid) , {
+                   
+                }).then(response => {
+                    if (response.body.code == 200) {
+                       
+
+                    } else {
+
+                    }
+                });
+            }
+        },
         goto(path) {
             this.$router.push({
                 path,
@@ -507,10 +530,6 @@ export default {
                 path: "/selfpay",
                 query: json
             });
-            // this.$router.replace({
-            //     path: '/'
-            // });
-            //replace替换原路由，作用是避免回退死循环
         },
         focusUp(e) {
             setTimeout(function () {
@@ -585,6 +604,7 @@ export default {
                             if (_self.init.existRemindBenefit) {
                                 _self.addVip();
                             }
+                            _self.getShareCard()
                             _self.getPayMode()
                         }
 
