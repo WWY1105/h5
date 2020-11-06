@@ -1212,7 +1212,6 @@ export default {
                             }
                         });
                     }, function () {
-                        console.log(2)
                         _self.$http.get("/order/" + _self.id + "/pay/result").then(response => {
                             if (response.body.code == 200) {
                                 _self.$router.replace({

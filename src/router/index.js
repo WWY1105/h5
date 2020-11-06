@@ -53,10 +53,6 @@ export default new Router({
   // mode: 'history',
   routes: [
     {
-      path: '/',
-      name: 'Error',
-      component: Error,
-    },{
       path: '/dynamic',
       name: 'Dynamic',
       component: Dynamic,
