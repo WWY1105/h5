@@ -481,6 +481,7 @@ export default {
     data() {
         const _self = this;
         return {
+            strageTimer:null,
             linkPicUrl:'',
             // 本单账单
             menuData: {
@@ -848,7 +849,7 @@ export default {
                     }
 
                     if (!data.result.strategy && !data.result.strategies) {
-                        setTimeout(function () {
+                       this.strageTimer= setTimeout(function () {
                             _self.getStrategies();
                         }, 1000);
                         return;
@@ -1393,6 +1394,7 @@ export default {
     destroyed() {
         window.removeEventListener('popstate', this.goBack, false);
         window.removeEventListener('popstate', this.backbtn); //false阻止默认事件
+        clearInterval(this.strageTimer)
     }
 
 }

@@ -119,11 +119,11 @@
                         <!-- 不是会员 -->
                         <div class="btnBox" v-if="!init.memberGradeName">
                             <div class="btnBox_left" @click="submit()">不要优惠买单</div>
-                            <div class="btnBox_right" @click.self="toStrategy()">推荐优惠买单</div>
+                            <div class="btnBox_right" @click.self="getShareCard()">推荐优惠买单</div>
                         </div>
                         <!-- 是会员   -->
                         <div class="btnBox" v-if="init.memberGradeName">
-                            <div class="btnBox_right memberGradeName" @click.self="toStrategy()">优&nbsp;&nbsp;&nbsp;&nbsp;惠&nbsp;&nbsp;&nbsp;&nbsp;买&nbsp;&nbsp;&nbsp;&nbsp;单</div>
+                            <div class="btnBox_right memberGradeName" @click.self="getShareCard()">优&nbsp;&nbsp;&nbsp;&nbsp;惠&nbsp;&nbsp;&nbsp;&nbsp;买&nbsp;&nbsp;&nbsp;&nbsp;单</div>
                         </div>
                     </div>
                 </div>
@@ -336,15 +336,37 @@
             </div>
         </div>
     </div>
-   
 
-
-     <!-- 分享卡 -->
-         <div class="modal addVip2" >
-                <div class="modal-inner">
-                    <div class="modal-content"></div>
+    <!-- 分享卡 -->
+    <div class="modal shareCardModal" v-if="shareCardFlag">
+        <div class="modal-inner">
+            <div class="modal-content">
+                <div class="title">
+                    <p>您拥有本店共享卡</p>
+                    <p>请确认使用</p>
                 </div>
-         </div>
+                <div class="cardList">
+                    <div class="eachCard" v-for="i,index in shareCardList" @click="chooseShareCard(i.id,index)">
+                        <div class="radioBox" v-if="shareCardList.length>1">
+                            <img v-show="!i.select" class="selectIcon unselect" src="/sui_assets/img/selfPay/shareCard/unselect.png" alt="">
+                            <img v-show="i.select" class="selectIcon selected" src="/sui_assets/img/selfPay/shareCard/selected.png" alt="">
+                        </div>
+                        <div class="cards">
+                            <div class="cardName">{{i.name}}</div>
+                            <div class="cardDesc">
+                                <span class="coupon">共{{i.couponCount}}张优惠券</span>
+                                <p class="disCount">
+                                    当前<span class="amount">{{i.amount}}</span>折
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <button :class="shareCardId?'confirmBtn':'confirmBtn disable'" @click="toStrategy()">确定使用</button>
+                </div>
+                 <img @click="closeShareCard()" class="closeIcon" src="/sui_assets/img/selfPay/shareCard/close.png" alt="">
+            </div>
+        </div>
+    </div>
 
 </div>
 </template>
@@ -368,6 +390,7 @@ export default {
     },
     data() {
         return {
+
             linkPicUrl: '',
             data: "",
             submitpop: false,
@@ -417,7 +440,10 @@ export default {
             }, //评赏
             qrcode: "",
             ccode: "",
-            num: 0
+            num: 0,
+            shareCardFlag: false, // 共享卡
+            shareCardList: [],
+            shareCardId:false
         };
     },
 
@@ -426,34 +452,7 @@ export default {
         if (this.$route.query.pid) {
             this.linkPicUrl = this.$cookie.get(this.$route.query.pid)
         }
-        // alert('beforeCreate')
-        // let that = this;
-        // let ua = window.navigator.userAgent.toLowerCase();
-        // if (ua.match(/MicroMessenger/i) == 'micromessenger') {
-        //     // 如果当前环境是微信的浏览器
-        //     let wxJson = {};
-        //     wxJson.url = location.href;
-        //     if (Vue.cookie.get("token")) {
-        //         that.$http.post("/auth/sign", wxJson).then(response => {
-        //             if (response.body.code == 200) {
-        //                 let result1 = response.body.result;
-        //                 result1.jsApiList = [
-        //                     'hideMenuItems',
-        //                     'onMenuShareAppMessage',
-        //                     'onMenuShareTimeline'
-        //                 ];
-        //                 wx.config(result1);
-        //                 wx.ready(function () {
-        //                     wx.hideMenuItems({
-        //                         menuList: ["menuItem:copyUrl"] // 要隐藏的菜单项，只能隐藏“传播类”和“保护类”按钮，所有menu项见附录3
-        //                     });
-        //                     wx.hideOptionMenu();
-        //                 })
 
-        //             }
-        //         })
-        //     }
-        // }
     },
     created() {
         var _self = this;
@@ -501,21 +500,46 @@ export default {
     },
 
     methods: {
-        getShareCard(){
-              let _self = this;
+        // 获取共享卡
+        getShareCard() {
+            let _self = this;
             if (_self.$route.query.id || _self.$route.query.guestid) {
-                _self.$http.get("/benefit/cards/guest/" + (_self.$route.query.id || _self.$route.query.guestid) , {
-                   
-                }).then(response => {
+                _self.$http.get("/benefit/cards/guest/" + (_self.$route.query.id || _self.$route.query.guestid), {}).then(response => {
                     if (response.body.code == 200) {
-                       
-
+                        if (response.body.result) {
+                            if(response.body.result.length==1){
+                                this.shareCardId=response.body.result[0].id
+                            }else{
+                                  response.body.result.map(i => {
+                                i.select = false;
+                            })
+                            }
+                        }
+                        _self.shareCardList = response.body.result;
+                        _self.shareCardFlag = true;
+                        console.log(response.body.result)
                     } else {
-
+                        _self.toStrategy()
                     }
                 });
             }
+
         },
+        // 选择共享卡
+        chooseShareCard(id,index){
+            this.shareCardList.map(i=>{
+                i.select=false
+            })
+            this.shareCardList[index].select=true;
+            this.shareCardId=id;
+            console.log(id)
+        },
+        closeShareCard(){
+            this.shareCardFlag=false;
+            this.shareCardId=false;
+            this.toStrategy()
+        },
+      
         goto(path) {
             this.$router.push({
                 path,
@@ -604,7 +628,7 @@ export default {
                             if (_self.init.existRemindBenefit) {
                                 _self.addVip();
                             }
-                            _self.getShareCard()
+
                             _self.getPayMode()
                         }
 
@@ -780,16 +804,6 @@ export default {
             this.vip = null;
             document.body.removeAttribute("class", "activebody");
 
-            // 不是会员+有账单======点击关闭弹窗,直接跳策略
-            // if (!sessionStorage.getItem('jumpFlag')) {
-            //     if (that.post.menus || (that.init.preCheckData && that.init.preCheckData.amount)) {
-            //         that.$toast("即将跳转", 'center');
-            //         setTimeout(function () {
-            //             that.toStrategy()
-            //         }, 200)
-            //     }
-            // }
-
         },
 
         replaceUrl(item) {
@@ -932,12 +946,7 @@ export default {
                         setTimeout(function () {
                             _self.vip = null;
                             _self.initFn();
-                            // 绑定会员,已经是会员,如果有账单,直接跳策略页面
-                            // if (!sessionStorage.getItem('jumpFlag')) {
-                            //     if (_self.post.menus || (_self.init.preCheckData && _self.init.preCheckData.amount)) {
-                            //         _self.toStrategy()
-                            //     }
-                            // }
+
                         }, 1000)
                     } else {
                         this.$toast(data.message, 'center');
@@ -1208,8 +1217,13 @@ export default {
             if (this.$route.query.pid) {
                 json.promoteId = this.$route.query.pid;
             }
+              // 分享卡id
+              console.log('分享卡id'+this.shareCardId)
+           if(this.shareCardId){
+               json.userCardId=this.shareCardId
+           }
+           console.log(json);
             if (navigator.onLine) {
-                console.log(json);
                 this.$http
                     .post("/check/shop/" + this.$route.query.id + "/autonomy", json)
                     .then(response => {
@@ -1378,6 +1392,11 @@ export default {
             if (this.$route.query.pid) {
                 json.promoteId = this.$route.query.pid;
             }
+           // 分享卡id
+           if(this.shareCardId){
+               json.userCardId=this.shareCardId
+           }
+           console.log('分享卡id'+this.shareCardId)
             if (navigator.onLine) {
                 this.$http
                     .post("/check/shop/" + this.$route.query.id + "/autonomy", json)
@@ -1449,7 +1468,9 @@ export default {
                     // _self.submitFn()
                 }, 1000);
             }
+
         },
+
         // 不要优惠
         submit: function () {
             var that = this;

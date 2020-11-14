@@ -1,6 +1,111 @@
 $grey-blue: rgb(107, 162, 186);
 $warm-grey: rgb(156, 156, 156);
 
+// 共享卡
+.shareCardModal {
+  &.modal {
+    .modal-inner {
+      max-width: 582px;
+      top: 16vh;
+      .closeIcon{
+        width: 30px;
+        height: 30px;
+        margin-top: 30px;
+      }
+      .modal-content {
+        
+        .title {
+          background: url(/sui_assets/img/selfPay/shareCard/headBg.png) top center no-repeat/contain;
+          color: #fff;
+          font-size: 24px;
+          font-weight: bold;
+          height: 111px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          line-height: 1;
+          justify-content: center;
+          background-size: cover;
+
+          p {
+            margin: 0;
+            line-height: 40px;
+          }
+        }
+        .confirmBtn{
+          width: 200px;
+          height: 44px;
+          background: #FFBB59;
+          border: none;
+          border-radius: 22px;
+          color: #fff;
+          font-size: 16px;
+          &.disable{
+            pointer-events: none;
+            background-color: #ccc;
+          }
+        }
+        .cardList {
+          background-color: #fff;
+          padding: 16px 20px;
+          box-sizing: border-box;
+          border-radius: 0 0 10px 10px;
+          max-height: 280px;
+          overflow-y: scroll;
+          height: 280px;
+          .eachCard {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 15px;
+
+            .radioBox {
+              .selectIcon {
+                width: 20px;
+                height: 20px;
+                margin-right: 10px;
+              }
+            }
+
+            .cards {
+              background: linear-gradient(88deg, #525263, #282933);
+              flex: 1;
+              border-radius: 5px;
+              padding: 13px 14px;
+              box-sizing: border-box;
+              color: #EEC993;
+              font-size: 12px;
+
+              .cardName {
+                color: #EEC993;
+                font-size: 12px;
+                font-weight: bold;
+                margin-bottom: 10px;
+                text-align: left;
+              }
+
+              .cardDesc {
+                display: flex;
+                align-items: baseline;
+                justify-content: space-between;
+                line-height: 1;
+                .disCount {
+                  font-weight: bold;
+                  margin: 0;
+                  .amount {
+                    font-size: 24px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}
+
 @keyframes opacity {
   from {
     opacity: 0;
@@ -35,97 +140,98 @@ $warm-grey: rgb(156, 156, 156);
 
 .selfpay {
   background: rgb(240, 240, 240);
+
   // min-height: 100vh;
   .xmenu-list {
     font-size: .7rem;
     font-family: PingFangSC;
 
     .menu-border {
-        border-bottom: 1px solid #e0e0e0;
+      border-bottom: 1px solid #e0e0e0;
     }
 
     .xlist {
-        height: 8rem;
-        display: block;
-        overflow: scroll;
+      height: 8rem;
+      display: block;
+      overflow: scroll;
     }
 
     .xlist-body {
-        padding-top: .2rem;
-        padding-bottom: .2rem;
+      padding-top: .2rem;
+      padding-bottom: .2rem;
 
-        .xbody-first {
-            display: flex;
+      .xbody-first {
+        display: flex;
 
-            .xbl {
-                width: 65%;
-            }
-
-            .xbr {
-                width: 35%;
-                display: flex;
-
-                >div {
-                    flex: 1;
-                }
-            }
+        .xbl {
+          width: 65%;
         }
 
-        .xbody-min {
-            font-size: 0.6rem;
-            color: #c1c1c1;
-            padding-left: 2rem;
-            padding-right: 4.5rem;
-            text-align: justify;
-            padding-top: .1rem;
+        .xbr {
+          width: 35%;
+          display: flex;
+
+          >div {
+            flex: 1;
+          }
         }
+      }
+
+      .xbody-min {
+        font-size: 0.6rem;
+        color: #c1c1c1;
+        padding-left: 2rem;
+        padding-right: 4.5rem;
+        text-align: justify;
+        padding-top: .1rem;
+      }
     }
 
     .xlist-header {
-        display: flex;
-        // padding-top: .5rem;
-        padding-bottom: .5rem;
+      display: flex;
+      // padding-top: .5rem;
+      padding-bottom: .5rem;
 
-        >div {
-            flex: 1;
-        }
+      >div {
+        flex: 1;
+      }
     }
 
     .mtl {
-        text-align: left;
+      text-align: left;
     }
 
     .mtc {
-        text-align: center;
+      text-align: center;
     }
 
     .mtr {
-        text-align: right;
+      text-align: right;
 
-        .num-del {
-            text-decoration: line-through;
-            color: #a8a8a8;
-            font-size: 0.6rem;
-        }
+      .num-del {
+        text-decoration: line-through;
+        color: #a8a8a8;
+        font-size: 0.6rem;
+      }
 
-        .num-color {
-            color: #efaeae;
-        }
+      .num-color {
+        color: #efaeae;
+      }
 
-        .originPrice {
-            text-decoration: line-through;
-            font-size: 0.65rem;
-        }
+      .originPrice {
+        text-decoration: line-through;
+        font-size: 0.65rem;
+      }
     }
-}
+  }
 
-.swiper-container-horizontal>.swiper-pagination-bullets {
+  .swiper-container-horizontal>.swiper-pagination-bullets {
     bottom: -5px;
 
     span {
-        background: #fff !important;
+      background: #fff !important;
     }
-}
+  }
 
   .submitpop {
     width: 17.4rem;
@@ -2004,6 +2110,7 @@ $warm-grey: rgb(156, 156, 156);
   width: 100%;
   height: 100%;
   overflow-y: scroll;
+
   input::-webkit-input-placeholder {
     color: #A9A9A9;
     font-size: 13px;
@@ -2027,7 +2134,7 @@ $warm-grey: rgb(156, 156, 156);
   .modal-innerWX:before {
     content: "注册会员,立享优惠" !important;
     width: 8rem !important;
-    font-size: 0.9rem!important;
+    font-size: 0.9rem !important;
   }
 
   .addVip .modal-inner .modal-innerWX.modal-inner {
@@ -2166,9 +2273,10 @@ $warm-grey: rgb(156, 156, 156);
       text-align: center;
       color: #000000;
       background-color: #fadf4d;
-      pointer-events:unset;
+      pointer-events: unset;
     }
-    .modal-phone .input-text.default{
+
+    .modal-phone .input-text.default {
       background: #ececec;
       color: #fff;
       pointer-events: none;
@@ -2231,11 +2339,12 @@ $warm-grey: rgb(156, 156, 156);
 
       .coupon-icon {
         // background: url(/sui_assets/img/addVip/icon.png) 1rem center/contain no-repeat;
-        background: url(/sui_assets/img/addVip/newmenber_speites.svg) -7%  -3.7rem  no-repeat;
+        background: url(/sui_assets/img/addVip/newmenber_speites.svg) -7% -3.7rem no-repeat;
         background-size: 410%;
-        height:  2rem ;
-        &.couponIcon{
-          background: url(/sui_assets/img/addVip/newmenber_speites.svg) -2%  -4.75rem  no-repeat;
+        height: 2rem;
+
+        &.couponIcon {
+          background: url(/sui_assets/img/addVip/newmenber_speites.svg) -2% -4.75rem no-repeat;
           background-size: 700%;
         }
       }
@@ -2259,7 +2368,7 @@ $warm-grey: rgb(156, 156, 156);
         // color: #fff;
         // text-align: center;
 
-        background: url(/sui_assets/img/addVip/newmenber_speites.svg) 1%  -8.9rem  no-repeat;
+        background: url(/sui_assets/img/addVip/newmenber_speites.svg) 1% -8.9rem no-repeat;
         background-size: 804%;
         position: absolute;
         font-size: .6rem;
@@ -2283,14 +2392,14 @@ $warm-grey: rgb(156, 156, 156);
     .close::after {
       content: "";
       // background: url(/sui_assets/img/addVip/system-close.svg) center no-repeat;
-      background:url(/sui_assets/img/addVip/newmenber_speites.svg) -1%  4.3%   no-repeat;
+      background: url(/sui_assets/img/addVip/newmenber_speites.svg) -1% 4.3% no-repeat;
       padding: 1rem;
     }
 
     .todayUsable:after {
       content: "";
       // background: url(/sui_assets/img/addVip/ljky.png) center top no-repeat;
-      background: url(/sui_assets/img/addVip/newmenber_speites.svg) 0%  -5.3rem  no-repeat;
+      background: url(/sui_assets/img/addVip/newmenber_speites.svg) 0% -5.3rem no-repeat;
       position: absolute;
       padding: 0.7rem 1.8rem;
       background-size: 400%;
@@ -2304,6 +2413,7 @@ $warm-grey: rgb(156, 156, 156);
   width: 100%;
   height: 100%;
   overflow-y: scroll;
+
   input::-webkit-input-placeholder {
     color: #A9A9A9;
     font-size: 13px;
@@ -2320,8 +2430,9 @@ $warm-grey: rgb(156, 156, 156);
   }
 
   .modal-inner {
-    width:14.85rem;
+    width: 14.85rem;
     margin-left: -7.45‬rem;
+
     .modal-content {
       background-color: #fff;
       position: relative;
@@ -2330,11 +2441,12 @@ $warm-grey: rgb(156, 156, 156);
       padding: 1px 0;
 
       .top {
-        &.memberReduceAmount{
+        &.memberReduceAmount {
           background: url(/sui_assets/img/selfPay/memberReduceBg.png) 100% 100% no-repeat;
           background-size: cover;
           position: relative;
-          .memberReduceNum{
+
+          .memberReduceNum {
             position: absolute;
             font-size: 3rem;
             font-weight: 500;
@@ -2346,6 +2458,7 @@ $warm-grey: rgb(156, 156, 156);
             text-align: center;
           }
         }
+
         .card-box {
           height: 267px;
           background-size: 100% 100%;
@@ -2393,14 +2506,14 @@ $warm-grey: rgb(156, 156, 156);
           color: rgb(190, 73, 73);
           // background-color: rgb(255, 238, 122);
           // background: url(/sui_assets/img/addVip/smallBtn.png) bottom center no-repeat/contain;
-          background:url(/sui_assets/img/addVip/modal_sprites.svg) -0.1rem -6.25rem no-repeat;
+          background: url(/sui_assets/img/addVip/modal_sprites.svg) -0.1rem -6.25rem no-repeat;
           border-radius: 0.15rem;
           float: right;
           font-size: 0.7rem;
           color: #fff;
           padding: 0.4rem;
           background-size: 11.8rem 11.1rem;
-     }
+        }
 
         .v-button {
           background: url(/sui_assets/img/addVip/modal_sprites.svg) 0 100% no-repeat;
@@ -2428,8 +2541,10 @@ $warm-grey: rgb(156, 156, 156);
   width: 100%;
   height: 100%;
   overflow-y: scroll;
+
   .modal-inner {
     transition: all 0.5s;
+
     .new {
       // background: url(/sui_assets/img/addVip/slogan.png) center no-repeat;
       left: 0;
@@ -2896,11 +3011,15 @@ $warm-grey: rgb(156, 156, 156);
       color: #ffffff;
       box-shadow: 0 5px 10px 0 rgba(237, 119, 48, 0.5);
       background-color: #d52a2a;
-      &.memberGradeName{
+
+      &.memberGradeName {
         // width: 17.15rem;
         width: 100%;
         // letter-spacing: 1rem;
       }
     }
   }
+
+
+
 }
