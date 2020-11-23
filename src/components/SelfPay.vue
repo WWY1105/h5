@@ -361,8 +361,12 @@
                             </div>
                         </div>
                     </div>
-                    <button :class="shareCardId?'confirmBtn':'confirmBtn disable'" @click="toStrategy()">确定使用</button>
-                </div>
+                    <div class="btnBox">
+ <button :class="shareCardId?'confirmBtn':'confirmBtn disable'" @click="toStrategy()">确定使用</button>
+               
+                    </div>
+        
+                    </div>
                  <img @click="closeShareCard()" class="closeIcon" src="/sui_assets/img/selfPay/shareCard/close.png" alt="">
             </div>
         </div>
