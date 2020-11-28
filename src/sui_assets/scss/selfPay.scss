@@ -2301,6 +2301,7 @@ $warm-grey: rgb(156, 156, 156);
       background-image: linear-gradient(to right, #f7dd86, #f4dc7e 21%, #fcefb8 53%, #efd576 85%, #f8e388);
       position: absolute;
       bottom: -50px;
+      z-index: 999999999999999999;
 
     }
 

@@ -508,7 +508,7 @@ export default {
               
                 
             }
-            this.$http.post("/menbershipp", jsonA).then(response => {
+            this.$http.post("/membership", jsonA).then(response => {
                     let data = response.data;
                     if (data.code == 200) {
                         this.vip = null;

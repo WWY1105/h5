@@ -221,7 +221,7 @@
                                     {{ phone1.text }}
                                 </div>
                             </div>
-                            <div v-on:click="bindPhone1" class="v-button addMenber">
+                            <div v-on:click.stop="bindPhone1" class="v-button addMenber">
                                 加入会员
                             </div>
                         </div>
@@ -315,7 +315,7 @@
                                 </div>
                                 <input type="tel" placeholder="输入收到的验证码" v-model="phone1.validateCode" id="validate" maxlength="6" @blur="temporaryRepair()" />
                             </div>
-                            <div v-on:click="bindPhone1" class="v-button addMenber">
+                            <div v-on:click.stop="bindPhone1" class="v-button addMenber">
                                 {{vip.needPhone?'免费注册':'加入会员'}}
                             </div>
                         </div>
@@ -352,12 +352,12 @@
                         </div>
                     </div>
                     <div class="btnBox">
- <button :class="shareCardId?'confirmBtn':'confirmBtn disable'" @click="toStrategy()">确定使用</button>
-               
+                        <button :class="shareCardId?'confirmBtn':'confirmBtn disable'" @click="toStrategy()">确定使用</button>
+
                     </div>
-        
-                    </div>
-                 <img @click="closeShareCard()" class="closeIcon" src="/sui_assets/img/selfPay/shareCard/close.png" alt="">
+
+                </div>
+                <img @click="closeShareCard()" class="closeIcon" src="/sui_assets/img/selfPay/shareCard/close.png" alt="">
             </div>
         </div>
     </div>
@@ -889,23 +889,29 @@ export default {
             let jsonA = {
                 id: this.$route.query.id
             };
-              // 推广码
-                if (_self.$route.query.pid) {
-                    jsonA.promoteId = _self.$route.query.pid;
-                }
-            if (
-                this.phone1.phone &&
-                this.phone1.validateCode &&
-                this.phone1.phone.length == 11 &&
-                this.phone1.validateCode.length == 6
-            ) {
-
-                jsonA.phone = this.phone1.phone;
-                jsonA.validateCode = this.phone1.validateCode;
-              
-
+            // 推广码
+            if (_self.$route.query.pid) {
+                jsonA.promoteId = _self.$route.query.pid;
             }
-            this.$http.post("/menbership", jsonA).then(response => {
+
+            if (_self.vip && _self.vip.needPhone) {
+                if (
+                    this.phone1.phone &&
+                    this.phone1.validateCode &&
+                    this.phone1.phone.length == 11 &&
+                    this.phone1.validateCode.length == 6
+                ) {
+
+                    jsonA.phone = this.phone1.phone;
+                    jsonA.validateCode = this.phone1.validateCode;
+
+                } else {
+                    // 没有填写手机号
+                    _self.$toast("请填写手机号", "center");
+                    return;
+                }
+            }
+            this.$http.post("/membership", jsonA).then(response => {
                 let data = response.data;
                 if (data.code == 200) {
                     this.vip = null;
