@@ -444,8 +444,6 @@
             </div>
         </div>
     </div>
-       <!-- 二维码 -->
-    <!-- <linkPicUrl :linkPicUrl="linkPicUrl" /> -->
 </div>
 </template>
 
