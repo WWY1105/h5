@@ -2206,17 +2206,6 @@ $warm-grey: rgb(156, 156, 156);
     }
 
     .modal-phone {
-      // border-radius: 5px;
-      // position: relative;
-      // background: url(/sui_assets/img/addVip/new_w.png) center no-repeat;
-      // background-size: contain;
-      // width: 15.9rem;
-      // height: 10.4rem;
-      // padding: 1rem;
-      // position: relative;
-      // top: -2.2rem;
-      // padding-top: 3rem;
-      // margin: 0 -.45rem auto;
       border-radius: 5px;
       position: relative;
       background: url(/sui_assets/img/addVip/newmenber_speites.svg) 0 38% no-repeat;
@@ -2228,6 +2217,10 @@ $warm-grey: rgb(156, 156, 156);
       top: -2.2rem;
       padding-top: 3rem;
       margin: 0 -.45rem auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
     .modal-phone input {
@@ -2298,6 +2291,8 @@ $warm-grey: rgb(156, 156, 156);
       border-radius: 1.4rem;
       box-shadow: 0 3px 0 0 #bc8a47;
       background-image: linear-gradient(to right, #f7dd86, #f4dc7e 21%, #fcefb8 53%, #efd576 85%, #f8e388);
+      position: absolute;
+      bottom: -50px;
 
     }
 

@@ -1,31 +1,41 @@
 <template>
 <div v-if="init.user">
-    <div class="selfpay" id='selfpay'>
+    <div class="selfpay" id="selfpay">
         <div class="second-pay">
             <div>
                 <!-- 顶部用户信息start -->
                 <div class="userHeader" v-if="!init.memberGradeName">
                     <div class="header_left">
-                        <img :src="init.user.avatarUrl" v-if="init.user.avatarUrl" style="width:1.6rem;height:1.6rem;border-radius:5rem ;" alt />
+                        <img :src="init.user.avatarUrl" v-if="init.user.avatarUrl" style="width: 1.6rem; height: 1.6rem; border-radius: 5rem" alt />
                         <img src="sui_assets/img/selfPay/vip.png" v-else alt />
                         <div class="header_text">
                             <div class="header_text_top">您还不是本店会员</div>
-                            <div class="header_text_right" v-if="!post.memberReduceAmount||post.memberReduceAmount==0">加入会员立享更多优惠</div>
-                            <div class="header_text_right" v-if="post.memberReduceAmount&&post.memberReduceAmount>0">加入会员享会员价,<span style="color:#FFEDE0">立减{{post.memberReduceAmount}}元</span></div>
+                            <div class="header_text_right" v-if="
+                    !post.memberReduceAmount || post.memberReduceAmount == 0
+                  ">
+                                加入会员立享更多优惠
+                            </div>
+                            <div class="header_text_right" v-if="post.memberReduceAmount && post.memberReduceAmount > 0">
+                                加入会员享会员价,<span style="color: #ffede0">立减{{ post.memberReduceAmount }}元</span>
+                            </div>
                         </div>
                     </div>
                     <div class="header_right" @click="addVip()">加入会员</div>
                 </div>
                 <div class="userHeader" v-if="init.memberGradeName">
                     <div class="header_left">
-                        <img :src="init.user.avatarUrl" v-if="init.user.avatarUrl" style="width:1.6rem;height:1.6rem;border-radius:5rem ;" alt />
+                        <img :src="init.user.avatarUrl" v-if="init.user.avatarUrl" style="width: 1.6rem; height: 1.6rem; border-radius: 5rem" alt />
                         <img src="sui_assets/img/selfPay/vip.png" v-else alt />
                         <div class="header_text">
                             <div class="header_text_top">
-                                <span style="font-size: 0.6rem;margin-right:0.6rem;">{{init.memberGradeName}}</span>
-                                {{init.user.nickname}}
+                                <span style="font-size: 0.6rem; margin-right: 0.6rem">{{
+                    init.memberGradeName
+                  }}</span>
+                                {{ init.user.nickname }}
                             </div>
-                            <div class="header_text_right" v-if="init.needShowCoupons>0">您有{{init.needShowCoupons}}项权益需出示使用</div>
+                            <div class="header_text_right" v-if="init.needShowCoupons > 0">
+                                您有{{ init.needShowCoupons }}项权益需出示使用
+                            </div>
                         </div>
                     </div>
                     <div class="item" @click="goto('user')">
@@ -35,71 +45,90 @@
                 <div class="checknr">
                     <div class="zhuo zhuo-flex">
                         <div>
-                            <span v-if="init.tableNo">【{{init.tableNo+ "桌"}}】</span>
+                            <span v-if="init.tableNo">【{{ init.tableNo + "桌" }}】</span>
                             <span v-else>【前台】</span>
                         </div>
-                        <div class="zhuo-tr" v-if="post.menus?true:false">
+                        <div class="zhuo-tr" v-if="post.menus ? true : false">
                             <!-- post.originalTotal==0 不存在部分结账-->
-                            <div v-if="(post.originalTotal-0)==0">
-                                <p style="margin:0">
+                            <div v-if="post.originalTotal - 0 == 0">
+                                <p style="margin: 0">
                                     <span class="zhuo-color">消费金额</span>
-                                    <span class="zhuo-cred" style="font-weight: 700;padding-left: .3rem;">¥ {{post.amount}}</span>
+                                    <span class="zhuo-cred" style="font-weight: 700; padding-left: 0.3rem">¥ {{ post.amount }}</span>
                                 </p>
-                                <p style="margin:0" v-if="init.memberGradeName&&post.memberReduceAmount>0">
+                                <p style="margin: 0" v-if="init.memberGradeName && post.memberReduceAmount > 0">
                                     <span class="zhuo-color">会员价优惠</span>
-                                    <span class="zhuo-cred" style="font-weight: 700;padding-left: .3rem;">¥ {{post.memberReduceAmount}}</span>
+                                    <span class="zhuo-cred" style="font-weight: 700; padding-left: 0.3rem">¥ {{ post.memberReduceAmount }}</span>
                                 </p>
                             </div>
                             <!-- post.originalTotal>0 存在部分结账-->
-                            <div v-if="(post.originalTotal-0)>0">
-                                <div style="text-decoration: line-through;">
-                                    <span class="zhuo-color" style="color:#333">消费金额</span>
-                                    <span class="zhuo-color" style="font-weight: 700;padding-left: .3rem;color:#333">¥ {{post.originalTotal}}</span>
+                            <div v-if="post.originalTotal - 0 > 0">
+                                <div style="text-decoration: line-through">
+                                    <span class="zhuo-color" style="color: #333">消费金额</span>
+                                    <span class="zhuo-color" style="
+                        font-weight: 700;
+                        padding-left: 0.3rem;
+                        color: #333;
+                      ">¥ {{ post.originalTotal }}</span>
                                 </div>
                                 <div>
-                                    <span class="zhuo-color" style="color:#333">未结金额</span>
-                                    <span class="zhuo-cred" style="font-weight: 700;padding-left: .3rem;">¥ {{post.amount}}</span>
+                                    <span class="zhuo-color" style="color: #333">未结金额</span>
+                                    <span class="zhuo-cred" style="font-weight: 700; padding-left: 0.3rem">¥ {{ post.amount }}</span>
                                 </div>
-                                <div v-if="init.memberGradeName&&post.memberReduceAmount>0">
-                                    <span class="zhuo-color" style="color:#333">会员价优惠</span>
-                                    <span class="zhuo-cred" style="font-weight: 700;padding-left: .3rem;">¥ {{post.memberReduceAmount}}</span>
+                                <div v-if="init.memberGradeName && post.memberReduceAmount > 0">
+                                    <span class="zhuo-color" style="color: #333">会员价优惠</span>
+                                    <span class="zhuo-cred" style="font-weight: 700; padding-left: 0.3rem">¥ {{ post.memberReduceAmount }}</span>
                                 </div>
                             </div>
-                            <div style="font-size: 0.68rem;" v-if="init.nonPart" class="zhuo-color">
+                            <div style="font-size: 0.68rem" v-if="init.nonPart" class="zhuo-color">
                                 <div v-if="post.nonParticationAmount != 0">
-                                    不参与优惠金额<span style="font-weight: 700;padding-left: .3rem;"> ¥ {{post.nonParticationAmount}}</span>
+                                    不参与优惠金额<span style="font-weight: 700; padding-left: 0.3rem">
+                                        ¥ {{ post.nonParticationAmount }}</span>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div v-if="init.checkType =='102'">
-                        <div v-if="post.menus?true:false">
+                    <div v-if="init.checkType == '102'">
+                        <div v-if="post.menus ? true : false">
                             <div class="menu-list xmenu-list">
                                 <div class="xlist">
-                                    <div v-for="(item,index) in post.menus" class="xlist-body">
+                                    <div v-for="(item, index) in post.menus" class="xlist-body">
                                         <div class="xbody-first">
                                             <div class="mtl xbl">
-                                                <span v-if="item.kind == 2" style="    border: 1px solid #d52a2a; color: #d52a2a; padding: .1rem .2rem;font-size: .5rem;  border-radius: .2rem;">套餐</span> {{item.name}}
+                                                <span v-if="item.kind == 2" style="
+                              border: 1px solid #d52a2a;
+                              color: #d52a2a;
+                              padding: 0.1rem 0.2rem;
+                              font-size: 0.5rem;
+                              border-radius: 0.2rem;
+                            ">套餐</span>
+                                                {{ item.name }}
                                             </div>
-                                            <div class="xbr" style="justify-content: space-between;">
-                                                <div class="mtr" style="flex:none">{{item.count}}{{item.unit}}</div>
+                                            <div class="xbr" style="justify-content: space-between">
+                                                <div class="mtr" style="flex: none">
+                                                    {{ item.count }}{{ item.unit }}
+                                                </div>
                                                 <div class="mtr">
                                                     <!-- 会员价 -->
-                                                    <p v-if="init.memberGradeName" style="margin:0">
-                                                        <span v-if="item.memberAmount>0&&item.memberAmount!=item.amount">¥{{item.memberAmount}}</span>
-                                                        <span v-if="item.memberAmount!=item.amount" :class="item.memberAmount==0?'':'originPrice'">¥ {{item.amount}}</span>
-                                                        <span v-if="item.memberAmount==item.amount" class="">¥ {{item.amount}}</span>
+                                                    <p v-if="init.memberGradeName" style="margin: 0">
+                                                        <span v-if="
+                                  item.memberAmount > 0 &&
+                                    item.memberAmount != item.amount
+                                ">¥{{ item.memberAmount }}</span>
+                                                        <span v-if="item.memberAmount != item.amount" :class="
+                                  item.memberAmount == 0 ? '' : 'originPrice'
+                                ">¥ {{ item.amount }}</span>
+                                                        <span v-if="item.memberAmount == item.amount" class="">¥ {{ item.amount }}</span>
                                                     </p>
                                                     <!-- 不是会员,显示原价 -->
-                                                    <p v-if="!init.memberGradeName" style="margin:0">
-                                                        <span class="">¥ {{item.amount}}</span>
+                                                    <p v-if="!init.memberGradeName" style="margin: 0">
+                                                        <span class="">¥ {{ item.amount }}</span>
                                                     </p>
                                                 </div>
                                             </div>
                                         </div>
                                         <div v-if="item.details" class="xbody-min">
                                             <div>
-                                                <span v-for="(deta,i) in item.details">+{{deta.name}}{{item.count}}{{item.unit}}
+                                                <span v-for="(deta, i) in item.details">+{{ deta.name }}{{ item.count }}{{ item.unit }}
                                                     <span v-if="item.details.length - 1 > i">,</span>
                                                 </span>
                                             </div>
@@ -111,81 +140,89 @@
                             </div>
                         </div>
                         <div v-else>
-                            <wc-keyboard inter="5" decimal="2" class="amount" v-bind:value="post.amount" v-bind:unabled="init.preCheckData?true:false" placeholder="询问服务员后在此输入" label="消费金额" @input="inputFn" />
-                            <div v-if="init.nonPart" style="padding-top: .5rem;">
-                                <wc-keyboard inter="5" v-bind:value="post.nonParticationAmount" decimal="2" v-bind:unabled="init.preCheckData?true:false" class="nodiscount" v-bind:placeholder="init.nonPart" label="不参与优惠项" @input="nonPartsFn" />
+                            <wc-keyboard inter="5" decimal="2" class="amount" v-bind:value="post.amount" v-bind:unabled="init.preCheckData ? true : false" placeholder="询问服务员后在此输入" label="消费金额" @input="inputFn" />
+                            <div v-if="init.nonPart" style="padding-top: 0.5rem">
+                                <wc-keyboard inter="5" v-bind:value="post.nonParticationAmount" decimal="2" v-bind:unabled="init.preCheckData ? true : false" class="nodiscount" v-bind:placeholder="init.nonPart" label="不参与优惠项" @input="nonPartsFn" />
                             </div>
                         </div>
                         <!-- 不是会员 -->
                         <div class="btnBox" v-if="!init.memberGradeName">
                             <div class="btnBox_left" @click="submit()">不要优惠买单</div>
-                            <div class="btnBox_right" @click.self="getShareCard()">推荐优惠买单</div>
+                            <div class="btnBox_right" @click.self="getShareCard()">
+                                推荐优惠买单
+                            </div>
                         </div>
                         <!-- 是会员   -->
                         <div class="btnBox" v-if="init.memberGradeName">
-                            <div class="btnBox_right memberGradeName" @click.self="getShareCard()">优&nbsp;&nbsp;&nbsp;&nbsp;惠&nbsp;&nbsp;&nbsp;&nbsp;买&nbsp;&nbsp;&nbsp;&nbsp;单</div>
+                            <div class="btnBox_right memberGradeName" @click.self="getShareCard()">
+                                优&nbsp;&nbsp;&nbsp;&nbsp;惠&nbsp;&nbsp;&nbsp;&nbsp;买&nbsp;&nbsp;&nbsp;&nbsp;单
+                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- 顶部用户信息end -->
             </div>
-            <div class="other-pay" v-if="init.checkType !='102'">
+            <div class="other-pay" v-if="init.checkType != '102'">
                 <div class="state" v-if="init.order" v-on:click="stateFn()">
-                    <img src="sui_assets/img/coupon/run.gif" style="height: 2rem" /> 买单进行中...
+                    <img src="sui_assets/img/coupon/run.gif" style="height: 2rem" />
+                    买单进行中...
                     <span class="pull-right">点击查看 ></span>
                 </div>
-                <div v-else-if="init.checkType =='101'">
+                <div v-else-if="init.checkType == '101'">
                     <div class="text">请将身份码出示给服务员</div>
                     <div id="mycode"></div>
                 </div>
                 <div v-else>
-                    <div class="btn-green" @touchstart.stop.prevent="submitForAutoFn">呼叫服务员进行买单</div>
+                    <div class="btn-green" @touchstart.stop.prevent="submitForAutoFn">
+                        呼叫服务员进行买单
+                    </div>
                 </div>
             </div>
             <!---->
         </div>
         <!-- 首页广告 -->
-        <div class="ad-show" v-for="(item,index) in ads" v-on:click="replaceUrl(item)" v-if="ads" v-show="index==0">
-            <div class="cbg" :style="{backgroundImage: 'url('+ (item.transversePicUrl||'') +')'}"></div>
-            <div class="pull-left">{{item.title}}</div>
-            <div v-if="item.activityCategory || item.linkUrl" class="pull-right">看一看 ></div>
+        <div class="ad-show" v-for="(item, index) in ads" v-on:click="replaceUrl(item)" v-if="ads" v-show="index == 0">
+            <div class="cbg" :style="{
+            backgroundImage: 'url(' + (item.transversePicUrl || '') + ')'
+          }"></div>
+            <div class="pull-left">{{ item.title }}</div>
+            <div v-if="item.activityCategory || item.linkUrl" class="pull-right">
+                看一看 >
+            </div>
         </div>
-
     </div>
 
     <!--  弹框 -->
     <div v-if="vip">
         <!--vip-->
-        <div v-if="vip.needPhone">
-            <!---->
-            <!--无手机号，只有领卡  -->
+        <div v-if="vip.type == 1">
+            <!--没有权益，只有领卡  -->
             <div class="modal addVip2" v-if="vip.memberGradeName">
                 <div class="modal-inner">
                     <div class="modal-content">
                         <!-- 有会员价 -->
-                        <div class="top memberReduceAmount" v-if="post.memberReduceAmount>0">
+                        <div class="top memberReduceAmount" v-if="post.memberReduceAmount > 0">
                             <div class="card-box">
-                                <p class="memberReduceNum">{{post.memberReduceAmount}}</p>
+                                <p class="memberReduceNum">{{ post.memberReduceAmount }}</p>
                             </div>
                         </div>
                         <!-- 没有会员价 -->
                         <div class="top" v-else>
-                            <div class="card-box" v-bind:style="{backgroundImage:'url('+ vip.cardUrl+')'}"></div>
+                            <div class="card-box" v-bind:style="{
+                    backgroundImage: 'url(' + vip.cardUrl + ')'
+                  }"></div>
                         </div>
-                        <div class="modal-phone" style="margin:0">
-                            <div v-if="qrcode">
-                                <div>
-                                    <input type="tel" v-model="phone1.phone" placeholder="输入您的手机号码" maxlength="11" @blur="temporaryRepair()" />
-                                    <input type="tel" placeholder="输入收到的验证码" v-model="phone1.validateCode" maxlength="6" @blur="temporaryRepair()" />
-                                    <div class="input-text" v-on:click.stop="validate1Fn">{{phone1.text}}</div>
-                                    <div v-on:click.stop="bindPhone1" class="v-button">加入会员</div>
-                                </div>
-                            </div>
-                            <div v-else>
+                        <div class="modal-phone" style="margin: 0">
+                            <div v-if="vip.needPhone" class="phoneBox">
+
                                 <input type="tel" v-model="phone1.phone" placeholder="输入您的手机号码" maxlength="11" @blur="temporaryRepair()" />
                                 <input type="tel" placeholder="输入收到的验证码" v-model="phone1.validateCode" maxlength="6" @blur="temporaryRepair()" />
-                                <div class="input-text" v-on:click.stop="validate1Fn">{{phone1.text}}</div>
-                                <div v-on:click.stop="bindPhone1" class="v-button">加入会员</div>
+                                <div class="input-text" v-on:click.stop="validate1Fn">
+                                    {{ phone1.text }}
+                                </div>
+                            </div>
+                            <div v-on:click="bindPhone1" class="v-button addMenber">
+                                加入会员
                             </div>
                         </div>
 
@@ -197,70 +234,89 @@
             <div class="modal addVip" v-else>
                 <div class="modal-inner modal-innerWX">
                     <div class="modal-content">
-                        <!-- <div class="usable">有 {{vip.todayUsableNum}} 张优惠券可【立即抵用】</div> -->
-                        <div class="v-item" style="    background-color: transparent;background: none;display: flex;justify-content: center;align-items: center;padding: 0;margin-top: 30px;width: 3rem;margin-bottom:0px;    height: 64px">
+                        <div class="v-item" style="
+                    background-color: transparent;
+                    background: none;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    padding: 0;
+                    margin-top: 30px;
+                    width: 3rem;
+                    margin-bottom: 0px;
+                    height: 64px;
+                  ">
                             <p class="left coupon-icon couponIcon"></p>
                         </div>
-                        <!-- <div class="usable2" v-else></div> -->
-                        <div class="overflow" style="margin-top:0">
-                            <div v-if="vip.benefits" v-for="(coupon,key) in vip.benefits" :key="key" style="position : relative">
-                                <div class="v-coupon" v-if="coupon.category == '1016' " :class="coupon.todayUsable?'todayUsable':''">
+                        <div class="overflow" style="margin-top: 0">
+                            <div v-if="vip.benefits" v-for="(coupon, key) in vip.benefits" :key="key" style="position: relative">
+                                <div class="v-coupon" v-if="coupon.category == '1016'" :class="coupon.todayUsable ? 'todayUsable' : ''">
                                     <div class="v-item">
-                                        <div class="left" v-if="coupon.hasOwnProperty('amount')&&coupon.amount != 0 && coupon.couponCategory!=9012">
-                                            <span v-if=" coupon.couponCategory=='903' ||coupon.couponCategory=='9031'">{{coupon.amount}}折</span>
-                                            <span v-else-if=" coupon.couponCategory=='902' ||coupon.couponCategory=='9021'">
-                                                <span class=" dollar"></span>
-                                                {{+coupon.amount + +coupon.currentAmount}}
+                                        <div class="left" v-if="
+                          coupon.hasOwnProperty('amount') &&
+                            coupon.amount != 0 &&
+                            coupon.couponCategory != 9012
+                        ">
+                                            <span v-if="
+                            coupon.couponCategory == '903' ||
+                              coupon.couponCategory == '9031'
+                          ">{{ coupon.amount }}折</span>
+                                            <span v-else-if="
+                            coupon.couponCategory == '902' ||
+                              coupon.couponCategory == '9021'
+                          ">
+                                                <span class="dollar"></span>
+                                                {{ +coupon.amount + +coupon.currentAmount }}
                                             </span>
                                             <span v-else>
                                                 <span class="dollar"></span>
-                                                {{coupon.amount}}
+                                                {{ coupon.amount }}
                                             </span>
                                         </div>
                                         <div class="left coupon-icon" v-else></div>
                                         <div class="right">
-                                            <div>{{coupon.name}}</div>
-                                            <div class="grey">{{coupon.times}}</div>
+                                            <div>{{ coupon.name }}</div>
+                                            <div class="grey">{{ coupon.times }}</div>
                                         </div>
-                                        <div class="corn" v-if="coupon.count>1">{{coupon.count}}张</div>
+                                        <div class="corn" v-if="coupon.count > 1">
+                                            {{ coupon.count }}张
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="v-point" v-if="coupon.category == '1015' " :class="coupon.todayUsable?'todayUsable':''">
+                                <div class="v-point" v-if="coupon.category == '1015'" :class="coupon.todayUsable ? 'todayUsable' : ''">
                                     <div class="v-item">
-                                        <div class="left">{{coupon.amount}}</div>
+                                        <div class="left">{{ coupon.amount }}</div>
                                         <div class="right">积分</div>
-                                        <div class="corn" v-if="coupon.count>1">{{coupon.count}}张</div>
+                                        <div class="corn" v-if="coupon.count > 1">
+                                            {{ coupon.count }}张
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="v-reward" v-if="coupon.category == '1017' " :class="coupon.todayUsable?'todayUsable':''">
+                                <div class="v-reward" v-if="coupon.category == '1017'" :class="coupon.todayUsable ? 'todayUsable' : ''">
                                     <div class="v-item">
-                                        <div class="left">{{coupon.amount}}</div>
+                                        <div class="left">{{ coupon.amount }}</div>
                                         <div class="right">无门槛代用币</div>
-                                        <div class="corn" v-if="coupon.count>1">{{coupon.count}}张</div>
+                                        <div class="corn" v-if="coupon.count > 1">
+                                            {{ coupon.count }}张
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-phone">
-                            <div v-if="qrcode">
-                                <!-- <div v-if="ccode"> 不强制领卡-->
-                                <div>
-                                    <input type="tel" v-model="phone1.phone" placeholder="输入您的手机号码" maxlength="11" @blur="temporaryRepair()" />
-                                    <div :class="phone1.phone&&phone1.phone.length==11?'input-text':'input-text default'" v-on:click.stop="validate1Fn">{{phone1.text}}</div>
-                                    <input type="tel" placeholder="输入收到的验证码" v-model="phone1.validateCode" id="validate" maxlength="6" @blur="temporaryRepair()" />
-                                    <!-- <div id="bindPhone" v-on:click.stop="bindPhone1" class="v-button" >立即领取</div> -->
-                                    <div id="bindPhone" v-on:click.stop="bindPhone1" class="v-button" style="color:#000;font-weight: 900;">免费注册</div>
-                                </div>
-                                <!-- 不强制领卡<div class="qrcode" v-if="qrcode">
-                                    <img v-if="!ccode" style="width:4.5rem ;" :src="qrcode.url" />
-                                    <div style="font-size: .7rem;">长按识别,免费注册</div>
-                                </div> -->
-                            </div>
-                            <div v-else>
+                            <div v-if="vip.needPhone" class="phoneBox">
                                 <input type="tel" v-model="phone1.phone" placeholder="输入您的手机号码" maxlength="11" @blur="temporaryRepair()" />
-                                <div :class="phone1.phone&&phone1.phone.length==11?'input-text':'input-text default'" v-on:click.stop="validate1Fn">{{phone1.text}}</div>
+                                <div :class="
+                        phone1.phone && phone1.phone.length == 11
+                          ? 'input-text'
+                          : 'input-text default'
+                      " v-on:click.stop="validate1Fn">
+                                    {{ phone1.text }}
+                                </div>
                                 <input type="tel" placeholder="输入收到的验证码" v-model="phone1.validateCode" id="validate" maxlength="6" @blur="temporaryRepair()" />
-                                <div id="bindPhone" v-on:click.stop="bindPhone1" class="v-button" style="color:#000;    font-weight: 900;">免费注册</div>
+                            </div>
+                            <div v-on:click="bindPhone1" class="v-button addMenber">
+                                {{vip.needPhone?'免费注册':'加入会员'}}
                             </div>
                         </div>
                         <div class="close" v-on:click="closeAddVip()"></div>
@@ -268,73 +324,7 @@
                 </div>
             </div>
         </div>
-        <!--有手机号，直接领卡-->
-        <div class="modal addVip1" v-else>
-            <div class="modal-inner">
-                <div class="modal-content" ref="content">
-                    <!-- <div class="new" ref="new"></div> -->
-                    <div class="down" ref="down"></div>
-                    <div class="information">
-                        <div class="info" ref="info">
-                            <div class="content">
-                                <div v-for="(coupon,key) in vip.benefits" :key="key">
-                                    <!-- <span>{{coupon.name}}</span><span v-if="coupon.category =='1015'">{{coupon.amount}}积分</span>-->
-                                    <div class="v-coupon" v-if="coupon.category == '1016' ">
-                                        <div class="v-item">
-                                            <div class="left" v-if="coupon.hasOwnProperty('amount')&&coupon.amount != 0">
-                                                <span v-if="coupon.couponCategory=='903'||coupon.couponCategory=='9031'">{{coupon.amount}}折</span>
-                                                <span v-else-if="coupon.couponCategory=='902'||coupon.couponCategory=='9021'">
-                                                    <span class="dollar"></span>
-                                                    {{coupon.currentAmount}}
-                                                </span>
-                                                <span v-else>
-                                                    <span class="dollar"></span>
-                                                    {{coupon.amount}}
-                                                </span>
-                                            </div>
-                                            <div class="left coupon-icon" v-else></div>
-                                            <div class="right">
-                                                <div>{{coupon.name}}</div>
-                                                <div class="grey">{{coupon.times}}</div>
-                                            </div>
-                                            <div class="corn" v-if="coupon.count>1">{{coupon.count}}张</div>
-                                        </div>
-                                    </div>
-                                    <div class="v-point" v-if="coupon.category == '1015' ">
-                                        <div class="v-item">
-                                            <div class="left">{{coupon.amount}}</div>
-                                            <div class="right">积分</div>
-                                        </div>
-                                    </div>
-                                    <div class="v-reward" v-if="coupon.category == '1017' ">
-                                        <div class="v-item">
-                                            <div class="left">{{coupon.amount}}</div>
-                                            <div class="right">无门槛代用币</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="v-close" v-on:click="refresh()">我 知 道 了</div>
-                        </div>
-                    </div>
-                    <div class="up" ref="up"></div>
-                    <div class="top" ref="top" style="height: 23.45rem ;border-radius:0.3rem ">
-                        <div class="card-box" v-bind:style="{backgroundImage:'url('+ vip.cardUrl+')'}"></div>
-                        <div class="card1" ref="card">
-                            <!-- 恭喜获赠会员 -->
-                            <img src="/sui_assets/img/addVip/gxhzhyk.png" style="margin-top: 0.5rem ;width:7rem ;height:1.15rem ;" alt="">
-                        </div>
-                        <div class="card-line"></div>
-                        <div class="card-text" style="padding:1.7rem 0 1rem">
-                            使用自助买单可自动抵用优惠
-                        </div>
-                        <!-- v-if="!vip.benefits"  -->
-                        <div class="v-button" v-on:click="refresh()">我 知 道 了</div>
-                        <!-- <div v-else v-on:click="open()" class="v-button">打开红包</div> -->
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div v-if="vip.type == 2"></div>
     </div>
 
     <!-- 分享卡 -->
@@ -346,28 +336,29 @@
                     <p>请确认使用</p>
                 </div>
                 <div class="cardList">
-                    <div class="eachCard" v-for="i,index in shareCardList" @click="chooseShareCard(i.id,index)">
-                        <div class="radioBox" v-if="shareCardList.length>1">
-                            <img v-show="!i.select" class="selectIcon unselect" src="/sui_assets/img/selfPay/shareCard/unselect.png" alt="">
-                            <img v-show="i.select" class="selectIcon selected" src="/sui_assets/img/selfPay/shareCard/selected.png" alt="">
+                    <div class="eachCard" v-for="(i, index) in shareCardList" @click="chooseShareCard(i.id, index)">
+                        <div class="radioBox" v-if="shareCardList.length > 1">
+                            <img v-show="!i.select" class="selectIcon unselect" src="/sui_assets/img/selfPay/shareCard/unselect.png" alt="" />
+                            <img v-show="i.select" class="selectIcon selected" src="/sui_assets/img/selfPay/shareCard/selected.png" alt="" />
                         </div>
                         <div class="cards">
-                            <div class="cardName">{{i.name}}</div>
+                            <div class="cardName">{{ i.name }}</div>
                             <div class="cardDesc">
-                                <span class="coupon">共{{i.couponCount}}张优惠券</span>
+                                <span class="coupon">共{{ i.couponCount }}张优惠券</span>
                                 <p class="disCount">
-                                    当前<span class="amount">{{i.amount}}</span>折
+                                    当前<span class="amount">{{ i.amount }}</span>折
                                 </p>
                             </div>
                         </div>
                     </div>
-                    <button :class="shareCardId?'confirmBtn':'confirmBtn disable'" @click="toStrategy()">确定使用</button>
+                    <button :class="shareCardId ? 'confirmBtn' : 'confirmBtn disable'" @click="toStrategy()">
+                        确定使用
+                    </button>
                 </div>
-                 <img @click="closeShareCard()" class="closeIcon" src="/sui_assets/img/selfPay/shareCard/close.png" alt="">
+                <img @click="closeShareCard()" class="closeIcon" src="/sui_assets/img/selfPay/shareCard/close.png" alt="" />
             </div>
         </div>
     </div>
-
 </div>
 </template>
 
@@ -385,13 +376,12 @@ Vue.use(VueAwesomeSwiper);
 export default {
     name: "SelfPay",
     components: {
-        wcKeyboard,
+        wcKeyboard
         // linkPicUrl
     },
     data() {
         return {
-
-            linkPicUrl: '',
+            linkPicUrl: "",
             data: "",
             submitpop: false,
             view: {},
@@ -443,21 +433,20 @@ export default {
             num: 0,
             shareCardFlag: false, // 共享卡
             shareCardList: [],
-            shareCardId:false
+            shareCardId: false
         };
     },
 
     beforeCreate() {
         // 判断是否有pid
         if (this.$route.query.pid) {
-            this.linkPicUrl = this.$cookie.get(this.$route.query.pid)
+            this.linkPicUrl = this.$cookie.get(this.$route.query.pid);
         }
-
     },
     created() {
         var _self = this;
         if (location.hash) {
-            let index = location.hash.lastIndexOf('?')
+            let index = location.hash.lastIndexOf("?");
             var key_str = location.hash.substr(index + 1);
             for (var i = 0; i < key_str.split("&").length; i++) {
                 var j = key_str.split("&")[i].split("=");
@@ -466,85 +455,89 @@ export default {
         }
 
         var ua = window.navigator.userAgent.toLowerCase();
-        if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+        if (ua.match(/MicroMessenger/i) == "micromessenger") {
             _self.version = "WXPAY";
-
         }
-
     },
 
     mounted() {
         let that = this;
         this.initFn();
-        //微信内置浏览器浏览H5页面弹出的键盘遮盖文本框的解决办法 
+        //微信内置浏览器浏览H5页面弹出的键盘遮盖文本框的解决办法
         window.addEventListener("resize", function () {
-            if (document.activeElement.tagName == "INPUT" || document.activeElement.tagName == "TEXTAREA") {
+            if (
+                document.activeElement.tagName == "INPUT" ||
+                document.activeElement.tagName == "TEXTAREA"
+            ) {
                 window.setTimeout(function () {
                     document.activeElement.scrollIntoViewIfNeeded();
                 }, 0);
             }
-        })
+        });
         // 安卓手机物理返回键
         if (window.history && window.history.pushState) {
             history.pushState(null, null, document.URL);
-            window.addEventListener('popstate', this.goBack, false);
+            window.addEventListener("popstate", this.goBack, false);
         }
-
     },
     //页面销毁时，取消监听。否则其他vue路由页面也会被监听
     destroyed() {
-        window.removeEventListener('popstate', this.goBack, false);
+        window.removeEventListener("popstate", this.goBack, false);
     },
-    computed: {
-
-    },
+    computed: {},
 
     methods: {
+        // 加入会员
+        joinMember() {},
         // 获取共享卡
         getShareCard() {
             let _self = this;
             if (_self.$route.query.id || _self.$route.query.guestid) {
-                _self.$http.get("/benefit/cards/guest/" + (_self.$route.query.id || _self.$route.query.guestid), {}).then(response => {
-                    if (response.body.code == 200) {
-                        if (response.body.result) {
-                            if(response.body.result.length==1){
-                                this.shareCardId=response.body.result[0].id
-                            }else{
-                                  response.body.result.map(i => {
-                                i.select = false;
-                            })
+                _self.$http
+                    .get(
+                        "/benefit/cards/guest/" +
+                        (_self.$route.query.id || _self.$route.query.guestid), {}
+                    )
+                    .then(response => {
+                        if (response.body.code == 200) {
+                            if (response.body.result) {
+                                if (response.body.result.length == 1) {
+                                    this.shareCardId = response.body.result[0].id;
+                                } else {
+                                    response.body.result.map(i => {
+                                        i.select = false;
+                                    });
+                                }
                             }
+                            _self.shareCardList = response.body.result;
+                            _self.shareCardFlag = true;
+                            console.log(response.body.result);
+                        } else {
+                            _self.toStrategy();
                         }
-                        _self.shareCardList = response.body.result;
-                        _self.shareCardFlag = true;
-                        console.log(response.body.result)
-                    } else {
-                        _self.toStrategy()
-                    }
-                });
+                    });
             }
-
         },
         // 选择共享卡
-        chooseShareCard(id,index){
-            this.shareCardList.map(i=>{
-                i.select=false
-            })
-            this.shareCardList[index].select=true;
-            this.shareCardId=id;
-            console.log(id)
+        chooseShareCard(id, index) {
+            this.shareCardList.map(i => {
+                i.select = false;
+            });
+            this.shareCardList[index].select = true;
+            this.shareCardId = id;
+            console.log(id);
         },
-        closeShareCard(){
-            this.shareCardFlag=false;
-            this.shareCardId=false;
-            this.toStrategy()
+        closeShareCard() {
+            this.shareCardFlag = false;
+            this.shareCardId = false;
+            this.toStrategy();
         },
-      
+
         goto(path) {
             this.$router.push({
                 path,
                 query: this.$route.query
-            })
+            });
         },
 
         goBack() {
@@ -557,30 +550,32 @@ export default {
         },
         focusUp(e) {
             setTimeout(function () {
-                document.querySelector('#inputId').scrollIntoView();
-            }, 400)
+                document.querySelector("#inputId").scrollIntoView();
+            }, 400);
         },
         getPayMode() {
             let _self = this;
             if (_self.$route.query.id || _self.$route.query.guestid) {
-                _self.$http.get("/shop/" + (_self.$route.query.id || _self.$route.query.guestid) + "/paymode", {
-                    key: {
-                        "type": _self.getVersion()
-                    }
-                }).then(response => {
-                    if (response.body.code == 200) {
-                        if (response.body.result.oasis) {
-                            _self.authorFuiou();
-                            return;
+                _self.$http
+                    .get(
+                        "/shop/" +
+                        (_self.$route.query.id || _self.$route.query.guestid) +
+                        "/paymode", {
+                            key: {
+                                type: _self.getVersion()
+                            }
                         }
-                        _self.payment = response.body.result;
-
-                    } else {
-
-                    }
-                });
+                    )
+                    .then(response => {
+                        if (response.body.code == 200) {
+                            if (response.body.result.oasis) {
+                                _self.authorFuiou();
+                                return;
+                            }
+                            _self.payment = response.body.result;
+                        } else {}
+                    });
             }
-
         },
         initFn() {
             let _self = this;
@@ -595,19 +590,19 @@ export default {
             if (_self.$route.query.d) {
                 para.tableId = _self.$route.query.d;
             } else {
-                para.tableId = _self.key_json.d
+                para.tableId = _self.key_json.d;
             }
             // 路由带过来的二维火
             if (_self.$route.query.cashier) {
                 para.cashierOrderId = _self.$route.query.cashier;
             } else {
-                para.cashier = _self.key_json.cashier
+                para.cashier = _self.key_json.cashier;
             }
             //  路由带过来的shopId
             if (_self.$route.query.id) {
                 para.shopId = _self.$route.query.id;
             } else {
-                para.shopId = _self.key_json.id
+                para.shopId = _self.key_json.id;
             }
 
             _self.$http
@@ -629,7 +624,7 @@ export default {
                                 _self.addVip();
                             }
 
-                            _self.getPayMode()
+                            _self.getPayMode();
                         }
 
                         localStorage.setItem("userId", _self.init.user.id);
@@ -679,7 +674,7 @@ export default {
                             );
                         } else {
                             _self.$nextTick(function () {
-                                if (!_self.init.order && _self.init.checkType == "101") {
+                                if (_self.init.checkType == "101") {
                                     //扫码买单
                                     let qrcode = new QRCode(document.getElementById("mycode"), {
                                         width: 160,
@@ -689,11 +684,8 @@ export default {
                                     _self.refreshCode();
                                     _self.interval = setInterval(_self.refreshCode, 30000);
                                 }
-
                             });
-
                         }
-
                     } else if (data.code == 403013) {
                         location.href = "error.html#12";
                     } else if (data.code == 403010) {
@@ -738,11 +730,10 @@ export default {
 
         //添加新人礼会员 获取门店升级赠送详情
         addVip() {
-
             if (!this.init.existRemindBenefit) {
                 let query = {
                     id: this.$route.query.id
-                }
+                };
                 if (this.$route.query.pid) {
                     query.pid = this.$route.query.pid;
                 }
@@ -758,34 +749,12 @@ export default {
             this.$http.get("/remind/guest/" + this.$route.query.id).then(response => {
                 let data = response.body;
                 if (data.code == 200) {
+                    this.vip = data.result;
                     if (data.result.needPhone) {
-                        this.vip = data.result;
-
                         this.phone1 = {
                             text: "获取验证码",
                             able: true
                         };
-                    } else {
-                        let j_son = {
-                            id: this.$route.query.id
-                        }
-                        if (_self.$route.query.pid) {
-                            j_son.promoteId = _self.$route.query.pid;
-                        }
-                        this.$http
-                            .post("/membership", j_son)
-                            .then(response => {
-                                let data = response.body;
-                                if (data.code == 200) {
-                                    this.$http
-                                        .get("/remind/guest/" + this.$route.query.id + "/result")
-                                        .then(response => {
-                                            this.vip = response.body.result;
-                                        });
-                                } else {
-
-                                }
-                            });
                     }
                 }
             });
@@ -799,11 +768,10 @@ export default {
         },
 
         closeAddVip() {
-            console.log('关闭弹窗')
+            console.log("关闭弹窗");
             let that = this;
             this.vip = null;
             document.body.removeAttribute("class", "activebody");
-
         },
 
         replaceUrl(item) {
@@ -820,9 +788,9 @@ export default {
                     let json = this.$route.query;
                     json.aid = item.activityId;
                     that.$router.push({
-                        path: 'couponActivity',
+                        path: "couponActivity",
                         query: json
-                    })
+                    });
                     break;
                     //套餐
                 case "6015":
@@ -883,7 +851,7 @@ export default {
         validate1Fn() {
             if (!this.phone1.able) return;
             if (!this.phone1.phone || this.phone1.phone.length != 11) {
-                this.$toast("手机格式不正确", 'center');
+                this.$toast("手机格式不正确", "center");
                 return;
             }
             this.phone1.able = false;
@@ -895,7 +863,7 @@ export default {
                 .then(response => {
                     let data = response.data;
                     if (data.code == 200) {
-                        this.$toast("获取成功", 'center');
+                        this.$toast("获取成功", "center");
                         let second = 90;
                         let init = setInterval(function () {
                             second--;
@@ -910,49 +878,52 @@ export default {
                         }, 1000);
                     } else {
                         this.phone1.able = true;
-                        this.$toast(data.message, 'center');
+                        this.$toast(data.message, "center");
                     }
                 });
         },
         bindPhone1() {
             let _self = this;
+            let jsonA = {
+                id: this.$route.query.id
+            };
+              // 推广码
+                if (_self.$route.query.pid) {
+                    jsonA.promoteId = _self.$route.query.pid;
+                }
             if (
                 this.phone1.phone &&
                 this.phone1.validateCode &&
                 this.phone1.phone.length == 11 &&
                 this.phone1.validateCode.length == 6
             ) {
-                let jsonA = {
-                    shopId: this.$route.query.id
-                };
+
                 jsonA.phone = this.phone1.phone;
                 jsonA.validateCode = this.phone1.validateCode;
-                // 推广码
-                if (_self.$route.query.pid) {
-                    jsonA.promoteId = _self.$route.query.pid;
-                }
-                this.$http.post("/phone/bindup", jsonA).then(response => {
-                    let data = response.data;
-                    if (data.code == 200) {
-                        this.vip = null;
-                        if (data.result && data.result.token) {
-                            this.$cookie.set("token", data.result.token, {
-                                expires: "90d"
-                            });
-                        }
-                        this.$toast(
-                            "操作成功！,请在“会员中心”查看权益，使用自助买单可自动抵用优惠。", 'center'
-                        );
-                        setTimeout(function () {
-                            _self.vip = null;
-                            _self.initFn();
+              
 
-                        }, 1000)
-                    } else {
-                        this.$toast(data.message, 'center');
-                    }
-                });
             }
+            this.$http.post("/menbership", jsonA).then(response => {
+                let data = response.data;
+                if (data.code == 200) {
+                    this.vip = null;
+                    if (data.result && data.result.token) {
+                        this.$cookie.set("token", data.result.token, {
+                            expires: "90d"
+                        });
+                    }
+                    this.$toast(
+                        "操作成功！,请在“会员中心”查看权益，使用自助买单可自动抵用优惠。",
+                        "center"
+                    );
+                    setTimeout(function () {
+                        _self.vip = null;
+                        _self.initFn();
+                    }, 1000);
+                } else {
+                    this.$toast(data.message, "center");
+                }
+            });
         },
         inputFn: function (value) {
             this.post.amount = value;
@@ -1131,7 +1102,6 @@ export default {
                 });
         },
         getCouponsModal: function (state) {
-
             if (state) {
                 this.visible.timer = 0;
             } else if (this.$cookie.get(this.$route.query.id + "modal")) {
@@ -1171,7 +1141,7 @@ export default {
             // !this.post.menus&&
             if (!(this.post.amount && parseFloat(this.post.amount))) {
                 this.$loading.close();
-                this.$toast("请先填写消费总额", 'center');
+                this.$toast("请先填写消费总额", "center");
                 return;
             }
 
@@ -1182,7 +1152,8 @@ export default {
                 ) {
                     this.$loading.close();
                     this.$toast(
-                        "请先填写不参与优惠项金额，<br>如未消费此类项目，请输入0", 'center'
+                        "请先填写不参与优惠项金额，<br>如未消费此类项目，请输入0",
+                        "center"
                     );
                     // this.$toast.show({text: "请先填写不参与优惠项金额，如未消费此类项目，请输入0", position: 'bottom'});
                     return;
@@ -1192,7 +1163,7 @@ export default {
                         parseInt(this.post.amount)
                     ) {
                         this.$loading.close();
-                        this.$toast("不参与金额不得大于总金额", 'center');
+                        this.$toast("不参与金额不得大于总金额", "center");
                         return;
                     }
                     json.nonParticationAmount = this.post.nonParticationAmount;
@@ -1217,12 +1188,12 @@ export default {
             if (this.$route.query.pid) {
                 json.promoteId = this.$route.query.pid;
             }
-              // 分享卡id
-              console.log('分享卡id'+this.shareCardId)
-           if(this.shareCardId){
-               json.userCardId=this.shareCardId
-           }
-           console.log(json);
+            // 分享卡id
+            console.log("分享卡id" + this.shareCardId);
+            if (this.shareCardId) {
+                json.userCardId = this.shareCardId;
+            }
+            console.log(json);
             if (navigator.onLine) {
                 this.$http
                     .post("/check/shop/" + this.$route.query.id + "/autonomy", json)
@@ -1259,7 +1230,6 @@ export default {
                                 "放弃",
                                 "取消"
                             );
-
                         } else if (data.code == 405807) {
                             _self.$toast("本次消费金额系统已为您读取，将继续为您买单");
                             setTimeout(function () {
@@ -1285,14 +1255,11 @@ export default {
         },
 
         submitForAutoFn() {
-            let json = {
-
-                },
+            let json = {},
                 _self = this;
             if (this.$route.query.d) {
                 json = {
-                    tableId: this.$route.query.d,
-
+                    tableId: this.$route.query.d
                 };
             }
             this.$http
@@ -1341,7 +1308,7 @@ export default {
 
             if (!(this.post.amount && parseFloat(this.post.amount))) {
                 this.$loading.close();
-                this.$toast("请先填写消费总额", 'center');
+                this.$toast("请先填写消费总额", "center");
                 return;
             }
             if (this.init.nonPart) {
@@ -1351,7 +1318,8 @@ export default {
                 ) {
                     this.$loading.close();
                     this.$toast(
-                        "请先填写不参与优惠项金额，<br>如未消费此类项目，请输入0", 'center'
+                        "请先填写不参与优惠项金额，<br>如未消费此类项目，请输入0",
+                        "center"
                     );
                     // this.$toast.center.show({text: "请先填写不参与优惠项金额，如未消费此类项目，请输入0", position: 'bottom'});
                     return;
@@ -1361,7 +1329,7 @@ export default {
                         parseInt(this.post.amount)
                     ) {
                         this.$loading.close();
-                        this.$toast("不参与金额不得大于总金额", 'center');
+                        this.$toast("不参与金额不得大于总金额", "center");
                         return;
                     }
                     json.nonParticationAmount = this.post.nonParticationAmount;
@@ -1383,8 +1351,8 @@ export default {
                 json.terminalType = "ALI";
             }
 
-            if ((json.amount - 0) == 0) {
-                alert('当前未结金额0元，无法付款，如账单有变化，请关闭页面，重新扫码');
+            if (json.amount - 0 == 0) {
+                alert("当前未结金额0元，无法付款，如账单有变化，请关闭页面，重新扫码");
                 this.$loading.close();
                 return false;
             }
@@ -1392,11 +1360,11 @@ export default {
             if (this.$route.query.pid) {
                 json.promoteId = this.$route.query.pid;
             }
-           // 分享卡id
-           if(this.shareCardId){
-               json.userCardId=this.shareCardId
-           }
-           console.log('分享卡id'+this.shareCardId)
+            // 分享卡id
+            if (this.shareCardId) {
+                json.userCardId = this.shareCardId;
+            }
+            console.log("分享卡id" + this.shareCardId);
             if (navigator.onLine) {
                 this.$http
                     .post("/check/shop/" + this.$route.query.id + "/autonomy", json)
@@ -1434,23 +1402,21 @@ export default {
                                 "放弃",
                                 "取消"
                             );
-
                         } else if (data.code == 405807) {
                             _self.$toast("本次消费金额系统已为您读取，将继续为您买单");
                             setTimeout(function () {
                                 _self.refresh();
                             }, 1000);
                         } else if (data.code == 405098) {
-                            _self.$toast('账单已变化，请刷新账单', 'center');
+                            _self.$toast("账单已变化，请刷新账单", "center");
                             _self.$loading.close();
                             setTimeout(function () {
                                 _self.refresh();
                             }, 1000);
-
                         } else if (data.code == 405099) {
                             this.$loading.close();
                             _self.disable = false;
-                            _self.$toast('账单已变化，请重新扫描二维码', 'center');
+                            _self.$toast("账单已变化，请重新扫描二维码", "center");
                         } else {
                             alert(data.message);
                         }
@@ -1468,7 +1434,6 @@ export default {
                     // _self.submitFn()
                 }, 1000);
             }
-
         },
 
         // 不要优惠
@@ -1491,7 +1456,7 @@ export default {
             let result = this.data.result;
             if (!(this.post.amount && parseFloat(this.post.amount))) {
                 this.$loading.close();
-                this.$toast("请先填写消费总额", 'center');
+                this.$toast("请先填写消费总额", "center");
                 return;
             }
 
@@ -1500,8 +1465,8 @@ export default {
                 url: location.href,
                 payCategory: _self.init.payMode
             };
-            if ((json.amount - 0) == 0) {
-                alert('当前未结金额0元，无法付款，如账单有变化，请关闭页面，重新扫码');
+            if (json.amount - 0 == 0) {
+                alert("当前未结金额0元，无法付款，如账单有变化，请关闭页面，重新扫码");
                 this.$loading.close();
                 return false;
             }
@@ -1578,15 +1543,14 @@ export default {
                         } else if (data.code == 405098) {
                             _self.$loading.close();
                             _self.disable = false;
-                            _self.$toast('账单已变化，请刷新账单', 'center');
+                            _self.$toast("账单已变化，请刷新账单", "center");
                             setTimeout(function () {
                                 _self.refresh();
                             }, 1000);
-
                         } else if (data.code == 405099) {
                             _self.$loading.close();
                             _self.disable = false;
-                            _self.$toast('账单已变化，请重新扫描二维码', 'center');
+                            _self.$toast("账单已变化，请重新扫描二维码", "center");
                         } else {
                             _self.$loading.close();
                             _self.disable = false;
@@ -1621,7 +1585,7 @@ export default {
 
                             this.ajaxUrl("waiting.html");
                         } else {
-                            this.$toast("上宾正在加速为您配置专属优惠方案", 'center');
+                            this.$toast("上宾正在加速为您配置专属优惠方案", "center");
                         }
                     } else if (result.state >= 2) {
                         let json = _self.$route.query;

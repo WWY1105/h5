@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div> -->
-        <!-- <canvas id="canvas" width="300" height="500" ref="canvas"></canvas> -->
+        
         <div class="canvasmodle" @touchmove.prevent v-if="showcanvas">
           <div class="canvasimg">
             <p>消费返现{{profitEstimation}}元</p>
