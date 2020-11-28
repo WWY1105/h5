@@ -17,9 +17,9 @@ $warm-grey: rgb(156, 156, 156);
         .title {
           background: url(/sui_assets/img/selfPay/shareCard/headBg.png) top center no-repeat/contain;
           color: #fff;
-          font-size: 24px;
+          font-size: 20px;
           font-weight: bold;
-          height: 111px;
+          height:90px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -32,27 +32,35 @@ $warm-grey: rgb(156, 156, 156);
             line-height: 40px;
           }
         }
-        .confirmBtn{
-          width: 200px;
-          height: 44px;
-          background: #FFBB59;
-          border: none;
-          border-radius: 22px;
-          color: #fff;
-          font-size: 16px;
-          &.disable{
-            pointer-events: none;
-            background-color: #ccc;
-          }
+
+          .confirmBtn{
+            width: 200px;
+            height: 44px;
+            background: #FFBB59;
+            border: none;
+            border-radius: 22px;
+            color: #fff;
+            font-size: 16px;
+            position: absolute;
+            left: 50%;
+            margin-left: -100px;
+            bottom: 10px;
+            &.disable{
+              pointer-events: none;
+              background-color: #ccc;
+            }
+          
         }
+      
         .cardList {
           background-color: #fff;
           padding: 16px 20px;
           box-sizing: border-box;
           border-radius: 0 0 10px 10px;
-          max-height: 280px;
+          max-height: 330px;
           overflow-y: scroll;
-          height: 280px;
+          height: 330px;
+          position: relative;
           .eachCard {
             display: flex;
             align-items: center;

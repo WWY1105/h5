@@ -42,7 +42,6 @@ var vm = new Vue({
 router.beforeEach((to, from, next) => {
   var ua = window.navigator.userAgent.toLowerCase();
   var _id = to.query.id || to.query.guestid;
-  
   if (document.cookie.indexOf('token') < 0&&location.hash.split("?")[0]!='#/dynamic') {
     auth();
   } else if (!vm.$cookie.get(_id)&&ua.match(/MicroMessenger/i) == 'micromessenger') {
@@ -77,12 +76,10 @@ function auth() {
 Vue.http.interceptors.push(function (request) {
   let that = this; //此处this为请求所在页面的Vue实例
   const t = "037925fa578c4ed98885d7b28ade5462";
-
   vm.$cookie.set("apikey", "6b774cc5eb7d45818a9c7cc0a4b6920f", {
     expires: 30,
     path: "/"
   });
-
   function getmd5(str) {
     let a;
     let md5 = Crypto.createHash("md5");
@@ -110,13 +107,7 @@ Vue.http.interceptors.push(function (request) {
     return location.origin + url + "signature=" + m;
   }
   request.url = getUrl(request.url, request.key);
-
-
-  // return response callback
   return function (response, next) {
-    // console.log(response)
-    // modify response
-
     switch (response.status) {
       case 200:
         if (response.body.code == 403000) {
@@ -140,4 +131,4 @@ Vue.http.interceptors.push(function (request) {
 
   };
 });
-/* eslint-disable no-new */
+
