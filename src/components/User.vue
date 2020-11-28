@@ -98,7 +98,6 @@
                                     </div>
                             </div>
                         </div>
-
                         <div class="close" v-on:click="closeAddVip()"></div>
                     </div>
                 </div>

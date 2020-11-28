@@ -199,33 +199,50 @@
             <!--没有权益，只有领卡  -->
             <div class="modal addVip2" v-if="vip.memberGradeName">
                 <div class="modal-inner">
-                    <div class="">
+                    <div v-if="vip.needPhone">
                         <div class="xbind-phone-box">
-                              <div>
-                            <div class="xbind-phone-body">
-                                <div class="xpb-top">
-                                    <img src="/sui_assets/img/selfPay/close2.png" alt="" @click="closeAddVip">
-                                    <div class="xt-top">
-                                        <span>加入会员</span>
-                                        <span class="line"></span>
-                                        <span>开启会员特权</span>
-                                    </div>
-                                    <div class="xt-body">
-                                        <div style="height: 2rem;">
-                                            <input type="tel" v-model='phone1.phone' placeholder="请输入您的手机号码" maxlength='11' @blur="temporaryRepair()">
+                            <div>
+                                <div class="xbind-phone-body">
+                                    <div class="xpb-top">
+                                        <img src="/sui_assets/img/selfPay/close2.png" alt="" @click="closeAddVip">
+                                        <div class="xt-top">
+                                            <span>加入会员</span>
+                                            <span class="line"></span>
+                                            <span>开启会员特权</span>
                                         </div>
-                                        <div style="height: 2rem;">
-                                            <input type="tel" v-model='phone1.validateCode' placeholder="请输入短信验证码" @blur="temporaryRepair()">
-                                            <div @click="validate1Fn">{{ phone1.text }}</div>
+                                        <div class="xt-body">
+                                            <div style="height: 2rem;">
+                                                <input type="tel" v-model='phone1.phone' placeholder="请输入您的手机号码" maxlength='11' @blur="temporaryRepair()">
+                                            </div>
+                                            <div style="height: 2rem;">
+                                                <input type="tel" v-model='phone1.validateCode' placeholder="请输入短信验证码" @blur="temporaryRepair()">
+                                                <div @click="validate1Fn">{{ phone1.text }}</div>
+                                            </div>
+                                            <div @click="bindPhone1">确认</div>
                                         </div>
-                                        <div @click="bindPhone1">确认</div>
                                     </div>
                                 </div>
-                             </div>
-                              </div>
+                            </div>
                         </div>
 
                     </div>
+                    <div v-else style="background-color:#fff" class="hasNothing">
+                        <div class="top" ref="top" style="height: 23.45rem ;border-radius:0.3rem ">
+                            <div class="card-box">
+                                <img :src="vip.cardUrl" alt="">
+                            </div>
+                            <div class="card1" ref="card">
+                                <!-- 恭喜获赠会员 -->
+                                <img src="/sui_assets/img/addVip/gxhzhyk.png" style="margin-top: 0.5rem ;width:7rem ;height:1.15rem ;" alt="">
+                            </div>
+                            <div class="card-line"></div>
+                            <div class="card-text" style="padding:1.7rem 0 3rem">
+                                使用自助买单可自动抵用优惠
+                            </div>
+                            <div class="v-button iknow" v-on:click="refresh()">我 知 道 了</div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <!--无手机号，有新人礼     (加入会员即可拥有) -->
@@ -323,32 +340,32 @@
             </div>
         </div>
         <div v-if="vip.type == 2">
-               <div class="modal addVip2">
+            <div class="modal addVip2">
                 <div class="modal-inner">
                     <div class="">
                         <div class="xbind-phone-box">
-                              <div>
-                            <div class="xbind-phone-body">
-                                <div class="xpb-top">
-                                    <img src="/sui_assets/img/selfPay/close2.png" alt="" @click="closeAddVip">
-                                    <div class="xt-top">
-                                        <span>未检测到账户权益</span>
-                                        <span class="line"></span>
-                                        <span>请验证手机</span>
-                                    </div>
-                                    <div class="xt-body">
-                                        <div style="height: 2rem;">
-                                            <input type="tel" v-model='phone1.phone' placeholder="请输入您的手机号码" maxlength='11' @blur="temporaryRepair()">
+                            <div>
+                                <div class="xbind-phone-body">
+                                    <div class="xpb-top">
+                                        <img src="/sui_assets/img/selfPay/close2.png" alt="" @click="closeAddVip">
+                                        <div class="xt-top">
+                                            <span>未检测到账户权益</span>
+                                            <span class="line"></span>
+                                            <span>请验证手机</span>
                                         </div>
-                                        <div style="height: 2rem;">
-                                            <input type="tel" v-model='phone1.validateCode' placeholder="请输入短信验证码" @blur="temporaryRepair()">
-                                            <div @click="validate1Fn">{{ phone1.text }}</div>
+                                        <div class="xt-body">
+                                            <div style="height: 2rem;">
+                                                <input type="tel" v-model='phone1.phone' placeholder="请输入您的手机号码" maxlength='11' @blur="temporaryRepair()">
+                                            </div>
+                                            <div style="height: 2rem;">
+                                                <input type="tel" v-model='phone1.validateCode' placeholder="请输入短信验证码" @blur="temporaryRepair()">
+                                                <div @click="validate1Fn">{{ phone1.text }}</div>
+                                            </div>
+                                            <div @click="bindPhone1">确认</div>
                                         </div>
-                                        <div @click="bindPhone1">确认</div>
                                     </div>
                                 </div>
-                             </div>
-                              </div>
+                            </div>
                         </div>
 
                     </div>
@@ -924,7 +941,7 @@ export default {
                 jsonA.promoteId = _self.$route.query.pid;
             }
 
-            if ((_self.vip && _self.vip.needPhone)||_self.vip.memberGradeName||_self.vip.type==2) {
+            if ((_self.vip && _self.vip.needPhone) || _self.vip.memberGradeName || _self.vip.type == 2) {
                 if (
                     this.phone1.phone &&
                     this.phone1.validateCode &&
@@ -1648,9 +1665,9 @@ export default {
 @import "../sui_assets/scss/selfPay.scss";
 
 .xbind-phone-box {
-    position: fixed!important;
+    position: fixed !important;
     bottom: 0;
-    z-index: 24!important;
+    z-index: 24 !important;
     width: 100%;
     height: 100%;
     left: 0;
@@ -1772,4 +1789,38 @@ export default {
     }
 }
 
+.hasNothing {
+    .card-box {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        flex-direction: column;
+
+        img {
+            width: 260px;
+            height: 166px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+       
+    }
+     .iknow {
+            height: 2.2rem;
+            font-size: 1rem;
+            color: #b06336;
+            line-height: 2.2rem;
+            text-align: center;
+            margin: 0 auto;
+            border-radius: 20px;
+            margin-top: 1rem;
+            letter-spacing: 3px;
+            width: 9rem;
+            border-radius: 1.4rem;
+            box-shadow: 0 3px 0 0 #bc8a47;
+            background-image: linear-gradient(to right, #f7dd86, #f4dc7e 21%, #fcefb8 53%, #efd576 85%, #f8e388);
+            z-index: 999999999999999999;
+        }
+}
 </style>
