@@ -50,7 +50,7 @@ const Promote = () =>import('@/components/Promote');
 Vue.use(Router)
 
 export default new Router({
-  // mode: 'history',
+  mode: 'hash',
   routes: [
     {
       path: '/dynamic',
