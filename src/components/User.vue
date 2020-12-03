@@ -59,47 +59,57 @@
             </div>
         </div>
     </div>
-      <!--  弹框 -->
+    <!--  弹框 -->
     <div v-if="vip">
         <!--vip-->
         <div v-if="vip.type == 1">
             <!--没有权益，只有领卡  -->
             <div class="modal addVip2" v-if="vip.memberGradeName">
                 <div class="modal-inner">
-                    <div class="modal-content">
-                        <!-- 有会员价 -->
-                        <div class="top memberReduceAmount" v-if="post.memberReduceAmount > 0">
-                            <div class="card-box">
-                                <p class="memberReduceNum">{{ post.memberReduceAmount }}</p>
-                            </div>
-                        </div>
-                        <!-- 没有会员价 -->
-                        <div class="top" v-else>
-                            <div class="card-box" v-bind:style="{
-                      backgroundImage: 'url(' + vip.cardUrl + ')',
-                    }"></div>
-                        </div>
-                        <div class="modal-phone" style="margin: 0">
-                            <div v-if="vip.needPhone">
-                                <div>
-                                    <input type="tel" v-model="phone1.phone" placeholder="输入您的手机号码" maxlength="11" @blur="temporaryRepair()" />
-                                    <input type="tel" placeholder="输入收到的验证码" v-model="phone1.validateCode" maxlength="6" @blur="temporaryRepair()" />
-                                    <div class="input-text" v-on:click.stop="validate1Fn">
-                                        {{ phone1.text }}
-                                    </div>
-                                    <div v-on:click.stop="bindPhone1" class="v-button">
-                                        加入会员
+                    <div v-if="vip.needPhone">
+                        <div class="xbind-phone-box">
+                            <div>
+                                <div class="xbind-phone-body">
+                                    <div class="xpb-top">
+                                        <img src="/sui_assets/img/selfPay/close2.png" alt="" @click="closeAddVip">
+                                        <div class="xt-top">
+                                            <span>加入会员</span>
+                                            <span class="line"></span>
+                                            <span>开启会员特权</span>
+                                        </div>
+                                        <div class="xt-body">
+                                            <div style="height: 2rem;">
+                                                <input type="tel" v-model='phone1.phone' placeholder="请输入您的手机号码" maxlength='11' @blur="temporaryRepair()">
+                                            </div>
+                                            <div style="height: 2rem;">
+                                                <input type="tel" v-model='phone1.validateCode' placeholder="请输入短信验证码" @blur="temporaryRepair()">
+                                                <div @click="validate1Fn">{{ phone1.text }}</div>
+                                            </div>
+                                            <div @click="bindPhone1">确认</div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div v-else>
- <div v-on:click.stop="bindPhone1" class="v-button">
-                                        加入会员
-                                    </div>
-                            </div>
                         </div>
-                        <div class="close" v-on:click="closeAddVip()"></div>
+
                     </div>
+                    <div v-else style="background-color:#fff" class="hasNothing">
+                        <div class="top" ref="top" style="height: 23.45rem ;border-radius:0.3rem ">
+                            <div class="card-box">
+                                <img :src="vip.cardUrl" alt="">
+                            </div>
+                            <div class="card1" ref="card">
+                                <!-- 恭喜获赠会员 -->
+                                <img src="/sui_assets/img/addVip/gxhzhyk.png" style="margin-top: 0.5rem ;width:7rem ;height:1.15rem ;" alt="">
+                            </div>
+                            <div class="card-line"></div>
+                            <div class="card-text" style="padding:1.7rem 0 3rem">
+                                使用自助买单可自动抵用优惠
+                            </div>
+                            <div class="v-button iknow" v-on:click="bindPhone1()">我 知 道 了</div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             <!--无手机号，有新人礼     (加入会员即可拥有) -->
@@ -125,18 +135,18 @@
                                 <div class="v-coupon" v-if="coupon.category == '1016'" :class="coupon.todayUsable ? 'todayUsable' : ''">
                                     <div class="v-item">
                                         <div class="left" v-if="
-                            coupon.hasOwnProperty('amount') &&
+                          coupon.hasOwnProperty('amount') &&
                             coupon.amount != 0 &&
                             coupon.couponCategory != 9012
-                          ">
+                        ">
                                             <span v-if="
-                              coupon.couponCategory == '903' ||
+                            coupon.couponCategory == '903' ||
                               coupon.couponCategory == '9031'
-                            ">{{ coupon.amount }}折</span>
+                          ">{{ coupon.amount }}折</span>
                                             <span v-else-if="
-                              coupon.couponCategory == '902' ||
+                            coupon.couponCategory == '902' ||
                               coupon.couponCategory == '9021'
-                            ">
+                          ">
                                                 <span class="dollar"></span>
                                                 {{ +coupon.amount + +coupon.currentAmount }}
                                             </span>
@@ -176,41 +186,63 @@
                             </div>
                         </div>
                         <div class="modal-phone">
-                            <div v-if="vip.needPhone">
-                                <div>
-                                    <input type="tel" v-model="phone1.phone" placeholder="输入您的手机号码" maxlength="11" @blur="temporaryRepair()" />
-                                    <div :class="
-                          phone1.phone && phone1.phone.length == 11
-                            ? 'input-text'
-                            : 'input-text default'
-                        " v-on:click.stop="validate1Fn">
-                                        {{ phone1.text }}
-                                    </div>
-                                    <input type="tel" placeholder="输入收到的验证码" v-model="phone1.validateCode" id="validate" maxlength="6" @blur="temporaryRepair()" />
-                                    <div id="bindPhone" v-on:click.stop="bindPhone1" class="v-button" style="color: #000; font-weight: 900">
-                                        免费注册
-                                    </div>
+                            <div v-if="vip.needPhone" class="phoneBox">
+                                <input type="tel" v-model="phone1.phone" placeholder="输入您的手机号码" maxlength="11" @blur="temporaryRepair()" />
+                                <div :class="
+                        phone1.phone && phone1.phone.length == 11
+                          ? 'input-text'
+                          : 'input-text default'
+                      " v-on:click.stop="validate1Fn">
+                                    {{ phone1.text }}
                                 </div>
+                                <input type="tel" placeholder="输入收到的验证码" v-model="phone1.validateCode" id="validate" maxlength="6" @blur="temporaryRepair()" />
                             </div>
-                             <div v-else> <div v-on:click.stop="bindPhone1" class="v-button">
-                                        加入会员
-                                    </div>
+                            <div v-on:click.stop="bindPhone1" class="v-button addMenber">
+                                {{vip.needPhone?'免费注册':'加入会员'}}
                             </div>
                         </div>
                         <div class="close" v-on:click="closeAddVip()"></div>
                     </div>
                 </div>
             </div>
-
         </div>
-        <div v-if="vip.type == 2"></div>
+        <div v-if="vip.type == 2">
+            <div class="modal addVip2">
+                <div class="modal-inner">
+                    <div class="">
+                        <div class="xbind-phone-box">
+                            <div>
+                                <div class="xbind-phone-body">
+                                    <div class="xpb-top">
+                                        <img src="/sui_assets/img/selfPay/close2.png" alt="" @click="closeAddVip">
+                                        <div class="xt-top">
+                                            <span>未检测到账户权益</span>
+                                            <span class="line"></span>
+                                            <span>请验证手机</span>
+                                        </div>
+                                        <div class="xt-body">
+                                            <div style="height: 2rem;">
+                                                <input type="tel" v-model='phone1.phone' placeholder="请输入您的手机号码" maxlength='11' @blur="temporaryRepair()">
+                                            </div>
+                                            <div style="height: 2rem;">
+                                                <input type="tel" v-model='phone1.validateCode' placeholder="请输入短信验证码" @blur="temporaryRepair()">
+                                                <div @click="validate1Fn">{{ phone1.text }}</div>
+                                            </div>
+                                            <div @click="bindPhone1">确认</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- 会员特权 -->
     <vip-module v-bind:data="upgrade" :payment="payment" v-bind:upgrade="false" v-bind:canUpgrade="data.canUpgrade"></vip-module>
-   
-   
-   
-   
+
     <div class="bar">
         <div v-on:click="ajaxUrl('record.html')"><span class="icon1"></span>订单记录</div>
         <div @click="goto('setting')" class="i-list">
@@ -377,6 +409,12 @@ export default {
                             if (data.code == 200) {
                                 this.$http.get("/remind/guest/" + (this.$route.query.id || this.$route.query.guestid) + '/result').then(response => {
                                     this.vip = response.body.result;
+                                    if (data.result.needPhone) {
+                                        this.phone1 = {
+                                            text: "获取验证码",
+                                            able: true
+                                        };
+                                    }
                                 });
                             } else {
                                 location.href = "error.html#3"
@@ -493,39 +531,52 @@ export default {
         // 验证手机立即领取
         bindPhone1() {
             let _self = this;
-              let jsonA = {
-                    shopId: this.$route.query.id
-                };
-                  // 推广码
-                if (_self.$route.query.pid) {
-                    jsonA.promoteId = _self.$route.query.pid;
+            let jsonA = {
+                id: this.$route.query.id||this.$route.query.guestid||this.$route.query.shopId
+            };
+            // 推广码
+            if (_self.$route.query.pid) {
+                jsonA.promoteId = _self.$route.query.pid;
+            }
+
+            if (_self.vip.needPhone) {
+                if (
+                    this.phone1.phone &&
+                    this.phone1.validateCode &&
+                    this.phone1.phone.length == 11 &&
+                    this.phone1.validateCode.length == 6
+                ) {
+
+                    jsonA.phone = this.phone1.phone;
+                    jsonA.validateCode = this.phone1.validateCode;
+
+                } else {
+                    // 没有填写手机号
+                    _self.$toast("请填写手机号", "center");
+                    return;
                 }
-            if (this.phone1.phone && this.phone1.validateCode && this.phone1.phone.length == 11 && this.phone1.validateCode.length == 6) {
-              
-                jsonA.phone = this.phone1.phone;
-                jsonA.validateCode = this.phone1.validateCode;
-              
-                
             }
             this.$http.post("/membership", jsonA).then(response => {
-                    let data = response.data;
-                    if (data.code == 200) {
-                        this.vip = null;
-                        if (data.result && data.result.token) {
-                            this.$cookie.set("token", data.result.token, {
-                                "expires": '30d'
-                            });
-                        }
-                        this.$message("操作成功！", "请在“会员中心”查看权益，使用自助买单可自动抵用优惠。", function () {
-                            _self.vip = null;
-                            _self.initFn();
-
+                let data = response.data;
+                if (data.code == 200) {
+                    this.vip = null;
+                    if (data.result && data.result.token) {
+                        this.$cookie.set("token", data.result.token, {
+                            expires: "90d"
                         });
-                        //              this.closeSuccessAddVip();
-                    } else {
-                        this.$toast(data.message);
                     }
-                });
+                    this.$toast(
+                        "操作成功！,请在“会员中心”查看权益，使用自助买单可自动抵用优惠。",
+                        "center"
+                    );
+                    setTimeout(function () {
+                        _self.vip = null;
+                        _self.initFn();
+                    }, 1000);
+                } else {
+                    this.$toast(data.message, "center");
+                }
+            });
         },
     }
 }
@@ -533,4 +584,164 @@ export default {
 
 <style lang="scss" scoped>
 @import "../sui_assets/scss/user.scss";
+
+.xbind-phone-box {
+    position: fixed !important;
+    bottom: 0;
+    z-index: 24 !important;
+    width: 100%;
+    height: 100%;
+    left: 0;
+
+    >div {
+        color: #ffffff;
+        height: 100%;
+        width: 100%;
+
+        .xbind-phone-body {
+            animation: show-modal .5s;
+            -webkit-animation: show-modal .5s;
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: auto;
+            width: 17.15rem;
+            height: 17.15rem;
+
+            .xpb-top {
+                width: 14.98rem;
+                height: 16.14rem;
+                background: url(/sui_assets/img/strategy/bg2.png) 50% no-repeat/cover;
+                margin: auto;
+                position: relative;
+
+                >img {
+                    width: 1.5rem;
+                    height: 1.5rem;
+                    position: absolute;
+                    right: 0;
+                    top: -2.5rem;
+                    border-radius: 50%;
+                    color: #fff;
+                    border: 1px solid rgb(255, 255, 255);
+                    padding: 0.2rem;
+                }
+
+                .xt-body {
+                    padding-top: 2rem;
+
+                    >div {
+                        background: #ffffff;
+                        width: 88%;
+                        margin: 0.5rem auto;
+                        position: relative;
+                        padding-left: 1rem;
+                        padding-right: 1rem;
+                        border-radius: .1rem;
+
+                        >input {
+                            color: #000;
+                            height: 2rem;
+                            width: 100%;
+                            border: none;
+                            font-size: .75rem;
+                        }
+
+                        >div {
+                            color: #e09c17;
+                            line-height: 2rem;
+                            position: absolute;
+                            right: 1rem;
+                            bottom: 0;
+                            font-size: .7rem;
+                        }
+
+                        &:last-child {
+                            font-weight: bold;
+                            font-style: normal;
+                            font-stretch: normal;
+                            line-height: normal;
+                            letter-spacing: 5px;
+                            color: #cf4737;
+                            background-color: #f9d76c;
+                            height: 2rem;
+                            border-radius: 3rem;
+                            line-height: 2rem;
+                            margin: 1rem auto;
+                        }
+                    }
+                }
+
+                .xt-top {
+                    color: #cd3f2f;
+                    width: 79%;
+                    height: 31%;
+                    padding-top: 1.7rem;
+                    margin: auto;
+                    line-height: 1.8rem;
+
+                    >span {
+                        display: block;
+
+                        &:first-child {
+                            font-size: .7rem;
+                            letter-spacing: 1px;
+                        }
+
+                        &:last-child {
+                            font-weight: bold;
+                            font-size: 1rem;
+                            border-top: 1px solid #ebc9c7;
+                            letter-spacing: 2px;
+                        }
+                    }
+
+                    .line {}
+                }
+            }
+
+            .xpb-btn {
+                text-decoration: underline;
+                padding-top: 1rem;
+            }
+        }
+    }
+}
+
+.hasNothing {
+    .card-box {
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        justify-items: center;
+        flex-direction: column;
+
+        img {
+            width: 260px;
+            height: 166px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+    }
+
+    .iknow {
+        height: 2.2rem;
+        font-size: 1rem;
+        color: #b06336;
+        line-height: 2.2rem;
+        text-align: center;
+        margin: 0 auto;
+        border-radius: 20px;
+        margin-top: 1rem;
+        letter-spacing: 3px;
+        width: 9rem;
+        border-radius: 1.4rem;
+        box-shadow: 0 3px 0 0 #bc8a47;
+        background-image: linear-gradient(to right, #f7dd86, #f4dc7e 21%, #fcefb8 53%, #efd576 85%, #f8e388);
+        z-index: 999999999999999999;
+    }
+}
 </style>

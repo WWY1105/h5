@@ -239,7 +239,7 @@
                             <div class="card-text" style="padding:1.7rem 0 3rem">
                                 使用自助买单可自动抵用优惠
                             </div>
-                            <div class="v-button iknow" v-on:click="refresh()">我 知 道 了</div>
+                            <div class="v-button iknow" v-on:click="bindPhone1()">我 知 道 了</div>
                         </div>
                     </div>
 
@@ -934,14 +934,14 @@ export default {
         bindPhone1() {
             let _self = this;
             let jsonA = {
-                id: this.$route.query.id
+                id: this.$route.query.id||this.$route.query.guestid||this.$route.query.shopId
             };
             // 推广码
             if (_self.$route.query.pid) {
                 jsonA.promoteId = _self.$route.query.pid;
             }
 
-            if ((_self.vip && _self.vip.needPhone) || _self.vip.memberGradeName || _self.vip.type == 2) {
+            if (_self.vip.needPhone) {
                 if (
                     this.phone1.phone &&
                     this.phone1.validateCode &&
