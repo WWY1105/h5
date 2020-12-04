@@ -1897,10 +1897,10 @@ export default {
 }
 
 .noMenuTips {
-    text-align: center;
-    margin: 20px 0;
+      text-align: center;
+    margin: 20px 0 60px;
     color: #999;
     font-weight: 600;
-    font-size: .7rem;
+    font-size: .8rem;
 }
 </style>
