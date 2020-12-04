@@ -105,7 +105,6 @@ export default {
         }
     },
     mounted() {
-        alert(1)
         if (this.$route.query.code) {
             this.post = this.view[this.$route.query.code];
         }

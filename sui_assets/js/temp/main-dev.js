@@ -3183,7 +3183,6 @@ function payment() {
                         wxJson.url = location.href;
                         rest("/auth/sign", wxJson, "post", function (data) {
                             if (data.code == 200) {
-                                alert(1);
                                 var result1 = data.result;
                                 result1.jsApiList = [
                                     //'hideMenuItems',
