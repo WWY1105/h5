@@ -160,7 +160,7 @@
                         </div>
                     </div>
                     <div v-if="init.checkType == '103'">
-                        <div v-if="post.menus ? true : false">
+                        <div v-if="post.amount ? true : false">
                             <div class="menu-list xmenu-list">
                                 <div class="xlist">
                                     <div v-for="(item, index) in post.menus" class="xlist-body">
@@ -239,7 +239,7 @@
                 买单进行中...
                 <span class="pull-right">点击查看 ></span>
             </div>
-            <div v-else-if="init.checkType == '101'">
+            <div v-else-if="init.checkType == '101'" class="flexCenter flexColumn mycodeBox">
                 <div class="text">请将身份码出示给服务员</div>
                 <div id="mycode"></div>
             </div>
@@ -262,7 +262,7 @@
         </div>
     </div>
 
-</div>
+
 
 <!--  弹框 -->
 <div v-if="vip">
@@ -447,7 +447,7 @@
 </div>
 
 <!-- 分享卡 -->
-<div class="modal shareCardModal" v-if="shareCardFlag&&init.checkType != '103'">
+<div class="modal shareCardModal" v-show="shareCardFlag">
     <div class="modal-inner">
         <div class="modal-content">
             <div class="title">
@@ -614,29 +614,34 @@ export default {
         getShareCard() {
             let _self = this;
             if (_self.$route.query.id || _self.$route.query.guestid) {
-                _self.$http
-                    .get(
-                        "/benefit/cards/guest/" +
-                        (_self.$route.query.id || _self.$route.query.guestid), {}
-                    )
-                    .then(response => {
-                        if (response.body.code == 200) {
-                            if (response.body.result) {
-                                if (response.body.result.length == 1) {
-                                    this.shareCardId = response.body.result[0].id;
-                                } else {
-                                    response.body.result.map(i => {
-                                        i.select = false;
-                                    });
+                if (this.init.checkType != '103') {
+                    _self.$http
+                        .get(
+                            "/benefit/cards/guest/" +
+                            (_self.$route.query.id || _self.$route.query.guestid), {}
+                        )
+                        .then(response => {
+                            if (response.body.code == 200) {
+                                if (response.body.result) {
+                                    if (response.body.result.length == 1) {
+                                        this.shareCardId = response.body.result[0].id;
+                                    } else {
+                                        response.body.result.map(i => {
+                                            i.select = false;
+                                        });
+                                    }
                                 }
+                                _self.shareCardList = response.body.result;
+                                _self.shareCardFlag = true;
+                                console.log(response.body.result);
+                                console.log( _self.shareCardFlag )
+                            } else {
+                                _self.toStrategy();
                             }
-                            _self.shareCardList = response.body.result;
-                            _self.shareCardFlag = true;
-                            console.log(response.body.result);
-                        } else {
-                            _self.toStrategy();
-                        }
-                    });
+                        });
+                } else {
+                    _self.toStrategy();
+                }
             }
         },
         // 选择共享卡
@@ -1897,10 +1902,18 @@ export default {
 }
 
 .noMenuTips {
-      text-align: center;
+    text-align: center;
     margin: 20px 0 60px;
     color: #999;
     font-weight: 600;
     font-size: .8rem;
+}
+
+.mycodeBox {
+    margin: 20px 0 60px;
+
+    .text {
+        margin-bottom: 10px;
+    }
 }
 </style>
