@@ -520,7 +520,7 @@ export default {
             xmodelBind: false,
             xThanks: false,
             toastFlag: false,
-            data: "",
+            data: false,
             id: "", //orderId
             key: 0,
             bgc: '',
