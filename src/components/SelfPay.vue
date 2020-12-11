@@ -161,7 +161,7 @@
                     </div>
                     <div v-if="init.checkType == '103'">
                         <div v-if="post.amount ? true : false">
-                            <div class="menu-list xmenu-list">
+                            <div class="menu-list xmenu-list" v-if="post&&post.menus&&post.menus.length>0?true:false">
                                 <div class="xlist">
                                     <div v-for="(item, index) in post.menus" class="xlist-body">
                                         <div class="xbody-first">
@@ -209,6 +209,12 @@
                                 </div>
                                 <!-- </tbody> -->
                                 <!-- </table> -->
+                            </div>
+                            <div v-else>
+                                <wc-keyboard inter="5" decimal="2" class="amount" v-bind:value="post.amount" v-bind:unabled="post.amount ? true : false" placeholder="询问服务员后在此输入" label="消费金额"  />
+                                <div style="padding-top: 0.5rem">
+                                    <wc-keyboard inter="5" v-bind:value="post.nonParticationAmount" decimal="2" v-bind:unabled="post.nonParticationAmount ? true : false" class="nodiscount"  label="不参与优惠项"  />
+                                </div>
                             </div>
                             <!-- 不是会员 -->
                             <div class="btnBox" v-if="!init.memberGradeName">
@@ -262,66 +268,64 @@
         </div>
     </div>
 
-
-
-<!--  弹框 -->
-<div v-if="vip">
-    <!--vip-->
-    <div v-if="vip.type == 1">
-        <!--没有权益，只有领卡  -->
-        <div class="modal addVip2" v-if="vip.memberGradeName">
-            <div class="modal-inner">
-                <div v-if="vip.needPhone">
-                    <div class="xbind-phone-box">
-                        <div>
-                            <div class="xbind-phone-body">
-                                <div class="xpb-top">
-                                    <img src="/sui_assets/img/selfPay/close2.png" alt="" @click="closeAddVip">
-                                    <div class="xt-top">
-                                        <span>加入会员</span>
-                                        <span class="line"></span>
-                                        <span>开启会员特权</span>
-                                    </div>
-                                    <div class="xt-body">
-                                        <div style="height: 2rem;">
-                                            <input type="tel" v-model='phone1.phone' placeholder="请输入您的手机号码" maxlength='11' @blur="temporaryRepair()">
+    <!--  弹框 -->
+    <div v-if="vip">
+        <!--vip-->
+        <div v-if="vip.type == 1">
+            <!--没有权益，只有领卡  -->
+            <div class="modal addVip2" v-if="vip.memberGradeName">
+                <div class="modal-inner">
+                    <div v-if="vip.needPhone">
+                        <div class="xbind-phone-box">
+                            <div>
+                                <div class="xbind-phone-body">
+                                    <div class="xpb-top">
+                                        <img src="/sui_assets/img/selfPay/close2.png" alt="" @click="closeAddVip">
+                                        <div class="xt-top">
+                                            <span>加入会员</span>
+                                            <span class="line"></span>
+                                            <span>开启会员特权</span>
                                         </div>
-                                        <div style="height: 2rem;">
-                                            <input type="tel" v-model='phone1.validateCode' placeholder="请输入短信验证码" @blur="temporaryRepair()">
-                                            <div @click="validate1Fn">{{ phone1.text }}</div>
+                                        <div class="xt-body">
+                                            <div style="height: 2rem;">
+                                                <input type="tel" v-model='phone1.phone' placeholder="请输入您的手机号码" maxlength='11' @blur="temporaryRepair()">
+                                            </div>
+                                            <div style="height: 2rem;">
+                                                <input type="tel" v-model='phone1.validateCode' placeholder="请输入短信验证码" @blur="temporaryRepair()">
+                                                <div @click="validate1Fn">{{ phone1.text }}</div>
+                                            </div>
+                                            <div @click="bindPhone1">确认</div>
                                         </div>
-                                        <div @click="bindPhone1">确认</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+                    </div>
+                    <div v-else style="background-color:#fff" class="hasNothing">
+                        <div class="top" ref="top" style="height: 23.45rem ;border-radius:0.3rem ">
+                            <div class="card-box">
+                                <img :src="vip.cardUrl" alt="">
+                            </div>
+                            <div class="card1" ref="card">
+                                <!-- 恭喜获赠会员 -->
+                                <img src="/sui_assets/img/addVip/gxhzhyk.png" style="margin-top: 0.5rem ;width:7rem ;height:1.15rem ;" alt="">
+                            </div>
+                            <div class="card-line"></div>
+                            <div class="card-text" style="padding:1.7rem 0 3rem">
+                                使用自助买单可自动抵用优惠
+                            </div>
+                            <div class="v-button iknow" v-on:click="bindPhone1()">我 知 道 了</div>
+                        </div>
                     </div>
 
                 </div>
-                <div v-else style="background-color:#fff" class="hasNothing">
-                    <div class="top" ref="top" style="height: 23.45rem ;border-radius:0.3rem ">
-                        <div class="card-box">
-                            <img :src="vip.cardUrl" alt="">
-                        </div>
-                        <div class="card1" ref="card">
-                            <!-- 恭喜获赠会员 -->
-                            <img src="/sui_assets/img/addVip/gxhzhyk.png" style="margin-top: 0.5rem ;width:7rem ;height:1.15rem ;" alt="">
-                        </div>
-                        <div class="card-line"></div>
-                        <div class="card-text" style="padding:1.7rem 0 3rem">
-                            使用自助买单可自动抵用优惠
-                        </div>
-                        <div class="v-button iknow" v-on:click="bindPhone1()">我 知 道 了</div>
-                    </div>
-                </div>
-
             </div>
-        </div>
-        <!--无手机号，有新人礼     (加入会员即可拥有) -->
-        <div class="modal addVip" v-else>
-            <div class="modal-inner modal-innerWX">
-                <div class="modal-content">
-                    <div class="v-item" style="
+            <!--无手机号，有新人礼     (加入会员即可拥有) -->
+            <div class="modal addVip" v-else>
+                <div class="modal-inner modal-innerWX">
+                    <div class="modal-content">
+                        <div class="v-item" style="
                     background-color: transparent;
                     background: none;
                     display: flex;
@@ -333,153 +337,153 @@
                     margin-bottom: 0px;
                     height: 64px;
                   ">
-                        <p class="left coupon-icon couponIcon"></p>
-                    </div>
-                    <div class="overflow" style="margin-top: 0">
-                        <div v-if="vip.benefits" v-for="(coupon, key) in vip.benefits" :key="key" style="position: relative">
-                            <div class="v-coupon" v-if="coupon.category == '1016'" :class="coupon.todayUsable ? 'todayUsable' : ''">
-                                <div class="v-item">
-                                    <div class="left" v-if="
+                            <p class="left coupon-icon couponIcon"></p>
+                        </div>
+                        <div class="overflow" style="margin-top: 0">
+                            <div v-if="vip.benefits" v-for="(coupon, key) in vip.benefits" :key="key" style="position: relative">
+                                <div class="v-coupon" v-if="coupon.category == '1016'" :class="coupon.todayUsable ? 'todayUsable' : ''">
+                                    <div class="v-item">
+                                        <div class="left" v-if="
                           coupon.hasOwnProperty('amount') &&
                             coupon.amount != 0 &&
                             coupon.couponCategory != 9012
                         ">
-                                        <span v-if="
+                                            <span v-if="
                             coupon.couponCategory == '903' ||
                               coupon.couponCategory == '9031'
                           ">{{ coupon.amount }}折</span>
-                                        <span v-else-if="
+                                            <span v-else-if="
                             coupon.couponCategory == '902' ||
                               coupon.couponCategory == '9021'
                           ">
-                                            <span class="dollar"></span>
-                                            {{ +coupon.amount + +coupon.currentAmount }}
-                                        </span>
-                                        <span v-else>
-                                            <span class="dollar"></span>
-                                            {{ coupon.amount }}
-                                        </span>
-                                    </div>
-                                    <div class="left coupon-icon" v-else></div>
-                                    <div class="right">
-                                        <div>{{ coupon.name }}</div>
-                                        <div class="grey">{{ coupon.times }}</div>
-                                    </div>
-                                    <div class="corn" v-if="coupon.count > 1">
-                                        {{ coupon.count }}张
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="v-point" v-if="coupon.category == '1015'" :class="coupon.todayUsable ? 'todayUsable' : ''">
-                                <div class="v-item">
-                                    <div class="left">{{ coupon.amount }}</div>
-                                    <div class="right">积分</div>
-                                    <div class="corn" v-if="coupon.count > 1">
-                                        {{ coupon.count }}张
+                                                <span class="dollar"></span>
+                                                {{ +coupon.amount + +coupon.currentAmount }}
+                                            </span>
+                                            <span v-else>
+                                                <span class="dollar"></span>
+                                                {{ coupon.amount }}
+                                            </span>
+                                        </div>
+                                        <div class="left coupon-icon" v-else></div>
+                                        <div class="right">
+                                            <div>{{ coupon.name }}</div>
+                                            <div class="grey">{{ coupon.times }}</div>
+                                        </div>
+                                        <div class="corn" v-if="coupon.count > 1">
+                                            {{ coupon.count }}张
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="v-reward" v-if="coupon.category == '1017'" :class="coupon.todayUsable ? 'todayUsable' : ''">
-                                <div class="v-item">
-                                    <div class="left">{{ coupon.amount }}</div>
-                                    <div class="right">无门槛代用币</div>
-                                    <div class="corn" v-if="coupon.count > 1">
-                                        {{ coupon.count }}张
+                                <div class="v-point" v-if="coupon.category == '1015'" :class="coupon.todayUsable ? 'todayUsable' : ''">
+                                    <div class="v-item">
+                                        <div class="left">{{ coupon.amount }}</div>
+                                        <div class="right">积分</div>
+                                        <div class="corn" v-if="coupon.count > 1">
+                                            {{ coupon.count }}张
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="v-reward" v-if="coupon.category == '1017'" :class="coupon.todayUsable ? 'todayUsable' : ''">
+                                    <div class="v-item">
+                                        <div class="left">{{ coupon.amount }}</div>
+                                        <div class="right">无门槛代用币</div>
+                                        <div class="corn" v-if="coupon.count > 1">
+                                            {{ coupon.count }}张
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="modal-phone">
-                        <div v-if="vip.needPhone" class="phoneBox">
-                            <input type="tel" v-model="phone1.phone" placeholder="输入您的手机号码" maxlength="11" @blur="temporaryRepair()" />
-                            <div :class="
+                        <div class="modal-phone">
+                            <div v-if="vip.needPhone" class="phoneBox">
+                                <input type="tel" v-model="phone1.phone" placeholder="输入您的手机号码" maxlength="11" @blur="temporaryRepair()" />
+                                <div :class="
                         phone1.phone && phone1.phone.length == 11
                           ? 'input-text'
                           : 'input-text default'
                       " v-on:click.stop="validate1Fn">
-                                {{ phone1.text }}
+                                    {{ phone1.text }}
+                                </div>
+                                <input type="tel" placeholder="输入收到的验证码" v-model="phone1.validateCode" id="validate" maxlength="6" @blur="temporaryRepair()" />
                             </div>
-                            <input type="tel" placeholder="输入收到的验证码" v-model="phone1.validateCode" id="validate" maxlength="6" @blur="temporaryRepair()" />
+                            <div v-on:click.stop="bindPhone1" class="v-button addMenber">
+                                {{vip.needPhone?'免费注册':'加入会员'}}
+                            </div>
                         </div>
-                        <div v-on:click.stop="bindPhone1" class="v-button addMenber">
-                            {{vip.needPhone?'免费注册':'加入会员'}}
-                        </div>
+                        <div class="close" v-on:click="closeAddVip()"></div>
                     </div>
-                    <div class="close" v-on:click="closeAddVip()"></div>
                 </div>
             </div>
         </div>
-    </div>
-    <div v-if="vip.type == 2">
-        <div class="modal addVip2">
-            <div class="modal-inner">
-                <div class="">
-                    <div class="xbind-phone-box">
-                        <div>
-                            <div class="xbind-phone-body">
-                                <div class="xpb-top">
-                                    <img src="/sui_assets/img/selfPay/close2.png" alt="" @click="closeAddVip">
-                                    <div class="xt-top">
-                                        <span>未检测到账户权益</span>
-                                        <span class="line"></span>
-                                        <span>请验证手机</span>
-                                    </div>
-                                    <div class="xt-body">
-                                        <div style="height: 2rem;">
-                                            <input type="tel" v-model='phone1.phone' placeholder="请输入您的手机号码" maxlength='11' @blur="temporaryRepair()">
+        <div v-if="vip.type == 2">
+            <div class="modal addVip2">
+                <div class="modal-inner">
+                    <div class="">
+                        <div class="xbind-phone-box">
+                            <div>
+                                <div class="xbind-phone-body">
+                                    <div class="xpb-top">
+                                        <img src="/sui_assets/img/selfPay/close2.png" alt="" @click="closeAddVip">
+                                        <div class="xt-top">
+                                            <span>未检测到账户权益</span>
+                                            <span class="line"></span>
+                                            <span>请验证手机</span>
                                         </div>
-                                        <div style="height: 2rem;">
-                                            <input type="tel" v-model='phone1.validateCode' placeholder="请输入短信验证码" @blur="temporaryRepair()">
-                                            <div @click="validate1Fn">{{ phone1.text }}</div>
+                                        <div class="xt-body">
+                                            <div style="height: 2rem;">
+                                                <input type="tel" v-model='phone1.phone' placeholder="请输入您的手机号码" maxlength='11' @blur="temporaryRepair()">
+                                            </div>
+                                            <div style="height: 2rem;">
+                                                <input type="tel" v-model='phone1.validateCode' placeholder="请输入短信验证码" @blur="temporaryRepair()">
+                                                <div @click="validate1Fn">{{ phone1.text }}</div>
+                                            </div>
+                                            <div @click="bindPhone1">确认</div>
                                         </div>
-                                        <div @click="bindPhone1">确认</div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- 分享卡 -->
-<div class="modal shareCardModal" v-show="shareCardFlag">
-    <div class="modal-inner">
-        <div class="modal-content">
-            <div class="title">
-                <p>您拥有本店共享卡</p>
-                <p>请确认使用</p>
-            </div>
-            <div class="cardList">
-                <div class="eachCard" v-for="(i, index) in shareCardList" @click="chooseShareCard(i.id, index)">
-                    <div class="radioBox" v-if="shareCardList.length > 1">
-                        <img v-show="!i.select" class="selectIcon unselect" src="/sui_assets/img/selfPay/shareCard/unselect.png" alt="" />
-                        <img v-show="i.select" class="selectIcon selected" src="/sui_assets/img/selfPay/shareCard/selected.png" alt="" />
-                    </div>
-                    <div class="cards">
-                        <div class="cardName">{{ i.name }}</div>
-                        <div class="cardDesc">
-                            <span class="coupon">共{{ i.couponCount }}张优惠券</span>
-                            <p class="disCount">
-                                当前<span class="amount">{{ i.amount }}</span>折
-                            </p>
+    <!-- 分享卡 -->
+    <div class="modal shareCardModal" v-show="shareCardFlag">
+        <div class="modal-inner">
+            <div class="modal-content">
+                <div class="title">
+                    <p>您拥有本店共享卡</p>
+                    <p>请确认使用</p>
+                </div>
+                <div class="cardList">
+                    <div class="eachCard" v-for="(i, index) in shareCardList" @click="chooseShareCard(i.id, index)">
+                        <div class="radioBox" v-if="shareCardList.length > 1">
+                            <img v-show="!i.select" class="selectIcon unselect" src="/sui_assets/img/selfPay/shareCard/unselect.png" alt="" />
+                            <img v-show="i.select" class="selectIcon selected" src="/sui_assets/img/selfPay/shareCard/selected.png" alt="" />
+                        </div>
+                        <div class="cards">
+                            <div class="cardName">{{ i.name }}</div>
+                            <div class="cardDesc">
+                                <span class="coupon">共{{ i.couponCount }}张优惠券</span>
+                                <p class="disCount">
+                                    当前<span class="amount">{{ i.amount }}</span>折
+                                </p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="btnBox">
-                    <button :class="shareCardId?'confirmBtn':'confirmBtn disable'" @click="toStrategy()">确定使用</button>
+                    <div class="btnBox">
+                        <button :class="shareCardId?'confirmBtn':'confirmBtn disable'" @click="toStrategy()">确定使用</button>
+
+                    </div>
 
                 </div>
-
+                <img @click="closeShareCard()" class="closeIcon" src="/sui_assets/img/selfPay/shareCard/close.png" alt="">
             </div>
-            <img @click="closeShareCard()" class="closeIcon" src="/sui_assets/img/selfPay/shareCard/close.png" alt="">
         </div>
     </div>
-</div>
 </div>
 </template>
 
@@ -634,7 +638,7 @@ export default {
                                 _self.shareCardList = response.body.result;
                                 _self.shareCardFlag = true;
                                 console.log(response.body.result);
-                                console.log( _self.shareCardFlag )
+                                console.log(_self.shareCardFlag)
                             } else {
                                 _self.toStrategy();
                             }
@@ -755,6 +759,9 @@ export default {
 
                         localStorage.setItem("userId", _self.init.user.id);
                         if (_self.init.preCheckData) _self.post = _self.init.preCheckData;
+                        console.log(_self.post)
+
+
                         //有进行中的自助买单
                         if (_self.init.order && _self.init.checkType == "102") {
                             _self.$confirm(
