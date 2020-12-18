@@ -597,12 +597,6 @@ export default {
         },
         html2image: function (source) {
             var that = this;
-            console.log("html2image");
-            // html2canvas(source).then(function(canvas) {
-            //     var imageData = canvas.toDataURL(1);
-            //     console.log(imageData)
-            //     image.src = imageData;
-            // });
             html2canvas(source, {
                 onrendered: function (canvas) {
                     var imageData = canvas.toDataURL(1);

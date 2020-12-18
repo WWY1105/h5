@@ -7,14 +7,14 @@
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
     "start": "npm run dev",
-    "build": "node build/build.js",
+    "build": "node --max_old_space_size=8192 build/build.js",
     "serverhot": "webpack-dev-server --hot --inline",
     "report": "npm run build --report=true"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "es6-promise": "^4.2.8",
-    "vant": "^2.2.16",
+    "vant": "^2.4.0",
     "vue": "^2.5.2",
     "vue-awesome-picker": "^1.1.0",
     "vue-awesome-swiper": "^3.1.3",

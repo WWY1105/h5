@@ -7,10 +7,14 @@ $warm-grey: rgb(156, 156, 156);
     .modal-inner {
       max-width: 582px;
       top: 16vh;
+      position: relative;
       .closeIcon{
         width: 30px;
         height: 30px;
-        margin-top: 30px;
+        // margin-top: 30px;
+        position: absolute;
+        top: -40px;
+        right: -10px;
       }
       .modal-content {
         
@@ -60,7 +64,6 @@ $warm-grey: rgb(156, 156, 156);
           max-height: 330px;
           overflow-y: scroll;
           height: 330px;
-          position: relative;
           .eachCard {
             display: flex;
             align-items: center;

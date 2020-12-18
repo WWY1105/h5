@@ -1,7 +1,9 @@
 <template>
 <div class="vipModule" v-show="data">
-    <awesome-picker ref="picker3" :type="picker3.type" :anchor="picker3.anchor" @confirm="handlePicker3Confirm">
-    </awesome-picker>
+    <!-- <awesome-picker ref="picker3" :type="picker3.type" :anchor="picker3.anchor" @confirm="handlePicker3Confirm">
+    </awesome-picker> -->
+    <van-calendar v-model="showDate" @confirm="onConfirm" />
+
     <div class="current-grade" v-if="data.currentGradeName||data.toName">{{data.toName||data.currentGradeName}}</div>
     <!-- 新人赠礼 -->
     <div class="box" v-if="data.firstBenefit">
@@ -191,20 +193,28 @@
 
 <script>
 import Vue from 'vue'
-import AwesomePicker from 'vue-awesome-picker';
-Vue.use(AwesomePicker);
+// import AwesomePicker from 'vue-awesome-picker';
+// Vue.use(AwesomePicker);
+
+
+
 import {
-    Icon
+    Icon,
+    Calendar
 } from 'vant';
 import 'vant/lib/icon/style';
+import 'vant/lib/calendar/style';
 Vue.use(Icon);
+Vue.use(Calendar);
 
 export default {
     name: "VipModule",
-    props: ['data', 'upgrade', 'canUpgrade', 'payment','AwesomePicker'],
+    props: ['data', 'upgrade', 'canUpgrade', 'payment', 'AwesomePicker'],
     data() {
         return {
             // data: "",
+            date: '',
+            showDate: false,
             post: {},
             show: false, //升级弹窗
             rule: {
@@ -295,34 +305,56 @@ export default {
             this.$set(this, "show", !this.show);
         },
         tapBirthFn() {
-            this.$refs.picker3.show()
+            // this.$refs.picker3.show()
+            console.log('点击')
+            this.showDate=true;
         },
-        handlePicker3Confirm(v) {
-            this.picker3.anchor = v;
-            var m;
-            var d;
-            if (v[1].index + 1 < 10) {
-                m = '0' + (v[1].index + 1);
-            } else {
-                m = v[1].index + 1;
-            }
-            if (v[2].index + 1 < 10) {
-                d = '0' + (v[2].index + 1);
-            } else {
-                d = v[2].index + 1;
-            }
-            // this.post.birthday = (1900 + v[0].index) + '-' + (v[1].index + 1) + "-" + (v[2].index + 1);
-            this.post.birthday = (1900 + v[0].index) + '-' + m + "-" + d;
-            console.log( this.post)
+        // handlePicker3Confirm(v) {
+        //     this.picker3.anchor = v;
+        //     var m;
+        //     var d;
+        //     if (v[1].index + 1 < 10) {
+        //         m = '0' + (v[1].index + 1);
+        //     } else {
+        //         m = v[1].index + 1;
+        //     }
+        //     if (v[2].index + 1 < 10) {
+        //         d = '0' + (v[2].index + 1);
+        //     } else {
+        //         d = v[2].index + 1;
+        //     }
+        //     this.post.birthday = (1900 + v[0].index) + '-' + m + "-" + d;
+        //     console.log( this.post)
+        //     let json = {
+        //         birthday: this.post.birthday
+        //     };
+        //     this.$http.post("/user", json).then(response => {
+        //         let data = response.body;
+        //         if (data.code == 200) {
+        //             this.$toast("提交成功");
+        //             location.reload();
+        //         } else {
+        //             this.$toast(data.message);
+        //         }
+        //     });
+        // },
+        formatDate(date) {
+            let month=date.getMonth() + 1<10?'0'+date.getMonth() + 1:date.getMonth() + 1;
+            let day=date.getDate()<10?'0'+date.getDate():date.getDate()
+            return `${date.getFullYear()}-${month}-${day}`;
+        },
+        onConfirm(date) {
+            this.showDate = false;
+            this.date = this.formatDate(date);
             let json = {
-                birthday: this.post.birthday
+                birthday: this.date
             };
+            console.log(this.date)
             this.$http.post("/user", json).then(response => {
                 let data = response.body;
                 if (data.code == 200) {
                     this.$toast("提交成功");
                     location.reload();
-                    // this.$emit('refresh')
                 } else {
                     this.$toast(data.message);
                 }

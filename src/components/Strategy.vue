@@ -114,7 +114,7 @@
                                 parseFloat(data.comment.gratuityAmount)).toFixed(2)
                                 :item.finalAmount}}
                                 </p>
-                                <span :class="!menuData||!menuData.menus||menuData.menus.length==0?'hui button':'button'" @click="menuShow=true">
+                                <span :class="!menuData||!menuData.menus||menuData.menus.length==0?'hui button':'button'" @click.stop="showMenu">
                                     查看账单
                                 </span>
                             </div>
@@ -451,7 +451,6 @@
 import Vue from 'vue'
 import 'swiper/dist/css/swiper.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-// import linkPicUrl from './module/linkPicUrl/linkPicUrl'
 import {
     Popup,
     Collapse,
@@ -633,6 +632,10 @@ export default {
         }
     },
     methods: {
+        showMenu(){
+            console.log('点击了')
+            this.menuShow=true;
+        },
         checkout() {
             this.giveRewordFlag = !this.giveRewordFlag
             console.log(this.giveRewordFlag)
