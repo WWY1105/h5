@@ -9,11 +9,11 @@ module.exports = {
 
     // Paths
     assetsSubDirectory: 'static',
-    assetsPublicPath: './',
+    assetsPublicPath: '/',
     proxyTable: {
       '/': {
-        // target: 'https://m.sharejoy.cn', // 接口的域名
-        target: 'https://m.ishangbin.com',
+        target: 'https://m.sharejoy.cn', // 接口的域名
+        // target: 'https://m.ishangbin.com',
         secure: false,  // 如果是https接口，需要配置这个参数
         changeOrigin: true, // 如果接口跨域，需要进行这个参数配置
       }
@@ -22,7 +22,7 @@ module.exports = {
     // Various Dev Server settings
      //host: 'localhost', // can be overwritten by process.env.HOST
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8088, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 9099, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: true,
     errorOverlay: true,
     notifyOnErrors: true,

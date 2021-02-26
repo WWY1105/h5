@@ -464,7 +464,6 @@ export default {
             if (!this.phone1.able) return;
             if (!this.phone1.phone || this.phone1.phone.length != 11) {
                 this.$toast("手机格式不正确");
-                // 
                 return;
             }
             this.phone1.able = false;

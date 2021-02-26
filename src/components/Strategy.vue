@@ -229,8 +229,8 @@
                     <!-- 是会员 -->
                     <p class="content" v-else="!data.strategies[keys].needValidate">
                         <span v-if="keys == 0">本方案为推荐方案</span>
-                        <span v-if="keys > 0&&keys!=data.strategies.length-1">本方案为{{data.strategies[keys].title}}</span>
-                        <span v-if="keys==data.strategies.length-1">不用优惠的你一定是个真土豪~</span>
+                        <span v-else-if="keys!=data.strategies.length-1">本方案为{{data.strategies[keys].title}}</span>
+                        <span v-else-if="!data.strategies[keys].get&&!data.strategies[keys].used">不用优惠的你一定是个真土豪~</span>
                     </p>
                 </div>
             </swiper-slide>
@@ -303,7 +303,8 @@
     <div class=" x-dixed" v-if="toastFlag">
         <div class="detailed" style="z-index: 25;">
             <div class="xdetailed modal-inner">
-                <div class="x-toastT">方案详情</div>
+                <div class="x-toastT" v-if="key != data.strategies.length-1">方案详情</div>
+             
                 <div class="label" v-if="data.strategies[key].useAll.length ||data.strategies[key].segmentAll.length">
                     <img @click.prevent="" class="xtimg" src="/sui_assets/img/strategy/deduction.png" alt="">
                 </div>
@@ -391,7 +392,7 @@
 
                     </div>
                 </div>
-                <div v-if="key == data.strategies.length-1">
+                <div v-if="!data.strategies[key].got&&!data.strategies[key].charges&&!data.strategies[key].nonPart&& !data.strategies[key].useAll &&!data.strategies[key].segmentAll">
                     <img @click.prevent="" src="/sui_assets/img/strategy/nothing.png" alt="" style=" width: 85%; position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto;">
                 </div>
                 <img @click="toastFlag = false" src="/sui_assets/img/selfPay/close2.png" alt="" style="width:10%;position: absolute; bottom: -3rem; left: 45%;border-radius: 50%; border: 1px solid #ffffff; padding: 0.2rem;">
@@ -1132,7 +1133,7 @@ export default {
 
             }
 
-            console.log(4)
+          
 
             _self.popswitch = true;
             console.log(_self.data)

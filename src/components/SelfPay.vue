@@ -146,14 +146,15 @@
                             </div>
                         </div>
                         <!-- 不是会员 -->
-                        <div class="btnBox" v-if="!init.memberGradeName">
+                        <!-- <div class="btnBox" v-if="!init.memberGradeName">
                             <div class="btnBox_left" @click="submit()">不要优惠买单</div>
                             <div class="btnBox_right" @click.self="getShareCard()">
                                 推荐优惠买单
                             </div>
-                        </div>
+                        </div> -->
                         <!-- 是会员   -->
-                        <div class="btnBox" v-if="init.memberGradeName">
+                        <!-- v-if="init.memberGradeName" -->
+                        <div class="btnBox">
                             <div class="btnBox_right memberGradeName" @click.self="getShareCard()">
                                 优&nbsp;&nbsp;&nbsp;&nbsp;惠&nbsp;&nbsp;&nbsp;&nbsp;买&nbsp;&nbsp;&nbsp;&nbsp;单
                             </div>
@@ -211,20 +212,13 @@
                                 <!-- </table> -->
                             </div>
                             <div v-else>
-                                <wc-keyboard inter="5" decimal="2" class="amount" v-bind:value="post.amount" v-bind:unabled="post.amount ? true : false" placeholder="询问服务员后在此输入" label="消费金额"  />
+                                <wc-keyboard inter="5" decimal="2" class="amount" v-bind:value="post.amount" v-bind:unabled="post.amount ? true : false" placeholder="询问服务员后在此输入" label="消费金额" />
                                 <div style="padding-top: 0.5rem">
-                                    <wc-keyboard inter="5" v-bind:value="post.nonParticationAmount" decimal="2" v-bind:unabled="post.nonParticationAmount ? true : false" class="nodiscount"  label="不参与优惠项"  />
+                                    <wc-keyboard inter="5" v-bind:value="post.nonParticationAmount" decimal="2" v-bind:unabled="post.nonParticationAmount ? true : false" class="nodiscount" label="不参与优惠项" />
                                 </div>
                             </div>
-                            <!-- 不是会员 -->
-                            <div class="btnBox" v-if="!init.memberGradeName">
-                                <div class="btnBox_left" @click="submit()">不要优惠买单</div>
-                                <div class="btnBox_right" @click.self="getShareCard()">
-                                    推荐优惠买单
-                                </div>
-                            </div>
-                            <!-- 是会员   -->
-                            <div class="btnBox" v-if="init.memberGradeName">
+                           
+                            <div class="btnBox">
                                 <div class="btnBox_right memberGradeName" @click.self="getShareCard()">
                                     优&nbsp;&nbsp;&nbsp;&nbsp;惠&nbsp;&nbsp;&nbsp;&nbsp;买&nbsp;&nbsp;&nbsp;&nbsp;单
                                 </div>
@@ -269,7 +263,7 @@
     </div>
 
     <!--  弹框 -->
-    <div v-if="vip">
+    <div v-if="vipShow">
         <!--vip-->
         <div v-if="vip.type == 1">
             <!--没有权益，只有领卡  -->
@@ -484,6 +478,72 @@
             </div>
         </div>
     </div>
+
+    <!-- 共享卡活动 -->
+    <div class="modal shareActivityModal" v-show="shareActivityShow">
+        <div class="modal-inner flexCenter">
+            <div class="modal-content">
+                 <img @click="closeShareActivity()" class="closeIcon" src="/sui_assets/img/selfPay/shareCard/close.png" alt="">
+                <img class="shareActivityBg" src="/sui_assets/img/selfPay/shareCard/shareActivity1.png" alt="" />
+                <div class="topTitleBox">
+                    <p class="smallTitle">恭喜您获得</p>
+                    <p class="bigTitle" >本单立减
+                        <countTo separator="" :startVal='startVal' decimals='2' :endVal='shareActivity.reduce' :duration='2000' class="bigTitle"></countTo>元</p>
+                </div>
+                <div class="shareActivityContent">
+                    <p class="bigTitle">全年通用低至{{shareActivity.cardLimit}}折共享卡</p>
+                    <div class="icons flexSpace">
+                        <div class="eachItem flexCenter flexColumn">
+                            <div class="imgBox">
+                                <img src="/sui_assets/img/selfPay/shareCard/icons/couponIcon.png" class="icon" alt="">
+                                <p class="tag">开卡{{shareActivity.cardValue}}折</p>
+                            </div>
+
+                            <p class="lightTitle">低至{{shareActivity.cardLimit}}折</p>
+                            <p class="rule">越用越便宜</p>
+                        </div>
+                        <!-- <span class="li"></span> -->
+                        <div class="eachItem flexCenter flexColumn">
+                            <div class="imgBox">
+                                <img src="/sui_assets/img/selfPay/shareCard/icons/giftIcon.png" class="icon" alt="">
+
+                                <p class="tag">当场可用</p>
+                            </div>
+                            <p class="lightTitle">{{shareActivity.couponValue}}元券包</p>
+                            <div class="rule coupons">
+                                <div v-for="(c,z) in shareActivity.coupons" :key="z">
+                                    <p v-if="z<=1">{{c}}</p>
+
+                                </div>
+                                <p class="else" v-if="shareActivity.coupons&&shareActivity.coupons.length>2">...</p>
+                            </div>
+                        </div>
+                        <!-- <span class="li"></span> -->
+                        <div class="eachItem flexCenter flexColumn">
+                            <div class="imgBox">
+                                <img src="/sui_assets/img/selfPay/shareCard/icons/shareIcon.png" class="icon" alt="">
+                                <p class="tag">{{shareActivity.cardExpiresDays}}天有效</p>
+                            </div>
+                            <p class="lightTitle">亲友共享</p>
+                            <p class="rule">折扣与优惠券</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flexCenter btnBox">
+                   
+                    <!-- <div class="shareActivityClose flexCenter flexColumn" @click="closeShareActivity()">
+                        <span class="topTitle">不要优惠</span>
+                        <span>直接买单</span>
+                    </div> -->
+                    <button class="shareActivityBtn  flexCenter" @click="tapBindFn()">
+                        <span class="topTitle" v-if="shareActivity.price">￥{{shareActivity.price}}开通&nbsp;&nbsp;</span>
+                        <span class="topTitle">本次立减{{shareActivity.reduce}}元</span>
+                        
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </template>
 
@@ -495,14 +555,14 @@ import VueAwesomeSwiper from "vue-awesome-swiper";
 import $ from "jquery";
 import VueCookies from "vue-cookies";
 Vue.use(VueCookies);
-
+import countTo from 'vue-count-to';
 Vue.use(VueAwesomeSwiper);
 // import linkPicUrl from './module/linkPicUrl/linkPicUrl'
 export default {
     name: "SelfPay",
     components: {
-        wcKeyboard
-        // linkPicUrl
+        wcKeyboard,
+        countTo
     },
     data() {
         return {
@@ -510,8 +570,12 @@ export default {
             data: "",
             submitpop: false,
             view: {},
+            popswitch: false,
             unclaimed: false,
-            payment: "",
+            lock: false,
+            popimg: '/sui_assets/img/strategy/wxbg.png',
+            timer: '',
+            payment: {},
             version: "ALIPAY",
             key_json: {},
             disk: {
@@ -535,6 +599,7 @@ export default {
             swiper: "",
             ads: [],
             vip: "",
+            vipShow: false,
             tucao: false,
             praise: false,
             benefitsPic: "",
@@ -556,9 +621,13 @@ export default {
             qrcode: "",
             ccode: "",
             num: 0,
-            shareCardFlag: false, // 共享卡
-            shareCardList: [],
-            shareCardId: false
+            shareCardFlag: false, // 共享卡弹窗
+            shareCardList: [], // 共享卡列表
+            shareActivityShow: false, //共享卡活动展示
+            shareActivity: {}, //共享卡活动
+            shareCardId: false,
+            bind: {},
+            startVal: 0
         };
     },
 
@@ -612,41 +681,211 @@ export default {
     computed: {},
 
     methods: {
-        // 加入会员
-        joinMember() {},
+
         // 获取共享卡
         getShareCard() {
             let _self = this;
-            if (_self.$route.query.id || _self.$route.query.guestid) {
-                if (this.init.checkType != '103') {
-                    _self.$http
-                        .get(
-                            "/benefit/cards/guest/" +
-                            (_self.$route.query.id || _self.$route.query.guestid), {}
-                        )
-                        .then(response => {
-                            if (response.body.code == 200) {
-                                if (response.body.result) {
-                                    if (response.body.result.length == 1) {
-                                        this.shareCardId = response.body.result[0].id;
-                                    } else {
-                                        response.body.result.map(i => {
-                                            i.select = false;
-                                        });
-                                    }
-                                }
-                                _self.shareCardList = response.body.result;
-                                _self.shareCardFlag = true;
-                                console.log(response.body.result);
-                                console.log(_self.shareCardFlag)
-                            } else {
-                                _self.toStrategy();
-                            }
-                        });
+            let json = {};
+            if (!(_self.post.amount && parseFloat(_self.post.amount))) {
+                _self.$loading.close();
+                _self.$toast("请先填写消费总额", "center");
+                return;
+            }
+            if (_self.init.nonPart) {
+                if (
+                    !_self.post.nonParticationAmount &&
+                    _self.post.nonParticationAmount != "0"
+                ) {
+                    _self.$loading.close();
+                    _self.$toast(
+                        "请先填写不参与优惠项金额，<br>如未消费此类项目，请输入0",
+                        "center"
+                    );
+                    return;
                 } else {
-                    _self.toStrategy();
+                    if (
+                        parseInt(_self.post.nonParticationAmount) >
+                        parseInt(_self.post.amount)
+                    ) {
+                        _self.$loading.close();
+                        _self.$toast("不参与金额不得大于总金额", "center");
+                        return;
+                    }
+                    json.nonParticationAmount = _self.post.nonParticationAmount;
                 }
             }
+            json.amount = _self.post.amount;
+            console.log(json)
+            // return;
+            // -----------------------
+            if (_self.$route.query.id || _self.$route.query.guestid) {
+                _self.$http.get(
+                        "/shares/" +
+                        (_self.$route.query.id || _self.$route.query.guestid), {
+                            key: json
+                        }
+                    )
+                    .then(response => {
+                        if (response.body.code == 200) {
+                            let result = response.body.result;
+                            if (result.activity) { //有活动
+                                _self.shareActivityShow = true;
+                                _self.shareActivity = result.activity;
+                            } else if (result.cards) {
+                                // 只有卡
+                                if (result.cards.length == 1) {
+                                    this.shareCardId = result.cards[0].id;
+                                } else {
+                                    result.cards.map(i => {
+                                        i.select = false;
+                                    });
+                                }
+                                _self.shareCardList = result.cards;
+                                _self.shareCardFlag = true;
+                            }
+
+                        } else {
+                            _self.toStrategy();
+                        }
+                    });
+
+            }
+        },
+        buyCard(bind) {
+            let _self = this;
+            if (window.history && window.history.pushState) {
+                history.pushState(null, null, document.URL);
+                window.addEventListener('popstate', _self.goBack, false);
+            }
+            console.log('进入支付');
+            console.log(_self.payment)
+
+            this.popswitch = false;
+            let mode = _self.init;
+            if (mode.payMode && mode.payMode == '1005') {
+                this.popimg = '/sui_assets/img/strategy/wxbg.png'
+            } else if (mode.payMode && mode.payMode == '1101') {
+                this.popimg = '/sui_assets/img/strategy/zfbbg.png'
+            }
+            let json = {
+                payCategory: mode ? mode.payMode : '',
+                goodsId: _self.shareActivity.id,
+                url: location.href,
+                id: _self.$route.query.id || _self.$route.query.guestid,
+            };
+            // 推广码
+            if (_self.$route.query.pid) {
+                json.promoteId = _self.$route.query.pid;
+            }
+            if (bind && bind.phone) {
+                json.phone = bind.phone
+            }
+            if (bind && bind.validateCode) {
+                json.validateCode = bind.validateCode
+            }
+            _self.$http.post("/shares", json)
+                .then(response => {
+                    let data1 = response.body;
+                    _self.shareActivityShow = false;
+                    if (data1.code == 200) {
+                        // 支付过程---------
+                        switch (mode.payMode) {
+                            case "1005":
+                                let js = data1.result.js;
+                                let pay = data1.result.pay;
+                                pay.success = function () {
+                                    //查询支付结果
+                                    _self.$http.get("/shares/order/" + data1.result.orderId).then(res1 => {
+                                        console.log('支付结果')
+                                        console.log(res1)
+                                        let data2 = res1.body;
+                                        if (data2.code == 200) {
+                                            // alert(data2.result.id)
+                                            _self.shareCardId = data2.result.id;
+                                            _self.toStrategy();
+                                        }
+                                    });
+                                };
+                                pay.cancel = function () {
+                                    _self.cancelPay(data1.result.orderId);
+                                };
+                                pay.fail = function () {
+                                    _self.cancelPay(data1.result.orderId);
+                                    alert("支付失败");
+                                };
+                                js.debug = false;
+                                js.jsApiList = ['chooseWXPay'];
+                                delete js.url;
+                                wx.config(js);
+                                console.log(pay)
+                                wx.ready(function () {
+                                    wx.chooseWXPay(pay);
+                                });
+                                break;
+                            case "1101":
+                                AlipayJSBridge.call("tradePay", {
+                                    tradeNO: data1.result.pay.tradeNO
+                                }, function (result) {
+
+                                    if (result.resultCode == "6001") {
+                                        _self.cancelPay(data1.result.orderId);
+                                        return;
+                                    }
+                                    if (result.resultCode == "9000") {
+                                        // _self.$http.get("/order/" + _self.id + "/pay/result").then(response => {
+                                        //     _self.$router.push({
+                                        //         path: '/payment',
+                                        //         query: json
+                                        //     });
+                                        // });
+                                        //查询支付结果
+                                        _self.$http.get("/shares/order/" + data1.result.orderId).then(res1 => {
+                                            console.log('支付结果')
+                                            console.log(res1)
+                                            let data2 = res1.body;
+                                            if (data2.code == 200) {
+                                                _self.shareCardId = data2.result.id;
+                                                _self.toStrategy();
+                                            }
+                                        });
+                                    }
+                                });
+                                break;
+                        }
+                        // 支付过程---------
+                    } else {
+                        _self.$loading.close();
+                        _self.shareCardId = false;
+                        _self.$toast(data1.message, "center");
+                        _self.initFn()
+                    }
+                })
+
+        },
+        cancelPay: function (id) {
+            var _self = this;
+            this.shareCardId = null;
+            this.$http.post("/order/" + id + "/pay/revoke").then(response => {
+
+            });
+        },
+        tapBindFn() {
+            let _self = this;
+            if (!_self.init.existPhone) {
+                _self.$bind({
+                    justShow: true,
+                    title: "绑定手机号",
+                    text: "绑定手机号后，获得即可参与此活动",
+                    submit: function (res) {
+                        console.log('提交手机号')
+                        _self.shareActivityShow = false;
+                        _self.buyCard(res)
+                    }
+                });
+            } else {
+                _self.buyCard()
+            }
+
         },
         // 选择共享卡
         chooseShareCard(id, index) {
@@ -659,6 +898,12 @@ export default {
         },
         closeShareCard() {
             this.shareCardFlag = false;
+            this.shareCardId = false;
+            this.toStrategy();
+        },
+        closeShareActivity() {
+
+            this.shareActivityShow = false;
             this.shareCardId = false;
             this.toStrategy();
         },
@@ -686,8 +931,7 @@ export default {
         getPayMode() {
             let _self = this;
             if (_self.$route.query.id || _self.$route.query.guestid) {
-                _self.$http
-                    .get(
+                _self.$http.get(
                         "/shop/" +
                         (_self.$route.query.id || _self.$route.query.guestid) +
                         "/paymode", {
@@ -761,7 +1005,6 @@ export default {
                         if (_self.init.preCheckData) _self.post = _self.init.preCheckData;
                         console.log(_self.post)
 
-
                         //有进行中的自助买单
                         if (_self.init.order && _self.init.checkType == "102") {
                             _self.$confirm(
@@ -828,16 +1071,7 @@ export default {
                     }
                 });
         },
-        tapBindFn() {
-            let _self = this;
-            this.$bind({
-                title: "绑定手机号",
-                text: "绑定手机号后，获得更多权益",
-                submit: function () {
-                    _self.initFn();
-                }
-            });
-        },
+
         back() {
             this.tucao = false;
         },
@@ -883,6 +1117,7 @@ export default {
                 let data = response.body;
                 if (data.code == 200) {
                     this.vip = data.result;
+                    this.vipShow = true;
                     if (data.result.needPhone) {
                         this.phone1 = {
                             text: "获取验证码",
@@ -902,8 +1137,9 @@ export default {
 
         closeAddVip() {
             console.log("关闭弹窗");
+            console.log(this.vip)
             let that = this;
-            this.vip = null;
+            this.vipShow = false;
             document.body.removeAttribute("class", "activebody");
         },
 
@@ -1045,7 +1281,7 @@ export default {
             this.$http.post("/membership", jsonA).then(response => {
                 let data = response.data;
                 if (data.code == 200) {
-                    this.vip = null;
+                    this.vipShow = false;
                     if (data.result && data.result.token) {
                         this.$cookie.set("token", data.result.token, {
                             expires: "90d"
@@ -1056,7 +1292,7 @@ export default {
                         "center"
                     );
                     setTimeout(function () {
-                        _self.vip = null;
+                        _self.vipShow = false;
                         _self.initFn();
                     }, 1000);
                 } else {
@@ -1277,7 +1513,7 @@ export default {
             let _self = this;
             let json = {};
             let result = this.data.result;
-            // !this.post.menus&&
+
             if (!(this.post.amount && parseFloat(this.post.amount))) {
                 this.$loading.close();
                 this.$toast("请先填写消费总额", "center");
@@ -1503,7 +1739,10 @@ export default {
             if (this.shareCardId) {
                 json.userCardId = this.shareCardId;
             }
-            console.log("分享卡id" + this.shareCardId);
+            // if (this.shareActivity && this.shareActivity.id) {
+            //     json.userCardId = this.shareActivity.id;
+            // }
+            // console.log("分享卡id" + this.shareCardId);
             if (navigator.onLine) {
                 this.$http
                     .post("/check/shop/" + this.$route.query.id + "/autonomy", json)
@@ -1641,7 +1880,12 @@ export default {
                                         _self.disable = false;
                                         _self.$http
                                             .post("/order/" + data.result.orderId + "/pay/revoke")
-                                            .then(() => {});
+                                            .then(() => {
+                                                // 关掉支付
+                                                //   _self.shareCardId = false;
+                                                //   _self.toStrategy();
+
+                                            });
                                     };
                                     pay.fail = function (res) {
                                         _self.$http
@@ -1667,8 +1911,12 @@ export default {
                                             if (result.resultCode == "6001") {
                                                 _self.$http
                                                     .post("/order/" + data.result.orderId + "/pay/revoke")
-                                                    .then(() => {});
-                                                _self.disable = false;
+                                                    .then(() => {
+                                                        // 关掉支付
+                                                        // _self.shareCardId = false;
+                                                        // _self.toStrategy();
+                                                    });
+
                                                 return;
                                             }
                                             if (result.resultCode == "9000") {

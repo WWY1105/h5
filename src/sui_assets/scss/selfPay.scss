@@ -1,6 +1,27 @@
 $grey-blue: rgb(107, 162, 186);
 $warm-grey: rgb(156, 156, 156);
 
+.flexCenter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.flexStart {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+}
+
+.flexSpace {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 // 共享卡
 .shareCardModal {
   &.modal {
@@ -8,21 +29,22 @@ $warm-grey: rgb(156, 156, 156);
       max-width: 582px;
       top: 16vh;
       position: relative;
-      .closeIcon{
+
+      .closeIcon {
         width: 30px;
         height: 30px;
         position: absolute;
         top: -40px;
         right: -10px;
       }
+
       .modal-content {
-        
         .title {
           background: url(/sui_assets/img/selfPay/shareCard/headBg.png) top center no-repeat/contain;
           color: #fff;
           font-size: 20px;
           font-weight: bold;
-          height:90px;
+          height: 90px;
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -36,25 +58,25 @@ $warm-grey: rgb(156, 156, 156);
           }
         }
 
-          .confirmBtn{
-            width: 200px;
-            height: 44px;
-            background: #FFBB59;
-            border: none;
-            border-radius: 22px;
-            color: #fff;
-            font-size: 16px;
-            position: absolute;
-            left: 50%;
-            margin-left: -100px;
-            bottom: 10px;
-            &.disable{
-              pointer-events: none;
-              background-color: #ccc;
-            }
-          
+        .confirmBtn {
+          width: 200px;
+          height: 44px;
+          background: #ffbb59;
+          border: none;
+          border-radius: 22px;
+          color: #fff;
+          font-size: 16px;
+          position: absolute;
+          left: 50%;
+          margin-left: -100px;
+          bottom: 10px;
+
+          &.disable {
+            pointer-events: none;
+            background-color: #ccc;
+          }
         }
-      
+
         .cardList {
           background-color: #fff;
           padding: 16px 20px 80px;
@@ -63,6 +85,7 @@ $warm-grey: rgb(156, 156, 156);
           max-height: 330px;
           overflow-y: scroll;
           height: 330px;
+
           .eachCard {
             display: flex;
             align-items: center;
@@ -83,11 +106,11 @@ $warm-grey: rgb(156, 156, 156);
               border-radius: 5px;
               padding: 13px 14px;
               box-sizing: border-box;
-              color: #EEC993;
+              color: #eec993;
               font-size: 12px;
 
               .cardName {
-                color: #EEC993;
+                color: #eec993;
                 font-size: 12px;
                 font-weight: bold;
                 margin-bottom: 10px;
@@ -99,9 +122,11 @@ $warm-grey: rgb(156, 156, 156);
                 align-items: baseline;
                 justify-content: space-between;
                 line-height: 1;
+
                 .disCount {
                   font-weight: bold;
                   margin: 0;
+
                   .amount {
                     font-size: 24px;
                   }
@@ -113,7 +138,206 @@ $warm-grey: rgb(156, 156, 156);
       }
     }
   }
+}
 
+// 共享活动
+.shareActivityModal {
+  p {
+    margin: 0;
+  }
+
+  .modal-inner {
+    top: 11%;
+
+    .modal-content {
+      position: relative;
+      .closeIcon{
+        position: absolute;
+        width: 30px;
+        height: 30px;
+        top: -40px;
+        right: 40px;
+      }
+      .btnBox {
+        position: absolute;
+        bottom: -30px;
+        left: 0;
+      }
+      .shareActivityBtn {
+        // margin: 0 20px 0 0px;
+        width: 300px;
+        font-size: 14px;
+        height: 50px;
+        border-radius: 30px;
+        border:none;
+        // border: 1px solid;
+        // border-image: linear-gradient(90deg, rgba(255, 236, 212, 1), rgba(217, 167, 122, 1)) 1 1;
+        color: #84460e;
+        background: -webkit-gradient(linear, left top, right top, from(#ffecd4), to(#d9a77a));
+        background: linear-gradient(90deg, #ffecd4, #d9a77a);
+        // .smallText{
+        //   letter-spacing: -1px;
+        // }
+      }
+
+      p {
+        margin: 0;
+      }
+
+      .topTitle {
+        // margin-bottom: 3px;
+        font-size: 17px;
+        font-weight: bolder;
+        // line-height: 17px;
+        // letter-spacing: 2px;
+      }
+
+      .shareActivityClose {
+        opacity: .8;
+        margin: 0 20px 0 20px;
+        text-align: center;
+        font-size: 14px;
+        color: #ffffff;
+        height: 50px;
+        border: 0.5px solid;
+        flex: 1;
+        border-image: linear-gradient(90deg, rgba(255, 236, 212, 1), rgba(217, 167, 122, 1)) 1 1;
+        .topTitle{
+          color: #fff;
+        }
+      }
+
+      .shareActivityBg {
+        width: 374px;
+        height: 424px;
+        .topTitle{
+          color: #84460e;
+        }
+      }
+      .topTitleBox {
+        text-shadow: 0px 1px 3px rgba(121, 79, 49, 0.35);
+        color: #8d562f;
+        line-height: 50px;
+        position: absolute;
+        left: 0;
+        top: 43px;
+        width: 100%;
+        .smallTitle {
+          font-size: 27px;
+          /* font-weight: bold; */
+          letter-spacing: 1px;
+          line-height: 1;
+          margin-bottom: 5px;
+        }
+        .bigTitle {
+          font-size: 34px;
+          font-weight: bolder;
+          letter-spacing: -1.5px;
+        }
+      }
+
+      .shareActivityContent {
+        position: absolute;
+        width: 100%;
+        top: 179px;
+        left: 0;
+        .icons {
+          padding: 0 35px;
+          box-sizing: border-box;
+          align-items: flex-start;
+          margin-top: 30px;
+          .li {
+            width: 17px;
+            height: 1.5px;
+            min-width: 17px;
+            background: linear-gradient(90deg, rgba(236, 198, 135, 0) 0%, #ecc687 100%);
+
+            margin-top: -55px;
+          }
+          .lightTitle {
+            font-size: 16px;
+            font-family: PingFangSC-Regular, PingFang SC;
+            font-weight: bold;
+            color: #ecc687;
+            line-height: 15px;
+            margin-bottom: 9px;
+            margin-top: 15px;
+            opacity: 0.8;
+          }
+
+          .rule {
+            font-size: 12px;
+            text-align: center;
+            color: #fff;
+            line-height: 16px;
+            opacity: 0.8;
+            &.coupons {
+              min-height: 32px;
+              .else {
+                height: 1px;
+              }
+            }
+          }
+
+          .icon {
+            width: 33px;
+            height: 33px;
+            margin-bottom: 6px;
+          }
+        }
+        .bigTitle {
+          font-size: 20px;
+          font-family: PingFangSC-Regular, PingFang SC;
+          color: #9a6844;
+          line-height: 28px;
+          letter-spacing: 1px;
+          background: linear-gradient(180deg, #eec97b 0%, #eba45e 100%);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          // font-weight: bolder;
+          margin-bottom: 2px;
+          font-weight: bold;
+        }
+
+        .smallTips {
+          color: rgb(250, 233, 233);
+          font-size: 15px;
+          margin-bottom: 10px;
+          opacity: 0.8;
+          line-height: 26px;
+        }
+        .imgBox {
+          position: relative;
+          width: 40px;
+          height: 40px;
+          .tag {
+            position: absolute;
+            font-size: 16px;
+            color: #2f2f48;
+            line-height: 11px;
+            /* width: 69px; */
+            /* height: 13px; */
+            padding: 5px 7px;
+            background: linear-gradient(154deg, #ecc687 0%, #ebac64 100%);
+            border-radius: 13px;
+            border: 1px solid #ecc384;
+            text-align: center;
+            top: -12px;
+            right: -50px;
+            -webkit-transform: scale(0.5);
+            transform: scale(0.5);
+            width: 95px;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+          }
+          .icon {
+            width: 100%;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
 }
 
 @keyframes opacity {
@@ -143,7 +367,7 @@ $warm-grey: rgb(156, 156, 156);
 }
 
 .zoom {
-  animation: zoom .5s;
+  animation: zoom 0.5s;
   animation-direction: alternate;
   transform-origin: 95% 30px;
 }
@@ -153,7 +377,7 @@ $warm-grey: rgb(156, 156, 156);
 
   // min-height: 100vh;
   .xmenu-list {
-    font-size: .7rem;
+    font-size: 0.7rem;
     font-family: PingFangSC;
 
     .menu-border {
@@ -167,8 +391,8 @@ $warm-grey: rgb(156, 156, 156);
     }
 
     .xlist-body {
-      padding-top: .2rem;
-      padding-bottom: .2rem;
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
 
       .xbody-first {
         display: flex;
@@ -181,7 +405,7 @@ $warm-grey: rgb(156, 156, 156);
           width: 35%;
           display: flex;
 
-          >div {
+          > div {
             flex: 1;
           }
         }
@@ -193,16 +417,16 @@ $warm-grey: rgb(156, 156, 156);
         padding-left: 2rem;
         padding-right: 4.5rem;
         text-align: justify;
-        padding-top: .1rem;
+        padding-top: 0.1rem;
       }
     }
 
     .xlist-header {
       display: flex;
       // padding-top: .5rem;
-      padding-bottom: .5rem;
+      padding-bottom: 0.5rem;
 
-      >div {
+      > div {
         flex: 1;
       }
     }
@@ -235,7 +459,7 @@ $warm-grey: rgb(156, 156, 156);
     }
   }
 
-  .swiper-container-horizontal>.swiper-pagination-bullets {
+  .swiper-container-horizontal > .swiper-pagination-bullets {
     bottom: -5px;
 
     span {
@@ -284,7 +508,7 @@ $warm-grey: rgb(156, 156, 156);
         width: 9rem;
         height: 3rem;
         margin-top: 2.05rem;
-        font-size: .9rem;
+        font-size: 0.9rem;
         font-weight: 500;
         letter-spacing: 0.2px;
         text-align: center;
@@ -293,8 +517,7 @@ $warm-grey: rgb(156, 156, 156);
         line-height: 3rem;
 
         div {
-          transform: translateX(-.5rem);
-
+          transform: translateX(-0.5rem);
         }
       }
 
@@ -325,13 +548,13 @@ $warm-grey: rgb(156, 156, 156);
 
   .second-pay {
     background: white;
-    padding: 0 .8rem;
-    padding-top: .5rem;
+    padding: 0 0.8rem;
+    padding-top: 0.5rem;
 
     .other-pay {
       border-top: 1px solid rgb(216, 216, 216);
       color: rgb(51, 51, 51);
-      font-size: .9rem;
+      font-size: 0.9rem;
 
       .state {
         background: linear-gradient(to right, #ffa31c, #ff5060);
@@ -339,9 +562,9 @@ $warm-grey: rgb(156, 156, 156);
         color: #ffffff;
         text-align: left;
         margin-top: 1rem;
-        padding: .2rem .5rem .2rem .2rem;
+        padding: 0.2rem 0.5rem 0.2rem 0.2rem;
         line-height: 2rem;
-        font-size: .7rem;
+        font-size: 0.7rem;
 
         img {
           height: 2rem;
@@ -350,7 +573,7 @@ $warm-grey: rgb(156, 156, 156);
       }
 
       .text {
-        padding: 1rem 0 .7rem;
+        padding: 1rem 0 0.7rem;
         text-align: center;
       }
 
@@ -375,7 +598,7 @@ $warm-grey: rgb(156, 156, 156);
       height: 2rem;
       border-radius: 50%;
       display: inline-block;
-      margin: auto .5rem;
+      margin: auto 0.5rem;
       background-size: contain;
       background-repeat: no-repeat;
       vertical-align: middle;
@@ -383,13 +606,12 @@ $warm-grey: rgb(156, 156, 156);
 
     .staff:after {
       content: "";
-      background: #FF392E;
+      background: #ff392e;
       border-radius: 50%;
       display: block;
       width: 10px;
       height: 10px;
       margin-left: 26px;
-
     }
 
     .amount,
@@ -432,17 +654,14 @@ $warm-grey: rgb(156, 156, 156);
     color: #fff;
     border-radius: 5px;
     margin-top: 1rem;
-    border: 1px solid #FF392E;
-    background: #FF392E;
+    border: 1px solid #ff392e;
+    background: #ff392e;
     line-height: 2.5rem;
     height: 2.5rem;
     font-size: 0.9rem;
     text-align: center;
     letter-spacing: 15px;
-
   }
-
-
 
   //old
   .table {
@@ -472,7 +691,7 @@ $warm-grey: rgb(156, 156, 156);
     padding: 0 3px;
   }
 
-  .swiper-container-horizontal>.swiper-pagination-bullets {
+  .swiper-container-horizontal > .swiper-pagination-bullets {
     bottom: -5px;
 
     .swiper-pagination-bullet {
@@ -481,7 +700,7 @@ $warm-grey: rgb(156, 156, 156);
       display: inline-block;
       border-radius: 100%;
       background: #fff;
-      /* opacity: 0.2; */
+      /* opacity   : 0.2; */
     }
   }
 
@@ -504,33 +723,32 @@ $warm-grey: rgb(156, 156, 156);
       width: 30px;
       line-height: 15px;
       border: 1px solid;
-      color: #FF9393;
+      color: #ff9393;
       font-size: 10px;
       text-align: center;
       font-weight: normal;
-      margin-right: .5rem;
+      margin-right: 0.5rem;
       vertical-align: text-bottom;
     }
 
     .pull-left {
-      margin: .4rem;
+      margin: 0.4rem;
       color: #788486;
       font-weight: bold;
       float: left;
-      font-size: .7rem;
+      font-size: 0.7rem;
     }
 
     .pull-right {
       /*color: #5d6993;*/
       color: #ffffff;
-      background: #EC1700;
-      margin: .5rem;
-      font-size: .6rem;
+      background: #ec1700;
+      margin: 0.5rem;
+      font-size: 0.6rem;
       border-radius: 10px;
       width: 63px;
       text-align: center;
     }
-
   }
 
   .e-black {
@@ -562,7 +780,7 @@ $warm-grey: rgb(156, 156, 156);
     z-index: 10352;
     overflow: hidden;
     background-color: rgba(0, 0, 0, 0.8);
-    padding: .7rem .8rem .9rem .6rem;
+    padding: 0.7rem 0.8rem 0.9rem 0.6rem;
     box-sizing: border-box;
 
     .swiper-container {
@@ -590,7 +808,7 @@ $warm-grey: rgb(156, 156, 156);
         .big-title {
           font-size: 1rem;
           line-height: 2.2;
-          padding: 2rem 0 .5rem;
+          padding: 2rem 0 0.5rem;
           color: #ffffff;
           font-weight: bold;
         }
@@ -610,17 +828,17 @@ $warm-grey: rgb(156, 156, 156);
         }
 
         .coupons-detail {
-          font-size: .6rem;
+          font-size: 0.6rem;
           padding: 1rem;
 
-          .a4001+.item,
+          .a4001 + .item,
           .item:first-child {
             flex-grow: 1;
             -webkit-flex-grow: 1;
           }
 
           .item {
-            margin: .4rem;
+            margin: 0.4rem;
             clear: both;
             text-align: left;
 
@@ -661,11 +879,11 @@ $warm-grey: rgb(156, 156, 156);
     }
   }
 
-  img+.over-content {
+  img + .over-content {
     height: 93%;
   }
 
-  img+.over-content .overlay-detail {
+  img + .over-content .overlay-detail {
     height: 81%;
   }
 
@@ -675,11 +893,10 @@ $warm-grey: rgb(156, 156, 156);
     height: 100%;
     overflow: auto;
     position: relative;
-
   }
 
   .m-bg {
-    background-image: url('/sui_assets/img/coupon/bg1.jpg');
+    background-image: url("/sui_assets/img/coupon/bg1.jpg");
     background-size: 100% auto;
     background-position: center;
     background-repeat: no-repeat;
@@ -690,7 +907,7 @@ $warm-grey: rgb(156, 156, 156);
 
   .m-bg .m-title {
     background: rgba(0, 0, 0, 0.8);
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
     height: 1.4rem;
     line-height: 1.4rem;
     text-overflow: ellipsis;
@@ -703,8 +920,8 @@ $warm-grey: rgb(156, 156, 156);
   }
 
   .m-content {
-    font-size: .5rem;
-    padding: .5rem 0 .3rem;
+    font-size: 0.5rem;
+    padding: 0.5rem 0 0.3rem;
   }
 
   //
@@ -718,14 +935,14 @@ $warm-grey: rgb(156, 156, 156);
     background: url("/sui_assets/img/selfPay/icons.svg") center no-repeat;
     background-position: 0 -45px;
     padding: 5px 10px;
-    margin-left: .2rem;
-    margin-right: .6rem;
+    margin-left: 0.2rem;
+    margin-right: 0.6rem;
   }
 
   .left-img {
     width: 3.6rem;
     height: 3rem;
-    margin: .4rem .5rem .6rem 0;
+    margin: 0.4rem 0.5rem 0.6rem 0;
     padding: 0;
     float: left;
   }
@@ -736,7 +953,7 @@ $warm-grey: rgb(156, 156, 156);
   }
 
   .d-detail {
-    padding: .4rem 0;
+    padding: 0.4rem 0;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
@@ -758,7 +975,7 @@ $warm-grey: rgb(156, 156, 156);
   }
 
   .current {
-    padding: 0 .5rem;
+    padding: 0 0.5rem;
   }
 
   .choose {
@@ -770,14 +987,14 @@ $warm-grey: rgb(156, 156, 156);
     border-radius: 5px;
     line-height: 2.2rem;
     text-align: center;
-    font-size: .8rem;
+    font-size: 0.8rem;
     position: relative;
   }
 
   .choose .number {
     position: absolute;
-    top: -.4rem;
-    right: -.5rem;
+    top: -0.4rem;
+    right: -0.5rem;
     border-radius: 50%;
     background: #e75040;
     height: 1.2rem;
@@ -795,7 +1012,7 @@ $warm-grey: rgb(156, 156, 156);
     line-height: 2.2rem;
     text-align: center;
     margin-left: 4.8rem;
-    font-size: .8rem;
+    font-size: 0.8rem;
     color: #ffffff;
     height: 100%;
   }
@@ -805,8 +1022,8 @@ $warm-grey: rgb(156, 156, 156);
   }
 
   .overlay-title {
-    font-size: .8rem;
-    padding: 1rem 0 .8rem;
+    font-size: 0.8rem;
+    padding: 1rem 0 0.8rem;
   }
 
   .overlay-footer {
@@ -814,7 +1031,7 @@ $warm-grey: rgb(156, 156, 156);
     bottom: 0;
     left: 0;
     right: 0;
-    padding: .5rem .5rem;
+    padding: 0.5rem 0.5rem;
     background: #ffffff;
     box-shadow: 0 -2px 4px 0 rgba(0, 0, 0, 0.11);
   }
@@ -822,13 +1039,13 @@ $warm-grey: rgb(156, 156, 156);
   .overlay-detail {
     height: 86%;
     overflow: auto;
-    -webkit-overflow-scrolling: touch
+    -webkit-overflow-scrolling: touch;
   }
 
   .border-round {
     color: #5b5b5b;
-    font-size: .6rem;
-    padding-bottom: .5rem;
+    font-size: 0.6rem;
+    padding-bottom: 0.5rem;
   }
 
   .border-round:before {
@@ -838,7 +1055,7 @@ $warm-grey: rgb(156, 156, 156);
     height: 1px;
     display: inline-block;
     vertical-align: middle;
-    margin: 0 .5rem;
+    margin: 0 0.5rem;
   }
 
   .border-round:after {
@@ -848,7 +1065,7 @@ $warm-grey: rgb(156, 156, 156);
     height: 1px;
     display: inline-block;
     vertical-align: middle;
-    margin: 0 .5rem;
+    margin: 0 0.5rem;
   }
 
   .dish-item.active {
@@ -862,7 +1079,7 @@ $warm-grey: rgb(156, 156, 156);
     overflow: auto;
 
     .amount {
-      font-size: .5rem;
+      font-size: 0.5rem;
       text-decoration: line-through;
       padding-left: 4px;
     }
@@ -874,8 +1091,8 @@ $warm-grey: rgb(156, 156, 156);
     background: url(/sui_assets/img/selfPay/close.svg) center no-repeat;
     padding: 17px;
     position: absolute;
-    top: .1rem;
-    right: .5rem;
+    top: 0.1rem;
+    right: 0.5rem;
   }
 
   .modal-overlay-visible {
@@ -884,15 +1101,15 @@ $warm-grey: rgb(156, 156, 156);
 
   .addon2 {
     border-radius: 3px;
-    background: rgba(255, 255, 255, .2);
+    background: rgba(255, 255, 255, 0.2);
     color: white;
-    font-size: .5rem;
+    font-size: 0.5rem;
     line-height: 1.1rem;
     width: 5rem;
     text-align: center;
     position: absolute;
     right: 2.3rem;
-    top: .3rem;
+    top: 0.3rem;
   }
 
   .text-orange {
@@ -905,7 +1122,6 @@ $warm-grey: rgb(156, 156, 156);
     height: 49px;
     position: relative;
     padding: 2px 5px;
-
   }
 
   .meal-pic img {
@@ -915,11 +1131,11 @@ $warm-grey: rgb(156, 156, 156);
   }
 
   .check-meal-border {
-    background: #E0F5FF;
-    color: #009EFF;
-    border: 1px solid #7BBDDE;
+    background: #e0f5ff;
+    color: #009eff;
+    border: 1px solid #7bbdde;
     line-height: 26px;
-    font-size: .55rem;
+    font-size: 0.55rem;
     text-align: center;
     border-radius: 9px;
     width: 13.5rem;
@@ -936,7 +1152,7 @@ $warm-grey: rgb(156, 156, 156);
     display: inline-block;
     height: 14px;
     line-height: 14px;
-    color: #009EFF;
+    color: #009eff;
     vertical-align: middle;
   }
 
@@ -945,7 +1161,7 @@ $warm-grey: rgb(156, 156, 156);
     background: url(/sui_assets/img/selfPay/qrcode.png) center no-repeat/contain;
     padding: 0 10px 31px 0px;
     position: fixed;
-    right: .6rem;
+    right: 0.6rem;
     bottom: 4.5rem;
 
     img {
@@ -972,10 +1188,10 @@ $warm-grey: rgb(156, 156, 156);
 
     .flower-bg {
       height: 100vh;
-      animation: show-modal2 .5s;
+      animation: show-modal2 0.5s;
       animation-direction: alternate;
       //height: calc(100vh - 55px);
-      background: rgba(0, 0, 0, .7);
+      background: rgba(0, 0, 0, 0.7);
 
       //.close {
       //  background: url(/sui_assets/img/selfPay/sprite.png) center no-repeat;
@@ -988,7 +1204,7 @@ $warm-grey: rgb(156, 156, 156);
       //  right: 0;
       //}
       .header {
-        font-size: .9rem;
+        font-size: 0.9rem;
         border-bottom: 1px solid rgb(217, 217, 217);
         height: 3rem;
         line-height: 3rem;
@@ -1006,7 +1222,6 @@ $warm-grey: rgb(156, 156, 156);
 
         .back {
           background-position: 8px -303px;
-          ;
         }
 
         .pull-left {
@@ -1014,7 +1229,7 @@ $warm-grey: rgb(156, 156, 156);
           font-size: 10px;
           text-decoration: underline;
           position: absolute;
-          left: .8rem;
+          left: 0.8rem;
           top: 0;
         }
       }
@@ -1057,7 +1272,7 @@ $warm-grey: rgb(156, 156, 156);
           }
 
           .nickname {
-            font-size: .8rem;
+            font-size: 0.8rem;
             vertical-align: middle;
             width: 36%;
             //max-width: 4.5rem;
@@ -1071,7 +1286,7 @@ $warm-grey: rgb(156, 156, 156);
 
           .thanks {
             font-size: 1rem;
-            padding-top: .5rem;
+            padding-top: 0.5rem;
           }
 
           .staff {
@@ -1112,7 +1327,7 @@ $warm-grey: rgb(156, 156, 156);
               box-shadow: 0 0 1px 1px #9c9c9c inset;
               color: rgb(156, 156, 156);
               flex: 1;
-              margin: 0 .7rem;
+              margin: 0 0.7rem;
               max-width: 42%;
 
               .up {
@@ -1152,7 +1367,7 @@ $warm-grey: rgb(156, 156, 156);
             justify-content: space-between;
 
             .dec {
-              margin: .25rem 3%;
+              margin: 0.25rem 3%;
               width: 43%;
               height: 1.4rem;
               line-height: 1.45rem;
@@ -1326,7 +1541,7 @@ $warm-grey: rgb(156, 156, 156);
             top: 13rem;
 
             .dec {
-              margin: .25rem 0.45rem;
+              margin: 0.25rem 0.45rem;
               display: inline-block;
               width: 4.7rem;
               height: 1.6rem;
@@ -1340,7 +1555,7 @@ $warm-grey: rgb(156, 156, 156);
 
             .active {
               // color: white;
-              margin: .25rem 0.45rem;
+              margin: 0.25rem 0.45rem;
               color: #fff;
               // background: $grey-blue;
               // background-image: linear-gradient(77deg, #fe563f, #f29c6e);
@@ -1436,7 +1651,7 @@ $warm-grey: rgb(156, 156, 156);
           }
 
           .box {
-            margin: .75rem 0.4rem;
+            margin: 0.75rem 0.4rem;
             display: flex;
             justify-content: space-around;
 
@@ -1486,7 +1701,7 @@ $warm-grey: rgb(156, 156, 156);
               }
 
               .box_text {
-                font-size: .7rem;
+                font-size: 0.7rem;
                 position: absolute;
                 bottom: 3.3rem;
                 color: #000000;
@@ -1505,7 +1720,6 @@ $warm-grey: rgb(156, 156, 156);
             }
           }
 
-
           .pull-right {
             background: url(/sui_assets/img/selfPay/sprite.png) center no-repeat;
             background-position: -4px -129px;
@@ -1517,13 +1731,9 @@ $warm-grey: rgb(156, 156, 156);
             background-size: 50px;
           }
 
-
-
-
-
           .addon {
             color: #f68861;
-            font-size: .6rem;
+            font-size: 0.6rem;
             opacity: 0.9;
             font-family: PingFangSC;
             font-weight: normal;
@@ -1535,8 +1745,8 @@ $warm-grey: rgb(156, 156, 156);
           }
 
           .thanks {
-            font-size: .7rem;
-            padding-top: .5rem;
+            font-size: 0.7rem;
+            padding-top: 0.5rem;
           }
 
           // 服务员
@@ -1613,7 +1823,6 @@ $warm-grey: rgb(156, 156, 156);
               // background-image: linear-gradient(77deg, #fe563f, #f29c6e);
 
               .up {
-
                 background: url(/sui_assets/img/selfPay/flowicon.svg) center no-repeat;
                 display: inline-block;
                 vertical-align: middle;
@@ -1640,7 +1849,7 @@ $warm-grey: rgb(156, 156, 156);
             margin-right: 1.15rem;
 
             .dec {
-              margin: .25rem 0.45rem;
+              margin: 0.25rem 0.45rem;
               display: inline-block;
               width: 4.7rem;
               height: 1.6rem;
@@ -1654,7 +1863,7 @@ $warm-grey: rgb(156, 156, 156);
 
             .active {
               // color: white;
-              margin: .25rem 0.45rem;
+              margin: 0.25rem 0.45rem;
               color: #fff;
               // background: $grey-blue;
               background-image: linear-gradient(109deg, #e8524a, #ec7bb8);
@@ -1666,7 +1875,6 @@ $warm-grey: rgb(156, 156, 156);
         }
 
         .content2 {
-
           // width: 13.75rem;
           // height: 17.75rem;
           // border-radius: 20px;
@@ -1727,7 +1935,6 @@ $warm-grey: rgb(156, 156, 156);
         }
 
         .behind {
-
           // position: absolute;
           // right: 0;
           // left: 0;
@@ -1760,7 +1967,7 @@ $warm-grey: rgb(156, 156, 156);
               width: 10rem;
               height: 3rem;
               margin: 0 auto;
-              font-size: .9rem;
+              font-size: 0.9rem;
               font-weight: 500;
               letter-spacing: 0.2px;
               text-align: center;
@@ -1769,8 +1976,7 @@ $warm-grey: rgb(156, 156, 156);
               line-height: 3rem;
 
               div {
-                transform: translateX(-.5rem);
-
+                transform: translateX(-0.5rem);
               }
 
               // background-color: #f6d7b4;
@@ -1802,8 +2008,8 @@ $warm-grey: rgb(156, 156, 156);
             background: url(/sui_assets/img/selfPay/gift.png) center no-repeat;
             height: 5rem;
             background-size: contain;
-            margin: -.5rem .5rem 0;
-            font-size: .7rem;
+            margin: -0.5rem 0.5rem 0;
+            font-size: 0.7rem;
             color: white;
 
             .transform {
@@ -1850,7 +2056,6 @@ $warm-grey: rgb(156, 156, 156);
             }
           }
         }
-
       }
 
       .praise {
@@ -1897,9 +2102,9 @@ $warm-grey: rgb(156, 156, 156);
       height: 2rem;
       line-height: 2rem;
       border-radius: 5px 5px 0 0;
-      margin: 0 .8rem;
+      margin: 0 0.8rem;
       color: white;
-      font-size: .7rem;
+      font-size: 0.7rem;
       text-align: left;
       position: relative;
 
@@ -1909,7 +2114,7 @@ $warm-grey: rgb(156, 156, 156);
         border-radius: 50%;
         vertical-align: middle;
         display: inline-block;
-        margin: auto .5rem;
+        margin: auto 0.5rem;
         background-size: 102%;
         background-repeat: no-repeat;
         background-position: center center;
@@ -1919,7 +2124,7 @@ $warm-grey: rgb(156, 156, 156);
     .flower-close:after {
       content: "现在去评价";
       color: $grey-blue;
-      font-size: .6rem;
+      font-size: 0.6rem;
       border-radius: 10px;
       width: 76px;
       height: 1rem;
@@ -1928,9 +2133,8 @@ $warm-grey: rgb(156, 156, 156);
       display: inline-block;
       text-align: center;
       position: absolute;
-      right: .5rem;
-      top: .5rem;
-
+      right: 0.5rem;
+      top: 0.5rem;
     }
 
     .i-flex {
@@ -1991,7 +2195,6 @@ $warm-grey: rgb(156, 156, 156);
     height: 1.8rem;
     line-height: 1.8rem;
     margin-bottom: 1.7rem;
-
   }
 
   .info:before {
@@ -2006,26 +2209,26 @@ $warm-grey: rgb(156, 156, 156);
     right: 10%;
     top: 35%;
     height: 134px;
-    background: rgba(0, 0, 0, .8);
+    background: rgba(0, 0, 0, 0.8);
     z-index: 100000;
     border-radius: 5px;
     color: #ffffff;
   }
 
   .indirect div {
-    background: url('/sui_assets/img/selfPay/illus.svg') center no-repeat;
+    background: url("/sui_assets/img/selfPay/illus.svg") center no-repeat;
     padding-top: 4rem;
   }
 
   .label3 {
     background: red;
-    font-size: .5rem;
+    font-size: 0.5rem;
     position: absolute;
-    top: -.3rem;
+    top: -0.3rem;
     right: 1rem;
     color: #fff;
-    height: .8rem;
-    line-height: .9rem;
+    height: 0.8rem;
+    line-height: 0.9rem;
     padding: 0 8px;
     border-radius: 5px;
     display: inline-block;
@@ -2066,7 +2269,7 @@ $warm-grey: rgb(156, 156, 156);
   bottom: 0;
   left: 0;
   right: 0;
-  background: rgba(0, 0, 0, .7);
+  background: rgba(0, 0, 0, 0.7);
   z-index: 1;
   width: 100vw;
   height: 100vh;
@@ -2079,11 +2282,11 @@ $warm-grey: rgb(156, 156, 156);
     // transform: translateX(-50%);
     margin-left: -7.55rem;
     margin-top: 0;
-    top: 6%;
+    top: 16%;
     text-align: center;
-    border-radius: .35rem;
-    animation: show-modal .5s;
-    -webkit-animation: show-modal .5s;
+    border-radius: 0.35rem;
+    animation: show-modal 0.5s;
+    -webkit-animation: show-modal 0.5s;
     color: #3d4145;
 
     .close {
@@ -2122,7 +2325,7 @@ $warm-grey: rgb(156, 156, 156);
   overflow-y: scroll;
 
   input::-webkit-input-placeholder {
-    color: #A9A9A9;
+    color: #a9a9a9;
     font-size: 13px;
   }
 
@@ -2156,7 +2359,6 @@ $warm-grey: rgb(156, 156, 156);
     width: 4.5rem;
     text-align: center;
     /* 88/16 */
-    ;
     // height: 3rem;
     font-family: PingFangSC;
     font-size: 1rem;
@@ -2167,7 +2369,7 @@ $warm-grey: rgb(156, 156, 156);
     left: 0;
     right: 0;
     top: 0.8rem;
-    padding: .6rem 0 .5rem;
+    padding: 0.6rem 0 0.5rem;
     text-align: left;
     display: block;
     position: absolute;
@@ -2226,7 +2428,7 @@ $warm-grey: rgb(156, 156, 156);
       position: relative;
       top: -2.2rem;
       padding-top: 3rem;
-      margin: 0 -.45rem auto;
+      margin: 0 -0.45rem auto;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -2240,10 +2442,10 @@ $warm-grey: rgb(156, 156, 156);
       border: none;
       border-radius: 5px;
       width: 100%;
-      padding: .25rem .5rem;
-      font-size: .75rem;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.75rem;
       color: #000000;
-      box-shadow: inset 0 1px 3px 0 #7CA1B5;
+      box-shadow: inset 0 1px 3px 0 #7ca1b5;
       background-color: #ffffff;
       box-sizing: border-box;
     }
@@ -2256,23 +2458,21 @@ $warm-grey: rgb(156, 156, 156);
     .modal-phone .input-text {
       position: relative;
       top: 1.7rem;
-      padding: .2rem .4rem;
-      font-size: .5rem;
-      margin: -.9rem -.2rem -.5rem;
+      padding: 0.2rem 0.4rem;
+      font-size: 0.5rem;
+      margin: -0.9rem -0.2rem -0.5rem;
       // box-shadow: 0 2px 0 0 #af0812;
       // background-color: #ff4955;
       // border: 1px solid #b41214;
       border-radius: 3px;
       //width: 80px;
       float: right;
-      width: 5.4375rem
-        /* 87/16 */
-      ;
+      width: 5.4375rem /* 87/16 */;
       height: 2.2rem;
       line-height: 2rem;
       border-radius: 5px;
       font-family: PingFangSC;
-      font-size: .8rem;
+      font-size: 0.8rem;
       text-align: center;
       color: #000000;
       background-color: #fadf4d;
@@ -2286,7 +2486,7 @@ $warm-grey: rgb(156, 156, 156);
     }
 
     .modal-phone .v-button {
-      padding: 0 .25rem;
+      padding: 0 0.25rem;
       height: 2.2rem;
       font-size: 1rem;
       // background-image: linear-gradient(to bottom, #FAD961, #F7BD1C);
@@ -2304,21 +2504,20 @@ $warm-grey: rgb(156, 156, 156);
       position: absolute;
       bottom: -50px;
       z-index: 999999999999999999;
-
     }
 
     .v-item {
       background: url(/sui_assets/img/addVip/coupon.svg) center top no-repeat;
       color: #000000;
       width: 13rem;
-      /*width: 218px;*/
+      /*width        : 218px;*/
       height: 74px;
-      font-size: .75rem;
+      font-size: 0.75rem;
       display: flex;
       -webkit-display: flex;
       align-items: center;
       // margin: .7rem auto 0;
-      margin: 0rem auto .7rem;
+      margin: 0rem auto 0.7rem;
       text-align: left;
       font-weight: 600;
       position: relative;
@@ -2356,7 +2555,7 @@ $warm-grey: rgb(156, 156, 156);
       }
 
       .right {
-        padding: 0 0.5rem 0 .6rem;
+        padding: 0 0.5rem 0 0.6rem;
         flex: 1;
         -webkit-flex: 1;
       }
@@ -2377,7 +2576,7 @@ $warm-grey: rgb(156, 156, 156);
         background: url(/sui_assets/img/addVip/newmenber_speites.svg) 1% -8.9rem no-repeat;
         background-size: 804%;
         position: absolute;
-        font-size: .6rem;
+        font-size: 0.6rem;
         right: 0rem;
         top: 5px;
         width: 2.2rem;
@@ -2391,7 +2590,7 @@ $warm-grey: rgb(156, 156, 156);
     .close {
       position: absolute;
       top: 0.6rem;
-      right: .1rem;
+      right: 0.1rem;
       z-index: 1;
     }
 
@@ -2421,7 +2620,7 @@ $warm-grey: rgb(156, 156, 156);
   overflow-y: scroll;
 
   input::-webkit-input-placeholder {
-    color: #A9A9A9;
+    color: #a9a9a9;
     font-size: 13px;
   }
 
@@ -2432,7 +2631,6 @@ $warm-grey: rgb(156, 156, 156);
     padding-bottom: 1rem;
     box-sizing: content-box;
     max-height: 11rem;
-
   }
 
   .modal-inner {
@@ -2470,11 +2668,10 @@ $warm-grey: rgb(156, 156, 156);
           background-size: 100% 100%;
           border-radius: 0.3rem;
           background-repeat: no-repeat;
-
         }
 
         .card-text {
-          font-size: .7rem;
+          font-size: 0.7rem;
           line-height: 1;
           // background: url(/sui_assets/img/addVip/oval.png) bottom center no-repeat/contain;
           padding-bottom: 2rem;
@@ -2484,7 +2681,7 @@ $warm-grey: rgb(156, 156, 156);
 
       .modal-phone {
         padding: 1rem;
-        margin: auto .35rem;
+        margin: auto 0.35rem;
 
         input {
           // border-width: 0;
@@ -2492,11 +2689,11 @@ $warm-grey: rgb(156, 156, 156);
           height: 2rem;
           border-radius: 5px;
           width: 100%;
-          padding: 0 .5rem;
-          font-size: .75rem;
+          padding: 0 0.5rem;
+          font-size: 0.75rem;
           color: #999;
           background-color: #ffffff;
-          margin: .25rem auto;
+          margin: 0.25rem auto;
           border-radius: 3px;
           border: solid 1px #838383;
           background-color: #ffffff;
@@ -2507,8 +2704,8 @@ $warm-grey: rgb(156, 156, 156);
         .input-text {
           position: relative;
           top: -2.2rem;
-          right: .3rem;
-          padding: .2rem .4rem;
+          right: 0.3rem;
+          padding: 0.2rem 0.4rem;
           color: rgb(190, 73, 73);
           // background-color: rgb(255, 238, 122);
           // background: url(/sui_assets/img/addVip/smallBtn.png) bottom center no-repeat/contain;
@@ -2524,15 +2721,15 @@ $warm-grey: rgb(156, 156, 156);
         .v-button {
           background: url(/sui_assets/img/addVip/modal_sprites.svg) 0 100% no-repeat;
           height: 2.7rem;
-          font-size: .9rem;
+          font-size: 0.9rem;
           line-height: 3rem;
           text-align: center;
           border-radius: 1.25rem;
           color: #fff;
           clear: both;
           position: relative;
-          top: -.5rem;
-          letter-spacing: .15rem;
+          top: -0.5rem;
+          letter-spacing: 0.15rem;
           margin-bottom: 1.5rem;
           margin-top: 1.5rem;
           background-size: cover;
@@ -2572,10 +2769,8 @@ $warm-grey: rgb(156, 156, 156);
     color: #ffffff;
     border-radius: 5px;
     padding: 1.5rem 0;
-    height: 23.5rem
-      /* 430/16 */
-    ;
-    transition: all .5s;
+    height: 23.5rem /* 430/16 */;
+    transition: all 0.5s;
 
     .up {
       background: url(/sui_assets/img/addVip/up.png) bottom center no-repeat/contain;
@@ -2599,7 +2794,6 @@ $warm-grey: rgb(156, 156, 156);
     }
 
     .information {
-
       // position: relative;
       // width: 100%;
       .info {
@@ -2636,13 +2830,13 @@ $warm-grey: rgb(156, 156, 156);
             background: url(/sui_assets/img/addVip/coupon.svg) center top no-repeat;
             color: #000000;
             width: 13rem;
-            /*width: 218px;*/
+            /*width        : 218px;*/
             height: 74px;
-            font-size: .75rem;
+            font-size: 0.75rem;
             display: flex;
             -webkit-display: flex;
             align-items: center;
-            margin: .7rem auto 0;
+            margin: 0.7rem auto 0;
             text-align: left;
             font-weight: 600;
             position: relative;
@@ -2673,7 +2867,7 @@ $warm-grey: rgb(156, 156, 156);
             }
 
             .right {
-              padding: 0 1.5rem 0 .6rem;
+              padding: 0 1.5rem 0 0.6rem;
               flex: 1;
               -webkit-flex: 1;
             }
@@ -2697,7 +2891,7 @@ $warm-grey: rgb(156, 156, 156);
 
         .v-close {
           height: 2rem;
-          font-size: .8rem;
+          font-size: 0.8rem;
           // font-size: .9rem;
           line-height: 2rem;
           text-align: center;
@@ -2737,14 +2931,14 @@ $warm-grey: rgb(156, 156, 156);
       }
 
       .card-text {
-        font-size: .9rem;
+        font-size: 0.9rem;
         line-height: 2;
         padding: 1.9rem 0 1.5rem;
         color: #333;
       }
 
       .card1 {
-        font-size: .9rem;
+        font-size: 0.9rem;
         position: absolute;
         top: 65%;
         left: 0;
@@ -2760,7 +2954,7 @@ $warm-grey: rgb(156, 156, 156);
       width: 80%;
       margin: 0 auto;
       height: 45px;
-      font-size: .9rem;
+      font-size: 0.9rem;
       line-height: 45px;
       text-align: center;
       border-radius: 25px;
@@ -2768,18 +2962,14 @@ $warm-grey: rgb(156, 156, 156);
       color: #fff;
       clear: both;
       position: relative;
-      top: -.5rem;
+      top: -0.5rem;
       letter-spacing: 3px;
       margin-bottom: 30px;
       margin-top: 30px;
       background-size: 100% 100%;
     }
-
   }
 }
-
-
-
 
 .userHeader {
   // width: 17.15rem;
@@ -2837,7 +3027,6 @@ $warm-grey: rgb(156, 156, 156);
     font-weight: 600;
     margin-right: 0.56rem;
   }
-
 }
 
 .xmodel-bg {
@@ -2897,7 +3086,7 @@ $warm-grey: rgb(156, 156, 156);
     width: 100%;
     margin: auto;
 
-    >div {
+    > div {
       flex: 1;
 
       .zhuo-color {
@@ -3002,7 +3191,7 @@ $warm-grey: rgb(156, 156, 156);
       font-size: 0.9rem;
       font-weight: 500;
       color: #d52a2a;
-      background-color: #fff
+      background-color: #fff;
     }
 
     .btnBox_right {
@@ -3025,7 +3214,4 @@ $warm-grey: rgb(156, 156, 156);
       }
     }
   }
-
-
-
 }

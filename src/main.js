@@ -117,7 +117,7 @@ Vue.http.interceptors.push(function (request) {
           location.href = "error.html#7";
         } else if (response.body.code == 403060) {
           if(location.hash){
-            if(location.hash.split("?")[0]!='#/vip'&&location.hash.split("?")[0]!='#/upgrade'&&location.hash.split("?")[0]!='#/mallDetail'&&location.hash.split("?")[0]!='#/couponActivity'){
+            if(location.hash.split("?")[0]!='#/selfpay'&&location.hash.split("?")[0]!='#/vip'&&location.hash.split("?")[0]!='#/upgrade'&&location.hash.split("?")[0]!='#/mallDetail'&&location.hash.split("?")[0]!='#/couponActivity'){
               location.href = "bind.html?" + location.hash.split("?")[1];
               return false;
             } 
