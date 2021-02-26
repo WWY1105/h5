@@ -23,7 +23,7 @@
     "vue-router": "^3.0.1",
     "vue2-animate": "^2.0.0",
     "wc-keyboard": "^1.1.9",
-    "webpack-dev-server": "^2.9.1"
+    "webpack-dev-server": "^3.1.11"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",
