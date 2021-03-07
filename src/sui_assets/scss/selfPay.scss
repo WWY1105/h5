@@ -155,8 +155,9 @@ $warm-grey: rgb(156, 156, 156);
         position: absolute;
         width: 30px;
         height: 30px;
-        top: -40px;
-        right: 40px;
+        top: 32px;
+        right: 45px;
+        z-index: 999;
       }
       .btnBox {
         position: absolute;
@@ -164,20 +165,91 @@ $warm-grey: rgb(156, 156, 156);
         left: 0;
       }
       .shareActivityBtn {
-        // margin: 0 20px 0 0px;
         width: 300px;
-        font-size: 14px;
+        font-size:19px;
         height: 50px;
         border-radius: 30px;
         border:none;
-        // border: 1px solid;
-        // border-image: linear-gradient(90deg, rgba(255, 236, 212, 1), rgba(217, 167, 122, 1)) 1 1;
         color: #84460e;
-        background: -webkit-gradient(linear, left top, right top, from(#ffecd4), to(#d9a77a));
-        background: linear-gradient(90deg, #ffecd4, #d9a77a);
-        // .smallText{
-        //   letter-spacing: -1px;
+        text-align: center;
+        padding: 0;
+        overflow: hidden;
+        // background-color: #2F2F48;
+        
+        background: linear-gradient(90deg, #FFECD4 0%, #D9A77A 100%);
+        border-radius: 48px;
+        position: relative;
+        // .leftTag{
+        //   width: 70px;
+        //   height: 15px;
+        //   text-align: center;
+        //   position: absolute;
+        //   top: 0;
+        //   left: 0;
+        //   color: #84460E;
+        //   font-size: 12px;
+        //   background: url(/sui_assets/img/selfPay/shareCard/leftTag.png) center top no-repeat;
+        //   background-size: 100% 100%;
+        //   line-height: 15px;
+        //   background-origin: padding-box; 
         // }
+        .topTitle{
+        
+          &.leftText{
+            color:#84460E ;
+            font-size: 14px;
+            border-radius: 90px 0 0 90px;
+            height: 100%;
+            line-height: 50px;
+            // flex: 1;
+            text-align: right;
+            font-weight: normal;
+          }
+          &.rightText{
+            position: relative;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            min-width: 60%;
+            padding: 0 5px;
+            // .bg{
+            //   position: absolute;
+            //   height: 50px;
+            //   right: 0;
+            //   top:0;
+            //   width: 100%;
+            //   &.topBg{
+            //     z-index: 10;
+            //     width: 97%;
+            //   }
+            // }
+            // .arrowRight{
+            //   position: absolute;
+            //   z-index: 9999;
+            //   width: 5px;
+            //   height: 8px;
+            //   right: 13px;
+            //   top: 50%;
+            //   margin-top: -4px;
+            // }
+            font-size: 19px;
+            // display: flex;
+            height: 100%;
+            line-height: 50px;
+            text-align: center;
+            box-sizing: border-box;
+            align-items: baseline;
+            .smallText{
+              font-size: 14px;
+              z-index: 999;
+              font-weight: normal;
+            }
+            .numtext{
+              z-index: 999;
+            }
+          }
+        }
+      
       }
 
       p {
@@ -2279,10 +2351,9 @@ $warm-grey: rgb(156, 156, 156);
     position: absolute;
     z-index: 11000;
     left: 50%;
-    // transform: translateX(-50%);
     margin-left: -7.55rem;
     margin-top: 0;
-    top: 16%;
+    top: 10%;
     text-align: center;
     border-radius: 0.35rem;
     animation: show-modal 0.5s;

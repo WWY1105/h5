@@ -12,7 +12,7 @@ Phone.install = function (Vue, options) {
   };
   //当前shopid要传过去，绑定后才可领卡
   let ids={};
-  Vue.prototype.$bind = function ({title = "补全手机 领取权益", text = "绑定手机号后，您的权益将立即到账", submit = "",justShow=false} = {}) {
+  Vue.prototype.$bind = function ({title = "补全手机 领取权益", text = "绑定手机号后，您的权益将立即到账", submit = "",justShow=false,loadingText=false} = {}) {
     ids = this.$parent.$route.query;
     let toastTpl = Vue.extend({
       data: function () {
@@ -48,7 +48,10 @@ Phone.install = function (Vue, options) {
       methods: {
         validate() {
           if (this.bind.phone.length == 11) {
-            this.$loading("加载中...");
+         
+              this.$loading("加载中...");
+          
+           
             let _self = this;
            
             this.$http.post("/validate/bindup", {"phone": this.bind.phone}).then(response => {
@@ -80,8 +83,13 @@ Phone.install = function (Vue, options) {
         submit() {
           let _self = this;
           if (this.bind.phone.length == 11 && this.bind.validateCode.length == 6) {
-            let state = this.$loading("加载中...");
-         
+            let state = false;
+            if(loadingText){
+              state =this.$loading(loadingText);
+            }else{
+            state = this.$loading("加载中...");
+            }
+            console.log(state)
             if (!state) {
                 // 推广码
               if(ids.pid){

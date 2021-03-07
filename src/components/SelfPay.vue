@@ -217,7 +217,7 @@
                                     <wc-keyboard inter="5" v-bind:value="post.nonParticationAmount" decimal="2" v-bind:unabled="post.nonParticationAmount ? true : false" class="nodiscount" label="不参与优惠项" />
                                 </div>
                             </div>
-                           
+
                             <div class="btnBox">
                                 <div class="btnBox_right memberGradeName" @click.self="getShareCard()">
                                     优&nbsp;&nbsp;&nbsp;&nbsp;惠&nbsp;&nbsp;&nbsp;&nbsp;买&nbsp;&nbsp;&nbsp;&nbsp;单
@@ -483,11 +483,11 @@
     <div class="modal shareActivityModal" v-show="shareActivityShow">
         <div class="modal-inner flexCenter">
             <div class="modal-content">
-                 <img @click="closeShareActivity()" class="closeIcon" src="/sui_assets/img/selfPay/shareCard/close.png" alt="">
+                <img @click.stop="closeShareActivity()" class="closeIcon" src="/sui_assets/img/selfPay/shareCard/close.png" alt="">
                 <img class="shareActivityBg" src="/sui_assets/img/selfPay/shareCard/shareActivity1.png" alt="" />
                 <div class="topTitleBox">
                     <p class="smallTitle">恭喜您获得</p>
-                    <p class="bigTitle" >本单立减
+                    <p class="bigTitle">本单立减
                         <countTo separator="" :startVal='startVal' decimals='2' :endVal='shareActivity.reduce' :duration='2000' class="bigTitle"></countTo>元</p>
                 </div>
                 <div class="shareActivityContent">
@@ -530,15 +530,17 @@
                     </div>
                 </div>
                 <div class="flexCenter btnBox">
-                   
-                    <!-- <div class="shareActivityClose flexCenter flexColumn" @click="closeShareActivity()">
-                        <span class="topTitle">不要优惠</span>
-                        <span>直接买单</span>
-                    </div> -->
                     <button class="shareActivityBtn  flexCenter" @click="tapBindFn()">
-                        <span class="topTitle" v-if="shareActivity.price">￥{{shareActivity.price}}开通&nbsp;&nbsp;</span>
-                        <span class="topTitle">本次立减{{shareActivity.reduce}}元</span>
-                        
+                        <!-- <p class="leftTag">全年优惠</p> -->
+                        <div class="topTitle leftText" v-if="shareActivity.price">￥{{shareActivity.price}}开通&nbsp;&nbsp;</div>
+                        <div class="topTitle rightText">
+                              <!-- <img src="/sui_assets/img/selfPay/shareCard/shareCardBtnBg1.png" class="bg" alt="">
+                             <img src="/sui_assets/img/selfPay/shareCard/shareCardBtnBg2.png" class="bg topBg" alt="">
+                               <img src="/sui_assets/img/selfPay/shareCard/icons/arrowRight.png" class="arrowRight" alt=""> -->
+                            <span class="smallText">本单</span> 
+                            <span class="numtext">立减{{shareActivity.reduce}}</span> 
+                            <span class="smallText"> 元</span>
+                        </div>
                     </button>
                 </div>
             </div>
@@ -800,7 +802,6 @@ export default {
                                         console.log(res1)
                                         let data2 = res1.body;
                                         if (data2.code == 200) {
-                                            // alert(data2.result.id)
                                             _self.shareCardId = data2.result.id;
                                             _self.toStrategy();
                                         }
@@ -845,7 +846,7 @@ export default {
                                             let data2 = res1.body;
                                             if (data2.code == 200) {
                                                 _self.shareCardId = data2.result.id;
-                                                _self.toStrategy();
+                                                _self.toStrategy(shareCardId);
                                             }
                                         });
                                     }
@@ -873,6 +874,7 @@ export default {
             let _self = this;
             if (!_self.init.existPhone) {
                 _self.$bind({
+                    loadingText:"即将为您拉起支付",
                     justShow: true,
                     title: "绑定手机号",
                     text: "绑定手机号后，获得即可参与此活动",
@@ -1676,8 +1678,13 @@ export default {
                 });
         },
 
-        toStrategy: function () {
-            this.$loading();
+        toStrategy: function (shareCardId) {
+            if(shareCardId){
+                this.$loading('购卡成功，正在为您计算优惠');
+            }else{
+                this.$loading('正在为您计算优惠');
+            }
+            
             var _self = this;
             var json = {};
 
